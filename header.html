@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>EDU STOCKX | Premium Transparent Header</title>
+    <!-- Google Fonts & Font Awesome 6 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #fef9f0;
+        min-height: 100vh;
+      }
+
+      /* PREMIUM HEADER - TRANSPARENT (DESKTOP LOOK UNTOUCHED) */
+      .header-premium {
+        position: relative;
+        width: 100%;
+        padding: 4px 2rem;
+        background: transparent;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .header-premium.scrolled {
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(12px);
+        border-bottom-color: rgba(255, 215, 0, 0.3);
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .logo-left {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+      }
+      .logo-left img {
+        width: 219px;
+        height: auto;
+        transition: transform 0.2s ease;
+      }
+
+      .nav-center {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+      }
+      .round-header {
+        background: #1f1f1f;
+        backdrop-filter: blur(12px);
+        border-radius: 80px;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.1rem;
+      }
+      .nav-item {
+        list-style: none;
+        position: relative;
+      }
+      .nav-link {
+        display: inline-block;
+        padding: 10px 17px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        letter-spacing: -0.2px;
+        color: #f0f0f0;
+        background: transparent;
+        border-radius: 60px;
+        transition: all 0.22s ease;
+        cursor: pointer;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .nav-link i {
+        margin-right: 8px;
+        font-size: 0.85rem;
+        color: #ecae17;
+      }
+      .nav-link:hover {
+        background: rgba(212, 175, 55, 0.12);
+        color: #ffe484;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        background: #0a0a0cee;
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 0.6rem 0;
+        min-width: 220px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s;
+        transform: translateY(-6px);
+        z-index: 200;
+        list-style: none;
+      }
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu .dropdown-link {
+        display: flex;
+        align-items: center;
+        padding: 0.7rem 2.6rem;
+        color: #e0e0e0;
+        font-weight: 500;
+        font-size: 0.85rem;
+        transition: 0.2s;
+        text-decoration: none;
+        gap: 10px;
+      }
+      .dropdown-menu .dropdown-link i {
+        font-size: 1rem;
+        width: 24px;
+        color: #d4af37;
+      }
+      .dropdown-menu .dropdown-link:hover {
+        background: rgba(212, 175, 55, 0.12);
+        color: #ffeaa7;
+        padding-left: 1.9rem;
+      }
+
+      .right-join {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 10;
+      }
+      .btn-join {
+        background: linear-gradient(
+          135deg,
+          #ffc928 0%,
+          #d8ab17 45%,
+          #ecae17 100%
+        );
+        border: none;
+        padding: 0.7rem 1.9rem;
+        border-radius: 44px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
+        color: #0a0a0a;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-join i {
+        font-size: 0.9rem;
+        color: #1e1b10;
+      }
+      .btn-join:hover {
+        background: transparent;
+        box-shadow: 0 12px 26px rgba(212, 175, 55, 0.5);
+        color: black;
+        border: 2px solid #ecae17;
+      }
+
+      /* Hover preview - FIXED positioning for both desktop & mobile */
+      .dropdown {
+        position: relative;
+      }
+
+      .hover-preview {
+        position: absolute;
+        left: 250px; /* beside dropdown */
+        top: 55px;
+        width: 280px;
+        /* background: rgba(5, 5, 8, 0.95); */
+        border-radius: 20px;
+        /* padding: 12px; */
+        z-index: 9999;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(10px);
+        transition: 0.25s;
+      }
+
+      .hover-preview.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+      .hover-preview img {
+        width: 100%;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+      }
+      .hover-preview span {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #d4af37;
+        text-transform: uppercase;
+      }
+      /* .hover-preview.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      } */
+
+      /* ========== IMPROVED HAMBURGER & RESPONSIVE LOOK ========== */
+      .hamburger-mobile {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .hamburger-mobile i {
+        font-size: 1.6rem;
+        color: #ecae17;
+      }
+      .hamburger-mobile:hover {
+        background: rgba(212, 175, 55, 0.2);
+        border-color: #d4af37;
+      }
+
+      .mobile-signin-icon {
+        display: none;
+        width: 48px;
+        height: 48px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        border-radius: 40px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid rgba(212, 175, 55, 0.6);
+      }
+      .mobile-signin-icon i {
+        font-size: 1.4rem;
+        color: #f5b042;
+      }
+      .mobile-signin-icon:hover {
+        background: rgba(212, 175, 55, 0.25);
+      }
+
+      /* Mobile Overlay - FIXED positioning, no overflow issues, proper spacing */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(2, 2, 5, 0.98);
+        backdrop-filter: blur(28px);
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        gap: 1rem;
+        padding: 100px 24px 40px 24px;
+        overflow-y: auto;
+      }
+      .mobile-menu-overlay.open {
+        transform: translateX(0);
+      }
+      .close-mobile {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        font-size: 1.8rem;
+        color: #e7bc42;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+      }
+      .close-mobile:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: rotate(90deg);
+      }
+      .mobile-nav-item {
+        list-style: none;
+        width: 100%;
+        max-width: 300px;
+      }
+      .mobile-nav-link {
+        font-size: 1.2rem;
+        font-weight: 550;
+        color: #f5f2e6;
+        background: rgba(25, 25, 30, 0.8);
+        padding: 0.8rem 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        border-radius: 60px;
+        text-decoration: none;
+        transition: 0.2s;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        width: 100%;
+      }
+      .mobile-nav-link i {
+        color: #e6b422;
+        font-size: 1.1rem;
+      }
+      .mobile-nav-link:active {
+        background: rgba(212, 175, 55, 0.25);
+        transform: scale(0.98);
+      }
+
+      /* Mobile services container - FIXED: dropdown expands downward, not upward */
+      .mobile-services-container {
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+      }
+      .mobile-service-trigger {
+        background: rgba(30, 30, 35, 0.85);
+        border-radius: 60px;
+        padding: 0.8rem 1.2rem;
+        font-size: 1.2rem;
+        font-weight: 550;
+        color: #f5f2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+        border: 1px solid rgba(212, 175, 55, 0.45);
+        transition: 0.2s;
+        width: 100%;
+      }
+      .mobile-service-trigger i:first-child {
+        color: #e6b422;
+      }
+      .mobile-service-trigger .chevron-icon {
+        margin-left: 8px;
+        font-size: 0.8rem;
+        transition: transform 0.3s;
+      }
+      .mobile-service-trigger:active {
+        background: rgba(212, 175, 55, 0.2);
+      }
+      .mobile-services-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+        background: rgba(10, 10, 14, 0.8);
+        backdrop-filter: blur(12px);
+        border-radius: 32px;
+        padding: 1rem;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        transition: all 0.2s ease;
+      }
+      .mobile-services-dropdown.hidden {
+        display: none;
+      }
+      .mobile-services-dropdown a {
+        color: #f0e6ca;
+        font-size: 0.95rem;
+        text-decoration: none;
+        padding: 0.7rem 1rem;
+        font-weight: 500;
+        border-radius: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: 0.2s;
+        border: 1px solid transparent;
+      }
+      .mobile-services-dropdown a i {
+        width: 28px;
+        color: #d4af37;
+        font-size: 1rem;
+      }
+      .mobile-services-dropdown a:active {
+        background: rgba(212, 175, 55, 0.25);
+        border-color: #e6b422;
+        transform: translateX(4px);
+      }
+
+      .mobile-action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 0.5rem;
+      }
+      .mobile-join-btn {
+        background: linear-gradient(135deg, #ffcd4a, #e0aa1a);
+        border: none;
+        padding: 0.85rem;
+        border-radius: 60px;
+        font-weight: 800;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: #141414;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .mobile-join-btn:active {
+        transform: scale(0.97);
+      }
+      .mobile-signin-outline {
+        background: transparent;
+        border: 1.5px solid #d4af37;
+        padding: 0.75rem;
+        border-radius: 60px;
+        font-weight: 600;
+        color: #f7e8c4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .mobile-signin-outline:active {
+        background: rgba(212, 175, 55, 0.2);
+      }
+
+      /* RESPONSIVE BREAKPOINTS */
+      @media (max-width: 880px) {
+        .header-premium {
+          padding: 0.8rem 1.5rem;
+        }
+        .nav-center {
+          display: none;
+        }
+        .right-join {
+          display: none;
+        }
+        .logo-left {
+          flex: unset;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          order: 2;
+        }
+        .logo-left img {
+          width: 165px;
+          height: auto;
+        }
+        .hamburger-mobile {
+          display: flex;
+          order: 1;
+        }
+        .mobile-signin-icon {
+          display: flex;
+          order: 3;
+        }
+        .nav-container {
+          justify-content: space-between;
+        }
+        /* Adjust preview position for mobile so it doesn't overlap header badly */
+        .hover-preview {
+          right: 16px;
+          top: 80px;
+          width: 230px;
+          padding: 8px 10px;
+        }
+      }
+      @media (max-width: 520px) {
+        .logo-left img {
+          width: 140px;
+        }
+        .hamburger-mobile,
+        .mobile-signin-icon {
+          width: 42px;
+          height: 42px;
+        }
+        .hamburger-mobile i {
+          font-size: 1.3rem;
+        }
+        .mobile-menu-overlay {
+          padding: 90px 20px 30px 20px;
+        }
+        .hover-preview {
+          width: 200px;
+          right: 10px;
+          top: 75px;
+        }
+      }
+
+      @keyframes fadeSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .header-premium {
+        animation: fadeSlideUp 0.55s ease-out;
+      }
+
+      .hero-placeholder {
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: radial-gradient(circle at 10% 30%, #faf3e0, #fff6ea);
+      }
+      .hero-card {
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(5px);
+        padding: 2.5rem;
+        border-radius: 48px;
+        color: #2c2b26;
+        max-width: 600px;
+      }
+      .hero-card h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #b57c1c, #f3b33d);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header-premium" id="premiumHeader">
+      <div class="nav-container">
+        <div class="logo-left">
+          <img
+            src="images/logo_11.png"
+            alt="EDU STOCKX Logo"
+            onerror="
+              this.src =
+                'https://placehold.co/400x120/000000/D4AF37?text=EDU+STOCKX&font=montserrat'
+            "
+          />
+        </div>
+
+        <div class="hamburger-mobile" id="hamburgerBtn">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- DESKTOP CENTER: unchanged -->
+        <div class="nav-center">
+          <div class="round-header">
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-chart-line"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link" id="servicesDesktopLink"
+                ><i class="fas fa-layer-group"></i> Services
+                <i
+                  class="fas fa-chevron-down"
+                  style="font-size: 9px; margin-left: 6px"
+                ></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown-link"
+                    data-preview-img="https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
+                    ><i class="fas fa-coins"></i> Gold trading</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown-link"
+                    data-preview-img="https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
+                    ><i class="fas fa-dollar-sign"></i> Forex Trading</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dropdown-link"
+                    data-preview-img="https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww"
+                    ><i class="fab fa-bitcoin"></i> Crypto Trading</a
+                  >
+                </li>
+              </ul>
+
+              <div class="hover-preview" id="hoverPreview">
+                <img
+                  id="previewImg"
+                  src="https://placehold.co/500x300/1a1a1a/D4AF37?text=EDU+STOCKX"
+                  alt="preview"
+                />
+                <span id="previewText"></span>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-tag"></i> Pricing</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-headset"></i> Help</a
+              >
+            </li>
+          </div>
+        </div>
+
+        <div class="right-join">
+          <button class="btn-join" id="joinUsBtn">
+            <i class="fas fa-crown"></i> Join Us
+          </button>
+        </div>
+
+        <div class="mobile-signin-icon" id="mobileSigninIcon">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+      </div>
+
+      <!-- Hover preview container -->
+    </header>
+
+    <!-- Mobile Overlay - FIXED: dropdown expands downward naturally -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+      <div class="close-mobile" id="closeMobileMenu">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobileHomeLink"
+          ><i class="fas fa-chart-line"></i> Home</a
+        >
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobileAboutLink"
+          ><i class="fas fa-info-circle"></i> About</a
+        >
+      </div>
+
+      <div class="mobile-services-container">
+        <div class="mobile-service-trigger" id="mobileServicesTrigger">
+          <i class="fas fa-layer-group"></i> Services
+          <i class="fas fa-chevron-down chevron-icon" id="servicesChevron"></i>
+        </div>
+        <div
+          class="mobile-services-dropdown hidden"
+          id="mobileServicesDropdown"
+        >
+          <a
+            href="#"
+            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Gold+Trading+Live"
+            data-mobile-preview-text="GOLD TRADING | secure & leveraged"
+            ><i class="fas fa-coins"></i> Gold trading</a
+          >
+          <a
+            href="#"
+            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Forex+Market"
+            data-mobile-preview-text="FOREX TRADING | 24/5 liquidity"
+            ><i class="fas fa-dollar-sign"></i> Forex Trading</a
+          >
+          <a
+            href="#"
+            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Crypto+Spot"
+            data-mobile-preview-text="CRYPTO TRADING | high volatility"
+            ><i class="fab fa-bitcoin"></i> Crypto Trading</a
+          >
+        </div>
+      </div>
+
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobilePricingLink"
+          ><i class="fas fa-tag"></i> Pricing</a
+        >
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobileHelpLink"
+          ><i class="fas fa-headset"></i> Help</a
+        >
+      </div>
+
+      <div class="mobile-action-buttons">
+        <button class="mobile-join-btn" id="mobileJoinBtn">
+          <i class="fas fa-crown"></i> Join Us
+        </button>
+        <div class="mobile-signin-outline" id="mobileSigninAction">
+          <i class="fas fa-user-circle"></i> Sign In
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-placeholder">
+      <div class="hero-card">
+        <h1>EDU STOCKX</h1>
+        <p style="margin-top: 1rem; font-weight: 500">
+          Premium Transparent Header | Golden Service Preview
+        </p>
+        <p style="font-size: 0.85rem; margin-top: 1rem">
+          ✨ Hover Gold / Forex / Crypto (desktop) or Tap (mobile) to see
+          preview ✨
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Desktop preview functionality (unchanged, works perfectly)
+      const previewContainer = document.getElementById("hoverPreview");
+      const previewImgElem = document.getElementById("previewImg");
+      const previewTextSpan = document.getElementById("previewText");
+      function showPreview(imgSrc, text) {
+        if (!imgSrc) return;
+        previewImgElem.src = imgSrc;
+        // previewTextSpan.innerText = text || "✦ premium trading preview ✦";
+        previewContainer.classList.add("active");
+      }
+      function hidePreview() {
+        previewContainer.classList.remove("active");
+      }
+
+      const dropdownServiceLinks = document.querySelectorAll(
+        ".dropdown-menu .dropdown-link",
+      );
+      dropdownServiceLinks.forEach((link) => {
+        link.addEventListener("mouseenter", function (e) {
+          let imgUrl = this.getAttribute("data-preview-img");
+          let txt = this.getAttribute("data-preview-text");
+          if (imgUrl) showPreview(imgUrl, txt);
+        });
+        link.addEventListener("mouseleave", hidePreview);
+      });
+      document
+        .querySelectorAll(
+          ".nav-item:not(.dropdown) .nav-link, #servicesDesktopLink",
+        )
+        .forEach((el) => el.addEventListener("mouseenter", hidePreview));
+
+      // MOBILE PREVIEW: show image preview on tap for service options (FIXED)
+      const mobileServiceLinks = document.querySelectorAll(
+        ".mobile-services-dropdown a",
+      );
+      mobileServiceLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          let img = this.getAttribute("data-mobile-preview-img");
+          let txt = this.getAttribute("data-mobile-preview-text");
+          if (img) {
+            showPreview(img, txt);
+            setTimeout(() => hidePreview(), 2000);
+          }
+          closeMobileMenuFunc();
+        });
+      });
+
+      // Mobile menu logic
+      const hamburger = document.getElementById("hamburgerBtn");
+      const mobileOverlay = document.getElementById("mobileMenuOverlay");
+      const closeMobileBtn = document.getElementById("closeMobileMenu");
+      function openMobileMenu() {
+        mobileOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMobileMenuFunc() {
+        mobileOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      hamburger.addEventListener("click", openMobileMenu);
+      closeMobileBtn.addEventListener("click", closeMobileMenuFunc);
+
+      // Mobile services accordion - now expands DOWNWARD (no upward movement)
+      const servicesTrigger = document.getElementById("mobileServicesTrigger");
+      const servicesDropdown = document.getElementById(
+        "mobileServicesDropdown",
+      );
+      const chevronIcon = document.getElementById("servicesChevron");
+      if (servicesTrigger) {
+        servicesTrigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          servicesDropdown.classList.toggle("hidden");
+          if (chevronIcon) {
+            chevronIcon.style.transform = servicesDropdown.classList.contains(
+              "hidden",
+            )
+              ? "rotate(0deg)"
+              : "rotate(180deg)";
+          }
+        });
+      }
+
+      // Close overlay when clicking nav links
+      const mobileNavLinks = document.querySelectorAll(
+        "#mobileHomeLink, #mobileAboutLink, #mobilePricingLink, #mobileHelpLink",
+      );
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeMobileMenuFunc();
+        });
+      });
+
+      const mobileSigninAction = document.getElementById("mobileSigninAction");
+      if (mobileSigninAction) {
+        mobileSigninAction.addEventListener("click", () => {
+          alert("🔐 Sign in to your EDU STOCKX dashboard");
+          closeMobileMenuFunc();
+        });
+      }
+      const mobileSignIcon = document.getElementById("mobileSigninIcon");
+      if (mobileSignIcon) {
+        mobileSignIcon.addEventListener("click", () =>
+          alert("🔐 Sign in to your EDU STOCKX dashboard"),
+        );
+      }
+
+      // Join buttons
+      const joinBtnDesktop = document.getElementById("joinUsBtn");
+      const mobileJoinBtn = document.getElementById("mobileJoinBtn");
+      if (joinBtnDesktop) {
+        joinBtnDesktop.addEventListener("click", () =>
+          alert(
+            "✨ Join EDU STOCKX — access elite trading signals & golden insights. ✨",
+          ),
+        );
+      }
+      if (mobileJoinBtn) {
+        mobileJoinBtn.addEventListener("click", () => {
+          alert("✨ Join EDU STOCKX — unlock premium market analysis. ✨");
+          closeMobileMenuFunc();
+        });
+      }
+
+      // Scroll effect
+      const headerElem = document.getElementById("premiumHeader");
+      window.addEventListener("scroll", () => {
+        window.scrollY > 20
+          ? headerElem.classList.add("scrolled")
+          : headerElem.classList.remove("scrolled");
+      });
+
+      // Hide preview when clicking outside relevant elements
+      document.addEventListener("click", (e) => {
+        if (
+          !e.target.closest(".dropdown-link") &&
+          !e.target.closest(".mobile-services-dropdown a")
+        ) {
+          hidePreview();
+        }
+      });
+    </script>
+  </body>
+</html>
