@@ -2,22 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
-    />
-    <title>Edu Stockx | About Us – Dark Green & Golden Elegance</title>
-    <!-- Google Fonts: Playfair Display for luxury, Inter for clean readability -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Hand | Full Width</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap"
       rel="stylesheet"
-    />
-    <!-- Font Awesome 6 (free icons) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
+      /* ————— RESET & BASE ————— */
       * {
         margin: 0;
         padding: 0;
@@ -26,272 +20,177 @@
 
       body {
         font-family: "Inter", sans-serif;
-        background: #ffffff;
-        overflow-x: hidden;
+        background: #000000;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      /* ABOUT SECTION: full width, white background, no card */
-      .about-section {
+      /* ————— FULL-WIDTH SECTION ————— */
+      .full-section {
         width: 100%;
-        background: #ffffff; /* pure white background */
+        min-height: 100vh;
+        background: #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem;
         position: relative;
-        padding: 5rem 0;
-        isolation: isolate;
+        overflow: hidden;
       }
 
-      /* subtle organic pattern for texture but no card effect */
-      .about-section::before {
+      /* Subtle ambient glow behind the image */
+      .full-section::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-          rgba(0, 64, 48, 0.02) 1.2px,
-          transparent 1.2px
+        width: 70%;
+        max-width: 800px;
+        aspect-ratio: 1/1;
+        background: radial-gradient(
+          circle,
+          rgba(0, 120, 255, 0.08),
+          transparent 70%
         );
-        background-size: 32px 32px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         pointer-events: none;
-        z-index: 0;
+        animation: ambientPulse 6s ease-in-out infinite alternate;
       }
 
-      /* inner flex container – full width no gaps */
-      .about-inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
+      /* ——— IMAGE WRAPPER ——— */
+      .image-wrapper {
         width: 100%;
-        margin: 0 auto;
-        gap: 0;
+        max-width: 900px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1000px;
         position: relative;
         z-index: 2;
       }
 
-      /* LEFT COLUMN: image block – transparent background, full width, animation */
-      .image-col {
-        flex: 1.1;
-        min-width: 280px;
-        position: relative;
-        overflow: hidden;
-        background: transparent;
-      }
-
-      /* image wrapper */
-      .image-wrapper {
+      .hand-image {
         width: 100%;
-        height: 100%;
-        min-height: 480px;
-        position: relative;
-        background: transparent;
-        overflow: hidden;
-      }
-
-      /* animated image: elegant zoom + fade in + subtle slide */
-      .animated-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
         display: block;
-        transform-origin: center;
-        animation: elegantReveal 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-        will-change: transform, opacity;
-        opacity: 0;
-        animation-fill-mode: forwards;
-        background: transparent;
-        transition: transform 0.6s ease;
+        object-fit: contain;
+        max-height: 150vh;
+
+        /* ——— ANIMATION: floating + glow ——— */
+        /* animation: floatGlow 5.5s ease-in-out infinite; */
+        /* filter: drop-shadow(0 20px 60px rgba(0, 100, 255, 0.15)); */
+        transition: filter 0.4s ease;
       }
 
-      /* sophisticated reveal animation */
-      @keyframes elegantReveal {
+      /* ——— TEXT CONTENT (clean, minimal) ——— */
+      .text-content {
+        text-align: center;
+        margin-top: -18.5rem;
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 0.4rem 1.4rem;
+        border-radius: 40px;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(4px);
+        animation: fadeUp 0.9s ease-out both;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 8vw, 4.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-top: 1rem;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        animation: fadeUp 0.9s ease-out 0.08s both;
+      }
+
+      h1 span {
+        background: linear-gradient(135deg, #ffffff, #6ab0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .sub-text {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 0.8rem;
+        line-height: 1.6;
+        animation: fadeUp 0.9s ease-out 0.16s both;
+      }
+
+      .cta {
+        margin-top: 2rem;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #ffffff;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.9rem 2.8rem;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: fadeUp 0.9s ease-out 0.24s both;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+
+      .cta:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 100, 255, 0.15);
+      }
+
+      /* ——— KEYFRAMES ——— */
+
+      @keyframes floatGlow {
         0% {
-          opacity: 0;
-          transform: scale(1.05) translateX(-10px);
+          transform: translateY(0px) scale(1);
+          filter: drop-shadow(0 20px 50px rgba(0, 100, 255, 0.1));
         }
-        40% {
-          opacity: 0.6;
-          transform: scale(1.02) translateX(-3px);
+        50% {
+          transform: translateY(-20px) scale(1.01);
+          filter: drop-shadow(0 40px 80px rgba(0, 120, 255, 0.3));
+        }
+        100% {
+          transform: translateY(0px) scale(1);
+          filter: drop-shadow(0 20px 50px rgba(0, 100, 255, 0.1));
+        }
+      }
+
+      @keyframes ambientPulse {
+        0% {
+          opacity: 0.4;
+          transform: translate(-50%, -50%) scale(0.9);
         }
         100% {
           opacity: 1;
-          transform: scale(1) translateX(0);
+          transform: translate(-50%, -50%) scale(1.3);
         }
       }
 
-      /* subtle hover scaling for premium feel */
-      .image-col:hover .animated-img {
-        transform: scale(1.02);
-        transition: transform 0.7s ease-out;
-      }
-
-      /* RIGHT COLUMN: white background, dark green text, golden accents */
-      .content-col {
-        flex: 1;
-        background: #ffffff; /* pure white to match section background */
-        padding: 3rem 3rem 3rem 2.8rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-width: 280px;
-      }
-
-      /* label/subtitle – GOLDEN color */
-      .about-subtitle {
-        font-size: 0.85rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        font-weight: 600;
-        color: #c5a028; /* rich golden */
-        margin-bottom: 1rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 0;
-        animation: fadeSlideUp 0.7s ease forwards 0.2s;
-        font-family: "Inter", sans-serif;
-      }
-
-      .about-subtitle i {
-        color: #c5a028;
-        font-size: 0.9rem;
-      }
-
-      /* main title – DARK GREEN */
-      .about-title {
-        font-size: clamp(2rem, 5.5vw, 3.3rem);
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 1.6rem;
-        color: #1a3a32; /* deep dark green */
-        letter-spacing: -0.02em;
-        font-family: "Playfair Display", serif;
-        opacity: 0;
-        animation: fadeSlideUp 0.7s ease forwards 0.3s;
-      }
-
-      .about-title span {
-        color: #c5a028; /* golden highlight */
-        position: relative;
-        display: inline-block;
-      }
-
-      .about-title span:after {
-        content: "";
-        position: absolute;
-        bottom: 6px;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: rgba(197, 160, 40, 0.25);
-        border-radius: 8px;
-        z-index: -1;
-      }
-
-      /* description text – soft dark green/gray with golden emphasis */
-      .about-desc {
-        color: #2c4a40; /* dark green but softer for readability */
-        font-size: 1rem;
-        line-height: 1.65;
-        margin-bottom: 1.4rem;
-        font-weight: 400;
-        opacity: 0;
-        animation: fadeSlideUp 0.7s ease forwards 0.45s;
-      }
-
-      .about-desc strong {
-        color: #1a3a32;
-        font-weight: 700;
-        position: relative;
-      }
-
-      .about-desc.delay-2 {
-        animation-delay: 0.6s;
-        margin-bottom: 1.8rem;
-      }
-
-      /* feature list – dark green borders with golden icons, no red */
-      .feature-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 0.5rem;
-        margin-bottom: 2.2rem;
-        opacity: 0;
-        animation: fadeSlideUp 0.7s ease forwards 0.75s;
-      }
-
-      .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        background: #f9fbf9; /* off-white background */
-        padding: 0.65rem 1.4rem;
-        border-radius: 40px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #1a3a32; /* dark green text */
-        transition: all 0.25s ease;
-        border: 1px solid #dcce9a; /* subtle golden border */
-        backdrop-filter: blur(2px);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-      }
-
-      .feature-item i {
-        color: #c5a028; /* golden icons */
-        font-size: 1rem;
-      }
-
-      .feature-item:hover {
-        background: #ffffff;
-        border-color: #c5a028;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 22px -12px rgba(26, 58, 50, 0.12);
-      }
-
-      /* CTA button – dark green background + golden hover */
-      .btn-about {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        background: #1a3a32; /* dark green primary */
-        color: #ffffff;
-        padding: 0.9rem 2.2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        width: fit-content;
-        opacity: 0;
-        animation: fadeSlideUp 0.7s ease forwards 0.9s;
-        letter-spacing: 0.3px;
-        font-family: "Inter", sans-serif;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-      }
-
-      .btn-about i {
-        transition: transform 0.25s;
-        color: #c5a028; /* golden arrow */
-      }
-
-      .btn-about:hover {
-        background: #2d5a4c; /* lighter dark green on hover */
-        transform: translateY(-3px);
-        box-shadow: 0 16px 28px -12px rgba(26, 58, 50, 0.28);
-      }
-
-      .btn-about:hover i {
-        transform: translateX(6px);
-        color: #e3bc3e;
-      }
-
-      /* content animations */
-      @keyframes fadeSlideUp {
+      @keyframes fadeUp {
         0% {
           opacity: 0;
-          transform: translateY(22px);
+          transform: translateY(30px);
         }
         100% {
           opacity: 1;
@@ -299,179 +198,61 @@
         }
       }
 
-      /* FULLY RESPONSIVE: image on top for tablets/mobile, content below */
-      @media screen and (max-width: 992px) {
-        .about-inner {
-          flex-direction: column;
+      /* ——— RESPONSIVE ——— */
+      @media (max-width: 768px) {
+        .full-section {
+          padding: 1.5rem 1rem;
         }
-        .image-col {
-          width: 100%;
-          min-height: 360px;
+        .hand-image {
+          max-height: 50vh;
         }
-        .image-wrapper {
-          min-height: 360px;
+        .text-content {
+          margin-top: 1.8rem;
         }
-        .content-col {
-          padding: 2.5rem 1.8rem;
+        .sub-text {
+          font-size: 1rem;
         }
-        .feature-list {
-          gap: 0.8rem;
-        }
-      }
-
-      @media screen and (max-width: 550px) {
-        .about-section {
-          padding: 3rem 0;
-        }
-        .content-col {
-          padding: 2rem 1.3rem;
-        }
-        .feature-item {
-          padding: 0.5rem 1rem;
-          font-size: 0.8rem;
-        }
-        .btn-about {
-          padding: 0.7rem 1.5rem;
-          font-size: 0.85rem;
-        }
-        .about-title {
-          margin-bottom: 1.2rem;
+        .cta {
+          padding: 0.75rem 2rem;
+          font-size: 0.95rem;
         }
       }
 
-      /* no card background for image or content (white seamless) */
-      .image-col,
-      .content-col,
-      .about-section,
-      .image-wrapper {
-        box-shadow: none;
-        border: none;
-        background: transparent;
-      }
-
-      /* content-col background white to match section */
-      .content-col {
-        background: #ffffff;
-      }
-
-      /* optional decorative line: dark green + golden gradient for refined touch */
-      .content-col::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 15%;
-        height: 70%;
-        width: 3px;
-        background: linear-gradient(to bottom, #1a3a32, #c5a028, #1a3a32);
-        opacity: 0.4;
-        border-radius: 4px;
-      }
-
-      .content-col {
-        position: relative;
-      }
-
-      @media screen and (max-width: 992px) {
-        .content-col::before {
-          left: 20px;
-          top: 10%;
-          height: 80%;
+      @media (max-width: 480px) {
+        .hand-image {
+          max-height: 40vh;
+        }
+        .badge {
+          font-size: 0.65rem;
+          padding: 0.3rem 1rem;
+        }
+        .sub-text {
+          font-size: 0.9rem;
         }
       }
     </style>
   </head>
   <body>
-    <section class="about-section">
-      <div class="about-inner">
-        <!-- LEFT COLUMN: full width image, animated, no background, no card -->
-        <div class="image-col">
-          <div class="image-wrapper">
-            <!-- Premium stock image that reflects education, finance, growth – rich and elegant.
-                     Image compliments dark green & golden brand: modern boardroom, academic, market insights.
-                     High-res Unsplash -->
-            <img
-              class="animated-img"
-              src="images/About-1.png"
-              alt="Edu Stockx – Empowering financial knowledge & academic growth"
-              loading="eager"
-            />
-            <!-- fallback handled in script -->
-          </div>
-        </div>
-        <!-- RIGHT COLUMN: content about Edu Stockx, dark green + golden scheme, no red -->
-        <div class="content-col">
-          <div class="about-subtitle">
-            <i class="fas fa-leaf"></i> LEGACY OF EXCELLENCE
-          </div>
-          <h2 class="about-title">
-            Edu <span>Stockx</span><br />Where Intelligence Meets Opportunity
-          </h2>
-          <p class="about-desc">
-            Edu Stockx is a visionary platform fusing
-            <strong>deep financial literacy</strong> with
-            <strong>elite academic frameworks</strong>. We empower aspiring
-            analysts, investors, and pioneers to master global markets through
-            data-driven education, immersive simulations, and real-time
-            intelligence — without noise, only clarity.
-          </p>
-          <p class="about-desc delay-2">
-            Rooted in <strong>dark green wisdom</strong> and illuminated by
-            <strong>golden insights</strong>, Edu Stockx delivers transformative
-            learning experiences. Over <strong>80,000+ learners</strong> and
-            institutions trust our accredited certifications, live market labs,
-            and mentorship programs. We turn complexity into strategic
-            advantage.
-          </p>
+    <section class="full-section">
+      <!-- Image -->
+      <div class="image-wrapper">
+        <img
+          src="https://cfcdn.olymptrade.com/s6/v1.0.49/zeus/assets/hand.B8DUGbiV_1B7lqQ.avif"
+          alt="Trading hand"
+          class="hand-image"
+          loading="lazy"
+        />
+      </div>
 
-          <!-- feature badges: dark green text, golden icons, subtle borders -->
-          <div class="feature-list">
-            <div class="feature-item">
-              <i class="fas fa-chart-line"></i> Live Market Labs
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-graduation-cap"></i> Accredited Certifications
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-hand-holding-usd"></i> Wealth Mentorship
-            </div>
-            <div class="feature-item">
-              <i class="fas fa-brain"></i> AI-Driven Analytics
-            </div>
-          </div>
-
-          <a href="#" class="btn-about">
-            Discover Our Vision <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+      <!-- Text -->
+      <div class="text-content">
+        <span class="badge">⚡ Next‑Gen Trading</span>
+        <h1>Move with <span>certainty</span></h1>
+        <p class="sub-text">
+          Real‑time signals, clean interface.<br />No clutter. Just results.
+        </p>
+        <button class="cta">Explore →</button>
       </div>
     </section>
-
-    <script>
-      (function () {
-        // robust image fallback and performance
-        const aboutImage = document.querySelector(".animated-img");
-        if (aboutImage) {
-          aboutImage.addEventListener("error", function () {
-            // alternative high-quality image that matches dark green/gold theme (academic, elegant)
-            this.src = "images/about.png";
-            this.alt = "Edu Stockx - dark green & golden elegance education";
-          });
-          // ensure animation works even on cache
-          aboutImage.addEventListener("load", () => {
-            aboutImage.style.opacity = "1";
-          });
-        }
-
-        // subtle intersection observer not needed but ensures visibility
-        const section = document.querySelector(".about-section");
-        if (section) {
-          section.style.visibility = "visible";
-        }
-
-        console.log(
-          "Edu Stockx | About Us — Dark Green & Golden theme, no red, white background.",
-        );
-      })();
-    </script>
   </body>
 </html>

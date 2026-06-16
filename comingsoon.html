@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coming soon · dark green</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        padding: 1.5rem;
+        margin: 0;
+        /* exact #023020 background */
+        background-color: #000000;
+        background-image:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(10, 80, 50, 0.3),
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(5, 60, 35, 0.2),
+            transparent 50%
+          );
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      /* subtle overlay for depth */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          circle at 40% 50%,
+          rgba(0, 60, 30, 0.15),
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      /* main card – dark glass with green tint */
+      .card {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        width: 100%;
+        background: rgba(2, 48, 32, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 56px;
+        padding: 2.8rem 2.5rem 3rem;
+        box-shadow:
+          0 30px 60px -16px rgba(0, 0, 0, 0.7),
+          0 12px 28px -8px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: center;
+        transition: all 0.25s;
+      }
+
+      /* logo */
+      .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0.8rem;
+      }
+
+      .logo img {
+        width: min(220px, 50vw);
+        max-width: 220px;
+        height: auto;
+        display: block;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 6px 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+      }
+
+      /* headline – white with subtle glow */
+      h1 {
+        font-size: clamp(1.4rem, 4vw, 2.2rem);
+        font-weight: 400;
+        letter-spacing: 10px;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0.6rem 0 1.4rem 0;
+        text-transform: uppercase;
+        text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* progress – white with glow */
+      .progress-wrapper {
+        width: min(220px, 60vw);
+        height: 4px;
+        margin: 0.8rem auto 2rem auto;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .progress {
+        width: 0%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        transition: width 0.1s linear;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+      }
+
+      /* countdown – white text on dark glass */
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: clamp(8px, 2vw, 20px);
+        flex-wrap: wrap;
+        margin: 0.8rem 0 2.2rem 0;
+      }
+
+      .time-box {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 40px;
+        padding: 0.7rem 1rem;
+        min-width: 70px;
+        flex: 0 1 auto;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.25s;
+      }
+
+      .time-box:hover {
+        background: rgba(255, 255, 255, 0.07);
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .time-box .num {
+        display: block;
+        font-size: clamp(2rem, 5.5vw, 2.8rem);
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.2;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .time-box .label {
+        font-size: clamp(0.6rem, 1.4vw, 0.8rem);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 2px;
+        font-weight: 300;
+      }
+
+      /* subscribe – dark with white accent */
+      .subscribe {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        max-width: 460px;
+        margin: 1.4rem auto 2rem;
+      }
+
+      .subscribe input {
+        flex: 1 1 180px;
+        min-width: 150px;
+        padding: 16px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 60px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(4px);
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.8);
+        outline: none;
+        transition: 0.25s;
+        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .subscribe input::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+        font-weight: 300;
+      }
+
+      .subscribe input:focus {
+        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.07);
+        box-shadow:
+          0 0 0 4px rgba(255, 255, 255, 0.02),
+          inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .subscribe button {
+        border: none;
+        padding: 16px 36px;
+        border-radius: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: 0.25s;
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .subscribe button:hover {
+        transform: scale(0.96) translateY(-2px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      /* social – white icons */
+      .social {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 0.6rem;
+      }
+
+      .social a {
+        width: 44px;
+        height: 44px;
+        border-radius: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 1.2rem;
+        font-weight: 400;
+        transition: 0.25s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .social a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      /* responsive */
+      @media (max-width: 520px) {
+        .card {
+          padding: 1.8rem 1.2rem 2.2rem;
+          border-radius: 36px;
+        }
+        .time-box {
+          min-width: 56px;
+          padding: 0.5rem 0.6rem;
+        }
+        .time-box .num {
+          font-size: 1.6rem;
+        }
+        .subscribe input {
+          flex: 1 1 130px;
+          min-width: 120px;
+          padding: 14px 18px;
+        }
+        .subscribe button {
+          padding: 14px 28px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .card {
+          padding: 1.2rem 0.8rem 1.6rem;
+          border-radius: 28px;
+        }
+        .time-box .num {
+          font-size: 1.4rem;
+        }
+        .subscribe input {
+          flex: 1 1 100%;
+        }
+        .subscribe button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">
+        <img
+          src="images/logo_11.png"
+          alt="logo"
+          style="
+            background: transparent;
+            border-radius: 24px;
+            width: min(200px, 50vw);
+            max-width: 200px;
+          "
+        />
+      </div>
+
+      <h1>coming soon</h1>
+
+      <div class="progress-wrapper">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <div class="countdown">
+        <div class="time-box">
+          <span class="num" id="days">00</span><span class="label">days</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="hours">00</span><span class="label">hours</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="minutes">00</span
+          ><span class="label">minutes</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="seconds">00</span
+          ><span class="label">seconds</span>
+        </div>
+      </div>
+
+      <form class="subscribe">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">notify me</button>
+      </form>
+
+      <div class="social">
+        <a href="#" aria-label="X">✕</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        // progress bar – smooth, no refresh
+        const progress = document.getElementById("progress");
+        let width = 0;
+        setInterval(() => {
+          width = (width + 0.6) % 78;
+          progress.style.width = width + "%";
+        }, 70);
+
+        // countdown – fixed target: 5 days from now, no refresh
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 5);
+        // store initial values to avoid refresh flicker
+        let initialDays = 0,
+          initialHours = 0,
+          initialMinutes = 0,
+          initialSeconds = 0;
+        let isInitialized = false;
+
+        function updateCountdown() {
+          const now = new Date().getTime();
+          let distance = launchDate - now;
+
+          if (distance <= 0) {
+            document.getElementById("days").innerText = "00";
+            document.getElementById("hours").innerText = "00";
+            document.getElementById("minutes").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60),
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // only update if values changed (no unnecessary DOM writes)
+          const dEl = document.getElementById("days");
+          const hEl = document.getElementById("hours");
+          const mEl = document.getElementById("minutes");
+          const sEl = document.getElementById("seconds");
+
+          const dStr = String(days).padStart(2, "0");
+          const hStr = String(hours).padStart(2, "0");
+          const mStr = String(minutes).padStart(2, "0");
+          const sStr = String(seconds).padStart(2, "0");
+
+          if (dEl.innerText !== dStr) dEl.innerText = dStr;
+          if (hEl.innerText !== hStr) hEl.innerText = hStr;
+          if (mEl.innerText !== mStr) mEl.innerText = mStr;
+          if (sEl.innerText !== sStr) sEl.innerText = sStr;
+        }
+
+        // initial update
+        updateCountdown();
+        // then update every second – but only changes values, no full refresh
+        setInterval(updateCountdown, 1000);
+
+        // email form
+        document
+          .querySelector(".subscribe")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("🌿 Thank you! We'll notify you when we launch.");
+            this.reset();
+          });
+      })();
+    </script>
+  </body>
+</html>
