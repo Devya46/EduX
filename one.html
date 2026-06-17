@@ -2,599 +2,755 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forex · dark broker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover"
+    />
+    <title>Edu Stocks · Signal Hub</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Nacelle, sans-serif;
       }
 
-      /* body {
-        background: #080808;
-        color: #fff;
+      body {
+        background: #000000;
+        font-family: "Inter", sans-serif;
+        line-height: 1.4;
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      } */
+        color: #ffffff;
+      }
 
-      .broker-section {
+      .channels-full {
         width: 100%;
-        padding: 50px 6% 40px;
-        position: relative;
-        overflow: hidden;
-        background: #0a0a0a;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
+        max-width: 100%;
+        padding: 2rem 5rem 2rem 7rem;
+        background: transparent;
       }
 
-      /* deep dark background with subtle glow — green #29a300 */
-      .broker-section::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(
-            circle at 20% 30%,
-            rgb(7 7 7 / 43%) 0%,
-            #00000033 60%
-          ),
-          radial-gradient(circle at 80% 70%, rgb(0 0 0 / 82%) 0%, #0000008c 50%);
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      /* background image – dark overlay + blend */
-      .bg-image-fixed {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        background: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RvY2tzJTIwZGFya3xlbnwwfHwwfHx8MA%3D%3D")
-          center/cover no-repeat;
-        opacity: 0.13;
-        filter: brightness(0.5) saturate(1.2);
-        transition: opacity 0.6s ease;
-      }
-
-      .container-Td {
-        max-width: 1400px;
+      .container-inner {
+        max-width: 1440px;
         margin: 0 auto;
-        position: relative;
-        z-index: 2;
         width: 100%;
-        padding: 0rem 4rem;
       }
 
-      /* ----- ANIMATIONS (left / right) ----- */
-      @keyframes slideFromLeft {
-        0% {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @keyframes slideFromRight {
-        0% {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @keyframes floatY {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
+      /* HEADER – all black, white text */
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+        gap: 1.2rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 1.2rem;
       }
 
-      /* left column animations */
-      .left-col .subtitle {
-        animation: slideFromLeft 0.7s ease forwards;
-      }
-      .left-col .heading {
-        animation: slideFromLeft 0.7s ease 0.1s forwards;
-        opacity: 0;
-      }
-      .left-col .image-box {
-        animation: slideFromLeft 0.7s ease 0.2s forwards;
-        opacity: 0;
-      }
-      .left-col .floating-card {
-        animation:
-          slideFromLeft 0.7s ease 0.3s forwards,
-          floatY 5s ease-in-out 0.7s infinite;
-        opacity: 0;
+      .title-badge {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
       }
 
-      /* right column animations */
-      .right-col .description {
-        animation: slideFromRight 0.7s ease 0.15s forwards;
-        opacity: 0;
-      }
-      .right-col .info-grid {
-        animation: slideFromRight 0.7s ease 0.25s forwards;
-        opacity: 0;
-      }
-      .right-col .bottom-row {
-        animation: slideFromRight 0.7s ease 0.35s forwards;
-        opacity: 0;
-      }
-
-      /* ----- TOP ROW (shorter) ----- */
-      .top-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
+      .gold-chip {
+        display: inline-flex;
         align-items: center;
+        gap: 8px;
+        background: #111;
+        padding: 0.3rem 1.3rem;
+        border-radius: 60px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+        color: #ffffff;
+        border: 1px solid #333;
+        width: fit-content;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
       }
 
       .subtitle {
-        color: #29a300;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 12px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        position: relative;
-        display: inline-block;
-      }
-      .subtitle::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 30px;
-        height: 2px;
-        background: #29a300;
-        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #aaaaaa;
+        margin-top: 0.2rem;
       }
 
-      .heading {
-        font-size: 42px;
-        line-height: 1.1;
-        font-weight: 650;
-        color: #fff;
-        margin-bottom: 35px;
-        letter-spacing: -0.5px;
-      }
-      .heading span {
-        color: #29a300;
-        text-shadow: 0 0 20px rgba(41, 163, 0, 0.25);
-      }
-
-      .description {
-        color: #bbbbbb;
-        line-height: 1.7;
-        font-size: 15px;
-        font-weight: 300;
-        max-width: 95%;
-        margin-bottom: 10px;
-      }
-
-      /* image-box - shorter */
-      .image-box {
-        margin-top: 10px;
-        position: relative;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.8);
-        transition: transform 0.3s ease;
-        max-height: 482px;
-      }
-      .image-box:hover {
-        transform: scale(1.01);
-      }
-      .image-box img {
-        width: 100%;
-        display: block;
-        min-height: 240px;
-        max-height: 453px;
-        object-fit: cover;
-        filter: brightness(0.7) contrast(1.1);
-        transition: filter 0.4s ease;
-      }
-      .image-box:hover img {
-        filter: brightness(0.85) contrast(1.2);
-      }
-
-      /* floating-card – image, smaller & animated */
-      .floating-card {
-        position: absolute;
-        left: 33rem;
-        bottom: 35px;
-        width: 148px;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: #0f0f0f;
-        backdrop-filter: blur(2px);
-        z-index: 999;
-        animation: floatY 5s ease-in-out infinite;
-      }
-      .floating-card img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-        filter: brightness(0.8) contrast(1.1);
-      }
-
-      /* right content info-grid - shorter */
-      .info-grid {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: 1.3fr 0.7fr;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(2px);
-        background: rgba(10, 10, 10, 0.3);
-        border-radius: 24px;
-        overflow: hidden;
-      }
-
-      .feature-card {
-        padding: 24px 28px;
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
-        transition: background 0.2s;
-      }
-      .feature-card:hover {
-        background: rgba(41, 163, 0, 0.04);
-      }
-
-      .feature-icon {
-        width: 48px;
-        height: 48px;
-        background: rgba(41, 163, 0, 0.1);
-        border-radius: 16px;
+      .live-status {
         display: flex;
         align-items: center;
-        justify-content: center;
-        color: #29a300;
-        font-size: 24px;
-        margin-bottom: 12px;
-        border: 1px solid rgba(41, 163, 0, 0.15);
-        transition: 0.3s;
-      }
-      .feature-card:hover .feature-icon {
-        background: rgba(41, 163, 0, 0.18);
-        box-shadow: 0 0 20px rgba(41, 163, 0, 0.08);
+        gap: 14px;
+        background: #111;
+        padding: 0.5rem 1.6rem;
+        border-radius: 100px;
+        border: 1px solid #333;
       }
 
-      .feature-card h3 {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 6px;
-        letter-spacing: -0.2px;
-        color: #f0f0f0;
-      }
-      .feature-card p {
-        color: #b0b0b0;
-        line-height: 1.6;
-        font-weight: 300;
-        font-size: 13px;
+      .red-blinking {
+        width: 10px;
+        height: 10px;
+        background-color: #42ff00;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(66, 255, 0, 0.6);
+        animation: blinkLive 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .experience {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: rgba(41, 163, 0, 0.03);
-        backdrop-filter: blur(2px);
-        padding: 10px 0;
+      @keyframes blinkLive {
+        0% {
+          transform: scale(0.9);
+          box-shadow: 0 0 0 0 rgba(66, 255, 0, 0.6);
+        }
+        70% {
+          transform: scale(1.2);
+          box-shadow: 0 0 0 8px rgba(66, 255, 0, 0);
+        }
+        100% {
+          transform: scale(0.9);
+          box-shadow: 0 0 0 0 rgba(66, 255, 0, 0);
+        }
       }
-      .experience h2 {
-        font-size: 60px;
-        color: #38e000;
-        line-height: 1;
-        letter-spacing: -2px;
-      }
-      .experience p {
-        font-size: 16px;
-        color: #ddd;
-        font-weight: 300;
+
+      .live-status span {
+        font-weight: 800;
+        font-size: 0.8rem;
+        color: #ffffff;
         letter-spacing: 1px;
       }
+      .live-status i {
+        color: #ffffff;
+      }
 
-      /* bottom row - shorter */
-      .bottom-row {
+      /* ===== CARDS – pure black, white text, subtle borders ===== */
+      .channels-grid {
         display: grid;
-        grid-template-columns: 1fr 200px;
-        gap: 30px;
-        align-items: center;
-        margin-top: 24px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.8rem;
+        margin-bottom: 2.8rem;
       }
 
-      .feature-list {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px 20px;
+      .channel-card {
+        background: #0a0a0a;
+        border-radius: 2rem;
+        padding: 1.6rem 1.4rem 1.8rem 1.4rem;
+        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        border: 1px solid #222;
+        box-shadow: 0 22px 32px -15px rgba(0, 0, 0, 0.9);
+        position: relative;
       }
-      .feature-list li {
+
+      .channel-card:hover {
+        transform: translateY(-5px);
+        border-color: #444;
+        background: #0d0d0d;
+        box-shadow: 0 32px 44px -18px rgba(0, 0, 0, 0.9);
+      }
+
+      .channel-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 12%;
+        width: 76%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #42ff00,
+          #00ffc2,
+          transparent
+        );
+        border-radius: 4px;
+        opacity: 0.3;
+      }
+
+      .card-header {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        font-weight: 400;
-        color: #e0e0e0;
-        padding: 4px 0;
-        transition: 0.2s;
-        width: calc(50% - 20px);
+        gap: 0.9rem;
+        margin-bottom: 1.1rem;
       }
-      .feature-list li:hover {
-        color: #fff;
-      }
-      .feature-list li::before {
-        content: "✓";
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: rgba(41, 163, 0, 0.1);
-        color: #29a300;
+
+      .icon-circle {
+        width: 54px;
+        height: 54px;
+        background: #141414;
+        border-radius: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        font-size: 13px;
-        flex-shrink: 0;
-        border: 1px solid rgba(41, 163, 0, 0.2);
-        transition: 0.2s;
-      }
-      .feature-list li:hover::before {
-        background: rgba(41, 163, 0, 0.2);
-        box-shadow: 0 0 16px rgba(41, 163, 0, 0.12);
+        font-size: 1.8rem;
+        color: #ffffff;
+        transition: 0.25s;
+        border: 1px solid #2a2a2a;
       }
 
-      .small-image {
-        border-radius: 18px;
-        overflow: hidden;
-        height: 130px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
-        transition: 0.3s;
-      }
-      .small-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.7) contrast(1.1);
-        transition: 0.4s;
-      }
-      .small-image:hover img {
-        filter: brightness(0.9) contrast(1.2);
+      .channel-card:hover .icon-circle {
+        background: #1a1a1a;
         transform: scale(1.02);
+        border-color: #42ff00;
       }
 
-      .btn {
-        margin-top: 16px;
-        display: inline-block;
-        background: #29a300;
-        color: #0a0a0a;
-        text-decoration: none;
-        padding: 12px 36px;
-        border-radius: 50px;
+      .card-header h3 {
+        font-size: 1.4rem;
         font-weight: 700;
-        font-size: 14px;
+        color: #ffffff;
+        letter-spacing: -0.3px;
+        line-height: 1.2;
+      }
+
+      .live-mini {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #141414;
+        padding: 0.2rem 1rem;
+        border-radius: 60px;
+        margin-bottom: 1rem;
+        width: fit-content;
+        border: 1px solid #2a2a2a;
+      }
+
+      .live-mini i {
+        font-size: 0.55rem;
+        color: #42ff00;
+      }
+      .live-mini span {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #aaaaaa;
         letter-spacing: 0.5px;
+      }
+
+      .signal-desc {
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: #dddddd;
+        margin: 0.9rem 0 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        background: #0f0f0f;
+        padding: 0.55rem 0.9rem;
+        border-radius: 15px;
+        justify-content: center;
+        border: 0.5px solid #222;
+      }
+
+      .signal-desc i {
+        color: #42ff00;
+        font-size: 0.85rem;
+      }
+
+      .pair-badge {
+        background: #141414;
+        padding: 0.2rem 0.7rem;
+        border-radius: 30px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: #cccccc;
+        letter-spacing: 0.2px;
+        border-left: 2px solid #42ff00;
+      }
+
+      /* ===== BUTTON – your gradient ===== */
+      .btn-telegram-clean {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%) !important;
+        width: 100%;
+        padding: 0.75rem 0;
+        border-radius: 80px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: #000000 !important;
+        text-decoration: none;
+        border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(41, 163, 0, 0.25);
-        border: 1px solid rgba(41, 163, 0, 0.3);
-      }
-      .btn:hover {
-        transform: translateY(-3px) scale(1.01);
-        box-shadow: 0 14px 32px rgba(41, 163, 0, 0.35);
-        background: #29a300;
-        color: #000;
+        margin-top: 0.8rem;
+        box-shadow: 0 4px 14px rgba(0, 255, 194, 0.08);
+        letter-spacing: 0.2px;
       }
 
-      /* responsiveness */
-      @media (max-width: 1024px) {
-        .top-row {
-          gap: 30px;
+      .btn-telegram-clean i {
+        font-size: 0.95rem;
+        color: #000000 !important;
+        transition: transform 0.2s;
+      }
+      .btn-telegram-clean:hover {
+        background: linear-gradient(90deg, #00e6b0 0%, #3de600 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(0, 255, 194, 0.15);
+        color: #000 !important;
+      }
+      .btn-telegram-clean:hover i {
+        color: #000 !important;
+        transform: translateX(5px);
+      }
+
+      /* global CTA button same */
+      .global-telegram-link {
+        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%) !important;
+        padding: 0.7rem 1.8rem;
+        border-radius: 60px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #000000 !important;
+        text-decoration: none;
+        transition: 0.25s;
+        border: none;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 14px rgba(0, 255, 194, 0.08);
+      }
+
+      .global-telegram-link:hover {
+        background: linear-gradient(90deg, #00e6b0 0%, #3de600 100%) !important;
+        transform: scale(1.02);
+        box-shadow: 0 8px 24px rgba(0, 255, 194, 0.12);
+        color: #000 !important;
+      }
+
+      .global-cta {
+        margin-top: 1rem;
+        background: #0a0a0a;
+        border-radius: 18px;
+        padding: 1rem 1.8rem;
+        border: 1px solid #222;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .cta-text {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .cta-text i {
+        font-size: 2rem;
+        color: #42ff00;
+      }
+      .cta-text h4 {
+        font-weight: 800;
+        font-size: 1rem;
+        color: #ffffff;
+      }
+      .cta-text p {
+        font-size: 0.75rem;
+        color: #888888;
+      }
+
+      .footer-stats {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        margin-top: 2rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #666;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 1.8rem;
+      }
+      .footer-stats span i {
+        margin-right: 6px;
+        color: #42ff00;
+      }
+
+      .channel-card {
+        animation: cardReveal 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) backwards;
+      }
+      .channel-card:nth-child(1) {
+        animation-delay: 0.02s;
+      }
+      .channel-card:nth-child(2) {
+        animation-delay: 0.08s;
+      }
+      .channel-card:nth-child(3) {
+        animation-delay: 0.14s;
+      }
+      .channel-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1100px) and (min-width: 641px) {
+        .channels-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
         }
-        .heading {
-          font-size: 36px;
+        .container-inner {
+          max-width: 900px;
         }
-        .experience h2 {
-          font-size: 58px;
+        .section-header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
         }
-        .image-box {
-          max-height: 280px;
+        .title-badge {
+          align-items: center;
         }
-        .image-box img {
-          max-height: 280px;
-          min-height: 200px;
+        .gold-chip {
+          margin: 0 auto;
         }
-        .floating-card {
-          left: 20rem;
-          width: 120px;
+        .live-status {
+          margin-top: 0.2rem;
+        }
+        .card-header h3 {
+          font-size: 1.35rem;
+        }
+        .global-cta {
+          justify-content: center;
+          text-align: center;
+        }
+        .cta-text {
+          flex-direction: column;
+          text-align: center;
         }
       }
 
-      @media (max-width: 900px) {
-        .top-row {
-          grid-template-columns: 1fr;
-          gap: 20px;
+      @media (max-width: 640px) {
+        .channels-full {
+          padding: 1.2rem;
         }
-        .info-grid {
-          grid-template-columns: 1fr;
+        .section-header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
         }
-        .feature-card {
-          border-right: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        .title-badge {
+          align-items: center;
         }
-        .experience {
-          padding: 20px 0;
+        .gold-chip {
+          margin: 0 auto;
         }
-        .bottom-row {
-          grid-template-columns: 1fr;
-          gap: 20px;
+        h1 {
+          font-size: 1.7rem;
+          text-align: center;
+          color: #fff;
         }
-        .feature-list li {
-          width: 100%;
+        .subtitle {
+          text-align: center;
+          display: block;
         }
-        .floating-card {
-          left: auto;
-          right: 0px;
-          bottom: 10px;
-          width: 100px;
+        .live-status {
+          margin: 0 auto;
         }
-        .image-box {
-          max-height: 260px;
+
+        .channels-grid {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: visible;
+          gap: 1.2rem;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+          margin-bottom: 2rem;
+          scrollbar-width: thin;
+          grid-template-columns: none;
         }
-        .image-box img {
-          max-height: 260px;
-          min-height: 180px;
+
+        .channel-card {
+          flex: 0 0 85%;
+          scroll-snap-align: center;
+          white-space: normal;
+          min-width: 260px;
+          max-width: 340px;
+          margin: 0 auto;
+          transform: scale(0.98);
+          transition: transform 0.2s ease;
         }
-        .heading {
-          font-size: 32px;
+        .channel-card:active {
+          transform: scale(0.99);
         }
-        .broker-section {
-          padding: 30px 5% 30px;
+
+        .channels-grid::-webkit-scrollbar {
+          height: 5px;
         }
-        /* reset animations for mobile (optional, keep) */
-        .left-col .subtitle,
-        .left-col .heading,
-        .left-col .image-box,
-        .left-col .floating-card,
-        .right-col .description,
-        .right-col .info-grid,
-        .right-col .bottom-row {
-          animation-name: none;
-          opacity: 1;
-          transform: translateX(0);
+        .channels-grid::-webkit-scrollbar-track {
+          background: #111;
+          border-radius: 10px;
         }
-        .floating-card {
-          animation: floatY 5s ease-in-out infinite;
+        .channels-grid::-webkit-scrollbar-thumb {
+          background: #42ff00;
+          border-radius: 10px;
+        }
+
+        .card-header h3 {
+          font-size: 1.25rem;
+        }
+        .icon-circle {
+          width: 48px;
+          height: 48px;
+          font-size: 1.5rem;
+        }
+        .signal-desc {
+          font-size: 0.78rem;
+          gap: 6px;
+        }
+        .btn-telegram-clean {
+          padding: 0.7rem 0;
+          font-size: 0.75rem;
+        }
+        .global-cta {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: center;
+          margin: 1rem 0;
+        }
+        .cta-text {
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+        }
+        .global-telegram-link {
+          justify-content: center;
+        }
+        .footer-stats {
+          gap: 1rem;
+          font-size: 0.7rem;
+          justify-content: center;
+          flex-wrap: wrap;
         }
       }
 
-      @media (max-width: 550px) {
-        .broker-section {
-          padding: 20px 16px 30px;
-          min-height: auto;
+      @media (max-width: 480px) {
+        .channel-card {
+          flex: 0 0 90%;
+          max-width: 320px;
         }
-        .heading {
-          font-size: 28px;
+        .card-header h3 {
+          font-size: 1.2rem;
         }
-        .experience h2 {
-          font-size: 48px;
+        .signal-desc {
+          font-size: 0.74rem;
         }
-        .feature-card {
-          padding: 18px 16px;
+        .global-cta {
+          padding: 1rem;
         }
-        .floating-card {
-          width: 80px;
-          right: 0;
-          bottom: 6px;
+      }
+
+      @media (min-width: 1600px) {
+        .channels-grid {
+          gap: 2rem;
         }
-        .image-box {
-          max-height: 200px;
-          border-radius: 16px;
+        .channel-card {
+          padding: 1.8rem 1.6rem 2rem 1.6rem;
         }
-        .image-box img {
-          max-height: 200px;
-          min-height: 140px;
+        .card-header h3 {
+          font-size: 1.55rem;
         }
-        .btn {
-          padding: 10px 28px;
-          font-size: 13px;
-        }
-        .small-image {
-          height: 100px;
-        }
-        .feature-list li {
-          font-size: 13px;
+      }
+
+      @media (hover: none) and (max-width: 640px) {
+        .channels-grid {
+          cursor: grab;
+          scroll-behavior: smooth;
         }
       }
     </style>
   </head>
   <body>
-    <section class="broker-section">
-      <!-- background image (dark overlay) -->
-      <div class="bg-image-fixed"></div>
-
-      <div class="container-Td">
-        <div class="top-row">
-          <!-- left column -->
-          <div class="left-col">
-            <div class="subtitle">WELCOME TO FOREX TRADING</div>
-            <h1 class="heading">
-              Global Trusted & Stable<br />
-              <span>Trading Broker</span>
+    <div class="channels-full">
+      <div class="container-inner">
+        <!-- header -->
+        <div class="section-header">
+          <div class="title-badge">
+            <div class="gold-chip">
+              <i class="fas fa-graduation-cap"></i> EDU STOCKS • SIGNAL HUB
+            </div>
+            <h1>
+              Smart Money Flow<br />
+              <span class="subtitle">Live • High Conviction • 0 latency</span>
             </h1>
-
-            <div class="image-box">
-              <img src="images/about-11.jpg" alt="Broker professional" />
-            </div>
-            <div class="floating-card">
-              <img src="images/about-2.jpg" alt="floating chart" />
-            </div>
           </div>
-
-          <!-- right column -->
-          <div class="right-col">
-            <p class="description">
-              We provide a secure, transparent and intuitive trading platform
-              that empowers traders of all levels to make informed decisions and
-              seize opportunities in real-time financial markets.
-            </p>
-
-            <div class="info-grid">
-              <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3>Trade with Confidence</h3>
-                <p>
-                  Stay connected to the markets 24/7 with real-time alerts,
-                  advanced charting tools and portfolio tracking.
-                </p>
-              </div>
-              <div class="experience">
-                <h2>8+</h2>
-                <p>Years Experience</p>
-              </div>
-            </div>
-
-            <div class="bottom-row">
-              <div>
-                <ul class="feature-list">
-                  <li>Commission Free Trading</li>
-                  <li>Advanced Risk Management</li>
-                  <li>Market Insights &amp; Analytics</li>
-                  <li>24/7 Trade Support</li>
-                  <li>Secure &amp; Trusted Platform</li>
-                </ul>
-                <a href="#" class="btn">Learn More</a>
-              </div>
-
-              <div class="small-image">
-                <img src="images/about-3.jpg" alt="stock market" />
-              </div>
-            </div>
+          <div class="live-status">
+            <div class="red-blinking"></div>
+            <i class="fas fa-satellite-dish"></i>
+            <span>LIVE 24/7 FEED</span>
+            <i class="fas fa-waveform"></i>
           </div>
         </div>
+
+        <!-- 4 cards – pure black, white text -->
+        <div class="channels-grid">
+          <!-- 1. US Equities -->
+          <div class="channel-card">
+            <div class="card-header">
+              <div class="icon-circle">
+                <i class="fas fa-building-columns"></i>
+              </div>
+              <h3>US Equities<br />Large Cap</h3>
+            </div>
+            <div class="live-mini">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
+              <span>PRE-MARKET</span>
+            </div>
+            <div class="signal-desc">
+              <i class="fas fa-arrow-trend-up"></i> SP500, NASDAQ top names
+              <span class="pair-badge">AAPL</span>
+              <span class="pair-badge">MSFT</span>
+              <span class="pair-badge">NVDA</span>
+            </div>
+            <a
+              href="https://t.me/+f0-g1L7fg5s5OTZl"
+              target="_blank"
+              class="btn-telegram-clean"
+            >
+              <i class="fab fa-telegram-plane"></i> Equities Signals
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- 2. Growth & Tech -->
+          <div class="channel-card">
+            <div class="card-header">
+              <div class="icon-circle"><i class="fas fa-microchip"></i></div>
+              <h3>Tech &<br />Growth</h3>
+            </div>
+            <div class="live-mini">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
+              <span>MOMENTUM</span>
+            </div>
+            <div class="signal-desc">
+              <i class="fas fa-rocket"></i> AI, semis, cloud stocks
+              <span class="pair-badge">AMD</span>
+              <span class="pair-badge">SNOW</span>
+              <span class="pair-badge">PLTR</span>
+            </div>
+            <a
+              href="https://t.me/+f0-g1L7fg5s5OTZl"
+              target="_blank"
+              class="btn-telegram-clean"
+            >
+              <i class="fab fa-telegram-plane"></i> Tech Signals
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- 3. Dividend & Value -->
+          <div class="channel-card">
+            <div class="card-header">
+              <div class="icon-circle"><i class="fas fa-piggy-bank"></i></div>
+              <h3>Dividend<br />Value</h3>
+            </div>
+            <div class="live-mini">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
+              <span>INCOME</span>
+            </div>
+            <div class="signal-desc">
+              <i class="fas fa-coins"></i> blue-chip, REITs, dividend
+              aristocrats
+              <span class="pair-badge">JPM</span>
+              <span class="pair-badge">PG</span>
+              <span class="pair-badge">VZ</span>
+            </div>
+            <a
+              href="https://t.me/+f0-g1L7fg5s5OTZl"
+              target="_blank"
+              class="btn-telegram-clean"
+            >
+              <i class="fab fa-telegram-plane"></i> Dividend Hub
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- 4. ETFs & Macro -->
+          <div class="channel-card">
+            <div class="card-header">
+              <div class="icon-circle"><i class="fas fa-globe"></i></div>
+              <h3>ETFs &<br />Macro</h3>
+            </div>
+            <div class="live-mini">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
+              <span>SECTOR ROTATION</span>
+            </div>
+            <div class="signal-desc">
+              <i class="fas fa-bolt"></i> SPY, QQQ, sector ETFs
+              <span class="pair-badge">SPY</span>
+              <span class="pair-badge">QQQ</span>
+              <span class="pair-badge">XLE</span>
+            </div>
+            <a
+              href="https://t.me/+f0-g1L7fg5s5OTZl"
+              target="_blank"
+              class="btn-telegram-clean"
+            >
+              <i class="fab fa-telegram-plane"></i> ETF Signals
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- global CTA -->
+        <div class="global-cta">
+          <div class="cta-text">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <h4>Join the Edu Stocks Collective</h4>
+              <p>
+                Equities • Tech • Dividends • ETFs — free signals, live
+                watchlists & institutional flow
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://t.me/+f0-g1L7fg5s5OTZl"
+            target="_blank"
+            class="global-telegram-link"
+          >
+            <i class="fab fa-telegram"></i> JOIN NOW
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <script>
+      (function () {
+        if (window.innerWidth <= 640) {
+          const grid = document.querySelector(".channels-grid");
+          if (grid) {
+            grid.style.scrollSnapType = "x mandatory";
+            const parent = grid.parentElement;
+            if (parent && parent.offsetWidth) {
+              parent.style.overflowX = "visible";
+            }
+          }
+        }
+        const cards = document.querySelectorAll(".channel-card");
+        cards.forEach((card) => {
+          card.addEventListener("touchstart", function () {}, {
+            passive: true,
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
