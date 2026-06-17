@@ -2,11 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>Quantum | Dual Section Scroll</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeMaster · Learn Stock Market</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -22,198 +19,305 @@
         box-sizing: border-box;
       }
 
-      body {
-        background: #03050a;
+      .body-hero {
+        background: #05070c;
         font-family: "Inter", sans-serif;
-        overflow-x: hidden;
-      }
-
-      /* simple two-section stack */
-      .site-wrapper {
-        position: relative;
-        background: #03050a;
-      }
-
-      /* ===== SECTION 1: HERO (FULL VIEWPORT) ===== */
-      .section-hero {
-        position: relative;
-        width: 100%;
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: radial-gradient(circle at 20% 30%, #0a0f1a, #020408);
-        z-index: 10;
-        transition:
-          opacity 0.08s linear,
-          transform 0.08s ease-out;
-        will-change: opacity, transform;
       }
 
-      .hero-bg-glow {
+      /* ----- HERO (full viewport, no overflow) ----- */
+      .full-width-hero {
+        position: relative;
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #05070c;
+      }
+
+      .full-width-hero::after {
+        content: "";
         position: absolute;
         inset: 0;
         background: radial-gradient(
-          ellipse at 70% 40%,
-          rgba(13, 138, 47, 0.15),
-          transparent 70%
+          circle at 50% 40%,
+          rgba(0, 20, 10, 0.2) 0%,
+          rgba(0, 0, 0, 0.55) 100%
         );
+        z-index: 3;
+        pointer-events: none;
+        opacity: 0.7;
+        animation: vignettePulse 2.2s ease-out forwards;
+      }
+
+      @keyframes vignettePulse {
+        0% {
+          opacity: 0.9;
+          background: radial-gradient(
+            circle at 50% 40%,
+            rgba(0, 0, 0, 0.5) 0%,
+            #000000cc 100%
+          );
+        }
+        100% {
+          opacity: 0.7;
+          background: radial-gradient(
+            circle at 50% 40%,
+            rgba(0, 30, 15, 0.2) 0%,
+            rgba(0, 0, 0, 0.55) 100%
+          );
+        }
+      }
+
+      .hero-background-svg {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .bg-svg-element {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .grain-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.12;
+        mix-blend-mode: overlay;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.4"/></svg>');
+        background-repeat: repeat;
+      }
+
+      .text-contrast-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          125deg,
+          rgba(0, 0, 0, 0.38) 0%,
+          rgba(0, 0, 0, 0.12) 45%,
+          rgba(0, 0, 0, 0.48) 100%
+        );
+        z-index: 2;
         pointer-events: none;
       }
 
       .hero-content {
         position: relative;
-        z-index: 12;
-        max-width: 1200px;
+        z-index: 15;
+        max-width: 1280px;
         width: 90%;
         margin: 0 auto;
+        padding: 4rem 2rem;
         text-align: center;
-        padding: 2rem;
       }
 
-      .logo-wrap {
+      .hero-logo-wrapper {
+        display: flex;
+        justify-content: center;
         margin-bottom: 2rem;
-        animation: fadeScale 0.9s cubic-bezier(0.21, 0.98, 0.35, 1.2) forwards;
+        animation: logoEmergence 0.9s cubic-bezier(0.21, 0.98, 0.35, 1.2)
+          forwards;
+        transform-origin: center;
       }
 
-      .logo-wrap img {
-        width: 28rem;
-        max-width: 80%;
-        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+      .hero-logo-wrapper img {
+        width: 34rem;
+        max-width: 85%;
+        filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.3));
       }
 
-      @keyframes fadeScale {
+      @keyframes logoEmergence {
         0% {
           opacity: 0;
-          transform: scale(0.7) blur(6px);
+          transform: scale(0.45);
+          filter: blur(8px);
+        }
+        40% {
+          opacity: 0.7;
+          transform: scale(1.02);
+          filter: blur(0px);
         }
         100% {
           opacity: 1;
-          transform: scale(1) blur(0);
+          transform: scale(1);
+          filter: blur(0px);
         }
       }
 
-      h1 {
-        font-size: clamp(2.4rem, 7vw, 4.2rem);
-        font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #c0dbff, #e4c87b);
+      .hero-title {
+        font-size: clamp(2.6rem, 8vw, 3.4rem);
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        background: white;
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        margin-bottom: 1.2rem;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+        margin-bottom: 1.4rem;
+        animation: titleSlideUp 0.9s ease-out 0.2s forwards;
         opacity: 0;
         transform: translateY(35px);
-        animation: slideUp 0.8s ease-out 0.2s forwards;
       }
 
-      .subhead {
-        color: rgba(230, 240, 255, 0.9);
+      @keyframes titleSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(35px) scale(0.97);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .hero-subtitle {
+        color: rgba(255, 255, 245, 0.92);
         font-size: 1.2rem;
+        letter-spacing: 0.3px;
         margin-bottom: 2rem;
-        opacity: 0;
-        transform: translateY(25px);
-        animation: slideUp 0.8s ease-out 0.35s forwards;
         font-weight: 450;
-      }
-
-      .desc-badge {
-        background: rgba(10, 20, 30, 0.6);
-        backdrop-filter: blur(10px);
-        display: inline-block;
-        padding: 0.6rem 1.6rem;
-        border-radius: 60px;
-        font-size: 1rem;
-        color: #e6f0ff;
-        border: 0.5px solid rgba(212, 175, 55, 0.4);
-        margin-bottom: 2rem;
+        backdrop-filter: blur(4px);
+        animation: fadeInUp 0.8s ease 0.35s forwards;
         opacity: 0;
-        transform: translateY(20px);
-        animation: slideUp 0.8s ease-out 0.5s forwards;
+        transform: translateY(24px);
       }
 
-      .cta-buttons {
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cta-group {
         display: flex;
-        gap: 1.2rem;
-        justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 2.5rem;
+        gap: 1.4rem;
+        justify-content: center;
+        margin-top: 0.5rem;
+        animation: fadeInUp 0.8s ease 0.65s forwards;
         opacity: 0;
         transform: translateY(20px);
-        animation: slideUp 0.8s ease-out 0.65s forwards;
       }
 
       .btn {
-        padding: 0.85rem 2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 0.6rem;
-        transition: all 0.25s ease;
-        font-size: 1rem;
+        font-weight: 600;
+        font-size: 1.05rem;
+        padding: 0.9rem 2.3rem;
+        border-radius: 60px;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.2, 0.85, 0.4, 1);
+        cursor: pointer;
+        border: none;
+        letter-spacing: -0.2px;
+        position: relative;
+        overflow: hidden;
       }
 
       .btn-primary {
-        background: linear-gradient(100deg, #0d8a2f, #006b0e);
+        background: linear-gradient(115deg, #0d8a2f, #005c0a, #d4af37);
         color: white;
-        border: 1px solid #e4b138;
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        font-weight: 700;
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        box-shadow: 0 12px 28px rgba(0, 80, 20, 0.5);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 200, 0.4),
+          transparent
+        );
+        transition: 0.6s;
+      }
+
+      .btn-primary:hover::before {
+        left: 150%;
       }
 
       .btn-primary:hover {
-        transform: translateY(-3px);
-        background: linear-gradient(100deg, #1ca340, #0a7a1a);
-        box-shadow: 0 12px 22px rgba(212, 175, 55, 0.3);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 20px 35px rgba(212, 175, 55, 0.5);
       }
 
       .btn-secondary {
-        background: rgba(30, 40, 55, 0.8);
-        backdrop-filter: blur(5px);
-        border: 1px solid #2e7d32;
-        color: #e2f0e2;
+        background: rgba(20, 28, 40, 0.75);
+        backdrop-filter: blur(8px);
+        border: 1.5px solid #0d8a2f;
+        color: #e6ffe6;
       }
 
       .btn-secondary:hover {
         background: #0d8a2f;
-        color: white;
-        border-color: #ffdf8c;
+        color: #fff;
+        border-color: #ffe484;
+        transform: translateY(-2px);
       }
 
-      .trust-list {
+      .trust-row {
+        margin-top: 3rem;
         display: flex;
-        justify-content: center;
-        gap: 1.8rem;
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #cddcff;
+        animation: fadeInUp 0.8s ease 0.8s forwards;
         opacity: 0;
-        animation: slideUp 0.8s ease-out 0.8s forwards;
         transform: translateY(20px);
       }
 
       .trust-item {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(5px);
-        padding: 0.4rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        color: #ccdeff;
+        backdrop-filter: blur(8px);
+        padding: 0.45rem 1.2rem;
+        border-radius: 60px;
       }
 
-      .dot-green {
+      .dot {
         width: 8px;
         height: 8px;
         background: #2ecc71;
         border-radius: 50%;
-        box-shadow: 0 0 6px #2ecc71;
-        animation: pulse 1.5s infinite;
+        box-shadow: 0 0 6px #48ff9e;
+        animation: pulseDot 1.6s infinite;
       }
 
-      @keyframes pulse {
+      @keyframes pulseDot {
         0% {
-          opacity: 0.5;
+          opacity: 0.6;
           transform: scale(0.8);
         }
         100% {
@@ -222,247 +326,87 @@
         }
       }
 
-      @keyframes slideUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+      @media (max-width: 780px) {
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        .btn {
+          padding: 0.7rem 1.5rem;
+          font-size: 0.9rem;
+        }
+        .trust-item {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.9rem;
+          gap: 6px;
         }
       }
 
-      /* ===== SECTION 2: RISING PANEL — clean second section with scroll overlap ===== */
-      .section-rise {
-        position: relative;
-        z-index: 20;
-        background: radial-gradient(ellipse at 50% 0%, #0b111f, #020408 80%);
-        border-radius: 2rem 2rem 0 0;
-        box-shadow: 0 -25px 40px -15px rgba(0, 0, 0, 0.8);
-        transition: transform 0.05s linear;
-        will-change: transform;
-        width: 100%;
-        margin-top: -4vh; /* initial slight overlap, will be increased by JS */
-        padding: 5rem 2rem 6rem 2rem;
-      }
-
-      .rise-container {
-        max-width: 1280px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      /* fade-up animation for inner elements */
-      .rise-title,
-      .rise-tagline,
-      .feature-grid,
-      .rise-btn,
-      .rise-footer {
-        opacity: 0;
-        transform: translateY(32px);
-        transition:
-          opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1),
-          transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-      }
-
-      .section-rise.revealed .rise-title {
-        transition-delay: 0.05s;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .section-rise.revealed .rise-tagline {
-        transition-delay: 0.13s;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .section-rise.revealed .feature-grid {
-        transition-delay: 0.22s;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .section-rise.revealed .rise-btn {
-        transition-delay: 0.31s;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .section-rise.revealed .rise-footer {
-        transition-delay: 0.4s;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .rise-title {
-        font-size: clamp(2rem, 6vw, 3.8rem);
-        font-weight: 800;
-        background: linear-gradient(135deg, #fff1cf, #f9d976, #ffbc3c);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: 0.5rem;
-      }
-
-      .rise-tagline {
-        color: #bfd6ff;
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 2.8rem;
-        border-bottom: 1px dashed rgba(212, 175, 55, 0.6);
-        display: inline-block;
-        padding-bottom: 0.5rem;
-      }
-
-      .feature-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
-        margin: 2rem 0 2.2rem;
-      }
-
-      .card {
-        background: rgba(12, 25, 45, 0.65);
-        backdrop-filter: blur(12px);
-        border-radius: 2rem;
-        padding: 2rem 1.4rem;
-        width: 260px;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .card i {
-        font-size: 2.5rem;
-        color: #ffdd99;
-        margin-bottom: 1rem;
-      }
-
-      .card h4 {
-        color: white;
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .card p {
-        color: #bcd0ff;
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-
-      .card:hover {
-        transform: translateY(-6px);
-        border-color: #e4b138;
-        background: rgba(30, 50, 80, 0.85);
-      }
-
-      .rise-btn {
-        background: linear-gradient(105deg, #0d8a2f, #0c6f1a, #d4af37);
-        border: none;
-        padding: 1rem 2.8rem;
-        font-size: 1rem;
-        font-weight: 700;
-        border-radius: 60px;
-        color: white;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.7rem;
-        transition: all 0.25s;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        margin-top: 0.5rem;
-      }
-
-      .rise-btn:hover {
-        transform: scale(1.02);
-        background: linear-gradient(105deg, #1ea743, #1a7c1a);
-        box-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
-      }
-
-      .rise-footer {
-        margin-top: 2.2rem;
-        font-size: 0.75rem;
-        color: #8aa3dd;
-      }
-
-      /* scroll hint (simple) */
-      .scroll-hint {
-        position: fixed;
-        bottom: 22px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(8px);
-        padding: 0.5rem 1.4rem;
-        border-radius: 40px;
-        font-size: 0.75rem;
-        color: #fff0b5;
-        font-family: monospace;
-        letter-spacing: 1px;
-        z-index: 99;
-        pointer-events: none;
-        transition: opacity 0.3s;
-        white-space: nowrap;
-        border: 0.5px solid #d4af37;
-      }
-
-      .scroll-hint.fade-out {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      /* no extra space anywhere */
-      body,
-      .site-wrapper,
-      .section-rise {
-        margin-bottom: 0;
-      }
-
-      @media (max-width: 700px) {
-        .card {
-          width: 240px;
-          padding: 1.5rem;
+      @media (max-width: 480px) {
+        .hero-content {
+          padding: 2rem 1rem;
         }
-        .feature-grid {
-          gap: 1.2rem;
+        .hero-title {
+          font-size: clamp(2rem, 10vw, 2.6rem);
+          margin-top: 0;
         }
-        .section-rise {
-          padding: 3.5rem 1rem 4rem 1rem;
-        }
-      }
-      @media (max-width: 550px) {
-        .card {
-          width: 100%;
-          max-width: 280px;
-        }
-        .scroll-hint {
-          font-size: 0.65rem;
-          white-space: nowrap;
-          bottom: 14px;
+        .hero-logo-wrapper img {
+          max-width: 70%;
         }
       }
     </style>
   </head>
   <body>
-    <div class="site-wrapper">
-      <!-- SECTION 1: Hero (full viewport) -->
-      <section class="section-hero" id="sectionHero">
-        <div class="hero-bg-glow"></div>
+    <div class="body-hero">
+      <section class="full-width-hero" id="heroSection">
+        <div class="hero-background-svg">
+          <svg
+            class="bg-svg-element"
+            viewBox="0 0 340 367"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            <defs>
+              <linearGradient
+                id="paint0_linear_95_17353_full"
+                x1="170"
+                y1="0"
+                x2="170"
+                y2="366.164"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0.5" stop-color="#1B1B1B" />
+                <stop offset="1" stop-color="#000000" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M20.1533 260.653C23.0064 259.832 25.8513 261.974 25.8516 264.942V355.147C25.8516 358.132 23.876 360.757 21.0078 361.582L5.69824 365.987C2.84502 366.808 4.48653e-05 364.667 0 361.698V271.493C7.10189e-05 268.509 1.97557 265.884 4.84375 265.059L20.1533 260.653ZM82.5264 172.7C85.3796 171.879 88.2246 174.021 88.2246 176.99V352.774C88.2244 355.759 86.2489 358.383 83.3809 359.208L68.0713 363.614C65.218 364.435 62.373 362.293 62.373 359.324V183.54C62.3731 180.556 64.3487 177.932 67.2168 177.106L82.5264 172.7ZM51.2783 233.13C54.1316 232.309 56.9766 234.451 56.9766 237.42V327.624C56.9766 330.609 55.001 333.233 52.1328 334.059L36.8232 338.464C33.97 339.285 31.125 337.144 31.125 334.175V243.97C31.1251 240.985 33.1007 238.362 35.9688 237.536L51.2783 233.13ZM113.771 203.931C116.624 203.11 119.469 205.252 119.469 208.221V317.396C119.469 320.38 117.493 323.004 114.625 323.829L99.3154 328.235C96.4622 329.056 93.6172 326.914 93.6172 323.945V214.771C93.6173 211.786 95.5928 209.162 98.4609 208.337L113.771 203.931ZM176.255 183.06C179.108 182.239 181.953 184.381 181.953 187.35V296.524C181.953 299.509 179.977 302.133 177.109 302.958L161.8 307.364C158.947 308.185 156.102 306.043 156.102 303.074V193.899C156.102 190.915 158.077 188.291 160.945 187.466L176.255 183.06ZM207.692 163.013C210.546 162.192 213.391 164.334 213.391 167.303V295.075C213.391 298.06 211.415 300.684 208.547 301.51L193.237 305.916C190.384 306.737 187.539 304.595 187.539 301.626V173.853C187.539 170.868 189.515 168.244 192.383 167.419L207.692 163.013ZM145.015 190.06C147.868 189.239 150.713 191.381 150.713 194.35V284.554C150.713 287.538 148.737 290.163 145.869 290.988L130.56 295.394C127.706 296.215 124.861 294.074 124.861 291.105V200.899C124.861 197.915 126.837 195.291 129.705 194.466L145.015 190.06ZM270.739 163.314C273.592 162.492 276.438 164.635 276.438 167.604V257.808C276.438 260.792 274.462 263.417 271.594 264.242L256.284 268.647C253.431 269.469 250.586 267.327 250.586 264.358V174.153C250.586 171.169 252.562 168.545 255.43 167.72L270.739 163.314ZM239.122 134.177C241.975 133.356 244.82 135.498 244.82 138.467V247.642C244.82 250.626 242.845 253.25 239.977 254.075L224.667 258.481C221.814 259.303 218.969 257.16 218.969 254.191V145.017C218.969 142.032 220.944 139.408 223.812 138.583L239.122 134.177ZM302.356 69.6338C305.21 68.8127 308.055 70.9548 308.055 73.9239V188.222C308.055 191.206 306.079 193.831 303.211 194.656L287.901 199.062C285.048 199.883 282.203 197.741 282.203 194.772V80.4737C282.203 77.4892 284.179 74.8655 287.047 74.0401L302.356 69.6338ZM334.302 0.176793C337.155 -0.644285 340 1.4978 340 4.46683V118.765C340 121.749 338.024 124.374 335.156 125.199L319.847 129.605C316.994 130.426 314.149 128.284 314.148 125.315V11.0166C314.148 8.03212 316.124 5.40847 318.992 4.58304L334.302 0.176793Z"
+              fill="url(#paint0_linear_95_17353_full)"
+            />
+          </svg>
+        </div>
+        <div class="grain-overlay"></div>
+        <div class="text-contrast-overlay"></div>
         <div class="hero-content">
-          <div class="logo-wrap">
+          <div class="hero-logo-wrapper">
             <img
-              src="images/img-1-removebg-preview.png"
-              alt="Quantum Trade"
+              src="images/Islamic_trade-removebg-preview.png"
+              alt="TradeMaster pro logo"
               onerror="
                 this.src =
-                  'https://placehold.co/700x180/0a1122/d4af37?text=QUANTUM+TRADE'
+                  'https://placehold.co/800x200/1a2a3a/FFFFFF?text=Trade+Elite'
               "
             />
           </div>
-          <h1>Learn the Stock Market Like a Professional</h1>
-          <p class="subhead">
-            Expert-led education · AI signals · Institutional edge
+          <h1 class="hero-title">
+            Learn the Stock Market Like <br />
+            a Professional
+          </h1>
+          <p class="hero-subtitle">
+            Expert-led trading education, market analysis, and<br />
+            practical strategies to help you trade with confidence.
           </p>
-          <div class="desc-badge">
-            <i class="fa-solid fa-chart-simple"></i> Premium insights · Seamless
-            execution
-          </div>
-          <div class="cta-buttons">
+          <div class="cta-group">
             <a href="#" class="btn btn-primary"
               >Start now <i class="fa-solid fa-arrow-right"></i
             ></a>
@@ -470,233 +414,76 @@
               >Learn more <i class="fa-solid fa-caret-right"></i
             ></a>
           </div>
-          <div class="trust-list">
+          <div class="trust-row">
+            <span class="trust-item"><i class="dot"></i> Zero commission</span>
             <span class="trust-item"
-              ><i class="dot-green"></i> Zero commission</span
+              ><i class="dot"></i> Real-time signals</span
             >
+            <span class="trust-item"><i class="dot"></i> Smart analytics</span>
             <span class="trust-item"
-              ><i class="dot-green"></i> Real-time signals</span
-            >
-            <span class="trust-item"
-              ><i class="dot-green"></i> Smart analytics</span
-            >
-            <span class="trust-item"
-              ><i class="dot-green"></i> 24/7 support</span
+              ><i class="dot"></i> 24/7 dedicated support</span
             >
           </div>
         </div>
       </section>
-
-      <!-- SECTION 2: Rising panel (overlap effect + reveal) -->
-      <section class="section-rise" id="sectionRise">
-        <div class="rise-container">
-          <h2 class="rise-title">Elevate Your Trading Edge</h2>
-          <div class="rise-tagline">
-            Powerful tools · Institutional resources · Real insights
-          </div>
-          <div class="feature-grid">
-            <div class="card">
-              <i class="fa-solid fa-chart-line"></i>
-              <h4>Live Scanner</h4>
-              <p>Real-time breakout & momentum detection.</p>
-            </div>
-            <div class="card">
-              <i class="fa-solid fa-shield-haltered"></i>
-              <h4>Risk Guard</h4>
-              <p>Advanced position sizing & stop-loss strategies.</p>
-            </div>
-            <div class="card">
-              <i class="fa-solid fa-microchip"></i>
-              <h4>AI Trade Signals</h4>
-              <p>Machine learning powered entry/exit alerts.</p>
-            </div>
-            <div class="card">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <h4>Pro Academy</h4>
-              <p>On-demand courses from hedge fund mentors.</p>
-            </div>
-          </div>
-          <button class="rise-btn" id="exploreBtn">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Explore
-            Next-Gen Platform
-          </button>
-          <div class="rise-footer">
-            Institutional-grade intelligence, engineered for traders
-          </div>
-        </div>
-      </section>
-
-      <div class="scroll-hint" id="scrollHint">
-        <i class="fa-solid fa-arrow-down"></i> SCROLL — WATCH SECTION 2 RISE
-        <i class="fa-solid fa-arrow-down"></i>
-      </div>
     </div>
 
     <script>
       (function () {
-        const heroSection = document.getElementById("sectionHero");
-        const riseSection = document.getElementById("sectionRise");
-        const scrollHint = document.getElementById("scrollHint");
+        // replay hero entrance animations when section comes into view
+        const heroSection = document.getElementById("heroSection");
+        const heroLogo = document.querySelector(".hero-logo-wrapper");
+        const title = document.querySelector(".hero-title");
+        const subtitle = document.querySelector(".hero-subtitle");
+        const cta = document.querySelector(".cta-group");
+        const trust = document.querySelector(".trust-row");
 
-        // track animation reveal for section 2 contents (fade-up)
-        let revealTriggered = false;
-
-        // Function to update scroll-driven behaviour:
-        // - Hero fades & scales down gently.
-        // - Section 2 translates upward (overlap) to create "rising" effect.
-        // - Also triggers content reveal for section 2 after slight scroll.
-        function updateScrollAnimation() {
-          const scrollY = window.scrollY;
-          const winHeight = window.innerHeight;
-          const docHeight = document.documentElement.scrollHeight;
-          const maxScroll = Math.max(1, docHeight - winHeight);
-          let rawProgress = scrollY / maxScroll;
-
-          // Hero fade + scale (from 1 to 0.2 opacity, scale from 1 to 0.94 max)
-          let heroProgress = Math.min(1, Math.max(0, rawProgress / 0.55));
-          const easeOut = 1 - Math.pow(1 - heroProgress, 2);
-          if (heroSection) {
-            const heroOpacity = 1 - easeOut * 0.85; // remains slightly visible but fades elegantly
-            const heroScale = 1 - easeOut * 0.06;
-            heroSection.style.opacity = heroOpacity;
-            heroSection.style.transform = `scale(${heroScale})`;
-          }
-
-          // Rising panel translation: move upward (negative translateY) creating overlap with hero.
-          // start after a little scroll, max translate up to -58vh
-          let riseProgress = Math.min(
-            1,
-            Math.max(0, (rawProgress - 0.03) / 0.7),
-          );
-          const easeCubic = 1 - Math.pow(1 - riseProgress, 3);
-          const maxTranslate = -58; // vh units, makes section 2 overlap hero smoothly
-          const translateVal = easeCubic * maxTranslate;
-          if (riseSection) {
-            riseSection.style.transform = `translateY(${translateVal}vh)`;
-          }
-
-          // REVEAL class for section2 content fade-up (once scrolled enough)
-          if (riseSection && riseProgress > 0.12 && !revealTriggered) {
-            riseSection.classList.add("revealed");
-            revealTriggered = true;
-          } else if (riseSection && riseProgress <= 0.05 && revealTriggered) {
-            // optional: if user scrolls back to top, remove class so it can re-trigger? but keep consistent
-            // we can keep revealed anyway, but for perfection we keep it stable.
-            // to avoid glitch just let it remain revealed after first trigger. fine.
-          }
-
-          // hide scroll hint after overlapping enough
-          if (scrollHint) {
-            if (riseProgress > 0.35 || rawProgress > 0.4) {
-              scrollHint.classList.add("fade-out");
-            } else {
-              scrollHint.classList.remove("fade-out");
-            }
-          }
-        }
-
-        // Throttle with requestAnimationFrame for 60fps
-        let ticking = false;
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              updateScrollAnimation();
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
-
-        window.addEventListener("resize", () => updateScrollAnimation());
-        updateScrollAnimation(); // initial call
-
-        // Optional: replay hero entrance animations when hero becomes fully visible again (top)
-        const heroContentElements = document.querySelectorAll(
-          ".logo-wrap, h1, .subhead, .desc-badge, .cta-buttons, .trust-list",
-        );
-        function resetHeroAnimations() {
-          if (!heroSection) return;
-          const elements = [
-            document.querySelector(".logo-wrap"),
-            document.querySelector(".section-hero h1"),
-            document.querySelector(".subhead"),
-            document.querySelector(".desc-badge"),
-            document.querySelector(".cta-buttons"),
-            document.querySelector(".trust-list"),
-          ];
+        function replayHeroAnim() {
+          if (!heroLogo) return;
+          const elements = [heroLogo, title, subtitle, cta, trust];
           elements.forEach((el) => {
-            if (el) {
-              el.style.animation = "none";
-              el.style.opacity = "0";
-              if (el.classList && el.classList.contains("logo-wrap"))
-                el.style.transform = "scale(0.7)";
-              else if (el.tagName === "H1")
-                el.style.transform = "translateY(35px)";
-              else if (
-                el.classList &&
-                (el.classList.contains("subhead") ||
-                  el.classList.contains("desc-badge") ||
-                  el.classList.contains("cta-buttons") ||
-                  el.classList.contains("trust-list"))
-              )
-                el.style.transform = "translateY(25px)";
-            }
+            if (el) el.style.animation = "none";
           });
-          void document.querySelector(".logo-wrap")?.offsetHeight;
-          const logo = document.querySelector(".logo-wrap");
-          const heading = document.querySelector(".section-hero h1");
-          const sub = document.querySelector(".subhead");
-          const badge = document.querySelector(".desc-badge");
-          const btns = document.querySelector(".cta-buttons");
-          const trust = document.querySelector(".trust-list");
-          if (logo)
-            logo.style.animation =
-              "fadeScale 0.9s cubic-bezier(0.21, 0.98, 0.35, 1.2) forwards";
-          if (heading)
-            heading.style.animation = "slideUp 0.8s ease-out 0.2s forwards";
-          if (sub) sub.style.animation = "slideUp 0.8s ease-out 0.35s forwards";
-          if (badge)
-            badge.style.animation = "slideUp 0.8s ease-out 0.5s forwards";
-          if (btns)
-            btns.style.animation = "slideUp 0.8s ease-out 0.65s forwards";
-          if (trust)
-            trust.style.animation = "slideUp 0.8s ease-out 0.8s forwards";
+          void heroLogo.offsetHeight;
+          if (heroLogo)
+            heroLogo.style.animation =
+              "logoEmergence 0.9s cubic-bezier(0.21, 0.98, 0.35, 1.2) forwards";
+          if (title) {
+            title.style.animation = "titleSlideUp 0.9s ease-out 0.2s forwards";
+            title.style.opacity = "0";
+            title.style.transform = "translateY(35px)";
+          }
+          if (subtitle) {
+            subtitle.style.animation = "fadeInUp 0.8s ease 0.35s forwards";
+            subtitle.style.opacity = "0";
+            subtitle.style.transform = "translateY(24px)";
+          }
+          if (cta) {
+            cta.style.animation = "fadeInUp 0.8s ease 0.65s forwards";
+            cta.style.opacity = "0";
+            cta.style.transform = "translateY(20px)";
+          }
+          if (trust) {
+            trust.style.animation = "fadeInUp 0.8s ease 0.8s forwards";
+            trust.style.opacity = "0";
+            trust.style.transform = "translateY(20px)";
+          }
         }
 
-        const heroObserver = new IntersectionObserver(
+        const observerHero = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
-                resetHeroAnimations();
-              }
+              if (entry.isIntersecting) replayHeroAnim();
             });
           },
-          { threshold: 0.4 },
+          { threshold: 0.3 },
         );
-        if (heroSection) heroObserver.observe(heroSection);
+        if (heroSection) observerHero.observe(heroSection);
 
-        // Explore button interaction
-        const exploreBtn = document.getElementById("exploreBtn");
-        if (exploreBtn) {
-          exploreBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            exploreBtn.style.transform = "scale(0.96)";
-            setTimeout(() => {
-              exploreBtn.style.transform = "";
-            }, 180);
-            alert(
-              "⚡ Quantum Ascend — Unlock elite signals & institutional edge.",
-            );
-          });
-        }
-
-        // prevent any empty anchor navigation
+        // prevent default on empty links
         document.querySelectorAll('a[href="#"]').forEach((link) => {
           link.addEventListener("click", (e) => e.preventDefault());
         });
-
-        // force initial check for revealed class if any scroll position
-        setTimeout(() => updateScrollAnimation(), 50);
       })();
     </script>
   </body>
