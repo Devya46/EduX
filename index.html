@@ -3023,10 +3023,10 @@
 
               <!-- Heading -->
               <h2 class="solution-heading hidden-init" id="heading">
-                <span class="highlight">RMI</span> — Noiseless indicator engine
-                for faster, smarter decisions. <br />
-                <span class="highlight">SWING</span> — Precision market timing
-                using sentiment
+                <span class="highlight">RMI</span> — Clean Signals, Faster
+                Decisions <br />
+                <span class="highlight">SWING</span> — Precision Timing with
+                Sentiment
               </h2>
 
               <p class="solution-description hidden-init" id="desc">
@@ -3690,7 +3690,7 @@
               <div class="card small">
                 <img
                   style="width: 97%; height: 52%"
-                  src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image_condenced.CdPcjJqo_Z86nei.avif"
+                  src="images/card-3.png"
                   alt="insured"
                 />
                 <div class="overlay"></div>
@@ -3720,7 +3720,7 @@
               <div class="card small" style="height: 395px; top: -8rem">
                 <img
                   style="width: 100%; height: 67%"
-                  src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.CTF7lwiU_1zCzRs.avif"
+                  src="images/3.png"
                   alt="negative balance"
                 />
                 <div class="overlay"></div>
@@ -3797,6 +3797,447 @@
       </body>
     </html>
 
+    <!-- ===academy=== -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trading Academy · FTMO</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+          rel="stylesheet"
+        />
+
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          body {
+            background: #000000;
+          }
+
+          .academy-section {
+            width: 100%;
+            padding: 40px 24px;
+            max-width: 1440px;
+            margin: 0 auto;
+          }
+
+          /* main card – clean, dark, with subtle border */
+          .academy-card {
+            background: #04070d;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            display: flex;
+            min-height: 580px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(1px);
+          }
+
+          /* --- VIDEO SIDE (left) --- */
+          .academy-video {
+            width: 58%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+          }
+
+          .academy-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+          }
+
+          /* video overlay – smooth gradient from left to right, hides hard edge */
+          .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              105deg,
+              rgba(255, 215, 110, 0.35) 0%,
+              rgba(200, 160, 60, 0.2) 35%,
+              rgba(3, 5, 10, 0.6) 70%,
+              #04070d 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+          }
+
+          /* subtle bottom glow (warm) */
+          .bottom-glow {
+            position: absolute;
+            left: -10%;
+            bottom: -70px;
+            width: 120%;
+            height: 160px;
+            background: radial-gradient(
+              ellipse at center,
+              rgba(255, 210, 80, 0.35) 0%,
+              transparent 80%
+            );
+            filter: blur(60px);
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+          }
+
+          /* --- CENTER FOG — NEW improved version, blends perfectly --- */
+          .center-fog {
+            position: absolute;
+            top: 0;
+            left: 52%; /* start slightly left of center */
+            width: 480px;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+
+            /* gradient fog: warm core, fading to dark on both sides */
+            background: radial-gradient(
+              ellipse at 40% 50%,
+              rgba(255, 210, 110, 0.25) 0%,
+              rgba(255, 190, 70, 0.12) 25%,
+              rgba(20, 15, 5, 0.08) 45%,
+              rgba(4, 7, 13, 0.65) 70%,
+              #04070d 100%
+            );
+
+            filter: blur(70px);
+            transform: translateX(-10%);
+            mix-blend-mode: screen;
+          }
+
+          /* secondary fog – extra softness to hide any line */
+          .fog-soft {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 300px;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            background: radial-gradient(
+              ellipse at 30% 50%,
+              rgba(255, 220, 130, 0.1) 0%,
+              rgba(255, 200, 80, 0.05) 30%,
+              transparent 70%
+            );
+            filter: blur(90px);
+            mix-blend-mode: soft-light;
+          }
+
+          /* --- CONTENT SIDE (right) --- */
+          .academy-content {
+            width: 42%;
+            padding: 80px 60px 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 6;
+            position: relative;
+            background: transparent;
+          }
+
+          .label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #9aa1b0;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            opacity: 0.8;
+          }
+
+          .label svg {
+            opacity: 0.7;
+          }
+
+          .academy-content h2 {
+            font-size: 43px;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -2.5px;
+            margin-bottom: 28px;
+            color: #ffffff;
+            max-width: 600px;
+          }
+
+          .desc {
+            color: #bcc3d0;
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 34px;
+            font-weight: 400;
+            max-width: 480px;
+          }
+
+          .features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          .features li {
+            position: relative;
+            padding-left: 38px;
+            font-size: 17px;
+            font-weight: 450;
+            color: #f0f4ff;
+            letter-spacing: -0.2px;
+            line-height: 1.5;
+          }
+
+          .features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #0084ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 132, 255, 0.3);
+            transition: transform 0.15s ease;
+          }
+
+          .features li:hover::before {
+            transform: scale(1.05);
+          }
+
+          /* --- responsive --- */
+          @media (max-width: 1200px) {
+            .academy-content {
+              padding: 60px 40px 60px 40px;
+            }
+            .academy-content h2 {
+              font-size: 48px;
+            }
+            .center-fog {
+              left: 45%;
+              width: 400px;
+              filter: blur(80px);
+            }
+          }
+
+          @media (max-width: 992px) {
+            .academy-card {
+              flex-direction: column;
+              min-height: auto;
+            }
+            .academy-video {
+              width: 100%;
+              height: 380px;
+            }
+            .academy-content {
+              width: 100%;
+              padding: 48px 32px;
+            }
+            .academy-content h2 {
+              font-size: 42px;
+              max-width: 100%;
+            }
+            .desc {
+              max-width: 100%;
+            }
+
+            .center-fog {
+              display: none; /* cleaner on mobile, keep it subtle */
+            }
+            .fog-soft {
+              display: none;
+            }
+            .video-overlay {
+              background: linear-gradient(
+                180deg,
+                rgba(255, 215, 110, 0.25) 0%,
+                rgba(180, 135, 35, 0.15) 40%,
+                rgba(4, 7, 13, 0.85) 100%
+              );
+            }
+          }
+
+          @media (max-width: 600px) {
+            .academy-section {
+              padding: 20px 12px;
+            }
+            .academy-video {
+              height: 240px;
+            }
+            .academy-content h2 {
+              font-size: 32px;
+              letter-spacing: -1.2px;
+            }
+            .desc {
+              font-size: 16px;
+            }
+            .features li {
+              font-size: 15px;
+              padding-left: 34px;
+            }
+            .academy-content {
+              padding: 32px 20px;
+            }
+            .label {
+              font-size: 13px;
+              margin-bottom: 16px;
+            }
+          }
+
+          /* small touch for card border */
+          .academy-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            z-index: 10;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="academy-section">
+          <div class="academy-card">
+            <!-- video block -->
+            <div class="academy-video">
+              <video class="academyVideo" muted loop playsinline preload="auto">
+                <!-- Pexels video: high quality, trading / finance related -->
+                <source
+                  src="https://www.pexels.com/download/video/8632779/"
+                  type="video/mp4"
+                />
+                <!-- fallback -->
+                <source
+                  src="https://www.pexels.com/download/video/8632779/"
+                  type="video/mp4"
+                />
+              </video>
+
+              <div class="video-overlay"></div>
+              <div class="bottom-glow"></div>
+            </div>
+
+            <!-- improved center fog – blends video & content without visible line -->
+            <div class="center-fog"></div>
+            <div class="fog-soft"></div>
+
+            <!-- content -->
+            <div class="academy-content">
+              <div class="label">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2L20 6V12C20 17 16.8 21.4 12 22C7.2 21.4 4 17 4 12V6L12 2Z"
+                  />
+                  <path d="M12 8V12L15 15" stroke="currentColor" />
+                </svg>
+                Academy
+              </div>
+
+              <h2>Expand Your Trading Knowledge With FTMO Academy</h2>
+
+              <div class="desc">
+                Enhance your knowledge and learn to understand your ups and
+                downs with our Psychology Course.
+              </div>
+
+              <ul class="features">
+                <li>Expand your trading knowledge</li>
+                <li>Perfect for beginners and intermediate traders</li>
+                <li>Includes the Trading Psychology Course</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <script>
+          (function () {
+            const section = document.querySelector(".academy-section");
+            const video = document.querySelector(".academyVideo");
+
+            if (!video || !section) return;
+
+            // ensure video settings
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+
+            // Intersection Observer – play when visible
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                    // optional: keep playing, but we can unobserve to avoid toggles
+                    observer.unobserve(section);
+                  }
+                });
+              },
+              {
+                threshold: 0.25,
+                rootMargin: "0px 0px -40px 0px",
+              },
+            );
+
+            observer.observe(section);
+
+            // fallback: if video not playing due to autoplay restrictions, try on user interaction
+            const attemptPlay = () => {
+              if (video.paused) {
+                video.play().catch(() => {});
+              }
+            };
+
+            document.addEventListener("click", attemptPlay, { once: true });
+            document.addEventListener("touchstart", attemptPlay, {
+              once: true,
+            });
+
+            // also play if page loads and video is visible (just in case)
+            setTimeout(() => {
+              if (section && isElementInViewport(section)) {
+                video.play().catch(() => {});
+              }
+            }, 400);
+
+            function isElementInViewport(el) {
+              const rect = el.getBoundingClientRect();
+              return rect.top < window.innerHeight - 100 && rect.bottom > 0;
+            }
+          })();
+        </script>
+      </body>
+    </html>
     <!-- ----about us------ -->
 
     <!doctype html>
@@ -5260,6 +5701,764 @@
                   }
                 });
               }, 150);
+            });
+          })();
+        </script>
+      </body>
+    </html>
+
+    <!-- ------videos------ -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+        />
+        <title>Stock Reel · full-width cards</title>
+        <!-- Font Awesome (icons only) -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:
+              system-ui,
+              -apple-system,
+              "Segoe UI",
+              Roboto,
+              sans-serif;
+          }
+
+          body {
+            background: #0b0b0b;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
+          } */
+          body {
+            background: black;
+          }
+
+          .app {
+            width: 100%;
+            max-width: 1600px;
+            background: #000000;
+            padding: 2rem 0 3rem;
+            margin: 0 auto;
+          }
+
+          /* header – clean, glowing accent */
+          .header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            padding: 0 1rem;
+          }
+
+          .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #f6b44a, #fad974);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.6rem;
+          }
+
+          .header .sub {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem 3.5rem;
+            margin-top: 0.6rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #d0d0d0;
+          }
+
+          .header .sub span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+
+          .header .sub i {
+            color: #f6b44a;
+            font-size: 1.3rem;
+            width: 2rem;
+            text-align: center;
+          }
+
+          .header .sub strong {
+            color: #fff;
+            font-weight: 600;
+          }
+
+          /* ----- FULL WIDTH SCROLL SECTION – no side padding, clean cards ----- */
+          .scroll-section {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+          }
+
+          /* horizontal scroll wrapper – hide scrollbar, full width */
+          .scroll-wrapper {
+            display: flex;
+            gap: 1.8rem;
+            overflow-x: auto;
+            padding: 0.8rem 1.5rem 1.8rem 1.5rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            cursor: grab;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            width: 100%;
+          }
+
+          .scroll-wrapper::-webkit-scrollbar {
+            display: none;
+          }
+
+          /* video card – refined, with subtle border & glassy feel */
+          .video-card {
+            flex: 0 0 280px;
+            width: 280px;
+            background: #141414;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 215, 100, 0.12);
+            transition:
+              transform 0.25s ease,
+              box-shadow 0.3s ease,
+              border-color 0.2s;
+            position: relative;
+            touch-action: pan-y;
+            backdrop-filter: blur(2px);
+          }
+
+          .video-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+            border-color: rgba(246, 180, 74, 0.5);
+          }
+
+          /* video container – 16:9, rounded top */
+          .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #0a0a0a;
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            cursor: pointer;
+          }
+
+          /* preview image – covers the container */
+          .video-container .preview-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            background: #111;
+          }
+
+          .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            opacity: 0;
+          }
+
+          /* when playing, hide preview & show iframe */
+          .video-card.playing .preview-img {
+            opacity: 0;
+          }
+          .video-card.playing iframe {
+            opacity: 1;
+          }
+
+          /* play overlay – icon with glow */
+          .video-container .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.25);
+            transition: opacity 0.3s;
+            z-index: 2;
+          }
+
+          .video-container .play-overlay i {
+            font-size: 4.6rem;
+            color: #fff;
+            text-shadow:
+              0 4px 24px rgba(0, 0, 0, 0.9),
+              0 0 20px rgba(246, 180, 74, 0.5);
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+          }
+
+          .video-card.playing .play-overlay {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          /* meta below video – card footer */
+          .video-meta {
+            padding: 0.9rem 1rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #141414;
+            border-radius: 0 0 20px 20px;
+            border-top: 1px solid rgba(255, 215, 100, 0.08);
+          }
+
+          .video-meta .title {
+            font-weight: 600;
+            color: #f0f0f0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 68%;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+
+          .video-meta .title i {
+            color: #f6b44a;
+            font-size: 0.9rem;
+          }
+
+          .video-meta .stats {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #aaa;
+          }
+
+          .video-meta .stats i {
+            color: #f6b44a;
+            margin-right: 2px;
+          }
+
+          /* ----- MODAL (full video popup) – sleek ----- */
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.93);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 1.5rem;
+          }
+
+          .modal-overlay.active {
+            display: flex;
+          }
+
+          .modal-box {
+            background: #111;
+            max-width: 960px;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.95);
+            border: 1px solid rgba(246, 180, 74, 0.2);
+            animation: modalFade 0.2s ease;
+          }
+
+          @keyframes modalFade {
+            0% {
+              opacity: 0.5;
+              transform: scale(0.96);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+
+          .modal-box .modal-video-wrap {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+          }
+
+          .modal-box .modal-video-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+          }
+
+          .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition:
+              background 0.2s,
+              transform 0.15s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .modal-close:hover {
+            background: #f6b44a;
+            color: #0b0b0b;
+            transform: rotate(90deg);
+            border-color: #f6b44a;
+          }
+
+          .modal-box .modal-info {
+            padding: 1.4rem 2rem 2rem;
+            background: #111;
+            color: #ccc;
+          }
+
+          .modal-box .modal-info h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+
+          .modal-box .modal-info h3 i {
+            color: #f6b44a;
+            font-size: 1.4rem;
+          }
+
+          .modal-box .modal-info p {
+            color: #aaa;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+          }
+
+          /* ----- RESPONSIVE – cards adapt ----- */
+          @media (max-width: 768px) {
+            .header h1 {
+              font-size: 2.2rem;
+            }
+            .header .sub {
+              gap: 0.8rem 2rem;
+              font-size: 0.9rem;
+            }
+            .video-card {
+              flex: 0 0 220px;
+              width: 220px;
+            }
+            .scroll-wrapper {
+              gap: 1.2rem;
+              padding: 0.5rem 1rem 1.2rem;
+            }
+            .video-container .play-overlay i {
+              font-size: 3.6rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .header h1 {
+              font-size: 1.7rem;
+            }
+            .header .sub {
+              gap: 0.4rem 1.2rem;
+              font-size: 0.75rem;
+            }
+            .video-card {
+              flex: 0 0 170px;
+              width: 170px;
+            }
+            .scroll-wrapper {
+              gap: 1rem;
+              padding: 0.3rem 0.8rem 1rem;
+            }
+            .video-container .play-overlay i {
+              font-size: 2.8rem;
+            }
+            .modal-box .modal-info h3 {
+              font-size: 1.2rem;
+            }
+            .modal-close {
+              width: 40px;
+              height: 40px;
+              font-size: 1.4rem;
+            }
+            .video-meta .title {
+              font-size: 0.75rem;
+            }
+            .video-meta .stats {
+              font-size: 0.7rem;
+            }
+          }
+
+          @media (max-width: 380px) {
+            .video-card {
+              flex: 0 0 140px;
+              width: 140px;
+            }
+            .scroll-wrapper {
+              gap: 0.7rem;
+              padding: 0.2rem 0.5rem 0.8rem;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="app">
+          <!-- HEADER with stats (icons) -->
+          <div class="header">
+            <h1>Trusted by Millions of Traders</h1>
+            <div class="sub">
+              <span
+                ><i class="fas fa-user-tie"></i>
+                <strong>3.5K+</strong> Customers worldwide</span
+              >
+              <span
+                ><i class="fas fa-award"></i> <strong>$5K+</strong> Paid in
+                rewards</span
+              >
+              <span
+                ><i class="fas fa-globe"></i> <strong>10+</strong> Countries
+                served</span
+              >
+            </div>
+          </div>
+
+          <!-- FULL-WIDTH SCROLL SECTION – no border, cards inside -->
+          <div class="scroll-section">
+            <div class="scroll-wrapper" id="scrollWrapper">
+              <!-- video cards injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL -->
+        <div class="modal-overlay" id="modalOverlay">
+          <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn">
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-video-wrap">
+              <iframe
+                id="modalIframe"
+                src=""
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="modal-info">
+              <h3>
+                <i class="fas fa-chart-line"></i>
+                <span id="modalTitle">Stock video</span>
+              </h3>
+              <p id="modalDesc">Trading · markets · worldwide</p>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            // ----- 10 stock/trading videos with preview images -----
+            const videoData = [
+              {
+                id: "dQw4w9WgXcQ",
+                title: "Market momentum",
+                views: "14K",
+                preview:
+                  "https://images.pexels.com/photos/5849595/pexels-photo-5849595.jpeg",
+              },
+              {
+                id: "jNQXAC9IVRw",
+                title: "Scalping strategy",
+                views: "8.2K",
+                preview:
+                  "https://images.pexels.com/photos/8369835/pexels-photo-8369835.jpeg",
+              },
+              {
+                id: "9bZkp7q19f0",
+                title: "Risk management",
+                views: "11K",
+                preview:
+                  "https://images.pexels.com/photos/5849595/pexels-photo-5849595.jpeg",
+              },
+              {
+                id: "kJQP7kiw5Fk",
+                title: "Breakout patterns",
+                views: "9.5K",
+                preview:
+                  "https://images.pexels.com/photos/8369835/pexels-photo-8369835.jpeg",
+              },
+              {
+                id: "fJ9rUzIMcZQ",
+                title: "Forex & crypto",
+                views: "6.7K",
+                preview:
+                  "https://images.pexels.com/photos/5849595/pexels-photo-5849595.jpeg",
+              },
+              {
+                id: "tgbNymZ7vqY",
+                title: "Trading psychology",
+                views: "7.3K",
+                preview:
+                  "https://images.pexels.com/photos/8369835/pexels-photo-8369835.jpeg",
+              },
+              {
+                id: "CevxZvSJLk8",
+                title: "High impact news",
+                views: "12K",
+                preview:
+                  "https://images.pexels.com/photos/5849595/pexels-photo-5849595.jpeg",
+              },
+              {
+                id: "RgKAFK5djSk",
+                title: "Reversal setup",
+                views: "5.8K",
+                preview:
+                  "https://images.pexels.com/photos/8369835/pexels-photo-8369835.jpeg",
+              },
+              {
+                id: "e-ORhEE9VVg",
+                title: "Trend following",
+                views: "10.1K",
+                preview:
+                  "https://images.pexels.com/photos/5849595/pexels-photo-5849595.jpeg",
+              },
+              {
+                id: "YQHsXMglC9A",
+                title: "Weekly recap",
+                views: "15K",
+                preview:
+                  "https://images.pexels.com/photos/8369835/pexels-photo-8369835.jpeg",
+              },
+            ];
+
+            // Duplicate 3 times for infinite seamless loop (30 items)
+            const loopCount = 3;
+            const allVideos = [];
+            for (let i = 0; i < loopCount; i++) {
+              videoData.forEach((v) =>
+                allVideos.push({ ...v, key: `${v.id}-${i}` }),
+              );
+            }
+
+            const wrapper = document.getElementById("scrollWrapper");
+            let scrollInterval = null;
+            let isHovering = false;
+
+            // ----- build video cards (full width, cards) -----
+            function buildCards() {
+              wrapper.innerHTML = "";
+              allVideos.forEach((video) => {
+                const card = document.createElement("div");
+                card.className = "video-card";
+                card.dataset.videoId = video.id;
+                card.dataset.title = video.title;
+                card.dataset.views = video.views;
+
+                const container = document.createElement("div");
+                container.className = "video-container";
+
+                // --- preview image ---
+                const img = document.createElement("img");
+                img.className = "preview-img";
+                img.src = video.preview;
+                img.alt = video.title;
+                img.loading = "lazy";
+
+                // --- iframe (hidden initially) ---
+                const iframe = document.createElement("iframe");
+                iframe.src = `https://www.youtube.com/embed/${video.id}?enablejsapi=1&rel=0&showinfo=0&autoplay=0&mute=1&controls=0&modestbranding=1`;
+                iframe.allow = "autoplay; encrypted-media";
+                iframe.allowFullscreen = true;
+                iframe.loading = "lazy";
+
+                // --- play overlay ---
+                const overlay = document.createElement("div");
+                overlay.className = "play-overlay";
+                overlay.innerHTML = '<i class="fas fa-play-circle"></i>';
+
+                container.appendChild(img);
+                container.appendChild(iframe);
+                container.appendChild(overlay);
+                card.appendChild(container);
+
+                // meta footer
+                const meta = document.createElement("div");
+                meta.className = "video-meta";
+                meta.innerHTML = `
+          <span class="title"><i class="fas fa-chart-line"></i>${video.title}</span>
+          <span class="stats"><i class="fas fa-eye"></i> ${video.views}</span>
+        `;
+                card.appendChild(meta);
+
+                // --- hover: autoplay (muted) + hide preview ---
+                card.addEventListener("mouseenter", function (e) {
+                  pauseScroll(true);
+                  const iframeEl = this.querySelector("iframe");
+                  if (iframeEl) {
+                    const vid = this.dataset.videoId;
+                    iframeEl.src = `https://www.youtube.com/embed/${vid}?enablejsapi=1&rel=0&showinfo=0&autoplay=1&mute=1&controls=0&modestbranding=1`;
+                    this.classList.add("playing");
+                  }
+                });
+
+                card.addEventListener("mouseleave", function (e) {
+                  pauseScroll(false);
+                  const iframeEl = this.querySelector("iframe");
+                  if (iframeEl) {
+                    const vid = this.dataset.videoId;
+                    iframeEl.src = `https://www.youtube.com/embed/${vid}?enablejsapi=1&rel=0&showinfo=0&autoplay=0&mute=1&controls=0&modestbranding=1`;
+                    this.classList.remove("playing");
+                  }
+                });
+
+                // --- click: open modal ---
+                card.addEventListener("click", function (e) {
+                  const vid = this.dataset.videoId;
+                  const title = this.dataset.title;
+                  const views = this.dataset.views;
+                  openModal(vid, title, views);
+                });
+
+                wrapper.appendChild(card);
+              });
+            }
+
+            // ----- auto-scroll control -----
+            function pauseScroll(pause) {
+              if (pause) {
+                isHovering = true;
+                if (scrollInterval) {
+                  clearInterval(scrollInterval);
+                  scrollInterval = null;
+                }
+              } else {
+                isHovering = false;
+                if (!scrollInterval) {
+                  setTimeout(() => {
+                    if (!isHovering && !scrollInterval) {
+                      startAutoScroll();
+                    }
+                  }, 300);
+                }
+              }
+            }
+
+            function startAutoScroll() {
+              if (scrollInterval) return;
+              scrollInterval = setInterval(() => {
+                if (isHovering) return;
+                if (!wrapper) return;
+                wrapper.scrollLeft += 1.4;
+                const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                if (wrapper.scrollLeft >= maxScroll - 6) {
+                  wrapper.scrollLeft = 0;
+                }
+              }, 20);
+            }
+
+            // ----- modal -----
+            function openModal(videoId, title, views) {
+              const overlay = document.getElementById("modalOverlay");
+              const iframe = document.getElementById("modalIframe");
+              const titleEl = document.getElementById("modalTitle");
+              const descEl = document.getElementById("modalDesc");
+
+              iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&controls=1&showinfo=1&modestbranding=1`;
+              titleEl.textContent = title || "Stock video";
+              descEl.textContent = `Trading insight · ${views || "popular"} views worldwide`;
+
+              overlay.classList.add("active");
+              document.body.style.overflow = "hidden";
+              pauseScroll(true);
+            }
+
+            function closeModal() {
+              const overlay = document.getElementById("modalOverlay");
+              const iframe = document.getElementById("modalIframe");
+              overlay.classList.remove("active");
+              iframe.src = "";
+              document.body.style.overflow = "";
+              pauseScroll(false);
+            }
+
+            // ----- modal events -----
+            document
+              .getElementById("modalCloseBtn")
+              .addEventListener("click", closeModal);
+            document
+              .getElementById("modalOverlay")
+              .addEventListener("click", function (e) {
+                if (e.target === this) closeModal();
+              });
+            document.addEventListener("keydown", function (e) {
+              if (
+                e.key === "Escape" &&
+                document
+                  .getElementById("modalOverlay")
+                  .classList.contains("active")
+              ) {
+                closeModal();
+              }
+            });
+
+            // ----- init -----
+            buildCards();
+            setTimeout(() => {
+              startAutoScroll();
+            }, 400);
+
+            window.addEventListener("beforeunload", function () {
+              if (scrollInterval) clearInterval(scrollInterval);
             });
           })();
         </script>
