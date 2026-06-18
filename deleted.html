@@ -1805,3 +1805,455 @@
     </script>
   </body>
 </html>
+
+<!-- ----live card------ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.5"
+    />
+    <title>Trading card · dark mini chart</title>
+    <!-- Inter font (optional but matches design) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* body {
+        background: #000;
+        font-family: "Inter", sans-serif;
+        padding: 40px 20px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } */
+      body {
+        background: #000;
+      }
+
+      .trade-section {
+        max-width: 1150px;
+        width: 100%;
+        margin: 4rem auto;
+      }
+
+      .trade-card {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        overflow: hidden;
+        min-height: 420px; /* reduced height – "small heighted card" */
+        border-radius: 50px;
+        background: linear-gradient(
+          90deg,
+          #141414 0%,
+          #090909 55%,
+          #050505 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+      }
+
+      /* vertical dividers – keep them but adapt to new height */
+      .trade-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.12);
+        z-index: 2;
+      }
+
+      .trade-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 44%;
+        width: 1px;
+        height: 100%;
+        border-left: 1px dashed rgba(255, 255, 255, 0.12);
+        z-index: 2;
+      }
+
+      /* LEFT SIDE — chart container + overlays */
+      .trade-left {
+        width: 55%;
+        height: 420px; /* match card min-height */
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: #0a0a0a; /* fallback dark */
+      }
+
+      /* TradingView widget – force dark background */
+      tv-mini-chart {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        background: #0a0a0a !important;
+        --tv-color-platform-background: #0a0a0a;
+        --tv-color-pane-background: #0a0a0a;
+        --tv-color-toolbar-button-background-hover: #1e1e1e;
+        --tv-color-toolbar-button-background-expanded: #1a1a1a;
+        --tv-color-toolbar-button-text: #ccc;
+        --tv-color-toolbar-button-text-hover: #fff;
+        --tv-color-toolbar-button-text-active: #42ff42;
+        --tv-color-toolbar-border: #2a2a2a;
+        --tv-color-toolbar-divider-background: #2a2a2a;
+        --tv-color-toolbar-toggle-button-background-active: #1e1e1e;
+        --tv-color-toolbar-toggle-button-background-active-hover: #2a2a2a;
+      }
+
+      /* force dark background on the shadow DOM / widget container */
+      .trade-left tv-mini-chart {
+        background: #0a0a0a !important;
+      }
+
+      /* PRICE TAG (top left) */
+      .trade-tag {
+        position: absolute;
+        top: 24px;
+        left: 30px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 12px 6px 18px;
+        background: #ff5b68;
+        color: #000;
+        border-radius: 40px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.2;
+        box-shadow: 0 4px 12px rgba(255, 91, 104, 0.3);
+        white-space: nowrap;
+      }
+
+      .trade-tag-arrow {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      /* PRICE LABEL (right side) */
+      .price-marker {
+        position: absolute;
+        right: 28px;
+        top: 140px;
+        z-index: 20;
+        background: #fff;
+        color: #000;
+        border-radius: 30px;
+        padding: 6px 14px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      /* BOTTOM BOXES (amount & duration) */
+      .trade-bottom {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 14px;
+        z-index: 20;
+        width: auto;
+        justify-content: center;
+      }
+
+      .trade-box {
+        width: 130px;
+        background: #1e1e1e;
+        border-radius: 16px;
+        text-align: center;
+        padding: 12px 6px;
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .trade-box span {
+        display: block;
+        color: #a0a0a0;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+
+      .trade-box strong {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      /* RIGHT SIDE — text */
+      .trade-right {
+        width: 45%;
+        text-align: center;
+        padding: 30px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-shrink: 0;
+        background: linear-gradient(
+          180deg,
+          rgb(16 16 16) 0%,
+          rgb(37 37 37) 60%,
+          #000000 100%
+        );
+      }
+
+      .trade-right h2 {
+        color: #fff;
+        font-size: 29px;
+        line-height: 26px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .trade-right h2 span {
+        color: rgb(106, 255, 65);
+        background: linear-gradient(145deg, #42ff42, #2ecc71);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .trade-right p {
+        margin-top: 20px;
+        color: #9b9b9b;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 991px) {
+        .trade-card {
+          flex-direction: column;
+          min-height: auto;
+          border-radius: 40px;
+        }
+
+        .trade-card::before,
+        .trade-card::after {
+          display: none;
+        }
+
+        .trade-left {
+          width: 100%;
+          height: 400px; /* still compact */
+          flex-shrink: 0;
+        }
+
+        .trade-right {
+          width: 100%;
+          padding: 36px 24px 40px;
+        }
+
+        .trade-right h2 {
+          font-size: 34px;
+        }
+
+        .trade-right p {
+          font-size: 18px;
+          max-width: 100%;
+        }
+
+        .trade-tag {
+          top: 20px;
+          left: 20px;
+          font-size: 16px;
+          padding: 4px 10px 4px 14px;
+        }
+
+        .trade-tag-arrow {
+          width: 28px;
+          height: 28px;
+          font-size: 14px;
+        }
+
+        .price-marker {
+          top: 110px;
+          right: 20px;
+          font-size: 14px;
+          padding: 5px 12px;
+        }
+
+        .trade-bottom {
+          bottom: 18px;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .trade-box {
+          width: 120px;
+          padding: 10px 6px;
+        }
+
+        .trade-box strong {
+          font-size: 22px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* body {
+              padding: 16px 10px;
+            } */
+
+        .trade-left {
+          height: 340px;
+        }
+
+        .trade-right h2 {
+          font-size: 28px;
+        }
+
+        .trade-right p {
+          font-size: 16px;
+          margin-top: 14px;
+        }
+
+        .trade-tag {
+          top: 14px;
+          left: 14px;
+          font-size: 14px;
+          padding: 4px 8px 4px 12px;
+          gap: 6px;
+        }
+
+        .trade-tag-arrow {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+        }
+
+        .price-marker {
+          top: 80px;
+          right: 14px;
+          font-size: 12px;
+          padding: 4px 10px;
+        }
+
+        .trade-box {
+          width: 100px;
+          padding: 8px 4px;
+        }
+
+        .trade-box strong {
+          font-size: 20px;
+        }
+
+        .trade-box span {
+          font-size: 11px;
+        }
+
+        .trade-bottom {
+          gap: 8px;
+          bottom: 14px;
+        }
+      }
+
+      /* small extra: ensure chart background stays dark even if widget loads */
+      .trade-left tv-mini-chart::part(container) {
+        background: #0a0a0a !important;
+      }
+
+      /* fix for any iframe or shadow root */
+      .trade-left iframe {
+        background: #0a0a0a !important;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="trade-section">
+      <div class="trade-card">
+        <!-- LEFT: chart + overlays -->
+        <div class="trade-left">
+          <!-- price tag -->
+          <!-- <div class="trade-tag">
+            <span>$1.00</span>
+            <div class="trade-tag-arrow">↘</div>
+          </div> -->
+
+          <!-- price marker -->
+          <!-- <div class="price-marker">1917.39</div> -->
+
+          <!-- TradingView Mini Chart – forced dark via CSS variables + inline style -->
+          <script
+            type="module"
+            src="https://widgets.tradingview-widget.com/w/en/tv-mini-chart.js"
+          ></script>
+          <tv-mini-chart
+            symbol="TVC:GOLD"
+            show-time-range
+            time-frame="7D"
+            show-time-scale
+            color-theme="dark"
+            style="
+              display: block;
+              width: 100%;
+              height: 100%;
+              background: #0a0a0a !important;
+            "
+          ></tv-mini-chart>
+
+          <!-- bottom boxes -->
+          <!-- <div class="trade-bottom">
+            <div class="trade-box">
+              <span>Amount</span>
+              <strong>$1</strong>
+            </div>
+            <div class="trade-box">
+              <span>Duration</span>
+              <strong>5 sec</strong>
+            </div>
+          </div> -->
+        </div>
+
+        <!-- RIGHT: text -->
+        <div class="trade-right">
+          <h2>
+            You choose<br />
+            the <span>amount and duration</span><br />
+            of your trade
+          </h2>
+          <p>
+            Open trades starting with as little as $1 with durations as low as 5
+            seconds
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

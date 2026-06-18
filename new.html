@@ -2,34 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
-    />
-    <title>Edu Stockx — Smart Investing & Stock Education</title>
-    <!-- Font Awesome 6 (free) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Features · Animated</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nacelle" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- Google Fonts for modern typography -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <style>
-      /* ===== CUSTOM COLOR PALETTE ===== */
-      :root {
-        --black: #101308;
-        --green: #073f25;
-        --green-light: #386f53;
-        --gold: #e6ac1a;
-        --gold-light: #f8d951;
-        --bronze: #a0520b;
-        --text: #dfdfd9;
-        --muted: #979d94;
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -37,931 +18,530 @@
       }
 
       body {
-        background: var(--black);
-        overflow-x: hidden;
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          sans-serif;
+        background: #000;
+        font-family: "Nacelle", sans-serif;
+        color: #fff;
       }
 
-      /* HERO SECTION */
-      .hero {
+      /* ----- main wrapper with distinctive class name ----- */
+      .tradeX-platinum {
+        width: 100%;
+        padding: 90px 20px;
+      }
+
+      .tradeX-platinum .container {
+        max-width: 920px;
+        margin: auto;
+      }
+
+      /* ----- heading ----- */
+      .tradeX-platinum .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .tradeX-platinum .section-title h2 {
+        font-family: "Nacelle", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 45px;
+        line-height: 40px;
+        color: #fff;
+        letter-spacing: -1px;
+        margin-bottom: 5rem;
+      }
+
+      .tradeX-platinum .section-title span {
+        display: block;
+      }
+
+      /* ----- grid ----- */
+      .tradeX-platinum .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .tradeX-platinum .card {
         position: relative;
-        min-height: 100vh;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        padding: 150px 6% 90px;
-        background: var(--black);
-        isolation: isolate;
+        border-radius: 24px;
+        background: #353535;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: 0.4s ease;
+        opacity: 0; /* hidden initially for animation */
+        transform: translateY(30px);
       }
 
-      /* video background – subtle stock-market vibe */
-      .bg-video {
+      /* keyframes for the fade-up */
+      @keyframes cardFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tradeX-platinum .card.animate-now {
+        animation: cardFadeUp 0.7s ease forwards;
+      }
+
+      .tradeX-platinum .card.animate-reset {
+        animation: none;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      /* desktop card sizes */
+      .tradeX-platinum .card.large {
+        grid-column: 1 / span 2;
+        height: 340px;
+        overflow: visible;
+      }
+
+      .tradeX-platinum .card.small {
+        height: 270px;
+      }
+
+      /* images */
+      .tradeX-platinum .small img {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -2;
-        pointer-events: none;
-        opacity: 0.5;
-        filter: grayscale(100%) brightness(1.5);
+        top: 8rem;
       }
 
-      .hero::before {
-        content: "";
+      .tradeX-platinum .img1 {
         position: absolute;
         inset: 0;
-        background: rgba(16, 19, 8, 0.681); /* heavy black overlay */
-        z-index: -1;
-      }
-
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgb(0 0 0 / 66%),
-          #0000007d 55%
-        );
-        z-index: -1;
-      }
-
-      .hero-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.015) 1px,
-            transparent 1px
-          );
-        background-size: 50px 50px;
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      /* glowing blur effects – using green/gold */
-      .blur {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(120px);
-        z-index: -1;
-      }
-      .blur1 {
-        width: 300px;
-        height: 300px;
-        background: rgba(7, 63, 37, 0.35);
-        top: -120px;
-        left: -120px;
-      }
-      .blur2 {
-        width: 260px;
-        height: 260px;
-        background: rgba(230, 172, 26, 0.15);
-        bottom: -120px;
-        right: -80px;
-      }
-      .blur3 {
-        width: 200px;
-        height: 200px;
-        background: rgba(56, 111, 83, 0.2);
-        top: 50%;
-        left: 50%;
-      }
-
-      .hero-container {
-        position: relative;
-        z-index: 5;
-        width: 100%;
-        max-width: 1500px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
-        gap: 60px;
-      }
-
-      /* ========= LEFT CONTENT ========= */
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 20px;
-        border-radius: 50px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(12px);
-        margin-bottom: 28px;
-        gap: 8px;
-      }
-      .hero-badge i {
-        color: var(--gold-light);
-        font-size: 0.85rem;
-      }
-      .hero-badge span {
-        color: var(--text);
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: -0.2px;
-      }
-
-      /* TYPING TITLE */
-      .hero-title-wrapper {
-        min-height: 180px;
-        margin-bottom: 26px;
-      }
-      .typed-headline {
-        font-size: clamp(2rem, 6vw, 3.8rem);
-        line-height: 1.2;
-        color: white;
-        font-weight: 800;
-        letter-spacing: -2px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: flex-start;
-        font-family: "Space Grotesk", monospace;
-      }
-      .typed-cursor {
-        font-size: inherit;
-        color: var(--gold-light);
-        opacity: 1;
-        animation: blink 0.7s infinite;
-        font-weight: 400;
-        margin-left: 6px;
-        display: inline-block;
-        line-height: 1;
-        text-shadow: 0 0 6px var(--gold);
-      }
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.15;
-        }
-      }
-      .typing-line {
-        display: inline-block;
-        white-space: pre-wrap;
-        word-break: break-word;
-        background: linear-gradient(135deg, #ffffff 30%, var(--gold-light) 80%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      .hero-text {
-        max-width: 600px;
-        color: var(--muted);
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: 38px;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 18px;
-        flex-wrap: wrap;
-        margin-bottom: 42px;
-      }
-      .primary-btn,
-      .secondary-btn {
-        text-decoration: none;
-        font-weight: 700;
-        transition: 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .primary-btn {
-        background: linear-gradient(135deg, var(--green), var(--green-light));
-        color: white;
-        padding: 17px 32px;
-        border-radius: 60px;
-        box-shadow: 0 15px 40px rgba(7, 63, 37, 0.45);
-      }
-      .primary-btn:hover {
-        transform: translateY(-4px);
-        background: linear-gradient(135deg, var(--green-light), #4a8b6a);
-        box-shadow: 0 15px 40px rgba(7, 63, 37, 0.6);
-      }
-      .secondary-btn {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--text);
-        padding: 17px 30px;
-        border-radius: 60px;
-        backdrop-filter: blur(10px);
-      }
-      .secondary-btn:hover {
-        background: rgba(255, 255, 255, 0.06);
-        transform: translateY(-2px);
-        border-color: var(--gold);
-      }
-
-      .hero-trust {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        flex-wrap: wrap;
-      }
-      .trust-users {
-        display: flex;
-      }
-      .trust-users img {
-        width: 56px;
-        height: 56px;
+        width: 41%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 50%;
-        border: 3px solid var(--black);
-        margin-left: -15px;
-        background: #1a1f1a;
-      }
-      .trust-users img:first-child {
-        margin-left: 0;
-      }
-      .trust-info h4 {
-        color: var(--text);
-        font-size: 1rem;
-        margin-bottom: 4px;
-      }
-      .trust-info p {
-        color: var(--muted);
-        font-size: 0.85rem;
+        left: 28rem;
+        top: -22px;
+        overflow: visible;
       }
 
-      /* ========= ENHANCED ORBIT WRAPPER (9 services, fully upright) ========= */
-      .orbit-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 620px;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease-out;
-        transform-style: preserve-3d;
-      }
-
-      /* center logo */
-      .center-logo {
-        position: absolute;
-        width: 170px;
-        height: 170px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 30;
-      }
-      .logo-ring {
+      .tradeX-platinum .overlay {
         position: absolute;
         inset: 0;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(7, 63, 37, 0.4),
-          rgba(16, 19, 8, 0.98)
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.92) 0%,
+          rgba(0, 0, 0, 0.75) 35%,
+          rgba(0, 0, 0, 0.2) 70%,
+          transparent 100%
         );
-        border: 1px solid var(--gold);
-        box-shadow: 0 0 40px rgba(230, 172, 26, 0.2);
-        backdrop-filter: blur(12px);
-      }
-      .logo-inner {
-        position: relative;
-        text-align: center;
-        z-index: 2;
-      }
-      .logo-inner h2 {
-        font-size: 2.2rem;
-        line-height: 1;
-        font-weight: 800;
-        background: linear-gradient(125deg, #fff, var(--gold-light));
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .logo-inner span {
-        color: var(--gold-light);
-        font-size: 1.3rem;
-        font-weight: 700;
       }
 
-      /* orbit rings */
-      .orbit {
+      .tradeX-platinum .small .overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.75) 0%,
+          rgba(0, 0, 0, 0.25) 60%,
+          transparent 100%
+        );
+      }
+
+      /* ----- content "contentt" ----- */
+      .tradeX-platinum .contentt {
         position: absolute;
-        border-radius: 50%;
-        border: 1px solid rgba(230, 172, 26, 0.15);
-        box-shadow: 0 0 18px rgba(7, 63, 37, 0.15);
-        animation: rotateOrbit linear infinite;
-      }
-      .orbit-outer {
-        width: 540px;
-        height: 540px;
-        animation-duration: 38s;
-        border-top: 1px solid rgba(230, 172, 26, 0.3);
-        border-bottom: 1px dashed rgba(7, 63, 37, 0.3);
-      }
-      .orbit-mid {
-        width: 390px;
-        height: 390px;
-        animation-duration: 28s;
-        border-left: 1px solid rgba(230, 172, 26, 0.25);
-        border-right: 1px dashed rgba(56, 111, 83, 0.3);
-      }
-      .orbit-inner {
-        width: 250px;
-        height: 250px;
-        animation-duration: 18s;
-        border: 1px solid rgba(230, 172, 26, 0.2);
-      }
-
-      @keyframes rotateOrbit {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* service cards - counter rotation to stay upright */
-      .service-card {
-        position: absolute;
-        width: 175px;
-        padding: 10px 18px;
-        border-radius: 60px;
-        background: rgba(16, 19, 8, 0.92);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--text);
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.25s ease;
-        box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.8);
-        z-index: 25;
-        animation: counterRotate linear infinite;
-        transform-origin: center center;
-        white-space: nowrap;
-        font-size: 0.9rem;
-      }
-      .service-card:hover {
-        background: var(--green);
-        border-color: var(--gold-light);
-        transform: scale(1.05);
-        box-shadow: 0 20px 35px -8px #0a2a1a;
-      }
-      .orbit-outer .service-card {
-        animation-duration: 38s;
-        animation-name: counterRotate;
-      }
-      .orbit-mid .service-card {
-        animation-duration: 28s;
-        animation-name: counterRotate;
-      }
-      .orbit-inner .service-card {
-        animation-duration: 18s;
-        animation-name: counterRotate;
-      }
-
-      @keyframes counterRotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(-360deg);
-        }
-      }
-
-      .service-card i {
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(7, 63, 37, 0.4);
-        color: var(--gold-light);
-        font-size: 1.2rem;
-      }
-      .service-card span {
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: -0.2px;
-        white-space: nowrap;
-        background: linear-gradient(120deg, #f5f9ff, var(--gold-light));
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      /* Card positioning on orbits */
-      .orbit-outer .card-out-1 {
-        top: -28px;
-        left: 95px;
-      }
-      .orbit-outer .card-out-2 {
-        bottom: -28px;
-        right: 95px;
-      }
-      .orbit-outer .card-out-3 {
-        top: 42%;
-        right: -55px;
-      }
-      .orbit-outer .card-out-4 {
-        top: 55%;
-        left: -55px;
-      }
-
-      .orbit-mid .card-mid-1 {
-        top: -28px;
-        left: 130px;
-      }
-      .orbit-mid .card-mid-2 {
-        bottom: -28px;
-        right: 130px;
-      }
-      .orbit-mid .card-mid-3 {
-        top: 48%;
-        right: -45px;
-      }
-
-      .orbit-inner .card-in-1 {
-        top: -18px;
+        z-index: 3;
         left: 45px;
-      }
-      .orbit-inner .card-in-2 {
-        bottom: -18px;
-        right: 45px;
-      }
-
-      /* orbit glow */
-      .orbit-light {
-        position: absolute;
-        width: 540px;
-        height: 540px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(7, 63, 37, 0.15),
-          transparent 70%
-        );
-        filter: blur(40px);
-        z-index: 0;
-        pointer-events: none;
+        top: 30px;
+        max-width: 363px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .floating-particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: var(--gold-light);
-        border-radius: 50%;
-        opacity: 0.3;
-        filter: blur(1px);
-        animation: floatPulse 6s infinite alternate;
-        pointer-events: none;
-      }
-      @keyframes floatPulse {
-        0% {
-          transform: translateY(0px) scale(1);
-          opacity: 0.1;
-        }
-        100% {
-          transform: translateY(-20px) scale(1.5);
-          opacity: 0.5;
-        }
+      .tradeX-platinum .First {
+        left: 101px;
+        top: 6rem;
       }
 
-      /* ========= RESPONSIVE BREAKPOINTS ========= */
-      @media (max-width: 1200px) {
-        .hero-container {
-          gap: 40px;
-        }
-        .orbit-outer {
-          width: 480px;
-          height: 480px;
-        }
-        .orbit-mid {
-          width: 350px;
-          height: 350px;
-        }
-        .orbit-inner {
-          width: 220px;
-          height: 220px;
-        }
-        .service-card {
-          width: 160px;
-          padding: 8px 14px;
-          gap: 10px;
-        }
-        .service-card i {
-          width: 34px;
-          height: 34px;
-          font-size: 1rem;
-        }
-        .service-card span {
-          font-size: 0.75rem;
-        }
-        .orbit-outer .card-out-1 {
-          top: -22px;
-          left: 70px;
-        }
-        .orbit-outer .card-out-2 {
-          bottom: -22px;
-          right: 70px;
-        }
-        .orbit-outer .card-out-3 {
-          right: -45px;
-          top: 43%;
-        }
-        .orbit-outer .card-out-4 {
-          left: -45px;
-          top: 53%;
-        }
-        .orbit-mid .card-mid-1 {
-          top: -22px;
-          left: 110px;
-        }
-        .orbit-mid .card-mid-2 {
-          bottom: -22px;
-          right: 110px;
-        }
-        .orbit-mid .card-mid-3 {
-          right: -38px;
-          top: 47%;
-        }
-        .orbit-inner .card-in-1 {
-          top: -15px;
-          left: 35px;
-        }
-        .orbit-inner .card-in-2 {
-          bottom: -15px;
-          right: 35px;
-        }
+      /* typography */
+      .tradeX-platinum .card-title {
+        font-family: "Nacelle", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 24px;
+        color: rgb(255, 255, 255);
+        margin-bottom: 8px;
       }
 
-      @media (max-width: 1100px) {
-        .hero-container {
+      .tradeX-platinum .card-subtitle {
+        font-family: "Nacelle", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 9px;
+        color: rgb(135 135 135);
+        margin-bottom: 35px;
+      }
+
+      .tradeX-platinum .learn-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Nacelle", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 14px;
+        color: #32ff32;
+        text-decoration: none;
+      }
+
+      .tradeX-platinum .learn-more:hover {
+        gap: 12px;
+      }
+
+      .tradeX-platinum .btn-cards {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      /* ----- RESPONSIVE (≤768px) – content first, image below, width varies per feature ----- */
+      @media (max-width: 768px) {
+        .tradeX-platinum {
+          padding: 40px 16px;
+        }
+
+        .tradeX-platinum .section-title h2 {
+          font-size: 32px;
+          line-height: 38px;
+          margin-bottom: 2.5rem;
+        }
+
+        .tradeX-platinum .grid {
           grid-template-columns: 1fr;
-          text-align: center;
-          gap: 50px;
-        }
-        .hero-text {
-          margin: 0 auto 38px auto;
-        }
-        .hero-buttons {
-          justify-content: center;
-        }
-        .hero-trust {
-          justify-content: center;
-        }
-        .typed-headline {
-          justify-content: center;
-        }
-        .hero-badge {
-          margin-left: auto;
-          margin-right: auto;
-        }
-        .orbit-wrapper {
-          max-width: 520px;
-        }
-        .orbit-outer {
-          width: 460px;
-          height: 460px;
-        }
-        .orbit-mid {
-          width: 330px;
-          height: 330px;
-        }
-        .orbit-inner {
-          width: 210px;
-          height: 210px;
-        }
-      }
-
-      @media (max-width: 750px) {
-        .hero {
-          padding: 110px 20px 70px;
-        }
-        .hero-title-wrapper {
-          min-height: 140px;
-        }
-        .orbit-wrapper {
-          max-width: 420px;
-        }
-        .orbit-outer {
-          width: 380px;
-          height: 380px;
-        }
-        .orbit-mid {
-          width: 280px;
-          height: 280px;
-        }
-        .orbit-inner {
-          width: 180px;
-          height: 180px;
-        }
-        .service-card {
-          width: 135px;
-          padding: 7px 12px;
-          gap: 8px;
-        }
-        .service-card i {
-          width: 28px;
-          height: 28px;
-          font-size: 0.85rem;
-        }
-        .service-card span {
-          font-size: 0.65rem;
-        }
-        .center-logo {
-          width: 120px;
-          height: 120px;
-        }
-        .logo-inner h2 {
-          font-size: 1.6rem;
-        }
-        .logo-inner span {
-          font-size: 1rem;
+          gap: 20px;
         }
 
-        .orbit-outer .card-out-1 {
-          top: -18px;
-          left: 55px;
+        /* all cards become flexible, no fixed heights */
+        .tradeX-platinum .card {
+          height: auto !important;
+          min-height: 200px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          border-radius: 20px;
         }
-        .orbit-outer .card-out-2 {
-          bottom: -18px;
-          right: 55px;
-        }
-        .orbit-outer .card-out-3 {
-          right: -32px;
-          top: 44%;
-        }
-        .orbit-outer .card-out-4 {
-          left: -32px;
-          top: 52%;
-        }
-        .orbit-mid .card-mid-1 {
-          top: -18px;
-          left: 85px;
-        }
-        .orbit-mid .card-mid-2 {
-          bottom: -18px;
-          right: 85px;
-        }
-        .orbit-mid .card-mid-3 {
-          right: -30px;
-          top: 46%;
-        }
-        .orbit-inner .card-in-1 {
-          top: -12px;
-          left: 28px;
-        }
-        .orbit-inner .card-in-2 {
-          bottom: -12px;
-          right: 28px;
-        }
-      }
 
-      @media (max-width: 500px) {
-        .orbit-wrapper {
-          max-width: 360px;
+        .tradeX-platinum .card.large {
+          grid-column: auto;
+          height: auto !important;
+          min-height: 240px;
         }
-        .orbit-outer {
-          width: 330px;
-          height: 330px;
+
+        /* reset any inline height/top overrides */
+        .tradeX-platinum .card.small[style*="height:"] {
+          height: auto !important;
+          min-height: 200px;
         }
-        .orbit-mid {
-          width: 240px;
-          height: 240px;
+        .tradeX-platinum .card.small[style*="top:"] {
+          top: 0 !important;
         }
-        .orbit-inner {
-          width: 150px;
-          height: 150px;
+
+        /* images: positioned as part of the flow (content then image) */
+        .tradeX-platinum .card img {
+          position: relative !important;
+          inset: auto !important;
+          width: 100% !important;
+          height: auto !important;
+          object-fit: cover;
+          top: 0 !important;
+          left: 0 !important;
+          order: 2; /* image after content */
+          margin-top: 0;
+          display: block;
+          max-height: 180px;
+          border-radius: 0 0 20px 20px;
         }
-        .service-card {
-          width: 118px;
-          padding: 5px 10px;
+
+        /* demo card large image stays relative */
+        .tradeX-platinum .card.large .img1 {
+          position: relative !important;
+          width: 100% !important;
+          height: auto !important;
+          max-height: 180px;
+          left: 0 !important;
+          top: 0 !important;
+          order: 2;
+          border-radius: 0 0 20px 20px;
+        }
+
+        /* overlay: becomes subtle background gradient, not covering image */
+        .tradeX-platinum .overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.2) 80%,
+            transparent 100%
+          );
+          pointer-events: none;
+          border-radius: 20px;
+          z-index: 1;
+        }
+        .tradeX-platinum .small .overlay {
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.2) 80%,
+            transparent 100%
+          );
+        }
+        .First {
+          height: 215px;
+        }
+        /* .img1 {
+          max-height: 190px;
+          max-width: 259px;
+        } */
+
+        /* contentt: becomes static, above image, with natural spacing */
+        .tradeX-platinum .contentt {
+          position: relative !important;
+          left: 0 !important;
+          top: 0 !important;
+          max-width: 100%;
+          padding: 24px 20px 16px 20px;
+          align-items: flex-start;
+          z-index: 2;
+          order: 1;
+          background: transparent;
+          width: 100%;
+        }
+
+        .tradeX-platinum .First {
+          left: 0 !important;
+          top: 0 !important;
+          padding: 24px 20px 16px 20px;
+          height: 205px;
+        }
+
+        .tradeX-platinum .card-title {
+          font-size: 22px;
+          line-height: 26px;
+          margin-bottom: 4px;
+        }
+
+        .tradeX-platinum .card-subtitle {
+          font-size: 18px;
+          line-height: 22px;
+          margin-bottom: 16px;
+          color: #c0c0c0;
+        }
+
+        .tradeX-platinum .btn-cards {
+          padding: 10px 20px;
+          font-size: 13px;
+          margin-bottom: 10px;
+        }
+
+        .tradeX-platinum .learn-more {
+          font-size: 13px;
           gap: 6px;
         }
-        .service-card i {
-          width: 24px;
-          height: 24px;
-          font-size: 0.75rem;
-        }
-        .service-card span {
-          font-size: 0.6rem;
-        }
-        .center-logo {
-          width: 100px;
-          height: 100px;
-        }
-        .logo-inner h2 {
-          font-size: 1.3rem;
-        }
-        .logo-inner span {
-          font-size: 0.85rem;
+        .tradeX-platinum .learn-more:hover {
+          gap: 10px;
         }
 
-        .orbit-outer .card-out-1 {
-          top: -14px;
-          left: 40px;
+        /* card 2,3,4,5 – all follow same pattern */
+        .tradeX-platinum .card.small .contentt {
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-outer .card-out-2 {
-          bottom: -14px;
-          right: 40px;
+
+        /* specific fine-tune for card 5 (negative balance) */
+        .tradeX-platinum .card.small[style*="height:"] .contentt {
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-outer .card-out-3 {
-          right: -25px;
-          top: 45%;
+
+        /* width varies by feature: some cards may have longer text, naturally adapt */
+        .tradeX-platinum .card:nth-child(2) .contentt {
+          /* risk-free */
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-outer .card-out-4 {
-          left: -25px;
-          top: 51%;
+        .tradeX-platinum .card:nth-child(3) .contentt {
+          /* insured */
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-mid .card-mid-1 {
-          top: -14px;
-          left: 65px;
+        .tradeX-platinum .card:nth-child(4) .contentt {
+          /* stop loss */
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-mid .card-mid-2 {
-          bottom: -14px;
-          right: 65px;
+        .tradeX-platinum .card:nth-child(5) .contentt {
+          /* negative balance */
+          padding: 20px 20px 12px 20px;
         }
-        .orbit-mid .card-mid-3 {
-          right: -22px;
-          top: 45%;
+
+        /* ensure image covers width, maintains aspect */
+        .tradeX-platinum .card img,
+        .tradeX-platinum .card.large .img1 {
+          width: 100% !important;
+          height: auto !important;
+          max-height: 180px;
+          object-fit: cover;
+          border-radius: 0 0 20px 20px;
         }
-        .orbit-inner .card-in-1 {
-          top: -10px;
-          left: 20px;
+
+        /* card background becomes dark, content readable */
+        .tradeX-platinum .card {
+          background: #1e1e1e;
+          border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .orbit-inner .card-in-2 {
-          bottom: -10px;
-          right: 20px;
+
+        /* remove absolute positioning from any leftover inline style */
+        .tradeX-platinum .card .contentt[style*="top:"] {
+          top: 0 !important;
+          position: relative !important;
         }
-        .hero-badge span {
-          font-size: 0.7rem;
-        }
-        .hero-text {
-          font-size: 0.95rem;
+
+        /* small extra polish for very narrow screens */
+        @media (max-width: 480px) {
+          .tradeX-platinum .section-title h2 {
+            font-size: 26px;
+            line-height: 32px;
+          }
+          .tradeX-platinum .card {
+            min-height: 135px;
+            justify-content: center;
+          }
+          .tradeX-platinum .card-title {
+            font-size: 19px;
+            line-height: 22px;
+          }
+          .tradeX-platinum .card-subtitle {
+            font-size: 15px;
+            line-height: 18px;
+            margin-bottom: 12px;
+          }
+          .tradeX-platinum .btn-cards {
+            padding: 8px 16px;
+            font-size: 12px;
+          }
+          .tradeX-platinum .contentt {
+            padding: 16px 16px 10px 16px;
+          }
+          .tradeX-platinum .card img,
+          .tradeX-platinum .card.large .img1 {
+            max-height: 190px;
+          }
         }
       }
     </style>
   </head>
   <body>
-    <section class="hero">
-      <video autoplay muted loop playsinline class="bg-video">
-        <source src="images/v1 (1).mp4" type="video/mp4" />
-      </video>
-      <div class="hero-overlay"></div>
-      <div class="hero-grid"></div>
-      <!-- <div class="blur blur1"></div>
-      <div class="blur blur2"></div>
-      <div class="blur blur3"></div> -->
-
-      <div class="hero-container">
-        <!-- LEFT CONTENT -->
-        <div class="hero-content">
-          <div class="hero-badge">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>★ Trusted by 4200+ investors & traders</span>
-          </div>
-
-          <div class="hero-title-wrapper">
-            <div class="typed-headline">
-              <span class="typing-line" id="typed-line"></span>
-              <span class="typed-cursor" id="static-cursor">|</span>
-            </div>
-          </div>
-
-          <p class="hero-text">
-            Stock market education, live trading sessions, portfolio analytics,
-            risk management, options strategies, fundamental analysis &
-            personalized mentorship — all in one place.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#contact" class="primary-btn"
-              ><i class="fa-regular fa-calendar-check"></i> Start Learning
-              Free</a
-            >
-            <a href="#serve" class="secondary-btn"
-              ><i class="fa-regular fa-compass"></i> Explore Services</a
-            >
-          </div>
-
-          <div class="hero-trust">
-            <div class="trust-users">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200"
-                alt="client"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200"
-                alt="client"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200"
-                alt="client"
-              />
-            </div>
-            <div class="trust-info">
-              <h4>
-                <i class="fa-solid fa-star" style="color: var(--gold)"></i>
-                4.9/5 Google Rating
-              </h4>
-              <p>Expert Mentors • Live Trading • Community</p>
-            </div>
-          </div>
+    <section class="tradeX-platinum" id="tradeSection">
+      <div class="container">
+        <div class="section-title">
+          <h2>
+            Explore trading
+            <span>with risk-free instruments</span>
+          </h2>
         </div>
 
-        <!-- RIGHT SIDE ENHANCED ORBIT: 9 stock-market services -->
-        <div class="orbit-wrapper" id="orbitWrapper">
-          <div class="orbit-light"></div>
-          <div
-            class="floating-particle"
-            style="top: 12%; left: 8%; animation-duration: 5s"
-          ></div>
-          <div
-            class="floating-particle"
-            style="
-              bottom: 18%;
-              right: 10%;
-              background: var(--green-light);
-              animation-duration: 6.5s;
-            "
-          ></div>
-          <div
-            class="floating-particle"
-            style="
-              top: 45%;
-              right: 20%;
-              background: var(--gold);
-              animation-duration: 4.2s;
-            "
-          ></div>
+        <div class="grid">
+          <!-- CARD 1 – large (demo) -->
+          <div class="card large">
+            <div class="overlay"></div>
+            <div class="contentt First">
+              <div class="card-title">Demo account</div>
+              <div class="card-subtitle">designed for practice</div>
+              <a href="#" class="btn-cards"> Try now </a>
+              <br />
+              <a href="#" class="learn-more">
+                Learn more
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+            <img
+              class="img1"
+              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/desktop_v2.DJuPOcbc_Z2p7cKf.avif"
+              alt="demo"
+            />
+          </div>
 
-          <!-- center logo -->
-          <div class="center-logo">
-            <div class="logo-ring"></div>
-            <div class="logo-inner">
-              <h2>Edu</h2>
-              <span>Stockx</span>
+          <!-- CARD 2 – small (risk-free) -->
+          <div class="card small" style="height: 401px">
+            <img
+              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.D6JQG9Io_Z9yb1p.avif"
+              alt="risk-free"
+            />
+            <div class="overlay"></div>
+            <div class="contentt">
+              <div class="card-title">Risk-free trades</div>
+              <div class="card-subtitle">allow you to trade confidently</div>
+              <a href="#" class="learn-more">
+                Learn more
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
             </div>
           </div>
 
-          <!-- Outer Orbit (4 cards) -->
-          <div class="orbit orbit-outer">
-            <div class="service-card card-out-1">
-              <i class="fas fa-chart-line"></i><span>Technical Analysis</span>
-            </div>
-            <div class="service-card card-out-2">
-              <i class="fas fa-robot"></i><span>Algo Trading</span>
-            </div>
-            <div class="service-card card-out-3">
-              <i class="fas fa-shield-alt"></i><span>Risk Management</span>
-            </div>
-            <div class="service-card card-out-4">
-              <i class="fas fa-brain"></i><span>Psychology</span>
-            </div>
-          </div>
-
-          <!-- Mid Orbit (3 cards) -->
-          <div class="orbit orbit-mid">
-            <div class="service-card card-mid-1">
-              <i class="fas fa-calculator"></i><span>Options Strategies</span>
-            </div>
-            <div class="service-card card-mid-2">
-              <i class="fas fa-search-dollar"></i
-              ><span>Fundamental Analysis</span>
-            </div>
-            <div class="service-card card-mid-3">
-              <i class="fas fa-tachometer-alt"></i
-              ><span>Portfolio Tracker</span>
+          <!-- CARD 3 – small (insured deposits) -->
+          <div class="card small">
+            <img
+              style="width: 97%; height: 52%"
+              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image_condenced.CdPcjJqo_Z86nei.avif"
+              alt="insured"
+            />
+            <div class="overlay"></div>
+            <div class="contentt">
+              <div class="card-title">Insured deposits</div>
+              <a href="#" class="learn-more">
+                Learn more
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
             </div>
           </div>
 
-          <!-- Inner Orbit (2 cards) -->
-          <div class="orbit orbit-inner">
-            <div class="service-card card-in-1">
-              <i class="fas fa-users"></i><span>Live Mentorship</span>
+          <!-- CARD 4 – small (stop loss) -->
+          <div class="card small">
+            <div class="overlay"></div>
+            <div class="contentt" style="top: 100px">
+              <div class="card-title">Stop loss/Take profit</div>
+              <div class="card-subtitle">close the trade on your terms</div>
+              <a href="#" class="learn-more">
+                Learn more
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
             </div>
-            <div class="service-card card-in-2">
-              <i class="fas fa-tv"></i><span>Daily Market Wrap</span>
+          </div>
+
+          <!-- CARD 5 – small (negative balance) -->
+          <div class="card small" style="height: 395px; top: -8rem">
+            <img
+              style="width: 100%; height: 67%"
+              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.CTF7lwiU_1zCzRs.avif"
+              alt="negative balance"
+            />
+            <div class="overlay"></div>
+            <div class="contentt">
+              <div class="card-title">Negative balance protection</div>
+              <div class="card-subtitle">risk only your trade amount</div>
+              <a href="#" class="learn-more">
+                Learn more
+                <i class="fa-solid fa-chevron-right"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -970,183 +550,59 @@
 
     <script>
       (function () {
-        // ========== TYPING EFFECT WITH REPEAT ==========
-        const typedLine = document.getElementById("typed-line");
-        const cursorSpan = document.getElementById("static-cursor");
+        const section = document.getElementById("tradeSection");
+        const cards = section.querySelectorAll(".card");
+        const delays = [0.05, 0.2, 0.35, 0.5, 0.65];
 
-        if (typedLine) {
-          const messages = [
-            "Master the Stock Market with Edu Stockx",
-            "From Zero to Trader — Live Sessions",
-            "Smart Investing, Smarter Future",
-            "Trade with Confidence & Clarity",
-          ];
-
-          let messageIndex = 0;
-          let charPos = 0;
-          let isDeleting = false;
-          let typingTimeout = null;
-
-          function updateTyping() {
-            const currentMessage = messages[messageIndex % messages.length];
-
-            if (!isDeleting && charPos <= currentMessage.length) {
-              typedLine.innerHTML = currentMessage.substring(0, charPos);
-              if (cursorSpan) cursorSpan.style.display = "inline-block";
-
-              if (charPos === currentMessage.length) {
-                typingTimeout = setTimeout(() => {
-                  isDeleting = true;
-                  updateTyping();
-                }, 10000);
-                return;
-              } else {
-                charPos++;
-                typingTimeout = setTimeout(updateTyping, 70);
-              }
-            } else if (isDeleting && charPos >= 0) {
-              typedLine.innerHTML = currentMessage.substring(0, charPos);
-              if (cursorSpan) cursorSpan.style.display = "inline-block";
-
-              if (charPos === 0) {
-                isDeleting = false;
-                messageIndex++;
-                charPos = 0;
-                typingTimeout = setTimeout(updateTyping, 180);
-              } else {
-                charPos--;
-                typingTimeout = setTimeout(updateTyping, 45);
-              }
-            }
-          }
-
-          typedLine.innerHTML = "";
-          if (cursorSpan) cursorSpan.style.display = "inline-block";
-          updateTyping();
-        }
-
-        // ========== CLICK HANDLERS FOR SERVICE CARDS ==========
-        const cards = document.querySelectorAll(".service-card");
-        cards.forEach((card) => {
-          card.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const serviceSpan = card.querySelector("span");
-            const serviceName = serviceSpan
-              ? serviceSpan.innerText.trim()
-              : "Service";
-
-            const toast = document.createElement("div");
-            toast.innerText = `📈 ${serviceName} — Book a free demo now!`;
-            toast.style.position = "fixed";
-            toast.style.bottom = "28px";
-            toast.style.left = "50%";
-            toast.style.transform = "translateX(-50%)";
-            toast.style.backgroundColor = "#101308d9";
-            toast.style.backdropFilter = "blur(20px)";
-            toast.style.color = "#DFDFD9";
-            toast.style.padding = "14px 30px";
-            toast.style.borderRadius = "70px";
-            toast.style.fontWeight = "600";
-            toast.style.border = "1px solid #E6AC1A";
-            toast.style.boxShadow = "0 15px 30px rgba(0,0,0,0.9)";
-            toast.style.zIndex = "10000";
-            toast.style.fontFamily = "Inter, sans-serif";
-            toast.style.fontSize = "0.9rem";
-            toast.style.letterSpacing = "-0.2px";
-            document.body.appendChild(toast);
-            setTimeout(() => {
-              toast.style.opacity = "0";
-              setTimeout(() => toast.remove(), 500);
-            }, 2800);
-
-            console.log(`Selected service: ${serviceName}`);
-          });
-        });
-
-        // ========== VIDEO FALLBACK ==========
-        const videoBg = document.querySelector(".bg-video");
-        if (videoBg) {
-          videoBg.addEventListener("error", function () {
-            this.style.display = "none";
-          });
-          videoBg.play().catch(() => {});
-        }
-
-        // ========== 3D TILT EFFECT FOR ORBIT WRAPPER ==========
-        const orbitWrap = document.getElementById("orbitWrapper");
-        if (orbitWrap) {
-          document.addEventListener("mousemove", (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
-            orbitWrap.style.transform = `perspective(1000px) rotateY(${xAxis * 0.5}deg) rotateX(${yAxis * -0.3}deg)`;
-          });
-          orbitWrap.addEventListener("mouseleave", () => {
-            orbitWrap.style.transform =
-              "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+        function replayAnimation() {
+          cards.forEach((card, index) => {
+            card.classList.remove("animate-now", "animate-reset");
+            void card.offsetWidth;
+            card.classList.add("animate-reset");
+            void card.offsetWidth;
+            const delay = delays[index] || 0.1;
+            card.style.animationDelay = delay + "s";
+            card.classList.remove("animate-reset");
+            card.classList.add("animate-now");
           });
         }
 
-        // ========== RESPONSIVE POSITION ADJUSTMENTS ==========
-        function adjustOrbitResponsive() {
-          const width = window.innerWidth;
-          const out3 = document.querySelector(".card-out-3");
-          const out4 = document.querySelector(".card-out-4");
-          const mid3 = document.querySelector(".card-mid-3");
-
-          if (width <= 750 && width > 500) {
-            if (out3) out3.style.right = "-32px";
-            if (out4) out4.style.left = "-32px";
-            if (mid3) mid3.style.right = "-30px";
-          } else if (width <= 500) {
-            if (out3) out3.style.right = "-25px";
-            if (out4) out4.style.left = "-25px";
-            if (mid3) mid3.style.right = "-22px";
-          } else if (width <= 1200) {
-            if (out3) out3.style.right = "-45px";
-            if (out4) out4.style.left = "-45px";
-            if (mid3) mid3.style.right = "-38px";
-          } else {
-            if (out3) out3.style.right = "-55px";
-            if (out4) out4.style.left = "-55px";
-            if (mid3) mid3.style.right = "-45px";
+        function checkAndPlay() {
+          const rect = section.getBoundingClientRect();
+          const winHeight = window.innerHeight;
+          if (rect.top < winHeight * 0.7 && rect.bottom > 0) {
+            replayAnimation();
           }
         }
 
-        window.addEventListener("resize", adjustOrbitResponsive);
-        adjustOrbitResponsive();
-
-        // Additional style fixes
-        const styleFix = document.createElement("style");
-        styleFix.textContent = `
-      .orbit-outer .service-card, .orbit-mid .service-card, .orbit-inner .service-card {
-        backface-visibility: hidden;
-        -webkit-font-smoothing: antialiased;
-        will-change: transform;
-      }
-      .typed-headline {
-        align-items: baseline;
-        flex-wrap: wrap;
-      }
-      .typed-cursor {
-        display: inline-block;
-        margin-left: 6px;
-        line-height: 1;
-        vertical-align: baseline;
-      }
-      @media (max-width: 700px) {
-        .typed-headline {
-          justify-content: center;
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  replayAnimation();
+                }
+              });
+            },
+            { threshold: 0.3 },
+          );
+          observer.observe(section);
+        } else {
+          window.addEventListener(
+            "scroll",
+            function () {
+              const rect = section.getBoundingClientRect();
+              const winHeight = window.innerHeight;
+              if (rect.top < winHeight * 0.7 && rect.bottom > 0) {
+                replayAnimation();
+              }
+            },
+            { passive: true },
+          );
         }
-        .typed-cursor {
-          margin-left: 4px;
-        }
-      }
-    `;
-        document.head.appendChild(styleFix);
 
-        console.log(
-          "Edu Stockx Hero Ready: 9 stock-market services — all cards stay perfectly upright with counter-rotation!",
-        );
+        window.addEventListener("load", checkAndPlay);
+        setTimeout(checkAndPlay, 200);
       })();
     </script>
   </body>
