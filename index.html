@@ -2026,6 +2026,549 @@
       </body>
     </html>
 
+    <!-- ================================================================
+     HOW IT WORKS – 4 cards | Mobile & Tablet: 1 column
+     + Intersection Observer: animated every time section is viewed
+     ================================================================ -->
+    <section class="hiw-section" id="hiw-section">
+      <div class="hiw-container">
+        <h2 class="hiw-title">How It Works</h2>
+
+        <div class="hiw-grid" id="hiw-grid">
+          <!-- Card 1 – Blue -->
+          <div class="hiw-card hiw-card--blue" data-delay="0.05">
+            <div class="hiw-card-inner">
+              <div class="hiw-content">
+                <svg
+                  class="hiw-icon-svg"
+                  viewBox="0 0 256 256"
+                  fill="currentColor"
+                >
+                  <rect width="256" height="256" fill="none" />
+                  <path
+                    d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"
+                  />
+                </svg>
+                <span class="hiw-tag">EVALUATION PROCESS</span>
+                <h3>Prove your skills</h3>
+                <p>
+                  Prove your skills in a 1‑Step FTMO Challenge or 2‑Step
+                  Evaluation Process and gain your FTMO Account.
+                </p>
+              </div>
+              <img
+                class="hiw-image"
+                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100907/img-evaluation-process.webp"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <!-- Card 2 – Green -->
+          <div class="hiw-card hiw-card--green" data-delay="0.15">
+            <div class="hiw-card-inner">
+              <div class="hiw-content">
+                <svg
+                  class="hiw-icon-svg"
+                  viewBox="0 0 256 256"
+                  fill="currentColor"
+                >
+                  <rect width="256" height="256" fill="none" />
+                  <path
+                    d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm12,152h-4v8a8,8,0,0,1-16,0v-8H104a8,8,0,0,1,0-16h36a12,12,0,0,0,0-24H116a28,28,0,0,1,0-56h4V72a8,8,0,0,1,16,0v8h16a8,8,0,0,1,0,16H116a12,12,0,0,0,0,24h24a28,28,0,0,1,0,56Z"
+                  />
+                </svg>
+                <span class="hiw-tag">FTMO ACCOUNT</span>
+                <h3>Earn real-money rewards</h3>
+                <p>
+                  Trade in a simulated environment and earn performance‑based
+                  rewards.
+                </p>
+              </div>
+              <img
+                class="hiw-image"
+                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18105222/img-ftmo-reward-account-80.webp"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <!-- Card 3 – Orange -->
+          <div class="hiw-card hiw-card--orange" data-delay="0.25">
+            <div class="hiw-card-inner">
+              <div class="hiw-content">
+                <svg
+                  class="hiw-icon-svg"
+                  viewBox="0 0 256 256"
+                  fill="currentColor"
+                >
+                  <rect width="256" height="256" fill="none" />
+                  <path
+                    d="M239.75,90.81c0,.11,0,.21-.07.32L217,195a16,16,0,0,1-15.72,13H54.71A16,16,0,0,1,39,195L16.32,91.13c0-.11-.05-.21-.07-.32A16,16,0,0,1,44,77.39l33.67,36.29,35.8-80.29a1,1,0,0,0,0-.1,16,16,0,0,1,29.06,0,1,1,0,0,0,0,.1l35.8,80.29L212,77.39a16,16,0,0,1,27.71,13.42Z"
+                  />
+                </svg>
+                <span class="hiw-tag">PREMIUM PROGRAMME</span>
+                <h3>Achieve More.<br />Gain More.</h3>
+                <p>
+                  Access exclusive benefits with Premium Programme and Quantlane
+                  by FTMO.
+                </p>
+              </div>
+              <img
+                class="hiw-image"
+                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100922/img-premium-programe-4x.webp"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <!-- Card 4 – Purple -->
+          <div class="hiw-card hiw-card--purple" data-delay="0.35">
+            <div class="hiw-card-inner">
+              <div class="hiw-content">
+                <svg
+                  class="hiw-icon-svg"
+                  viewBox="0 0 256 256"
+                  fill="currentColor"
+                >
+                  <rect width="256" height="256" fill="none" />
+                  <path
+                    d="M216,152v16a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152a72,72,0,0,1,72-72h32A72,72,0,0,1,216,152Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  />
+                  <path
+                    d="M128,72a32,32,0,1,0-32-32A32,32,0,0,0,128,72Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  />
+                  <path
+                    d="M184,80a24,24,0,1,0-24-24A24,24,0,0,0,184,80Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  />
+                </svg>
+                <span class="hiw-tag">COMMUNITY</span>
+                <h3>Join thousands of traders</h3>
+                <p>
+                  Connect with a global community, share insights, and grow
+                  together in the FTMO ecosystem.
+                </p>
+              </div>
+              <img
+                class="hiw-image"
+                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/12142852/pre-footer-screen-global.webp"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* ================================================================
+       SELF‑CONTAINED STYLES – no external dependencies
+       ================================================================ */
+      .hiw-section {
+        background: #09090b;
+        width: 100%;
+        padding: 60px 20px 90px 20px;
+        font-family: "Poppins", "Roboto", sans-serif;
+        box-sizing: border-box;
+      }
+
+      .hiw-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hiw-title {
+        text-align: center;
+        color: #fff;
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 48px;
+        letter-spacing: -0.02em;
+        opacity: 0;
+        transform: translateY(-12px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .hiw-title.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== 4‑COLUMN GRID (desktop only) ===== */
+      .hiw-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .hiw-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.3s ease; /* keep hover transform */
+      }
+      .hiw-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hiw-card:hover {
+        transform: translateY(-6px);
+      }
+      /* keep hover when visible */
+      .hiw-card.visible:hover {
+        transform: translateY(-6px);
+      }
+
+      .hiw-card-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 28px 0 28px;
+        position: relative;
+        z-index: 2;
+        min-height: 380px;
+      }
+
+      /* ===== GRADIENT BACKGROUNDS ===== */
+      .hiw-card--blue .hiw-card-inner {
+        background: linear-gradient(
+          180deg,
+          #4ea7ff 0%,
+          #0d4fa8 50%,
+          #0a0a0f 100%
+        );
+      }
+      .hiw-card--green .hiw-card-inner {
+        background: linear-gradient(
+          180deg,
+          #00d26a 0%,
+          #0a8f47 50%,
+          #0a0a0f 100%
+        );
+      }
+      .hiw-card--orange .hiw-card-inner {
+        background: linear-gradient(
+          180deg,
+          #e58b0b 0%,
+          #8b4200 50%,
+          #0a0a0f 100%
+        );
+      }
+      .hiw-card--purple .hiw-card-inner {
+        background: linear-gradient(
+          180deg,
+          #a78bfa 0%,
+          #6d28d9 50%,
+          #0a0a0f 100%
+        );
+      }
+
+      /* ===== DARK OVERLAY ===== */
+      .hiw-card-inner::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 35%,
+          rgba(0, 0, 0, 0.85) 100%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* ===== CONTENT ===== */
+      .hiw-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hiw-icon-svg {
+        width: 32px;
+        height: 32px;
+        color: #fff;
+        margin-bottom: 18px;
+        flex-shrink: 0;
+      }
+
+      .hiw-tag {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 10px;
+      }
+
+      .hiw-content h3 {
+        color: #fff;
+        font-size: 30px;
+        line-height: 1.1;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+
+      .hiw-content p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 15px;
+        line-height: 1.6;
+        font-weight: 400;
+        max-width: 90%;
+        margin-bottom: 16px;
+      }
+
+      .hiw-image {
+        width: 100%;
+        max-width: 90%;
+        height: auto;
+        margin-top: auto;
+        align-self: center;
+        position: relative;
+        z-index: 2;
+        display: block;
+        pointer-events: none;
+        object-fit: contain;
+      }
+
+      /* ================================================================
+       DESKTOP ONLY (≥1025px) – wider cards, less text padding, centered text
+       ================================================================ */
+      @media (min-width: 1025px) {
+        .hiw-container {
+          max-width: 1440px;
+        }
+        .hiw-grid {
+          gap: 16px;
+        }
+        .hiw-card-inner {
+          padding: 20px 16px 0 16px;
+        }
+        .hiw-content {
+          align-items: center;
+          text-align: center;
+        }
+        .hiw-content p {
+          max-width: 100%;
+        }
+        .hiw-icon-svg {
+          align-self: center;
+        }
+      }
+
+      /* ================================================================
+       RESPONSIVE – TABLET & PHONE (≤1024px) – 1 COLUMN
+       ================================================================ */
+      @media (max-width: 1024px) {
+        .hiw-section {
+          padding: 40px 12px 60px 12px !important;
+        }
+        .hiw-container {
+          padding: 0 8px !important;
+        }
+        .hiw-grid {
+          grid-template-columns: 1fr !important;
+          gap: 16px !important;
+        }
+        .hiw-title {
+          font-size: 28px !important;
+          margin-bottom: 32px !important;
+        }
+        .hiw-card {
+          min-height: 240px !important;
+          height: 240px !important;
+          flex-direction: column !important;
+        }
+        .hiw-card-inner {
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          align-items: flex-end !important;
+          min-height: 240px !important;
+          height: 240px !important;
+          padding: 16px 14px 0 14px !important;
+          gap: 10px !important;
+        }
+        .hiw-card-inner::after {
+          background: linear-gradient(
+            to bottom right,
+            transparent 30%,
+            rgba(0, 0, 0, 0.9) 100%
+          ) !important;
+        }
+        .hiw-content {
+          flex: 1 1 55% !important;
+          padding-bottom: 12px !important;
+          justify-content: flex-start !important;
+        }
+        .hiw-content h3 {
+          font-size: 18px !important;
+          margin-bottom: 4px !important;
+          line-height: 1.2 !important;
+        }
+        .hiw-content p {
+          font-size: 12px !important;
+          max-width: 100% !important;
+          margin-bottom: 4px !important;
+          line-height: 1.4 !important;
+        }
+        .hiw-tag {
+          font-size: 10px !important;
+          margin-bottom: 4px !important;
+          letter-spacing: 0.06em !important;
+        }
+        .hiw-icon-svg {
+          width: 20px !important;
+          height: 20px !important;
+          margin-bottom: 8px !important;
+        }
+        .hiw-image {
+          flex: 0 0 38% !important;
+          max-width: 38% !important;
+          align-self: flex-end !important;
+          margin-top: auto !important;
+          margin-left: auto !important;
+          position: relative !important;
+          z-index: 2 !important;
+          object-fit: contain !important;
+        }
+        .hiw-card:hover {
+          transform: none !important;
+        }
+        /* keep visible state for mobile */
+        .hiw-card.visible:hover {
+          transform: none !important;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .hiw-section {
+          padding: 30px 8px 50px 8px !important;
+        }
+        .hiw-title {
+          font-size: 24px !important;
+          margin-bottom: 24px !important;
+        }
+        .hiw-card {
+          min-height: 200px !important;
+          height: 200px !important;
+        }
+        .hiw-card-inner {
+          min-height: 200px !important;
+          height: 200px !important;
+          padding: 12px 10px 0 14px !important;
+        }
+        .hiw-content {
+          flex: 1 1 52% !important;
+        }
+        .hiw-content h3 {
+          font-size: 18px !important;
+          margin-bottom: 6px !important;
+        }
+        .hiw-content p {
+          font-size: 13px !important;
+          line-height: 1.5 !important;
+        }
+        .hiw-tag {
+          font-size: 11px !important;
+          margin-bottom: 6px !important;
+        }
+        .hiw-image {
+          flex: 0 0 44% !important;
+          max-width: 44% !important;
+        }
+      }
+    </style>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const section = document.getElementById("hiw-section");
+        if (!section) return;
+
+        const title = section.querySelector(".hiw-title");
+        const cards = section.querySelectorAll(".hiw-card");
+
+        // set initial state (hidden) – fallback: if no visible class, hidden by default
+        // but we keep the CSS initial state: opacity 0, transform translateY(24px)
+
+        // Intersection Observer
+        let observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // title first
+                if (title) {
+                  title.classList.add("visible");
+                }
+                // cards one by one with delay
+                cards.forEach((card, index) => {
+                  let delay =
+                    parseFloat(card.getAttribute("data-delay")) ||
+                    0.1 * (index + 1);
+                  setTimeout(() => {
+                    card.classList.add("visible");
+                  }, delay * 1000);
+                });
+              } else {
+                // remove visible classes when section leaves viewport
+                if (title) {
+                  title.classList.remove("visible");
+                }
+                cards.forEach((card) => {
+                  card.classList.remove("visible");
+                });
+              }
+            });
+          },
+          {
+            threshold: 0.2, // trigger when 20% of section visible
+          },
+        );
+
+        observer.observe(section);
+
+        setTimeout(() => {
+          const rect = section.getBoundingClientRect();
+          const winHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top < winHeight - 100 && rect.bottom > 0) {
+          }
+        }, 100);
+      })();
+    </script>
+
     <!-- -----forex trading---- -->
     <!doctype html>
     <html lang="en">
@@ -3835,6 +4378,7 @@
         </section>
       </body>
     </html>
+
     <!-- ------faq---- -->
     <!doctype html>
     <html lang="en">
@@ -4721,6 +5265,414 @@
         </script>
       </body>
     </html>
+
+    <!-- -------community---- -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edu Stockx Community</title>
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+          }
+
+          body {
+            background: #000;
+            overflow-x: hidden;
+          }
+
+          .community-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+          }
+
+          /* Background */
+          .community-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("https://cfcdn.olymptrade.com/s6/v1.0.53/zeus/assets/bg.L1yfV3aR_kOvRX.avif")
+              center center/cover no-repeat;
+            filter: brightness(0.9);
+            animation: bgZoom 20s ease-in-out infinite alternate;
+          }
+
+          /* Dark overlay */
+          .community-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+              circle at center,
+              rgba(0, 0, 0, 0.1) 0%,
+              rgba(0, 0, 0, 0.55) 50%,
+              #000 100%
+            );
+          }
+
+          .cs-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            max-width: 1000px;
+            padding: 20px;
+            animation: fadeUp 1.3s ease;
+          }
+
+          .cs-title {
+            font-size: clamp(1.8rem, 4vw, 46px);
+            font-weight: 800;
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+          }
+
+          .cs-title span {
+            display: block;
+          }
+
+          /* Avatar row */
+          .cs-avatar-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+          }
+
+          .cs-avatar {
+            width: 85px;
+            height: 83px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #111;
+            margin-left: -18px;
+            position: relative;
+            transition: 0.4s;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+          }
+
+          .cs-avatar:nth-child(1) {
+            margin-left: 0;
+          }
+
+          .cs-avatar:hover {
+            transform: translateY(-10px) scale(1.08);
+            z-index: 5;
+          }
+
+          .cs-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .cs-plus {
+            background: #37ff14;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 90px;
+            font-weight: 300;
+            color: #111;
+          }
+
+          /* Button */
+          .cs-join-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #39ff14;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.4s;
+          }
+
+          .cs-join-btn:hover {
+            transform: translateX(8px);
+            text-shadow: 0 0 20px #39ff14;
+          }
+
+          .cs-arrow {
+            font-size: 34px;
+          }
+
+          /* Floating animation */
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-12px);
+            }
+          }
+
+          @keyframes bgZoom {
+            from {
+              transform: scale(1);
+            }
+            to {
+              transform: scale(1.08);
+            }
+          }
+
+          @keyframes fadeUp {
+            from {
+              opacity: 0;
+              transform: translateY(60px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          /* ===== RESPONSIVE ===== */
+          /* Keep desktop exactly as-is, then adjust for smaller screens */
+
+          @media (max-width: 992px) {
+            .cs-title {
+              font-size: clamp(1.8rem, 4vw, 42px);
+              margin-bottom: 45px;
+            }
+
+            .cs-avatar {
+              width: 80px;
+              height: 78px;
+              margin-left: -16px;
+            }
+
+            .cs-plus {
+              font-size: 80px;
+            }
+
+            .cs-join-btn {
+              font-size: 26px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .cs-title {
+              font-size: 38px;
+              margin-bottom: 38px;
+            }
+
+            .cs-avatar {
+              width: 72px;
+              height: 70px;
+              margin-left: -12px;
+              border-width: 3px;
+            }
+
+            .cs-plus {
+              font-size: 60px;
+            }
+
+            .cs-join-btn {
+              font-size: 22px;
+              gap: 8px;
+            }
+
+            .cs-arrow {
+              font-size: 28px;
+            }
+          }
+
+          @media (max-width: 600px) {
+            .cs-title {
+              font-size: 32px;
+              margin-bottom: 32px;
+            }
+
+            .cs-avatar {
+              width: 62px;
+              height: 60px;
+              margin-left: -10px;
+              border-width: 3px;
+            }
+
+            .cs-plus {
+              font-size: 48px;
+            }
+
+            .cs-join-btn {
+              font-size: 20px;
+              gap: 6px;
+            }
+
+            .cs-arrow {
+              font-size: 24px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .cs-title {
+              font-size: 28px;
+              margin-bottom: 28px;
+            }
+
+            .cs-avatar {
+              width: 54px;
+              height: 52px;
+              margin-left: -8px;
+              border-width: 2.5px;
+            }
+
+            .cs-plus {
+              font-size: 38px;
+            }
+
+            .cs-join-btn {
+              font-size: 18px;
+              gap: 5px;
+            }
+
+            .cs-arrow {
+              font-size: 22px;
+            }
+          }
+
+          @media (max-width: 400px) {
+            .cs-title {
+              font-size: 24px;
+              margin-bottom: 24px;
+            }
+
+            .cs-avatar {
+              width: 46px;
+              height: 44px;
+              margin-left: -6px;
+              border-width: 2px;
+            }
+
+            .cs-plus {
+              font-size: 32px;
+            }
+
+            .cs-join-btn {
+              font-size: 16px;
+              gap: 4px;
+            }
+
+            .cs-arrow {
+              font-size: 18px;
+            }
+          }
+
+          /* Prevent avatars from breaking into too many lines on very small screens */
+          @media (max-width: 360px) {
+            .cs-avatar {
+              width: 40px;
+              height: 38px;
+              margin-left: -5px;
+              border-width: 2px;
+            }
+
+            .cs-plus {
+              font-size: 26px;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <section class="community-section">
+          <div class="cs-content">
+            <h1 class="cs-title">
+              Edu Stockx operates
+              <span>in 13+ countries</span>
+            </h1>
+
+            <div class="cs-avatar-row">
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2VzfGVufDB8fDB8fHww994a43d?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1504593811423-6dd665756598?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?w=300"
+                  alt=""
+                />
+              </div>
+
+              <div class="cs-avatar cs-plus">+</div>
+            </div>
+
+            <a href="#" class="cs-join-btn">
+              Join our communities
+              <span class="cs-arrow">›</span>
+            </a>
+          </div>
+        </section>
+
+        <script>
+          // Avatar entrance animation
+          const avatars = document.querySelectorAll(".cs-avatar");
+
+          avatars.forEach((avatar, index) => {
+            avatar.style.opacity = "0";
+            avatar.style.transform = "translateY(60px)";
+
+            setTimeout(() => {
+              avatar.style.transition = "1s ease";
+              avatar.style.opacity = "1";
+              avatar.style.transform = "translateY(0)";
+            }, index * 180);
+          });
+        </script>
+      </body>
+    </html>
+
     <!-- ----footer----- -->
     <!doctype html>
     <html lang="en">

@@ -1,609 +1,441 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trading Features · Animated</title>
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nacelle" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<!-- ================================================================
+     HOW IT WORKS – 4 cards | Mobile & Tablet: 1 column
+     ================================================================ -->
+<section class="hiw-section">
+  <div class="hiw-container">
+    <h2 class="hiw-title">How It Works</h2>
 
-      body {
-        background: #000;
-        font-family: "Nacelle", sans-serif;
-        color: #fff;
-      }
-
-      /* ----- main wrapper with distinctive class name ----- */
-      .tradeX-platinum {
-        width: 100%;
-        padding: 90px 20px;
-      }
-
-      .tradeX-platinum .container {
-        max-width: 920px;
-        margin: auto;
-      }
-
-      /* ----- heading ----- */
-      .tradeX-platinum .section-title {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-
-      .tradeX-platinum .section-title h2 {
-        font-family: "Nacelle", sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 45px;
-        line-height: 40px;
-        color: #fff;
-        letter-spacing: -1px;
-        margin-bottom: 5rem;
-      }
-
-      .tradeX-platinum .section-title span {
-        display: block;
-      }
-
-      /* ----- grid ----- */
-      .tradeX-platinum .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .tradeX-platinum .card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 24px;
-        background: #353535;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: 0.4s ease;
-        opacity: 0; /* hidden initially for animation */
-        transform: translateY(30px);
-      }
-
-      /* keyframes for the fade-up */
-      @keyframes cardFadeUp {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .tradeX-platinum .card.animate-now {
-        animation: cardFadeUp 0.7s ease forwards;
-      }
-
-      .tradeX-platinum .card.animate-reset {
-        animation: none;
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      /* desktop card sizes */
-      .tradeX-platinum .card.large {
-        grid-column: 1 / span 2;
-        height: 340px;
-        overflow: visible;
-      }
-
-      .tradeX-platinum .card.small {
-        height: 270px;
-      }
-
-      /* images */
-      .tradeX-platinum .small img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        top: 8rem;
-      }
-
-      .tradeX-platinum .img1 {
-        position: absolute;
-        inset: 0;
-        width: 41%;
-        height: 100%;
-        object-fit: cover;
-        left: 28rem;
-        top: -22px;
-        overflow: visible;
-      }
-
-      .tradeX-platinum .overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.92) 0%,
-          rgba(0, 0, 0, 0.75) 35%,
-          rgba(0, 0, 0, 0.2) 70%,
-          transparent 100%
-        );
-      }
-
-      .tradeX-platinum .small .overlay {
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.75) 0%,
-          rgba(0, 0, 0, 0.25) 60%,
-          transparent 100%
-        );
-      }
-
-      /* ----- content "contentt" ----- */
-      .tradeX-platinum .contentt {
-        position: absolute;
-        z-index: 3;
-        left: 45px;
-        top: 30px;
-        max-width: 363px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .tradeX-platinum .First {
-        left: 101px;
-        top: 6rem;
-      }
-
-      /* typography */
-      .tradeX-platinum .card-title {
-        font-family: "Nacelle", sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 26px;
-        line-height: 24px;
-        color: rgb(255, 255, 255);
-        margin-bottom: 8px;
-      }
-
-      .tradeX-platinum .card-subtitle {
-        font-family: "Nacelle", sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 25px;
-        line-height: 9px;
-        color: rgb(135 135 135);
-        margin-bottom: 35px;
-      }
-
-      .tradeX-platinum .learn-more {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: "Nacelle", sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 14px;
-        color: #32ff32;
-        text-decoration: none;
-      }
-
-      .tradeX-platinum .learn-more:hover {
-        gap: 12px;
-      }
-
-      .tradeX-platinum .btn-cards {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%);
-        color: #000;
-        text-decoration: none;
-        border-radius: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-
-      /* ----- RESPONSIVE (≤768px) – content first, image below, width varies per feature ----- */
-      @media (max-width: 768px) {
-        .tradeX-platinum {
-          padding: 40px 16px;
-        }
-
-        .tradeX-platinum .section-title h2 {
-          font-size: 32px;
-          line-height: 38px;
-          margin-bottom: 2.5rem;
-        }
-
-        .tradeX-platinum .grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        /* all cards become flexible, no fixed heights */
-        .tradeX-platinum .card {
-          height: auto !important;
-          min-height: 200px;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          border-radius: 20px;
-        }
-
-        .tradeX-platinum .card.large {
-          grid-column: auto;
-          height: auto !important;
-          min-height: 240px;
-        }
-
-        /* reset any inline height/top overrides */
-        .tradeX-platinum .card.small[style*="height:"] {
-          height: auto !important;
-          min-height: 200px;
-        }
-        .tradeX-platinum .card.small[style*="top:"] {
-          top: 0 !important;
-        }
-
-        /* images: positioned as part of the flow (content then image) */
-        .tradeX-platinum .card img {
-          position: relative !important;
-          inset: auto !important;
-          width: 100% !important;
-          height: auto !important;
-          object-fit: cover;
-          top: 0 !important;
-          left: 0 !important;
-          order: 2; /* image after content */
-          margin-top: 0;
-          display: block;
-          max-height: 180px;
-          border-radius: 0 0 20px 20px;
-        }
-
-        /* demo card large image stays relative */
-        .tradeX-platinum .card.large .img1 {
-          position: relative !important;
-          width: 100% !important;
-          height: auto !important;
-          max-height: 180px;
-          left: 0 !important;
-          top: 0 !important;
-          order: 2;
-          border-radius: 0 0 20px 20px;
-        }
-
-        /* overlay: becomes subtle background gradient, not covering image */
-        .tradeX-platinum .overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0.2) 80%,
-            transparent 100%
-          );
-          pointer-events: none;
-          border-radius: 20px;
-          z-index: 1;
-        }
-        .tradeX-platinum .small .overlay {
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0.2) 80%,
-            transparent 100%
-          );
-        }
-        .First {
-          height: 215px;
-        }
-        /* .img1 {
-          max-height: 190px;
-          max-width: 259px;
-        } */
-
-        /* contentt: becomes static, above image, with natural spacing */
-        .tradeX-platinum .contentt {
-          position: relative !important;
-          left: 0 !important;
-          top: 0 !important;
-          max-width: 100%;
-          padding: 24px 20px 16px 20px;
-          align-items: flex-start;
-          z-index: 2;
-          order: 1;
-          background: transparent;
-          width: 100%;
-        }
-
-        .tradeX-platinum .First {
-          left: 0 !important;
-          top: 0 !important;
-          padding: 24px 20px 16px 20px;
-          height: 205px;
-        }
-
-        .tradeX-platinum .card-title {
-          font-size: 22px;
-          line-height: 26px;
-          margin-bottom: 4px;
-        }
-
-        .tradeX-platinum .card-subtitle {
-          font-size: 18px;
-          line-height: 22px;
-          margin-bottom: 16px;
-          color: #c0c0c0;
-        }
-
-        .tradeX-platinum .btn-cards {
-          padding: 10px 20px;
-          font-size: 13px;
-          margin-bottom: 10px;
-        }
-
-        .tradeX-platinum .learn-more {
-          font-size: 13px;
-          gap: 6px;
-        }
-        .tradeX-platinum .learn-more:hover {
-          gap: 10px;
-        }
-
-        /* card 2,3,4,5 – all follow same pattern */
-        .tradeX-platinum .card.small .contentt {
-          padding: 20px 20px 12px 20px;
-        }
-
-        /* specific fine-tune for card 5 (negative balance) */
-        .tradeX-platinum .card.small[style*="height:"] .contentt {
-          padding: 20px 20px 12px 20px;
-        }
-
-        /* width varies by feature: some cards may have longer text, naturally adapt */
-        .tradeX-platinum .card:nth-child(2) .contentt {
-          /* risk-free */
-          padding: 20px 20px 12px 20px;
-        }
-        .tradeX-platinum .card:nth-child(3) .contentt {
-          /* insured */
-          padding: 20px 20px 12px 20px;
-        }
-        .tradeX-platinum .card:nth-child(4) .contentt {
-          /* stop loss */
-          padding: 20px 20px 12px 20px;
-        }
-        .tradeX-platinum .card:nth-child(5) .contentt {
-          /* negative balance */
-          padding: 20px 20px 12px 20px;
-        }
-
-        /* ensure image covers width, maintains aspect */
-        .tradeX-platinum .card img,
-        .tradeX-platinum .card.large .img1 {
-          width: 100% !important;
-          height: auto !important;
-          max-height: 180px;
-          object-fit: cover;
-          border-radius: 0 0 20px 20px;
-        }
-
-        /* card background becomes dark, content readable */
-        .tradeX-platinum .card {
-          background: #1e1e1e;
-          border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        /* remove absolute positioning from any leftover inline style */
-        .tradeX-platinum .card .contentt[style*="top:"] {
-          top: 0 !important;
-          position: relative !important;
-        }
-
-        /* small extra polish for very narrow screens */
-        @media (max-width: 480px) {
-          .tradeX-platinum .section-title h2 {
-            font-size: 26px;
-            line-height: 32px;
-          }
-          .tradeX-platinum .card {
-            min-height: 135px;
-            justify-content: center;
-          }
-          .tradeX-platinum .card-title {
-            font-size: 19px;
-            line-height: 22px;
-          }
-          .tradeX-platinum .card-subtitle {
-            font-size: 15px;
-            line-height: 18px;
-            margin-bottom: 12px;
-          }
-          .tradeX-platinum .btn-cards {
-            padding: 8px 16px;
-            font-size: 12px;
-          }
-          .tradeX-platinum .contentt {
-            padding: 16px 16px 10px 16px;
-          }
-          .tradeX-platinum .card img,
-          .tradeX-platinum .card.large .img1 {
-            max-height: 190px;
-          }
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <section class="tradeX-platinum" id="tradeSection">
-      <div class="container">
-        <div class="section-title">
-          <h2>
-            Explore trading
-            <span>with risk-free instruments</span>
-          </h2>
-        </div>
-
-        <div class="grid">
-          <!-- CARD 1 – large (demo) -->
-          <div class="card large">
-            <div class="overlay"></div>
-            <div class="contentt First">
-              <div class="card-title">Demo account</div>
-              <div class="card-subtitle">designed for practice</div>
-              <a href="#" class="btn-cards"> Try now </a>
-              <br />
-              <a href="#" class="learn-more">
-                Learn more
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-            <img
-              class="img1"
-              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/desktop_v2.DJuPOcbc_Z2p7cKf.avif"
-              alt="demo"
-            />
+    <div class="hiw-grid">
+      <!-- Card 1 – Blue -->
+      <div class="hiw-card hiw-card--blue">
+        <div class="hiw-card-inner">
+          <div class="hiw-content">
+            <svg class="hiw-icon-svg" viewBox="0 0 256 256" fill="currentColor">
+              <rect width="256" height="256" fill="none" />
+              <path
+                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"
+              />
+            </svg>
+            <span class="hiw-tag">EVALUATION PROCESS</span>
+            <h3>Prove your skills</h3>
+            <p>
+              Prove your skills in a 1‑Step FTMO Challenge or 2‑Step Evaluation
+              Process and gain your FTMO Account.
+            </p>
           </div>
-
-          <!-- CARD 2 – small (risk-free) -->
-          <div class="card small" style="height: 401px">
-            <img
-              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.D6JQG9Io_Z9yb1p.avif"
-              alt="risk-free"
-            />
-            <div class="overlay"></div>
-            <div class="contentt">
-              <div class="card-title">Risk-free trades</div>
-              <div class="card-subtitle">allow you to trade confidently</div>
-              <a href="#" class="learn-more">
-                Learn more
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- CARD 3 – small (insured deposits) -->
-          <div class="card small">
-            <img
-              style="width: 97%; height: 52%"
-              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image_condenced.CdPcjJqo_Z86nei.avif"
-              alt="insured"
-            />
-            <div class="overlay"></div>
-            <div class="contentt">
-              <div class="card-title">Insured deposits</div>
-              <a href="#" class="learn-more">
-                Learn more
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- CARD 4 – small (stop loss) -->
-          <div class="card small">
-            <div class="overlay"></div>
-            <div class="contentt" style="top: 100px">
-              <div class="card-title">Stop loss/Take profit</div>
-              <div class="card-subtitle">close the trade on your terms</div>
-              <a href="#" class="learn-more">
-                Learn more
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- CARD 5 – small (negative balance) -->
-          <div class="card small" style="height: 395px; top: -8rem">
-            <img
-              style="width: 100%; height: 67%"
-              src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.CTF7lwiU_1zCzRs.avif"
-              alt="negative balance"
-            />
-            <div class="overlay"></div>
-            <div class="contentt">
-              <div class="card-title">Negative balance protection</div>
-              <div class="card-subtitle">risk only your trade amount</div>
-              <a href="#" class="learn-more">
-                Learn more
-                <i class="fa-solid fa-chevron-right"></i>
-              </a>
-            </div>
-          </div>
+          <img
+            class="hiw-image"
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100907/img-evaluation-process.webp"
+            alt=""
+          />
         </div>
       </div>
-    </section>
 
-    <script>
-      (function () {
-        const section = document.getElementById("tradeSection");
-        const cards = section.querySelectorAll(".card");
-        const delays = [0.05, 0.2, 0.35, 0.5, 0.65];
+      <!-- Card 2 – Green -->
+      <div class="hiw-card hiw-card--green">
+        <div class="hiw-card-inner">
+          <div class="hiw-content">
+            <svg class="hiw-icon-svg" viewBox="0 0 256 256" fill="currentColor">
+              <rect width="256" height="256" fill="none" />
+              <path
+                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm12,152h-4v8a8,8,0,0,1-16,0v-8H104a8,8,0,0,1,0-16h36a12,12,0,0,0,0-24H116a28,28,0,0,1,0-56h4V72a8,8,0,0,1,16,0v8h16a8,8,0,0,1,0,16H116a12,12,0,0,0,0,24h24a28,28,0,0,1,0,56Z"
+              />
+            </svg>
+            <span class="hiw-tag">FTMO ACCOUNT</span>
+            <h3>Earn real-money rewards</h3>
+            <p>
+              Trade in a simulated environment and earn performance‑based
+              rewards.
+            </p>
+          </div>
+          <img
+            class="hiw-image"
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18105222/img-ftmo-reward-account-80.webp"
+            alt=""
+          />
+        </div>
+      </div>
 
-        function replayAnimation() {
-          cards.forEach((card, index) => {
-            card.classList.remove("animate-now", "animate-reset");
-            void card.offsetWidth;
-            card.classList.add("animate-reset");
-            void card.offsetWidth;
-            const delay = delays[index] || 0.1;
-            card.style.animationDelay = delay + "s";
-            card.classList.remove("animate-reset");
-            card.classList.add("animate-now");
-          });
-        }
+      <!-- Card 3 – Orange -->
+      <div class="hiw-card hiw-card--orange">
+        <div class="hiw-card-inner">
+          <div class="hiw-content">
+            <svg class="hiw-icon-svg" viewBox="0 0 256 256" fill="currentColor">
+              <rect width="256" height="256" fill="none" />
+              <path
+                d="M239.75,90.81c0,.11,0,.21-.07.32L217,195a16,16,0,0,1-15.72,13H54.71A16,16,0,0,1,39,195L16.32,91.13c0-.11-.05-.21-.07-.32A16,16,0,0,1,44,77.39l33.67,36.29,35.8-80.29a1,1,0,0,0,0-.1,16,16,0,0,1,29.06,0,1,1,0,0,0,0,.1l35.8,80.29L212,77.39a16,16,0,0,1,27.71,13.42Z"
+              />
+            </svg>
+            <span class="hiw-tag">PREMIUM PROGRAMME</span>
+            <h3>Achieve More.<br />Gain More.</h3>
+            <p>
+              Access exclusive benefits with Premium Programme and Quantlane by
+              FTMO.
+            </p>
+          </div>
+          <img
+            class="hiw-image"
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100922/img-premium-programe-4x.webp"
+            alt=""
+          />
+        </div>
+      </div>
 
-        function checkAndPlay() {
-          const rect = section.getBoundingClientRect();
-          const winHeight = window.innerHeight;
-          if (rect.top < winHeight * 0.7 && rect.bottom > 0) {
-            replayAnimation();
-          }
-        }
+      <!-- Card 4 – Purple -->
+      <div class="hiw-card hiw-card--purple">
+        <div class="hiw-card-inner">
+          <div class="hiw-content">
+            <svg class="hiw-icon-svg" viewBox="0 0 256 256" fill="currentColor">
+              <rect width="256" height="256" fill="none" />
+              <path
+                d="M216,152v16a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152a72,72,0,0,1,72-72h32A72,72,0,0,1,216,152Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="24"
+              />
+              <path
+                d="M128,72a32,32,0,1,0-32-32A32,32,0,0,0,128,72Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="24"
+              />
+              <path
+                d="M184,80a24,24,0,1,0-24-24A24,24,0,0,0,184,80Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="24"
+              />
+            </svg>
+            <span class="hiw-tag">COMMUNITY</span>
+            <h3>Join thousands of traders</h3>
+            <p>
+              Connect with a global community, share insights, and grow together
+              in the FTMO ecosystem.
+            </p>
+          </div>
+          <img
+            class="hiw-image"
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/12142852/pre-footer-screen-global.webp"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        if ("IntersectionObserver" in window) {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  replayAnimation();
-                }
-              });
-            },
-            { threshold: 0.3 },
-          );
-          observer.observe(section);
-        } else {
-          window.addEventListener(
-            "scroll",
-            function () {
-              const rect = section.getBoundingClientRect();
-              const winHeight = window.innerHeight;
-              if (rect.top < winHeight * 0.7 && rect.bottom > 0) {
-                replayAnimation();
-              }
-            },
-            { passive: true },
-          );
-        }
+<style>
+  /* ================================================================
+       SELF‑CONTAINED STYLES – no external dependencies
+       ================================================================ */
+  .hiw-section {
+    background: #09090b;
+    width: 100%;
+    padding: 60px 20px 90px 20px;
+    font-family: "Poppins", "Roboto", sans-serif;
+    box-sizing: border-box;
+  }
 
-        window.addEventListener("load", checkAndPlay);
-        setTimeout(checkAndPlay, 200);
-      })();
-    </script>
-  </body>
-</html>
+  .hiw-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hiw-title {
+    text-align: center;
+    color: #fff;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 48px;
+    letter-spacing: -0.02em;
+  }
+
+  /* ===== 4‑COLUMN GRID (desktop only) ===== */
+  .hiw-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .hiw-card {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .hiw-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .hiw-card-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 28px 0 28px;
+    position: relative;
+    z-index: 2;
+    min-height: 380px;
+  }
+
+  /* ===== GRADIENT BACKGROUNDS ===== */
+  .hiw-card--blue .hiw-card-inner {
+    background: linear-gradient(180deg, #4ea7ff 0%, #0d4fa8 50%, #0a0a0f 100%);
+  }
+  .hiw-card--green .hiw-card-inner {
+    background: linear-gradient(180deg, #00d26a 0%, #0a8f47 50%, #0a0a0f 100%);
+  }
+  .hiw-card--orange .hiw-card-inner {
+    background: linear-gradient(180deg, #e58b0b 0%, #8b4200 50%, #0a0a0f 100%);
+  }
+  .hiw-card--purple .hiw-card-inner {
+    background: linear-gradient(180deg, #a78bfa 0%, #6d28d9 50%, #0a0a0f 100%);
+  }
+
+  /* ===== DARK OVERLAY ===== */
+  .hiw-card-inner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 35%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ===== CONTENT ===== */
+  .hiw-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hiw-icon-svg {
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+  }
+
+  .hiw-tag {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .hiw-content h3 {
+    color: #fff;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .hiw-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 90%;
+    margin-bottom: 16px;
+  }
+
+  .hiw-image {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    margin-top: auto;
+    align-self: center;
+    position: relative;
+    z-index: 2;
+    display: block;
+    pointer-events: none;
+    object-fit: contain;
+  }
+
+  /* ================================================================
+       DESKTOP ONLY (≥1025px) – wider cards, less text padding, centered text
+       ================================================================ */
+  @media (min-width: 1025px) {
+    /* wider container + smaller gap = wider cards */
+    .hiw-container {
+      max-width: 1440px;
+    }
+    .hiw-grid {
+      gap: 16px;
+    }
+
+    /* reduce text padding inside cards */
+    .hiw-card-inner {
+      padding: 20px 16px 0 16px;
+    }
+
+    /* center text */
+    .hiw-content {
+      align-items: center;
+      text-align: center;
+    }
+    .hiw-content p {
+      max-width: 100%;
+    }
+    .hiw-icon-svg {
+      align-self: center;
+    }
+  }
+
+  /* ================================================================
+       RESPONSIVE – TABLET & PHONE (≤1024px) – 1 COLUMN
+       ================================================================ */
+  @media (max-width: 1024px) {
+    .hiw-section {
+      padding: 40px 12px 60px 12px !important;
+    }
+    .hiw-container {
+      padding: 0 8px !important;
+    }
+
+    /* ---- Force 1 column on all devices up to 1024px ---- */
+    .hiw-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+
+    .hiw-title {
+      font-size: 28px !important;
+      margin-bottom: 32px !important;
+    }
+
+    /* ---- Card becomes a flex row (text left, image right) ---- */
+    .hiw-card {
+      min-height: 240px !important;
+      height: 240px !important;
+      flex-direction: column !important;
+    }
+
+    .hiw-card-inner {
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: flex-end !important;
+      min-height: 240px !important;
+      height: 240px !important;
+      padding: 16px 14px 0 14px !important;
+      gap: 10px !important;
+    }
+
+    .hiw-card-inner::after {
+      background: linear-gradient(
+        to bottom right,
+        transparent 30%,
+        rgba(0, 0, 0, 0.9) 100%
+      ) !important;
+    }
+
+    .hiw-content {
+      flex: 1 1 55% !important;
+      padding-bottom: 12px !important;
+      justify-content: flex-start !important;
+    }
+
+    .hiw-content h3 {
+      font-size: 18px !important;
+      margin-bottom: 4px !important;
+      line-height: 1.2 !important;
+    }
+
+    .hiw-content p {
+      font-size: 12px !important;
+      max-width: 100% !important;
+      margin-bottom: 4px !important;
+      line-height: 1.4 !important;
+    }
+
+    .hiw-tag {
+      font-size: 10px !important;
+      margin-bottom: 4px !important;
+      letter-spacing: 0.06em !important;
+    }
+
+    .hiw-icon-svg {
+      width: 20px !important;
+      height: 20px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .hiw-image {
+      flex: 0 0 38% !important;
+      max-width: 38% !important;
+      align-self: flex-end !important;
+      margin-top: auto !important;
+      margin-left: auto !important;
+      position: relative !important;
+      z-index: 2 !important;
+      object-fit: contain !important;
+    }
+
+    .hiw-card:hover {
+      transform: none !important;
+    }
+  }
+
+  /* ================================================================
+       RESPONSIVE – SMALL PHONES (image size ↑ slightly)
+       ================================================================ */
+  @media (max-width: 400px) {
+    .hiw-section {
+      padding: 30px 8px 50px 8px !important;
+    }
+    .hiw-title {
+      font-size: 24px !important;
+      margin-bottom: 24px !important;
+    }
+    .hiw-card {
+      min-height: 200px !important;
+      height: 200px !important;
+    }
+    .hiw-card-inner {
+      min-height: 200px !important;
+      height: 200px !important;
+      padding: 12px 10px 0 14px !important;
+    }
+    .hiw-content {
+      flex: 1 1 52% !important;
+    }
+    .hiw-content h3 {
+      font-size: 18px !important;
+      margin-bottom: 6px !important;
+    }
+    .hiw-content p {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+    }
+    .hiw-tag {
+      font-size: 11px !important;
+      margin-bottom: 6px !important;
+    }
+    .hiw-image {
+      flex: 0 0 44% !important;
+      max-width: 44% !important;
+    }
+  }
+</style>
