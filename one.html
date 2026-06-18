@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>Edu Stocks · Signal Hub</title>
+    <title>RMI Clarity · Dark · Centered</title>
+    <!-- Google Fonts + Font Awesome 6 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -22,734 +23,578 @@
         box-sizing: border-box;
       }
 
-      body {
-        background: #000000;
+      :root {
+        --black: #000000;
+        --green: #073f25;
+        --green-light: #386f53;
+        --gold: #e6ac1a;
+        --gold-light: #f8d951;
+        --bronze: #a0520b;
+        --text: #f4f4f4;
+        --muted: #979d94;
+        --card-bg: rgba(53, 53, 53, 0.76);
+        --border-subtle: rgba(255, 255, 255, 0.04);
+      }
+
+      .body-rmi {
         font-family: "Inter", sans-serif;
-        line-height: 1.4;
+        background: #000000;
         min-height: 100vh;
-        color: #ffffff;
-      }
-
-      .channels-full {
-        width: 100%;
-        max-width: 100%;
-        padding: 2rem 5rem 2rem 7rem;
-        background: transparent;
-      }
-
-      .container-inner {
-        max-width: 1440px;
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      /* HEADER – all black, white text */
-      .section-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-bottom: 2.5rem;
-        gap: 1.2rem;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 1.2rem;
-      }
-
-      .title-badge {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .gold-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #111;
-        padding: 0.3rem 1.3rem;
-        border-radius: 60px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        letter-spacing: 0.6px;
-        color: #ffffff;
-        border: 1px solid #333;
-        width: fit-content;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-      }
-
-      .subtitle {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #aaaaaa;
-        margin-top: 0.2rem;
-      }
-
-      .live-status {
         display: flex;
         align-items: center;
-        gap: 14px;
-        background: #111;
-        padding: 0.5rem 1.6rem;
-        border-radius: 100px;
-        border: 1px solid #333;
+        justify-content: center;
+        margin: 0;
+        padding: 1rem;
       }
 
-      .red-blinking {
-        width: 10px;
-        height: 10px;
-        background-color: #42ff00;
-        border-radius: 50%;
-        box-shadow: 0 0 0 0 rgba(66, 255, 0, 0.6);
-        animation: blinkLive 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      @keyframes blinkLive {
-        0% {
-          transform: scale(0.9);
-          box-shadow: 0 0 0 0 rgba(66, 255, 0, 0.6);
-        }
-        70% {
-          transform: scale(1.2);
-          box-shadow: 0 0 0 8px rgba(66, 255, 0, 0);
-        }
-        100% {
-          transform: scale(0.9);
-          box-shadow: 0 0 0 0 rgba(66, 255, 0, 0);
-        }
-      }
-
-      .live-status span {
-        font-weight: 800;
-        font-size: 0.8rem;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
-      .live-status i {
-        color: #ffffff;
-      }
-
-      /* ===== CARDS – pure black, white text, subtle borders ===== */
-      .channels-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.8rem;
-        margin-bottom: 2.8rem;
-      }
-
-      .channel-card {
-        background: #0a0a0a;
-        border-radius: 2rem;
-        padding: 1.6rem 1.4rem 1.8rem 1.4rem;
-        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        border: 1px solid #222;
-        box-shadow: 0 22px 32px -15px rgba(0, 0, 0, 0.9);
+      /* solution section – dark glass, centered */
+      .solution-section {
+        width: 100%;
+        max-width: 1320px;
+        background: var(--black);
+        border-radius: 2.2rem;
         position: relative;
+        overflow: hidden;
+        box-shadow:
+          0 20px 40px -12px rgba(0, 0, 0, 0.9),
+          0 0 0 1px rgba(230, 172, 26, 0.03);
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.01);
+        transition: all 0.3s;
+        text-align: center; /* center all text inside */
       }
 
-      .channel-card:hover {
-        transform: translateY(-5px);
-        border-color: #444;
-        background: #0d0d0d;
-        box-shadow: 0 32px 44px -18px rgba(0, 0, 0, 0.9);
-      }
-
-      .channel-card::after {
+      /* glow accent */
+      .solution-section::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 12%;
-        width: 76%;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          #42ff00,
-          #00ffc2,
-          transparent
-        );
-        border-radius: 4px;
-        opacity: 0.3;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse at 70% 10%,
+            rgba(230, 172, 26, 0.03) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 20% 90%,
+            rgba(7, 63, 37, 0.08) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+        z-index: 0;
       }
 
-      .card-header {
+      .solution-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2.8rem 2.5rem 2.5rem 2.5rem;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ----- bridge chip (centered) ----- */
+      .bridge-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(230, 172, 26, 0.07);
+        padding: 0.4rem 1.4rem;
+        border-radius: 60px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        color: var(--gold-light);
+        margin-bottom: 1.2rem;
+        border: 1px solid rgba(230, 172, 26, 0.12);
+        backdrop-filter: blur(2px);
+        transition: all 0.25s;
+      }
+      .bridge-chip i {
+        font-size: 0.7rem;
+        color: var(--gold);
+      }
+
+      /* heading – centered */
+      .solution-heading {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--text);
+        max-width: 820px;
+        margin-bottom: 0.6rem;
+        letter-spacing: -0.02em;
+        text-align: center;
+      }
+      .highlight {
+        color: var(--gold);
+        background: linear-gradient(
+          120deg,
+          rgba(230, 172, 26, 0.08) 0%,
+          rgba(230, 172, 26, 0.01) 80%
+        );
+        display: inline-block;
+        padding: 0 0.1rem;
+      }
+
+      .solution-description {
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+        line-height: 1.5;
+        color: var(--muted);
+        max-width: 640px;
+        margin-bottom: 1.8rem;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      /* ---------- cards grid (centered) ---------- */
+      .rmi-gridd {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 1.5rem 0 1.5rem;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .rmi-card {
+        flex: 1 1 200px;
+        max-width: 280px;
+        min-width: 190px;
+        background: var(--card-bg);
+        backdrop-filter: blur(2px);
+        border-radius: 1.6rem;
+        padding: 1.6rem 1.4rem 1.4rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--border-subtle);
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+        opacity: 0;
+        transform: translateY(28px);
+        will-change: transform, opacity;
+        text-align: left; /* keep card text left for readability */
+      }
+
+      .rmi-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .rmi-card:hover {
+        transform: translateY(-5px) scale(1.01);
+        box-shadow:
+          0 20px 32px -10px rgba(0, 0, 0, 0.9),
+          0 0 0 1px rgba(230, 172, 26, 0.12);
+        border-color: rgba(230, 172, 26, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .card-icon {
+        font-size: 1.6rem;
+        color: var(--gold);
+        margin-bottom: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(230, 172, 26, 0.06);
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        border: 1px solid rgba(230, 172, 26, 0.04);
+        transition: 0.2s;
+      }
+      .rmi-card:hover .card-icon {
+        background: rgba(230, 172, 26, 0.1);
+        border-color: rgba(230, 172, 26, 0.15);
+      }
+
+      .rmi-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.3rem;
+        letter-spacing: -0.01em;
+      }
+      .rmi-card p {
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 0.3rem;
+      }
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.4rem;
+        font-size: 0.8rem;
+        color: #c5cdc0;
+      }
+      .feature-list li i {
+        width: 1rem;
+        font-size: 0.7rem;
+        color: var(--gold-light);
+      }
+
+      /* ----- data snapshot (centered) ----- */
+      .data-snapshot {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.015);
+        backdrop-filter: blur(2px);
+        border-radius: 1.8rem;
+        padding: 0.8rem 1.5rem;
+        margin: 1rem 0 0.5rem;
+        border: 1px solid rgba(230, 172, 26, 0.04);
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.7);
+        transition: all 0.3s;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .metric-item {
         display: flex;
         align-items: center;
         gap: 0.9rem;
-        margin-bottom: 1.1rem;
+        flex: 0 1 140px;
+        min-width: 190px;
+        padding: 0.2rem 0;
+        opacity: 0;
+        transform: translateY(14px);
+        transition: all 0.5s cubic-bezier(0.15, 0.9, 0.25, 1);
+        justify-content: center;
+      }
+      .metric-item.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .icon-circle {
-        width: 54px;
-        height: 54px;
-        background: #141414;
+      .metric-icon {
+        background: rgba(7, 63, 37, 0.2);
+        width: 42px;
+        height: 42px;
         border-radius: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.8rem;
-        color: #ffffff;
-        transition: 0.25s;
-        border: 1px solid #2a2a2a;
+        font-size: 1.1rem;
+        color: var(--gold);
+        border: 1px solid rgba(230, 172, 26, 0.05);
+        flex-shrink: 0;
       }
-
-      .channel-card:hover .icon-circle {
-        background: #1a1a1a;
-        transform: scale(1.02);
-        border-color: #42ff00;
+      .metric-text {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
       }
-
-      .card-header h3 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #ffffff;
-        letter-spacing: -0.3px;
-        line-height: 1.2;
+      .metric-number {
+        font-size: 23px;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
       }
-
-      .live-mini {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #141414;
-        padding: 0.2rem 1rem;
-        border-radius: 60px;
-        margin-bottom: 1rem;
-        width: fit-content;
-        border: 1px solid #2a2a2a;
-      }
-
-      .live-mini i {
-        font-size: 0.55rem;
-        color: #42ff00;
-      }
-      .live-mini span {
+      .metric-label {
         font-size: 0.7rem;
-        font-weight: 800;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        color: #a1a1a1;
         text-transform: uppercase;
-        color: #aaaaaa;
-        letter-spacing: 0.5px;
+        opacity: 0.7;
       }
 
-      .signal-desc {
-        font-weight: 500;
-        font-size: 0.85rem;
-        color: #dddddd;
-        margin: 0.9rem 0 1rem 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        background: #0f0f0f;
-        padding: 0.55rem 0.9rem;
-        border-radius: 15px;
-        justify-content: center;
-        border: 0.5px solid #222;
-      }
-
-      .signal-desc i {
-        color: #42ff00;
-        font-size: 0.85rem;
-      }
-
-      .pair-badge {
-        background: #141414;
-        padding: 0.2rem 0.7rem;
-        border-radius: 30px;
-        font-size: 0.68rem;
-        font-weight: 700;
-        color: #cccccc;
-        letter-spacing: 0.2px;
-        border-left: 2px solid #42ff00;
-      }
-
-      /* ===== BUTTON – your gradient ===== */
-      .btn-telegram-clean {
+      /* badge */
+      .rmi-badge {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 12px;
-        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%) !important;
-        width: 100%;
-        padding: 0.75rem 0;
-        border-radius: 80px;
-        font-weight: 700;
-        font-size: 0.8rem;
-        color: #000000 !important;
-        text-decoration: none;
-        border: none;
-        transition: all 0.3s ease;
-        margin-top: 0.8rem;
-        box-shadow: 0 4px 14px rgba(0, 255, 194, 0.08);
-        letter-spacing: 0.2px;
-      }
-
-      .btn-telegram-clean i {
-        font-size: 0.95rem;
-        color: #000000 !important;
-        transition: transform 0.2s;
-      }
-      .btn-telegram-clean:hover {
-        background: linear-gradient(90deg, #00e6b0 0%, #3de600 100%) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 22px rgba(0, 255, 194, 0.15);
-        color: #000 !important;
-      }
-      .btn-telegram-clean:hover i {
-        color: #000 !important;
-        transform: translateX(5px);
-      }
-
-      /* global CTA button same */
-      .global-telegram-link {
-        background: linear-gradient(90deg, #00ffc2 0%, #42ff00 100%) !important;
-        padding: 0.7rem 1.8rem;
+        gap: 0.65rem;
+        background: rgba(7, 63, 37, 0.2);
+        padding: 0.4rem 1.2rem;
         border-radius: 60px;
-        font-weight: 800;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        color: #000000 !important;
-        text-decoration: none;
-        transition: 0.25s;
-        border: none;
-        font-size: 0.85rem;
-        box-shadow: 0 4px 14px rgba(0, 255, 194, 0.08);
-      }
-
-      .global-telegram-link:hover {
-        background: linear-gradient(90deg, #00e6b0 0%, #3de600 100%) !important;
-        transform: scale(1.02);
-        box-shadow: 0 8px 24px rgba(0, 255, 194, 0.12);
-        color: #000 !important;
-      }
-
-      .global-cta {
-        margin-top: 1rem;
-        background: #0a0a0a;
-        border-radius: 18px;
-        padding: 1rem 1.8rem;
-        border: 1px solid #222;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .cta-text {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .cta-text i {
-        font-size: 2rem;
-        color: #42ff00;
-      }
-      .cta-text h4 {
-        font-weight: 800;
-        font-size: 1rem;
-        color: #ffffff;
-      }
-      .cta-text p {
-        font-size: 0.75rem;
-        color: #888888;
-      }
-
-      .footer-stats {
-        display: flex;
-        justify-content: center;
-        gap: 2.5rem;
-        margin-top: 2rem;
         font-size: 0.75rem;
         font-weight: 500;
-        color: #666;
-        flex-wrap: wrap;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 1.8rem;
-      }
-      .footer-stats span i {
-        margin-right: 6px;
-        color: #42ff00;
+        color: var(--gold-light);
+        margin-top: 0.8rem;
+        border: 1px solid rgba(230, 172, 26, 0.03);
       }
 
-      .channel-card {
-        animation: cardReveal 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) backwards;
-      }
-      .channel-card:nth-child(1) {
-        animation-delay: 0.02s;
-      }
-      .channel-card:nth-child(2) {
-        animation-delay: 0.08s;
-      }
-      .channel-card:nth-child(3) {
-        animation-delay: 0.14s;
-      }
-      .channel-card:nth-child(4) {
-        animation-delay: 0.2s;
+      .attract-line {
+        height: 2px;
+        width: 50px;
+        background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        border-radius: 4px;
+        margin-top: 1.2rem;
+        opacity: 0.5;
       }
 
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 1100px) and (min-width: 641px) {
-        .channels-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
+      /* ---------- responsive ---------- */
+      @media (max-width: 820px) {
+        .solution-container {
+          padding: 1.8rem 1.2rem 1.8rem;
         }
-        .container-inner {
-          max-width: 900px;
+        .solution-section {
+          border-radius: 1.8rem;
         }
-        .section-header {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          justify-content: center;
-        }
-        .title-badge {
-          align-items: center;
-        }
-        .gold-chip {
-          margin: 0 auto;
-        }
-        .live-status {
-          margin-top: 0.2rem;
-        }
-        .card-header h3 {
-          font-size: 1.35rem;
-        }
-        .global-cta {
-          justify-content: center;
-          text-align: center;
-        }
-        .cta-text {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .channels-full {
-          padding: 1.2rem;
-        }
-        .section-header {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          justify-content: center;
-        }
-        .title-badge {
-          align-items: center;
-        }
-        .gold-chip {
-          margin: 0 auto;
-        }
-        h1 {
-          font-size: 1.7rem;
-          text-align: center;
-          color: #fff;
-        }
-        .subtitle {
-          text-align: center;
-          display: block;
-        }
-        .live-status {
-          margin: 0 auto;
-        }
-
-        .channels-grid {
-          display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          overflow-y: visible;
-          gap: 1.2rem;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
-          padding: 0.5rem 0.25rem 1.5rem 0.25rem;
-          margin-bottom: 2rem;
-          scrollbar-width: thin;
-          grid-template-columns: none;
-        }
-
-        .channel-card {
-          flex: 0 0 85%;
-          scroll-snap-align: center;
-          white-space: normal;
-          min-width: 260px;
-          max-width: 340px;
-          margin: 0 auto;
-          transform: scale(0.98);
-          transition: transform 0.2s ease;
-        }
-        .channel-card:active {
-          transform: scale(0.99);
-        }
-
-        .channels-grid::-webkit-scrollbar {
-          height: 5px;
-        }
-        .channels-grid::-webkit-scrollbar-track {
-          background: #111;
-          border-radius: 10px;
-        }
-        .channels-grid::-webkit-scrollbar-thumb {
-          background: #42ff00;
-          border-radius: 10px;
-        }
-
-        .card-header h3 {
-          font-size: 1.25rem;
-        }
-        .icon-circle {
-          width: 48px;
-          height: 48px;
-          font-size: 1.5rem;
-        }
-        .signal-desc {
-          font-size: 0.78rem;
-          gap: 6px;
-        }
-        .btn-telegram-clean {
-          padding: 0.7rem 0;
-          font-size: 0.75rem;
-        }
-        .global-cta {
-          flex-direction: column;
-          align-items: stretch;
-          text-align: center;
-          margin: 1rem 0;
-        }
-        .cta-text {
-          justify-content: center;
-          flex-direction: column;
-          text-align: center;
-        }
-        .global-telegram-link {
-          justify-content: center;
-        }
-        .footer-stats {
-          gap: 1rem;
-          font-size: 0.7rem;
-          justify-content: center;
+        .data-snapshot {
+          flex-direction: row;
           flex-wrap: wrap;
+          padding: 0.8rem 1rem;
+          gap: 0.8rem;
+          justify-content: center;
+        }
+        .metric-item {
+          flex: 1 0 100px;
+          min-width: 100px;
+          gap: 0.6rem;
+        }
+        .rmi-gridd {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+        }
+        .rmi-card {
+          padding: 1.2rem;
+          min-width: unset;
+          max-width: 400px;
+          width: 100%;
+        }
+        .metric-number {
+          font-size: 1.3rem;
         }
       }
 
       @media (max-width: 480px) {
-        .channel-card {
-          flex: 0 0 90%;
-          max-width: 320px;
+        .solution-container {
+          padding: 1.2rem 0.8rem 1.2rem;
         }
-        .card-header h3 {
+        .solution-heading {
+          font-size: 1.4rem;
+        }
+        .bridge-chip {
+          font-size: 0.6rem;
+          padding: 0.2rem 1rem;
+        }
+        .card-icon {
+          width: 40px;
+          height: 40px;
           font-size: 1.2rem;
         }
-        .signal-desc {
-          font-size: 0.74rem;
+        .rmi-card h3 {
+          font-size: 1.1rem;
         }
-        .global-cta {
-          padding: 1rem;
+        .metric-item {
+          flex: 1 0 80px;
+          min-width: 80px;
         }
-      }
-
-      @media (min-width: 1600px) {
-        .channels-grid {
-          gap: 2rem;
-        }
-        .channel-card {
-          padding: 1.8rem 1.6rem 2rem 1.6rem;
-        }
-        .card-header h3 {
-          font-size: 1.55rem;
+        .metric-icon {
+          width: 34px;
+          height: 34px;
+          font-size: 0.9rem;
         }
       }
 
-      @media (hover: none) and (max-width: 640px) {
-        .channels-grid {
-          cursor: grab;
-          scroll-behavior: smooth;
-        }
+      /* ---------- utilities ---------- */
+      .hidden-init {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s cubic-bezier(0.15, 0.9, 0.25, 1),
+          transform 0.7s cubic-bezier(0.15, 0.9, 0.25, 1);
+      }
+      .hidden-init.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* stagger children */
+      .stagger-children > * {
+        transition-delay: 0s;
+      }
+      .stagger-children > *:nth-child(1) {
+        transition-delay: 0.04s;
+      }
+      .stagger-children > *:nth-child(2) {
+        transition-delay: 0.12s;
+      }
+      .stagger-children > *:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .stagger-children > *:nth-child(4) {
+        transition-delay: 0.28s;
+      }
+
+      /* ensure cards are centered on desktop */
+      .rmi-gridd {
+        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <div class="channels-full">
-      <div class="container-inner">
-        <!-- header -->
-        <div class="section-header">
-          <div class="title-badge">
-            <div class="gold-chip">
-              <i class="fas fa-graduation-cap"></i> EDU STOCKS • SIGNAL HUB
-            </div>
-            <h1>
-              Smart Money Flow<br />
-              <span class="subtitle">Live • High Conviction • 0 latency</span>
-            </h1>
-          </div>
-          <div class="live-status">
-            <div class="red-blinking"></div>
-            <i class="fas fa-satellite-dish"></i>
-            <span>LIVE 24/7 FEED</span>
-            <i class="fas fa-waveform"></i>
-          </div>
-        </div>
-
-        <!-- 4 cards – pure black, white text -->
-        <div class="channels-grid">
-          <!-- 1. US Equities -->
-          <div class="channel-card">
-            <div class="card-header">
-              <div class="icon-circle">
-                <i class="fas fa-building-columns"></i>
-              </div>
-              <h3>US Equities<br />Large Cap</h3>
-            </div>
-            <div class="live-mini">
-              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
-              <span>PRE-MARKET</span>
-            </div>
-            <div class="signal-desc">
-              <i class="fas fa-arrow-trend-up"></i> SP500, NASDAQ top names
-              <span class="pair-badge">AAPL</span>
-              <span class="pair-badge">MSFT</span>
-              <span class="pair-badge">NVDA</span>
-            </div>
-            <a
-              href="https://t.me/+f0-g1L7fg5s5OTZl"
-              target="_blank"
-              class="btn-telegram-clean"
-            >
-              <i class="fab fa-telegram-plane"></i> Equities Signals
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- 2. Growth & Tech -->
-          <div class="channel-card">
-            <div class="card-header">
-              <div class="icon-circle"><i class="fas fa-microchip"></i></div>
-              <h3>Tech &<br />Growth</h3>
-            </div>
-            <div class="live-mini">
-              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
-              <span>MOMENTUM</span>
-            </div>
-            <div class="signal-desc">
-              <i class="fas fa-rocket"></i> AI, semis, cloud stocks
-              <span class="pair-badge">AMD</span>
-              <span class="pair-badge">SNOW</span>
-              <span class="pair-badge">PLTR</span>
-            </div>
-            <a
-              href="https://t.me/+f0-g1L7fg5s5OTZl"
-              target="_blank"
-              class="btn-telegram-clean"
-            >
-              <i class="fab fa-telegram-plane"></i> Tech Signals
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- 3. Dividend & Value -->
-          <div class="channel-card">
-            <div class="card-header">
-              <div class="icon-circle"><i class="fas fa-piggy-bank"></i></div>
-              <h3>Dividend<br />Value</h3>
-            </div>
-            <div class="live-mini">
-              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
-              <span>INCOME</span>
-            </div>
-            <div class="signal-desc">
-              <i class="fas fa-coins"></i> blue-chip, REITs, dividend
-              aristocrats
-              <span class="pair-badge">JPM</span>
-              <span class="pair-badge">PG</span>
-              <span class="pair-badge">VZ</span>
-            </div>
-            <a
-              href="https://t.me/+f0-g1L7fg5s5OTZl"
-              target="_blank"
-              class="btn-telegram-clean"
-            >
-              <i class="fab fa-telegram-plane"></i> Dividend Hub
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- 4. ETFs & Macro -->
-          <div class="channel-card">
-            <div class="card-header">
-              <div class="icon-circle"><i class="fas fa-globe"></i></div>
-              <h3>ETFs &<br />Macro</h3>
-            </div>
-            <div class="live-mini">
-              <i class="fas fa-circle" style="font-size: 0.5rem"></i>
-              <span>SECTOR ROTATION</span>
-            </div>
-            <div class="signal-desc">
-              <i class="fas fa-bolt"></i> SPY, QQQ, sector ETFs
-              <span class="pair-badge">SPY</span>
-              <span class="pair-badge">QQQ</span>
-              <span class="pair-badge">XLE</span>
-            </div>
-            <a
-              href="https://t.me/+f0-g1L7fg5s5OTZl"
-              target="_blank"
-              class="btn-telegram-clean"
-            >
-              <i class="fab fa-telegram-plane"></i> ETF Signals
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- global CTA -->
-        <div class="global-cta">
-          <div class="cta-text">
-            <i class="fas fa-graduation-cap"></i>
-            <div>
-              <h4>Join the Edu Stocks Collective</h4>
-              <p>
-                Equities • Tech • Dividends • ETFs — free signals, live
-                watchlists & institutional flow
-              </p>
-            </div>
-          </div>
-          <a
-            href="https://t.me/+f0-g1L7fg5s5OTZl"
-            target="_blank"
-            class="global-telegram-link"
-          >
-            <i class="fab fa-telegram"></i> JOIN NOW
+    <div class="body-rmi">
+      <section class="solution-section" id="Solution-Section">
+        <div class="solution-container">
+          <!-- Chip -->
+          <div class="bridge-chip hidden-init" id="chip">
             <i class="fas fa-arrow-right"></i>
-          </a>
+            <span>FROM CHAOS TO CLARITY</span>
+            <i class="fas fa-chart-line"></i>
+          </div>
+
+          <!-- Heading -->
+          <h2 class="solution-heading hidden-init" id="heading">
+            <span class="highlight">RMI</span> — Noiseless indicator engine for
+            faster, smarter decisions. <br />
+            <span class="highlight">SWING</span> — Precision market timing using
+            sentiment
+          </h2>
+
+          <p class="solution-description hidden-init" id="desc">
+            Real-time RMI with multi-timeframe signalling for all types of
+            securities.<br />
+            No Guesswork - Precision in market entries using SWING.
+          </p>
+
+          <!-- Cards (staggered, centered) -->
+          <div class="rmi-gridd stagger-children" id="cardGrid">
+            <div class="rmi-card hidden-init" id="card1">
+              <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+              <h3>Clarity First</h3>
+              <p>
+                Noiseless buy-sell signals from a smoothed indicator that works
+                across time frames.
+              </p>
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-circle-check"></i> Buy/Sell signals
+                  highlighted
+                </li>
+                <li>
+                  <i class="fas fa-layer-group"></i> Works across timeframes
+                </li>
+                <li>
+                  <i class="fas fa-sliders"></i> Key support & resistance levels
+                </li>
+              </ul>
+            </div>
+
+            <div class="rmi-card hidden-init" id="card2">
+              <div class="card-icon"><i class="fas fa-brain"></i></div>
+              <h3>Decision Intelligence</h3>
+              <p>
+                SWING - A Sentiment indicator that pinpoints market highs and
+                lows by spotting chaos in markets
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-eye"></i> Hawk’s eye in market timing</li>
+                <li>
+                  <i class="fas fa-scale-balanced"></i> Improves risk-reward
+                  ratio
+                </li>
+              </ul>
+            </div>
+
+            <div class="rmi-card hidden-init" id="card3">
+              <div class="card-icon"><i class="fas fa-gauge-high"></i></div>
+              <h3>Real-time Edge</h3>
+              <p>
+                RMI and SWING update in real time during market hours - plan and
+                execute your trades before others do.
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-bolt"></i> Profit from overnight gaps</li>
+                <li><i class="fas fa-bell"></i> Never miss a trade</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Snapshot / metrics (centered) -->
+          <div class="data-snapshot" id="snapshot">
+            <div class="metric-item hidden-init" id="m1">
+              <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="metric-text">
+                <span class="metric-number">Fast</span>
+                <span class="metric-label">Faster Decisions</span>
+              </div>
+            </div>
+            <div class="metric-item hidden-init" id="m2">
+              <div class="metric-icon"><i class="fas fa-bullseye"></i></div>
+              <div class="metric-text">
+                <span class="metric-number">High</span>
+                <span class="metric-label">Better Risk Reward Ratios</span>
+              </div>
+            </div>
+            <div class="metric-item hidden-init" id="m3">
+              <div class="metric-icon"><i class="fas fa-chess"></i></div>
+              <div class="metric-text">
+                <span class="metric-number">Smart</span>
+                <span class="metric-label">Plan every move in advance</span>
+              </div>
+            </div>
+            <div class="metric-item hidden-init" id="m4">
+              <div class="metric-icon"><i class="fas fa-clock"></i></div>
+              <div class="metric-text">
+                <span class="metric-number">Live</span>
+                <span class="metric-label">Real-time Adaptive Insights</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="attract-line hidden-init" id="line"></div>
         </div>
-      </div>
+      </section>
     </div>
 
     <script>
       (function () {
-        if (window.innerWidth <= 640) {
-          const grid = document.querySelector(".channels-grid");
-          if (grid) {
-            grid.style.scrollSnapType = "x mandatory";
-            const parent = grid.parentElement;
-            if (parent && parent.offsetWidth) {
-              parent.style.overflowX = "visible";
-            }
-          }
-        }
-        const cards = document.querySelectorAll(".channel-card");
-        cards.forEach((card) => {
-          card.addEventListener("touchstart", function () {}, {
-            passive: true,
-          });
+        // ----- intersection observer for all hidden-init elements (reset on leave) -----
+        const hiddenElements = document.querySelectorAll(".hidden-init");
+
+        const resetObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const el = entry.target;
+              if (!entry.isIntersecting) {
+                // when leaving viewport, remove visible class to allow re-animation
+                el.classList.remove("visible");
+              } else {
+                // when entering viewport, add visible class (with delay for metrics)
+                if (el.classList.contains("metric-item")) {
+                  const metricItems = document.querySelectorAll(".metric-item");
+                  const idx = Array.from(metricItems).indexOf(el);
+                  const delay = idx * 120;
+                  setTimeout(() => {
+                    el.classList.add("visible");
+                  }, delay);
+                } else {
+                  el.classList.add("visible");
+                }
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px",
+          },
+        );
+
+        hiddenElements.forEach((el) => {
+          resetObserver.observe(el);
         });
+
+        // also ensure that cards inside stagger-children get their delay
+        // they already have transition-delay via css, no extra needed.
+
+        // small trick: if section is already visible on load, it will animate.
+        console.log("RMI Clarity · centered · animated on scroll (every time)");
       })();
     </script>
   </body>

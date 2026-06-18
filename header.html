@@ -4,918 +4,723 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
     />
-    <title>EDU STOCKX | Premium Transparent Header</title>
-    <!-- Google Fonts & Font Awesome 6 -->
+    <title>FX-Manipulation | Premium Prop Trading</title>
+    <!-- Tailwind + Alpine + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
       }
-
+      input,
+      select,
+      textarea,
+      button,
+      a,
+      [role="button"] {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
       body {
-        font-family: "Inter", sans-serif;
-        background: #fef9f0;
-        min-height: 100vh;
+        background: #000000;
+        margin: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
-
-      /* PREMIUM HEADER - TRANSPARENT (DESKTOP LOOK UNTOUCHED) */
-      .header-premium {
-        position: relative;
-        width: 100%;
-        padding: 4px 2rem;
-        background: transparent;
-        backdrop-filter: blur(0px);
-        -webkit-backdrop-filter: blur(0px);
-        border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-        transition: all 0.3s ease;
-        z-index: 1000;
+      .sticky-header {
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
       }
-
-      .header-premium.scrolled {
-        background: rgba(0, 0, 0, 0.65);
-        backdrop-filter: blur(12px);
-        border-bottom-color: rgba(255, 215, 0, 0.3);
+      .header-scrolled {
+        background-color: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(20px);
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
       }
-
-      .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
+      @media (max-width: 768px) {
+        .sticky-header {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .sticky-header.header-scrolled {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .custom-logo {
+          height: 4rem !important;
+        }
       }
-
-      .logo-left {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        z-index: 10;
+      #ul-bg {
+        background: rgb(60 60 60 / 71%);
+        border-radius: 31px;
+        padding: 0px 13px;
       }
-      .logo-left img {
-        width: 219px;
-        height: auto;
-        transition: transform 0.2s ease;
-      }
-
-      .nav-center {
-        flex: 2;
-        display: flex;
-        justify-content: center;
-      }
-      .round-header {
-        background: #1f1f1f;
-        backdrop-filter: blur(12px);
-        border-radius: 80px;
-        padding: 0.25rem 0.5rem;
-        border: 1px solid rgba(255, 215, 0, 0.25);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 0.1rem;
-      }
-      .nav-item {
-        list-style: none;
-        position: relative;
+      .mega-card {
+        box-shadow:
+          0 30px 50px -20px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
       }
       .nav-link {
-        display: inline-block;
-        padding: 10px 17px;
-        font-weight: 500;
-        font-size: 0.9rem;
-        letter-spacing: -0.2px;
-        color: #f0f0f0;
-        background: transparent;
-        border-radius: 60px;
-        transition: all 0.22s ease;
-        cursor: pointer;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .nav-link i {
-        margin-right: 8px;
-        font-size: 0.85rem;
-        color: #ecae17;
+        transition: all 0.2s ease;
+        font-size: 15px;
+        font-weight: 600;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
       }
       .nav-link:hover {
-        background: rgba(212, 175, 55, 0.12);
-        color: #ffe484;
+        background: rgba(255, 255, 255, 0.08);
       }
-
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 12px);
-        left: 0;
-        background: #0a0a0cee;
-        backdrop-filter: blur(20px);
-        border-radius: 24px;
-        padding: 0.6rem 0;
-        min-width: 220px;
-        border: 1px solid rgba(212, 175, 55, 0.4);
-        box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.8);
-        opacity: 0;
-        visibility: hidden;
-        transition:
-          opacity 0.2s ease,
-          transform 0.2s;
-        transform: translateY(-6px);
-        z-index: 200;
-        list-style: none;
-      }
-      .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-      .dropdown-menu .dropdown-link {
-        display: flex;
-        align-items: center;
-        padding: 0.7rem 2.6rem;
-        color: #e0e0e0;
-        font-weight: 500;
-        font-size: 0.85rem;
-        transition: 0.2s;
-        text-decoration: none;
-        gap: 10px;
-      }
-      .dropdown-menu .dropdown-link i {
-        font-size: 1rem;
-        width: 24px;
-        color: #d4af37;
-      }
-      .dropdown-menu .dropdown-link:hover {
-        background: rgba(212, 175, 55, 0.12);
-        color: #ffeaa7;
-        padding-left: 1.9rem;
-      }
-
-      .right-join {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        z-index: 10;
-      }
-      .btn-join {
-        background: linear-gradient(
-          135deg,
-          #ffc928 0%,
-          #d8ab17 45%,
-          #ecae17 100%
-        );
-        border: none;
-        padding: 0.7rem 1.9rem;
-        border-radius: 44px;
-        font-weight: 700;
-        font-size: 0.9rem;
-        letter-spacing: 0.3px;
-        color: #0a0a0a;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .btn-join i {
-        font-size: 0.9rem;
-        color: #1e1b10;
-      }
-      .btn-join:hover {
-        background: transparent;
-        box-shadow: 0 12px 26px rgba(212, 175, 55, 0.5);
-        color: black;
-        border: 2px solid #ecae17;
-      }
-
-      /* Hover preview - FIXED positioning for both desktop & mobile */
-      .dropdown {
-        position: relative;
-      }
-
-      .hover-preview {
-        position: absolute;
-        left: 250px; /* beside dropdown */
-        top: 55px;
-        width: 280px;
-        /* background: rgba(5, 5, 8, 0.95); */
-        border-radius: 20px;
-        /* padding: 12px; */
-        z-index: 9999;
-
-        opacity: 0;
-        visibility: hidden;
-        transform: translateX(10px);
-        transition: 0.25s;
-      }
-
-      .hover-preview.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(0);
-      }
-      .hover-preview img {
-        width: 100%;
-        border-radius: 20px;
-        margin-bottom: 10px;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-      }
-      .hover-preview span {
-        display: block;
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        color: #d4af37;
-        text-transform: uppercase;
-      }
-      /* .hover-preview.active {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1);
-      } */
-
-      /* ========== IMPROVED HAMBURGER & RESPONSIVE LOOK ========== */
-      .hamburger-mobile {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(8px);
-        border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.25s ease;
-        border: 1px solid rgba(212, 175, 55, 0.5);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
-      .hamburger-mobile i {
-        font-size: 1.6rem;
-        color: #ecae17;
-      }
-      .hamburger-mobile:hover {
-        background: rgba(212, 175, 55, 0.2);
-        border-color: #d4af37;
-      }
-
-      .mobile-signin-icon {
-        display: none;
-        width: 48px;
-        height: 48px;
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(8px);
-        border-radius: 40px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s;
-        border: 1px solid rgba(212, 175, 55, 0.6);
-      }
-      .mobile-signin-icon i {
-        font-size: 1.4rem;
-        color: #f5b042;
-      }
-      .mobile-signin-icon:hover {
-        background: rgba(212, 175, 55, 0.25);
-      }
-
-      /* Mobile Overlay - FIXED positioning, no overflow issues, proper spacing */
-      .mobile-menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(2, 2, 5, 0.98);
-        backdrop-filter: blur(28px);
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-        gap: 1rem;
-        padding: 100px 24px 40px 24px;
-        overflow-y: auto;
-      }
-      .mobile-menu-overlay.open {
-        transform: translateX(0);
-      }
-      .close-mobile {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        font-size: 1.8rem;
-        color: #e7bc42;
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.5);
-        width: 48px;
-        height: 48px;
+      .icon-circle {
+        width: 44px;
+        height: 44px;
+        background: #f3f4f6;
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        transition: all 0.2s;
-        border: 1px solid rgba(212, 175, 55, 0.5);
-      }
-      .close-mobile:hover {
-        background: rgba(212, 175, 55, 0.2);
-        transform: rotate(90deg);
-      }
-      .mobile-nav-item {
-        list-style: none;
-        width: 100%;
-        max-width: 300px;
-      }
-      .mobile-nav-link {
-        font-size: 1.2rem;
-        font-weight: 550;
-        color: #f5f2e6;
-        background: rgba(25, 25, 30, 0.8);
-        padding: 0.8rem 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        border-radius: 60px;
-        text-decoration: none;
-        transition: 0.2s;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        width: 100%;
-      }
-      .mobile-nav-link i {
-        color: #e6b422;
-        font-size: 1.1rem;
-      }
-      .mobile-nav-link:active {
-        background: rgba(212, 175, 55, 0.25);
-        transform: scale(0.98);
-      }
-
-      /* Mobile services container - FIXED: dropdown expands downward, not upward */
-      .mobile-services-container {
-        width: 100%;
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-      }
-      .mobile-service-trigger {
-        background: rgba(30, 30, 35, 0.85);
-        border-radius: 60px;
-        padding: 0.8rem 1.2rem;
-        font-size: 1.2rem;
-        font-weight: 550;
-        color: #f5f2e6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        cursor: pointer;
-        border: 1px solid rgba(212, 175, 55, 0.45);
-        transition: 0.2s;
-        width: 100%;
-      }
-      .mobile-service-trigger i:first-child {
-        color: #e6b422;
-      }
-      .mobile-service-trigger .chevron-icon {
-        margin-left: 8px;
-        font-size: 0.8rem;
-        transition: transform 0.3s;
-      }
-      .mobile-service-trigger:active {
-        background: rgba(212, 175, 55, 0.2);
-      }
-      .mobile-services-dropdown {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-        margin-top: 0.75rem;
-        margin-bottom: 0.25rem;
-        background: rgba(10, 10, 14, 0.8);
-        backdrop-filter: blur(12px);
-        border-radius: 32px;
-        padding: 1rem;
-        border: 1px solid rgba(212, 175, 55, 0.3);
         transition: all 0.2s ease;
       }
-      .mobile-services-dropdown.hidden {
-        display: none;
+      .group:hover .icon-circle {
+        background: #fef3d0;
+        transform: scale(1.02);
       }
-      .mobile-services-dropdown a {
-        color: #f0e6ca;
-        font-size: 0.95rem;
-        text-decoration: none;
-        padding: 0.7rem 1rem;
-        font-weight: 500;
-        border-radius: 50px;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        transition: 0.2s;
-        border: 1px solid transparent;
+      .custom-logo {
+        height: 3rem;
+        width: auto;
+        transition: all 0.2s ease;
       }
-      .mobile-services-dropdown a i {
-        width: 28px;
-        color: #d4af37;
-        font-size: 1rem;
-      }
-      .mobile-services-dropdown a:active {
-        background: rgba(212, 175, 55, 0.25);
-        border-color: #e6b422;
-        transform: translateX(4px);
-      }
-
-      .mobile-action-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 0.9rem;
-        width: 100%;
-        max-width: 300px;
-        margin-top: 0.5rem;
-      }
-      .mobile-join-btn {
-        background: linear-gradient(135deg, #ffcd4a, #e0aa1a);
-        border: none;
-        padding: 0.85rem;
-        border-radius: 60px;
-        font-weight: 800;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        color: #141414;
-        cursor: pointer;
-        transition: 0.2s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-      .mobile-join-btn:active {
-        transform: scale(0.97);
-      }
-      .mobile-signin-outline {
-        background: transparent;
-        border: 1.5px solid #d4af37;
-        padding: 0.75rem;
-        border-radius: 60px;
-        font-weight: 600;
-        color: #f7e8c4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .mobile-signin-outline:active {
-        background: rgba(212, 175, 55, 0.2);
-      }
-
-      /* RESPONSIVE BREAKPOINTS */
-      @media (max-width: 880px) {
-        .header-premium {
-          padding: 0.8rem 1.5rem;
-        }
-        .nav-center {
-          display: none;
-        }
-        .right-join {
-          display: none;
-        }
-        .logo-left {
-          flex: unset;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          order: 2;
-        }
-        .logo-left img {
-          width: 165px;
-          height: auto;
-        }
-        .hamburger-mobile {
-          display: flex;
-          order: 1;
-        }
-        .mobile-signin-icon {
-          display: flex;
-          order: 3;
-        }
-        .nav-container {
-          justify-content: space-between;
-        }
-        /* Adjust preview position for mobile so it doesn't overlap header badly */
-        .hover-preview {
-          right: 16px;
-          top: 80px;
-          width: 230px;
-          padding: 8px 10px;
+      @media (min-width: 1024px) {
+        .custom-logo {
+          height: 3.5rem;
         }
       }
-      @media (max-width: 520px) {
-        .logo-left img {
-          width: 140px;
-        }
-        .hamburger-mobile,
-        .mobile-signin-icon {
-          width: 42px;
-          height: 42px;
-        }
-        .hamburger-mobile i {
-          font-size: 1.3rem;
-        }
-        .mobile-menu-overlay {
-          padding: 90px 20px 30px 20px;
-        }
-        .hover-preview {
-          width: 200px;
-          right: 10px;
-          top: 75px;
+      .mobile-hamburger {
+        font-size: 2rem;
+      }
+      .mobile-close-icon {
+        font-size: 2.5rem !important;
+        line-height: 1;
+        font-weight: 300;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ecae17;
+        border-radius: 10px;
+      }
+      .mega-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        max-width: 90vw;
+      }
+      @media (min-width: 1280px) {
+        .mega-menu-center {
+          max-width: 780px;
         }
       }
-
-      @keyframes fadeSlideUp {
-        0% {
-          opacity: 0;
-          transform: translateY(-12px);
+      .accent-gold {
+        color: #ecae17;
+      }
+      .bg-accent-gold {
+        background-color: #ecae17;
+      }
+      .border-accent-gold {
+        border-color: #ecae17;
+      }
+      .hover-bg-accent-gold:hover {
+        background-color: #ecae17;
+      }
+      .mega-image-transition img {
+        transition: opacity 0.25s ease;
+      }
+      /* fix: mobile right spacing & hamburger alignment */
+      @media (max-width: 1023px) {
+        .lg\\:flex-1 {
+          flex: 1 1 0% !important;
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
+        .lg\\:justify-center {
+          justify-content: flex-end !important;
+        }
+        .lg\\:ml-0 {
+          margin-left: auto !important;
+        }
+        header .flex.items-center.justify-between {
+          gap: 0.5rem;
+        }
+        .mobile-hamburger {
+          font-size: 1.8rem;
+          padding: 0.25rem;
+          margin-right: -0.25rem;
+        }
+        .custom-logo {
+          height: 3.2rem !important;
+        }
+        /* ensure right side doesn't overflow */
+        header .max-w-\[1320px\] > .flex {
+          flex-wrap: nowrap;
         }
       }
-      .header-premium {
-        animation: fadeSlideUp 0.55s ease-out;
-      }
-
-      .hero-placeholder {
-        height: 85vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: radial-gradient(circle at 10% 30%, #faf3e0, #fff6ea);
-      }
-      .hero-card {
-        background: rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(5px);
-        padding: 2.5rem;
-        border-radius: 48px;
-        color: #2c2b26;
-        max-width: 600px;
-      }
-      .hero-card h1 {
-        font-size: 2.2rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #b57c1c, #f3b33d);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+      @media (max-width: 480px) {
+        .custom-logo {
+          height: 2.8rem !important;
+        }
+        .mobile-hamburger {
+          font-size: 1.6rem;
+        }
       }
     </style>
   </head>
-  <body>
-    <header class="header-premium" id="premiumHeader">
-      <div class="nav-container">
-        <div class="logo-left">
-          <img
-            src="images/logo_11.png"
-            alt="EDU STOCKX Logo"
-            onerror="
-              this.src =
-                'https://placehold.co/400x120/000000/D4AF37?text=EDU+STOCKX&font=montserrat'
-            "
-          />
-        </div>
-
-        <div class="hamburger-mobile" id="hamburgerBtn">
-          <i class="fas fa-bars"></i>
-        </div>
-
-        <!-- DESKTOP CENTER: unchanged -->
-        <div class="nav-center">
-          <div class="round-header">
-            <li class="nav-item">
-              <a href="#" class="nav-link"
-                ><i class="fas fa-chart-line"></i> Home</a
+  <body class="bg-black text-white antialiased">
+    <div
+      x-data="headerComponent()"
+      x-init="init()"
+      class="relative"
+      @keydown.escape="closeAll()"
+    >
+      <!-- HEADER -->
+      <header
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 sticky-header"
+        :class="{ 'header-scrolled bg-black/95 backdrop-blur-xl': scrolled, 'bg-transparent border-white/5': !scrolled }"
+      >
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="h-[72px] lg:h-[82px] flex items-center justify-between gap-4"
+          >
+            <!-- LOGO (left) -->
+            <div class="flex items-center shrink-0">
+              <a
+                href="/"
+                class="block transition-transform hover:scale-105 duration-200"
               >
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"
-                ><i class="fas fa-info-circle"></i> About</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link" id="servicesDesktopLink"
-                ><i class="fas fa-layer-group"></i> Services
-                <i
-                  class="fas fa-chevron-down"
-                  style="font-size: 9px; margin-left: 6px"
-                ></i
-              ></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    href="#"
-                    class="dropdown-link"
-                    data-preview-img="https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
-                    ><i class="fas fa-coins"></i> Gold trading</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="dropdown-link"
-                    data-preview-img="https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
-                    ><i class="fas fa-dollar-sign"></i> Forex Trading</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="dropdown-link"
-                    data-preview-img="https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww"
-                    ><i class="fab fa-bitcoin"></i> Crypto Trading</a
-                  >
-                </li>
-              </ul>
-
-              <div class="hover-preview" id="hoverPreview">
                 <img
-                  id="previewImg"
-                  src="https://placehold.co/500x300/1a1a1a/D4AF37?text=EDU+STOCKX"
-                  alt="preview"
+                  src="images/logo_111.png"
+                  alt="FX-Manipulation"
+                  class="custom-logo object-contain"
+                  onerror="
+                    this.src = 'https://placehold.co/100x40?text=FX';
+                    this.onerror = null;
+                  "
                 />
-                <span id="previewText"></span>
+              </a>
+            </div>
+
+            <!-- RIGHT SIDE: flex-1 on desktop for centering, on mobile we keep it compact -->
+            <div
+              class="flex items-center gap-4 lg:gap-8 ml-auto lg:ml-0 lg:flex-1 lg:justify-center"
+            >
+              <!-- DESKTOP NAVIGATION - CENTERED -->
+              <nav class="hidden lg:block lg:flex-1 lg:flex lg:justify-center">
+                <ul class="flex items-center gap-0" id="ul-bg">
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >About Us</a
+                    >
+                  </li>
+
+                  <!-- SERVICES MEGA -->
+                  <li
+                    class="relative"
+                    @click.stop="openMega('challenge')"
+                    @mouseenter="openMega('challenge')"
+                    @mouseleave="closeMegaDelayed('challenge')"
+                  >
+                    <button
+                      type="button"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      :class="{'bg-white/10 text-[#ecae17]': activeMega === 'challenge'}"
+                    >
+                      Services
+                      <i
+                        class="fas fa-chevron-down text-[10px] transition-transform duration-200"
+                        :class="{'rotate-180': activeMega === 'challenge'}"
+                      ></i>
+                    </button>
+
+                    <!-- MEGA DROPDOWN -->
+                    <div
+                      x-show="isMegaOpen && activeMega === 'challenge'"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-y-2"
+                      x-transition:enter-end="opacity-100 transform translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-y-0"
+                      x-transition:leave-end="opacity-0 transform -translate-y-2"
+                      class="absolute top-[60px] w-[780px] bg-white rounded-2xl mega-card shadow-2xl z-50 mega-menu-center"
+                      @mouseenter="cancelClose()"
+                      @mouseleave="isMegaOpen=false; activeMega=null"
+                      style="display: none"
+                    >
+                      <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
+                        <!-- LEFT -->
+                        <div>
+                          <h4
+                            class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
+                          >
+                            <i class="fas fa-chart-line text-xs"></i> TRADING
+                            SERVICES
+                          </h4>
+                          <div class="space-y-5">
+                            <a
+                              href="/"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('signals')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-chart-line text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Signals
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Real-time market insights & trade alerts
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="#"
+                              class="flex gap-4 group items-start hover-card"
+                              @click.prevent
+                              @mouseenter="setMegaImage('copy')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-copy text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Copy Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Automatically mirror top traders
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="#"
+                              class="flex gap-4 group items-start hover-card"
+                              @click.prevent
+                              @mouseenter="setMegaImage('live')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-video text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Live Sessions
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Interactive trading sessions with experts
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- RIGHT dynamic image -->
+                        <div
+                          class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
+                        >
+                          <img
+                            :src="currentMegaImage"
+                            class="w-full h-[140px] object-cover rounded-xl mb-4 shadow-md"
+                            alt="Live Trading"
+                          />
+                          <div class="flex items-center gap-2 mb-2">
+                            <span
+                              class="bg-[#ecae17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                              >NEW</span
+                            >
+                            <h4
+                              class="text-[18px] font-bold text-gray-900"
+                              x-text="currentMegaTitle"
+                            >
+                              Live Trading Sessions
+                            </h4>
+                          </div>
+                          <p
+                            class="text-[13px] text-gray-600"
+                            x-text="currentMegaDesc"
+                          >
+                            Join daily live trading with professional analysts.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Academy</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Best Brokers</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Results</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- GET STARTED (desktop) -->
+              <a
+                href="#"
+                class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
+                @click.prevent=""
+              >
+                Members Login
+              </a>
+
+              <!-- MOBILE MENU BUTTON (no extra spacing) -->
+              <div class="lg:hidden flex items-center shrink-0">
+                <button
+                  type="button"
+                  @click="mobileMenuOpen = true"
+                  class="text-white leading-none focus:outline-none mobile-hamburger"
+                >
+                  <i class="fas fa-bars"></i>
+                </button>
               </div>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"
-                ><i class="fas fa-tag"></i> Pricing</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"
-                ><i class="fas fa-headset"></i> Help</a
-              >
-            </li>
+            </div>
           </div>
         </div>
+      </header>
 
-        <div class="right-join">
-          <button class="btn-join" id="joinUsBtn">
-            <i class="fas fa-crown"></i> Join Us
+      <!-- OVERLAY -->
+      <div
+        x-show="isMegaOpen"
+        @click="isMegaOpen=false; activeMega=null"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+        style="display: none"
+      ></div>
+
+      <!-- MOBILE MENU -->
+      <div
+        x-show="mobileMenuOpen"
+        x-trap.noscroll="mobileMenuOpen"
+        x-transition.opacity.duration.200ms
+        class="fixed inset-0 bg-white z-[100] overflow-y-auto mobile-menu-full"
+        @click.self="mobileMenuOpen=false"
+        style="display: none"
+      >
+        <div
+          class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
+        >
+          <img
+            src="https://forexmanipulation.com/wp-content/uploads/2023/11/FX-LOGO-SIGN500.png"
+            alt="FX-Manipulation"
+            class="h-12 w-auto object-contain"
+          />
+          <button
+            type="button"
+            @click="mobileMenuOpen=false"
+            class="text-white mobile-close-icon leading-none focus:outline-none"
+          >
+            &times;
           </button>
         </div>
-
-        <div class="mobile-signin-icon" id="mobileSigninIcon">
-          <i class="fas fa-user-astronaut"></i>
-        </div>
-      </div>
-
-      <!-- Hover preview container -->
-    </header>
-
-    <!-- Mobile Overlay - FIXED: dropdown expands downward naturally -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-      <div class="close-mobile" id="closeMobileMenu">
-        <i class="fas fa-times"></i>
-      </div>
-
-      <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link" id="mobileHomeLink"
-          ><i class="fas fa-chart-line"></i> Home</a
-        >
-      </div>
-      <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link" id="mobileAboutLink"
-          ><i class="fas fa-info-circle"></i> About</a
-        >
-      </div>
-
-      <div class="mobile-services-container">
-        <div class="mobile-service-trigger" id="mobileServicesTrigger">
-          <i class="fas fa-layer-group"></i> Services
-          <i class="fas fa-chevron-down chevron-icon" id="servicesChevron"></i>
-        </div>
-        <div
-          class="mobile-services-dropdown hidden"
-          id="mobileServicesDropdown"
-        >
+        <div class="p-5 space-y-4 pb-20">
           <a
-            href="#"
-            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Gold+Trading+Live"
-            data-mobile-preview-text="GOLD TRADING | secure & leveraged"
-            ><i class="fas fa-coins"></i> Gold trading</a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
           >
           <a
-            href="#"
-            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Forex+Market"
-            data-mobile-preview-text="FOREX TRADING | 24/5 liquidity"
-            ><i class="fas fa-dollar-sign"></i> Forex Trading</a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
+          >
+          <div class="border-b border-gray-200 pb-2">
+            <button
+              type="button"
+              @click="mobileSubmenu = mobileSubmenu === 'challenge' ? null : 'challenge'"
+              class="mobile-dropdown-btn py-3 text-[18px] font-semibold text-gray-900 w-full text-left"
+            >
+              <span
+                ><i class="fas fa-flag-checkered text-[#ecae17] mr-3"></i
+                >Services</span
+              >
+              <i
+                class="fas fa-chevron-down text-gray-400 transition-transform ml-4"
+                :class="{'rotate-180': mobileSubmenu === 'challenge'}"
+              ></i>
+            </button>
+            <div
+              x-show="mobileSubmenu === 'challenge'"
+              x-collapse
+              class="pl-6 space-y-3 mt-2"
+            >
+              <a href="/" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-chart-line text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Signals</div>
+                  <div class="text-[11px] text-gray-500">
+                    Real-time market insights & trade alerts
+                  </div>
+                </div></a
+              >
+              <a href="#" class="flex gap-3 py-2 items-center" @click.prevent
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-copy text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Copy Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Automatically mirror top traders
+                  </div>
+                </div></a
+              >
+              <a href="#" class="flex gap-3 py-2 items-center" @click.prevent
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-video text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Live Sessions</div>
+                  <div class="text-[11px] text-gray-500">
+                    Interactive trading sessions with experts
+                  </div>
+                </div></a
+              >
+            </div>
+          </div>
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-graduation-cap text-[#ecae17] mr-3 w-6"></i
+            >Academy</a
           >
           <a
-            href="#"
-            data-mobile-preview-img="https://placehold.co/500x300/1a1a1a/D4AF37?text=Crypto+Spot"
-            data-mobile-preview-text="CRYPTO TRADING | high volatility"
-            ><i class="fab fa-bitcoin"></i> Crypto Trading</a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-chart-line text-[#ecae17] mr-3 w-6"></i>Best
+            Brokers</a
           >
+          <a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Results</a
+          >
+          <a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
+            >FAQ</a
+          >
+          <a
+            href="/"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
+            Us</a
+          >
+          <div class="pt-6 space-y-3">
+            <a
+              href="#"
+              class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
+              @click.prevent
+            >
+              Get Started</a
+            >
+          </div>
+          <div class="pt-8 border-t border-gray-200 mt-4">
+            <p
+              class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-4 text-center"
+            >
+              Follow Us
+            </p>
+            <div class="flex items-center justify-center gap-5">
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-telegram-plane"></i
+              ></a>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link" id="mobilePricingLink"
-          ><i class="fas fa-tag"></i> Pricing</a
-        >
-      </div>
-      <div class="mobile-nav-item">
-        <a href="#" class="mobile-nav-link" id="mobileHelpLink"
-          ><i class="fas fa-headset"></i> Help</a
-        >
-      </div>
-
-      <div class="mobile-action-buttons">
-        <button class="mobile-join-btn" id="mobileJoinBtn">
-          <i class="fas fa-crown"></i> Join Us
-        </button>
-        <div class="mobile-signin-outline" id="mobileSigninAction">
-          <i class="fas fa-user-circle"></i> Sign In
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-placeholder">
-      <div class="hero-card">
-        <h1>EDU STOCKX</h1>
-        <p style="margin-top: 1rem; font-weight: 500">
-          Premium Transparent Header | Golden Service Preview
-        </p>
-        <p style="font-size: 0.85rem; margin-top: 1rem">
-          ✨ Hover Gold / Forex / Crypto (desktop) or Tap (mobile) to see
-          preview ✨
-        </p>
       </div>
     </div>
 
     <script>
-      // Desktop preview functionality (unchanged, works perfectly)
-      const previewContainer = document.getElementById("hoverPreview");
-      const previewImgElem = document.getElementById("previewImg");
-      const previewTextSpan = document.getElementById("previewText");
-      function showPreview(imgSrc, text) {
-        if (!imgSrc) return;
-        previewImgElem.src = imgSrc;
-        // previewTextSpan.innerText = text || "✦ premium trading preview ✦";
-        previewContainer.classList.add("active");
-      }
-      function hidePreview() {
-        previewContainer.classList.remove("active");
-      }
+      function headerComponent() {
+        return {
+          activeMega: null,
+          isMegaOpen: false,
+          mobileMenuOpen: false,
+          mobileSubmenu: null,
+          scrolled: false,
+          closeTimeout: null,
+          currentMegaImage:
+            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
+          currentMegaTitle: "Live Trading Sessions",
+          currentMegaDesc:
+            "Join daily live trading with professional analysts.",
 
-      const dropdownServiceLinks = document.querySelectorAll(
-        ".dropdown-menu .dropdown-link",
-      );
-      dropdownServiceLinks.forEach((link) => {
-        link.addEventListener("mouseenter", function (e) {
-          let imgUrl = this.getAttribute("data-preview-img");
-          let txt = this.getAttribute("data-preview-text");
-          if (imgUrl) showPreview(imgUrl, txt);
-        });
-        link.addEventListener("mouseleave", hidePreview);
-      });
-      document
-        .querySelectorAll(
-          ".nav-item:not(.dropdown) .nav-link, #servicesDesktopLink",
-        )
-        .forEach((el) => el.addEventListener("mouseenter", hidePreview));
+          init() {
+            window.addEventListener("scroll", () => {
+              this.scrolled = window.scrollY > 20;
+            });
+            this.$watch("mobileMenuOpen", (value) => {
+              if (value) {
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.width = "100%";
+              } else {
+                document.body.style.overflow = "";
+                document.body.style.position = "";
+                document.body.style.width = "";
+              }
+            });
+            this.setMegaImage("default");
+          },
 
-      // MOBILE PREVIEW: show image preview on tap for service options (FIXED)
-      const mobileServiceLinks = document.querySelectorAll(
-        ".mobile-services-dropdown a",
-      );
-      mobileServiceLinks.forEach((link) => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          let img = this.getAttribute("data-mobile-preview-img");
-          let txt = this.getAttribute("data-mobile-preview-text");
-          if (img) {
-            showPreview(img, txt);
-            setTimeout(() => hidePreview(), 2000);
-          }
-          closeMobileMenuFunc();
-        });
-      });
+          setMegaImage(type) {
+            const images = {
+              signals: {
+                img: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Signals",
+                desc: "Real-time market insights & trade alerts.",
+              },
+              copy: {
+                img: "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Copy Trading",
+                desc: "Automatically mirror top traders.",
+              },
+              live: {
+                img: "https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww",
+                title: "Live Sessions",
+                desc: "Interactive trading sessions with experts.",
+              },
+            };
+            const data = images[type] || images.signals;
+            this.currentMegaImage = data.img;
+            this.currentMegaTitle = data.title;
+            this.currentMegaDesc = data.desc;
+          },
 
-      // Mobile menu logic
-      const hamburger = document.getElementById("hamburgerBtn");
-      const mobileOverlay = document.getElementById("mobileMenuOverlay");
-      const closeMobileBtn = document.getElementById("closeMobileMenu");
-      function openMobileMenu() {
-        mobileOverlay.classList.add("open");
-        document.body.style.overflow = "hidden";
+          openMega(menu) {
+            this.cancelClose();
+            this.activeMega = menu;
+            this.isMegaOpen = true;
+            this.setMegaImage("default");
+          },
+
+          closeMegaDelayed(menu) {
+            this.closeTimeout = setTimeout(() => {
+              if (this.activeMega === menu) {
+                this.isMegaOpen = false;
+                this.activeMega = null;
+              }
+            }, 100);
+          },
+
+          cancelClose() {
+            if (this.closeTimeout) {
+              clearTimeout(this.closeTimeout);
+              this.closeTimeout = null;
+            }
+          },
+
+          closeAll() {
+            this.isMegaOpen = false;
+            this.activeMega = null;
+          },
+        };
       }
-      function closeMobileMenuFunc() {
-        mobileOverlay.classList.remove("open");
-        document.body.style.overflow = "";
-      }
-      hamburger.addEventListener("click", openMobileMenu);
-      closeMobileBtn.addEventListener("click", closeMobileMenuFunc);
-
-      // Mobile services accordion - now expands DOWNWARD (no upward movement)
-      const servicesTrigger = document.getElementById("mobileServicesTrigger");
-      const servicesDropdown = document.getElementById(
-        "mobileServicesDropdown",
-      );
-      const chevronIcon = document.getElementById("servicesChevron");
-      if (servicesTrigger) {
-        servicesTrigger.addEventListener("click", (e) => {
-          e.stopPropagation();
-          servicesDropdown.classList.toggle("hidden");
-          if (chevronIcon) {
-            chevronIcon.style.transform = servicesDropdown.classList.contains(
-              "hidden",
-            )
-              ? "rotate(0deg)"
-              : "rotate(180deg)";
-          }
-        });
-      }
-
-      // Close overlay when clicking nav links
-      const mobileNavLinks = document.querySelectorAll(
-        "#mobileHomeLink, #mobileAboutLink, #mobilePricingLink, #mobileHelpLink",
-      );
-      mobileNavLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          closeMobileMenuFunc();
-        });
-      });
-
-      const mobileSigninAction = document.getElementById("mobileSigninAction");
-      if (mobileSigninAction) {
-        mobileSigninAction.addEventListener("click", () => {
-          alert("🔐 Sign in to your EDU STOCKX dashboard");
-          closeMobileMenuFunc();
-        });
-      }
-      const mobileSignIcon = document.getElementById("mobileSigninIcon");
-      if (mobileSignIcon) {
-        mobileSignIcon.addEventListener("click", () =>
-          alert("🔐 Sign in to your EDU STOCKX dashboard"),
-        );
-      }
-
-      // Join buttons
-      const joinBtnDesktop = document.getElementById("joinUsBtn");
-      const mobileJoinBtn = document.getElementById("mobileJoinBtn");
-      if (joinBtnDesktop) {
-        joinBtnDesktop.addEventListener("click", () =>
-          alert(
-            "✨ Join EDU STOCKX — access elite trading signals & golden insights. ✨",
-          ),
-        );
-      }
-      if (mobileJoinBtn) {
-        mobileJoinBtn.addEventListener("click", () => {
-          alert("✨ Join EDU STOCKX — unlock premium market analysis. ✨");
-          closeMobileMenuFunc();
-        });
-      }
-
-      // Scroll effect
-      const headerElem = document.getElementById("premiumHeader");
-      window.addEventListener("scroll", () => {
-        window.scrollY > 20
-          ? headerElem.classList.add("scrolled")
-          : headerElem.classList.remove("scrolled");
-      });
-
-      // Hide preview when clicking outside relevant elements
-      document.addEventListener("click", (e) => {
-        if (
-          !e.target.closest(".dropdown-link") &&
-          !e.target.closest(".mobile-services-dropdown a")
-        ) {
-          hidePreview();
-        }
-      });
     </script>
   </body>
 </html>
