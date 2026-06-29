@@ -1,0 +1,3539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Trading | Edu Stocks</title>
+  </head>
+  <body></body>
+</html>
+<!-- ------header------ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Edu Stockx</title>
+    <!-- Tailwind + Alpine + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        /* font-family:
+              "Inter",
+              system-ui,
+              -apple-system,
+              sans-serif; */
+      }
+      input,
+      select,
+      textarea,
+      button,
+      a,
+      [role="button"] {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        background: #000000;
+        margin: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      .sticky-header {
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      }
+      .header-scrolled {
+        background-color: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(20px);
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+      @media (max-width: 768px) {
+        .sticky-header {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .sticky-header.header-scrolled {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .custom-logo {
+          height: 4rem !important;
+        }
+      }
+      /* #ul-bg {
+            background: rgb(60 60 60 / 71%);
+            border-radius: 31px;
+            padding: 0px 13px;
+          } */
+      .mega-card {
+        box-shadow:
+          0 30px 50px -20px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+      }
+      .nav-link {
+        transition: all 0.2s ease;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .icon-circle {
+        width: 44px;
+        height: 44px;
+        background: #f3f4f6;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+      .group:hover .icon-circle {
+        background: #fef3d0;
+        transform: scale(1.02);
+      }
+      .custom-logo {
+        height: 3rem;
+        width: auto;
+        transition: all 0.2s ease;
+        filter: brightness(1.5);
+      }
+      @media (min-width: 1024px) {
+        .custom-logo {
+          height: 6.5rem;
+        }
+      }
+      .mobile-hamburger {
+        font-size: 2rem;
+      }
+      .mobile-close-icon {
+        font-size: 2.5rem !important;
+        line-height: 1;
+        font-weight: 300;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ecae17;
+        border-radius: 10px;
+      }
+      .mega-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        max-width: 90vw;
+      }
+      @media (min-width: 1280px) {
+        .mega-menu-center {
+          max-width: 780px;
+        }
+      }
+      .accent-gold {
+        color: #ecae17;
+      }
+      .bg-accent-gold {
+        background-color: #ecae17;
+      }
+      .border-accent-gold {
+        border-color: #ecae17;
+      }
+      .hover-bg-accent-gold:hover {
+        background-color: #ecae17;
+      }
+      .mega-image-transition img {
+        transition: opacity 0.25s ease;
+      }
+      /* fix: mobile right spacing & hamburger alignment */
+      @media (max-width: 1023px) {
+        .lg\\:flex-1 {
+          flex: 1 1 0% !important;
+        }
+        .lg\\:justify-center {
+          justify-content: flex-end !important;
+        }
+        .lg\\:ml-0 {
+          margin-left: auto !important;
+        }
+        header .flex.items-center.justify-between {
+          gap: 0.5rem;
+        }
+        .mobile-hamburger {
+          font-size: 1.8rem;
+          padding: 0.25rem;
+          margin-right: -0.25rem;
+        }
+        .custom-logo {
+          height: 3.2rem !important;
+        }
+        /* ensure right side doesn't overflow */
+        header .max-w-\[1320px\] > .flex {
+          flex-wrap: nowrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .custom-logo {
+          height: 4.8rem !important;
+        }
+        .mobile-hamburger {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white antialiased">
+    <div
+      x-data="headerComponent()"
+      x-init="init()"
+      class="relative"
+      @keydown.escape="closeAll()"
+    >
+      <!-- HEADER -->
+      <header
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 sticky-header"
+        :class="{ 'header-scrolled bg-black/95 backdrop-blur-xl': scrolled, 'bg-transparent border-white/5': !scrolled }"
+      >
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="h-[72px] lg:h-[82px] flex items-center justify-between gap-4"
+          >
+            <!-- LOGO (left) -->
+            <div class="flex items-center shrink-0">
+              <a
+                href="../index.html"
+                class="block transition-transform hover:scale-105 duration-200"
+              >
+                <img
+                  src="../images/Logo-eduStocks-Photoroom.png"
+                  alt="Edu Stockx"
+                  class="custom-logo object-contain"
+                  onerror="
+                    this.src = 'https://placehold.co/100x40?text=FX';
+                    this.onerror = null;
+                  "
+                />
+              </a>
+            </div>
+
+            <!-- RIGHT SIDE: flex-1 on desktop for centering, on mobile we keep it compact -->
+            <div
+              class="flex items-center gap-4 lg:gap-8 ml-auto lg:ml-0 lg:flex-1 lg:justify-center"
+            >
+              <!-- DESKTOP NAVIGATION - CENTERED -->
+              <nav class="hidden lg:block lg:flex-1 lg:flex lg:justify-center">
+                <ul class="flex items-center gap-0" id="ul-bg">
+                  <li>
+                    <a
+                      href="../index.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="../About.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >About Us</a
+                    >
+                  </li>
+
+                  <!-- SERVICES MEGA -->
+                  <li
+                    class="relative"
+                    @click.stop="openMega('challenge')"
+                    @mouseenter="openMega('challenge')"
+                    @mouseleave="closeMegaDelayed('challenge')"
+                  >
+                    <button
+                      type="button"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      :class="{'bg-white/10 text-[#ecae17]': activeMega === 'challenge'}"
+                    >
+                      Services
+                      <i
+                        class="fas fa-chevron-down text-[10px] transition-transform duration-200"
+                        :class="{'rotate-180': activeMega === 'challenge'}"
+                      ></i>
+                    </button>
+
+                    <!-- MEGA DROPDOWN -->
+                    <div
+                      x-show="isMegaOpen && activeMega === 'challenge'"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-y-2"
+                      x-transition:enter-end="opacity-100 transform translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-y-0"
+                      x-transition:leave-end="opacity-0 transform -translate-y-2"
+                      class="absolute top-[60px] w-[780px] bg-white rounded-2xl mega-card shadow-2xl z-50 mega-menu-center"
+                      @mouseenter="cancelClose()"
+                      @mouseleave="isMegaOpen=false; activeMega=null"
+                      style="display: none"
+                    >
+                      <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
+                        <!-- LEFT -->
+                        <div>
+                          <h4
+                            class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
+                          >
+                            <i class="fas fa-chart-line text-xs"></i>
+                            TRADING SERVICES
+                          </h4>
+                          <div class="space-y-5">
+                            <a
+                              href="Gold.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('signals')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-chart-line text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Future Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Real-time market insights & trade alerts
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="crypto.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('copy')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-copy text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Crypto Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Automatically mirror top traders
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="stocks.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('live')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-video text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Stocks
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Interactive trading sessions with experts
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- RIGHT dynamic image -->
+                        <div
+                          class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
+                        >
+                          <img
+                            :src="currentMegaImage"
+                            class="w-full h-[140px] object-cover rounded-xl mb-4 shadow-md"
+                            alt="Live Trading"
+                          />
+                          <div class="flex items-center gap-2 mb-2">
+                            <span
+                              class="bg-[#ecae17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                              >NEW</span
+                            >
+                            <h4
+                              class="text-[18px] font-bold text-gray-900"
+                              x-text="currentMegaTitle"
+                            >
+                              Live Trading Sessions
+                            </h4>
+                          </div>
+                          <p
+                            class="text-[13px] text-gray-600"
+                            x-text="currentMegaDesc"
+                          >
+                            Join daily live trading with professional analysts.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="../Academy.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Academy</a
+                    >
+                  </li>
+                  <!-- <li>
+                        <a
+                          href="/"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Best Brokers</a
+                        >
+                      </li> -->
+                  <li>
+                    <a
+                      href="../Pricing.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Pricing</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="../FAQ.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="../Contact.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- GET STARTED (desktop) -->
+              <a
+                href="../Contact.html"
+                class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
+                =""
+              >
+                Members Login
+              </a>
+
+              <!-- MOBILE MENU BUTTON (no extra spacing) -->
+              <div class="lg:hidden flex items-center shrink-0">
+                <button
+                  type="button"
+                  @click="mobileMenuOpen = true"
+                  class="text-white leading-none focus:outline-none mobile-hamburger"
+                >
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- OVERLAY -->
+      <div
+        x-show="isMegaOpen"
+        @click="isMegaOpen=false; activeMega=null"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+        style="display: none"
+      ></div>
+
+      <!-- MOBILE MENU -->
+      <div
+        x-show="mobileMenuOpen"
+        x-trap.noscroll="mobileMenuOpen"
+        x-transition.opacity.duration.200ms
+        class="fixed inset-0 bg-white z-[100] overflow-y-auto mobile-menu-full"
+        @click.self="mobileMenuOpen=false"
+        style="display: none"
+      >
+        <div
+          class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
+        >
+          <img
+            src="images/Logo-eduStocks-Photoroom.png"
+            alt="FX-Manipulation"
+            class="h-12 w-auto object-contain"
+          />
+          <button
+            type="button"
+            @click="mobileMenuOpen=false"
+            class="text-white mobile-close-icon leading-none focus:outline-none"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-5 space-y-4 pb-20">
+          <a
+            href="../index.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
+          >
+          <a
+            href="../About.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
+          >
+          <div class="border-b border-gray-200 pb-2">
+            <button
+              type="button"
+              @click="mobileSubmenu = mobileSubmenu === 'challenge' ? null : 'challenge'"
+              class="mobile-dropdown-btn py-3 text-[18px] font-semibold text-gray-900 w-full text-left"
+            >
+              <span
+                ><i class="fas fa-flag-checkered text-[#ecae17] mr-3"></i
+                >Services</span
+              >
+              <i
+                class="fas fa-chevron-down text-gray-400 transition-transform ml-4"
+                :class="{'rotate-180': mobileSubmenu === 'challenge'}"
+              ></i>
+            </button>
+            <div
+              x-show="mobileSubmenu === 'challenge'"
+              x-collapse
+              class="pl-6 space-y-3 mt-2"
+            >
+              <a href="Gold.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-chart-line text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Future Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Real-time market insights & trade alerts
+                  </div>
+                </div></a
+              >
+              <a href="crypto.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-copy text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Crypto Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Automatically mirror top traders
+                  </div>
+                </div></a
+              >
+              <a href="stocks.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-video text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Stocks</div>
+                  <div class="text-[11px] text-gray-500">
+                    Interactive trading sessions with experts
+                  </div>
+                </div></a
+              >
+            </div>
+          </div>
+          <a
+            href="../Academy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-graduation-cap text-[#ecae17] mr-3 w-6"></i
+            >Academy</a
+          >
+          <!-- <a
+                href="/"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-chart-line text-[#ecae17] mr-3 w-6"></i>Best
+                Brokers</a
+              > -->
+          <a
+            href="../Pricing.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Pricing</a
+          >
+          <a
+            href="../FAQ.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
+            >FAQ</a
+          >
+          <a
+            href="../Contact.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
+            Us</a
+          >
+          <div class="pt-6 space-y-3">
+            <a
+              href="../Contact.html"
+              class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
+            >
+              Get Started</a
+            >
+          </div>
+          <div class="pt-8 border-t border-gray-200 mt-4">
+            <p
+              class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-4 text-center"
+            >
+              Follow Us
+            </p>
+            <div class="flex items-center justify-center gap-5">
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-telegram-plane"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function headerComponent() {
+        return {
+          activeMega: null,
+          isMegaOpen: false,
+          mobileMenuOpen: false,
+          mobileSubmenu: null,
+          scrolled: false,
+          closeTimeout: null,
+          currentMegaImage:
+            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
+          currentMegaTitle: "Live Trading Sessions",
+          currentMegaDesc:
+            "Join daily live trading with professional analysts.",
+
+          init() {
+            window.addEventListener("scroll", () => {
+              this.scrolled = window.scrollY > 20;
+            });
+            this.$watch("mobileMenuOpen", (value) => {
+              if (value) {
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.width = "100%";
+              } else {
+                document.body.style.overflow = "";
+                document.body.style.position = "";
+                document.body.style.width = "";
+              }
+            });
+            this.setMegaImage("default");
+          },
+
+          setMegaImage(type) {
+            const images = {
+              signals: {
+                img: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Future Trading",
+                desc: "Real-time market insights & trade alerts.",
+              },
+              copy: {
+                img: "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Crypto Trading",
+                desc: "Automatically mirror top traders.",
+              },
+              live: {
+                img: "https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww",
+                title: "Stocks",
+                desc: "Interactive trading sessions with experts.",
+              },
+            };
+            const data = images[type] || images.signals;
+            this.currentMegaImage = data.img;
+            this.currentMegaTitle = data.title;
+            this.currentMegaDesc = data.desc;
+          },
+
+          openMega(menu) {
+            this.cancelClose();
+            this.activeMega = menu;
+            this.isMegaOpen = true;
+            this.setMegaImage("default");
+          },
+
+          closeMegaDelayed(menu) {
+            this.closeTimeout = setTimeout(() => {
+              if (this.activeMega === menu) {
+                this.isMegaOpen = false;
+                this.activeMega = null;
+              }
+            }, 100);
+          },
+
+          cancelClose() {
+            if (this.closeTimeout) {
+              clearTimeout(this.closeTimeout);
+              this.closeTimeout = null;
+            }
+          },
+
+          closeAll() {
+            this.isMegaOpen = false;
+            this.activeMega = null;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
+
+<!-- ----hero---- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Futures Trading – Full Width Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- reset & base ---------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        background: #0a0705;
+        font-family: "Montserrat", sans-serif;
+        color: #fff;
+      }
+
+      /* ---------- full-width hero ---------- */
+      .hero {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        padding: 92px 5% 60px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse at 25% 20%,
+            rgba(255, 190, 40, 0.1) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 75% 80%,
+            rgba(200, 140, 20, 0.06) 0%,
+            transparent 50%
+          ),
+          linear-gradient(165deg, #0f0b08 0%, #1a130e 100%);
+        box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ---------- background layers ---------- */
+      .hero-bg-texture {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M0 0h400v400H0z' fill='none'/%3E%3Cpath d='M60 80 L140 40 L220 70 L300 30 L380 60' stroke='%23ffcc44' stroke-width='0.4' fill='none' opacity='0.15'/%3E%3Cpath d='M40 180 L120 140 L200 170 L280 130 L360 160' stroke='%23ffcc44' stroke-width='0.4' fill='none' opacity='0.12'/%3E%3Cpath d='M80 280 L160 250 L240 270 L320 230 L390 260' stroke='%23ffcc44' stroke-width='0.4' fill='none' opacity='0.10'/%3E%3Ccircle cx='140' cy='40' r='2.5' fill='%23ffcc44' opacity='0.2'/%3E%3Ccircle cx='300' cy='30' r='2.5' fill='%23ffcc44' opacity='0.2'/%3E%3Ccircle cx='380' cy='60' r='2' fill='%23ffcc44' opacity='0.15'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+
+      .hero-glow-1 {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 185, 0, 0.12) 0%,
+          transparent 70%
+        );
+        top: -300px;
+        right: -100px;
+        filter: blur(120px);
+        pointer-events: none;
+      }
+
+      .hero-glow-2 {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(200, 150, 30, 0.08) 0%,
+          transparent 70%
+        );
+        bottom: -200px;
+        left: -100px;
+        filter: blur(100px);
+        pointer-events: none;
+      }
+
+      /* ---------- animated chart (bg) ---------- */
+      .hero-chart {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        width: 320px;
+        height: 100px;
+        opacity: 0.2;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .hero-chart svg {
+        width: 100%;
+        height: 100%;
+      }
+      .hero-chart path {
+        stroke: #f5c542;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.15));
+        stroke-dasharray: 1200;
+        stroke-dashoffset: 1200;
+        animation: drawChart 6s ease-in-out infinite alternate;
+      }
+      @keyframes drawChart {
+        0% {
+          stroke-dashoffset: 1200;
+          opacity: 0.2;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+      }
+
+      /* ---------- content layout ---------- */
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .hero-left {
+        flex: 1 1 52%;
+        max-width: 680px;
+      }
+
+      .hero-right {
+        flex: 1 1 44%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* ---------- typography ---------- */
+      .hero-badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #f5c542;
+        background: rgba(255, 185, 0, 0.07);
+        padding: 6px 20px;
+        border-radius: 40px;
+        border: 1px solid rgba(255, 185, 0, 0.12);
+        backdrop-filter: blur(4px);
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease 0.2s forwards;
+      }
+
+      .hero-title {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 0.82;
+        background: linear-gradient(
+          180deg,
+          #fff5e0 0%,
+          #f5d78e 40%,
+          #e6b422 70%,
+          #b8860b 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 60px rgba(255, 200, 0, 0.1);
+        letter-spacing: -3px;
+        animation: goldShine 5s ease-in-out infinite alternate;
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+        animation:
+          titleReveal 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s forwards,
+          goldShine 5s ease-in-out 1s infinite alternate;
+      }
+      @keyframes titleReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(30px) scale(0.96);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes goldShine {
+        0% {
+          filter: drop-shadow(0 0 20px rgba(255, 200, 0, 0.1));
+        }
+        100% {
+          filter: drop-shadow(0 0 70px rgba(255, 200, 0, 0.4));
+        }
+      }
+
+      .hero-sub-title {
+        font-size: 42px;
+        font-weight: 700;
+        margin-top: -4px;
+        letter-spacing: 1px;
+        background: linear-gradient(135deg, #f0e4d0, #cbb59b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease 0.3s forwards;
+      }
+
+      .hero-tagline {
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-top: 16px;
+        color: #d4c9bc;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease 0.4s forwards;
+      }
+      .hero-tagline span {
+        color: #f5c542;
+        font-weight: 600;
+        text-shadow: 0 0 30px rgba(255, 200, 0, 0.15);
+      }
+
+      .hero-desc {
+        margin-top: 28px;
+        line-height: 1.9;
+        color: #cbc0b2;
+        font-size: 16px;
+        font-weight: 300;
+        max-width: 95%;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease 0.5s forwards;
+      }
+      .hero-desc strong {
+        color: #f5d78e;
+        font-weight: 500;
+      }
+
+      .hero-cta-wrap {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease 0.6s forwards;
+      }
+
+      .hero-cta {
+        display: inline-block;
+        margin-top: 36px;
+        padding: 18px 56px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #0a0705;
+        background: linear-gradient(135deg, #f5c542, #e6b422);
+        border-radius: 60px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 50px rgba(255, 185, 0, 0.2);
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+      }
+      .hero-cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 16px 70px rgba(255, 185, 0, 0.45);
+        background: linear-gradient(135deg, #fdd966, #e6b422);
+      }
+
+      /* ---------- stat cards ---------- */
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 44px;
+      }
+
+      .stat-card {
+        flex: 1 0 100px;
+        min-width: 110px;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(4px);
+        border-radius: 20px;
+        padding: 22px 16px 20px;
+        text-align: center;
+        border: 1px solid rgba(255, 185, 0, 0.06);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: default;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      .stat-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stat-card:hover {
+        background: rgba(255, 185, 0, 0.06);
+        border-color: rgba(255, 185, 0, 0.2);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+      }
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 30%;
+        width: 40%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #f5c542, transparent);
+        opacity: 0.3;
+        border-radius: 100%;
+      }
+      .stat-card .number {
+        font-size: 28px;
+        font-weight: 800;
+        color: #f5d78e;
+        letter-spacing: 0.5px;
+      }
+      .stat-card .label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #b8ada0;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+
+      /* ---------- gold image ---------- */
+      .hero-gold-image {
+        width: 100%;
+        max-width: 520px;
+        filter: drop-shadow(0 0 100px rgba(255, 185, 0, 0.35));
+        animation: floatGold 6s ease-in-out infinite;
+        transition: all 0.4s ease;
+        transform-origin: center;
+        opacity: 0;
+        transform: scale(0.92) translateY(30px);
+        animation: imageReveal 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+      }
+      @keyframes imageReveal {
+        0% {
+          opacity: 0;
+          transform: scale(0.92) translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .hero-gold-image:hover {
+        filter: drop-shadow(0 0 100px rgba(255, 185, 0, 0.35));
+        transform: scale(1.02);
+      }
+
+      @keyframes floatGold {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-22px) rotate(0.8deg);
+        }
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 1200px) {
+        .hero-title {
+          font-size: 6.2rem;
+        }
+        .hero-sub-title {
+          font-size: 3.4rem;
+        }
+        .hero-tagline {
+          font-size: 1.4rem;
+        }
+        .hero-gold-image {
+          max-width: 420px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero {
+          padding: 50px 5%;
+          min-height: 90vh;
+        }
+        .hero-content {
+          gap: 30px;
+        }
+        .hero-title {
+          font-size: 5.4rem;
+        }
+        .hero-sub-title {
+          font-size: 2.8rem;
+        }
+        .hero-gold-image {
+          max-width: 380px;
+        }
+        .hero-chart {
+          width: 240px;
+          height: 80px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .hero-content {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 5rem;
+        }
+        .hero-left {
+          max-width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-desc {
+          max-width: 100%;
+        }
+        .hero-stats {
+          justify-content: center;
+        }
+        .hero-title {
+          font-size: 4.6rem;
+        }
+        .hero-sub-title {
+          font-size: 2.4rem;
+        }
+        .hero-tagline {
+          font-size: 1.2rem;
+        }
+        .hero-gold-image {
+          max-width: 320px;
+        }
+        .hero-chart {
+          display: none;
+        }
+        .stat-card {
+          min-width: 100px;
+        }
+      }
+
+      @media (max-width: 540px) {
+        .hero {
+          padding: 30px 5%;
+          min-height: 80vh;
+        }
+        .hero-title {
+          font-size: 3.6rem;
+          letter-spacing: -1px;
+        }
+        .hero-sub-title {
+          font-size: 1.8rem;
+        }
+        .hero-tagline {
+          font-size: 1rem;
+        }
+        .hero-desc {
+          font-size: 14px;
+        }
+        .hero-cta {
+          padding: 14px 32px;
+          font-size: 14px;
+        }
+        .stat-card {
+          min-width: 80px;
+          padding: 16px 10px;
+        }
+        .stat-card .number {
+          font-size: 22px;
+        }
+        .hero-gold-image {
+          max-width: 240px;
+        }
+        .hero-badge {
+          font-size: 10px;
+          padding: 4px 14px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+        .hero-sub-title {
+          font-size: 1.5rem;
+        }
+        .stat-card {
+          min-width: 70px;
+          padding: 12px 8px;
+        }
+        .stat-card .number {
+          font-size: 18px;
+        }
+        .hero-gold-image {
+          max-width: 180px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <!-- background layers -->
+      <div class="hero-bg-texture"></div>
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+
+      <!-- animated chart -->
+      <div class="hero-chart">
+        <svg viewBox="0 0 300 100" preserveAspectRatio="none">
+          <path
+            d="M0 70 L40 40 L80 60 L130 20 L180 45 L220 10 L270 35 L300 15"
+          />
+        </svg>
+      </div>
+
+      <!-- main content -->
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-badge">⚡ Premium Trading</div>
+
+          <h1 class="hero-title">FUTURE</h1>
+          <h2 class="hero-sub-title">TRADING</h2>
+
+          <div class="hero-tagline">
+            Master the Art of Futures Trading <br />
+            <span>with Confidence</span>
+          </div>
+
+          <p class="hero-desc">
+            At <strong>Edu StockX</strong>, we help traders understand futures
+            market movements, contract behavior, and professional trading
+            strategies to trade with confidence. <br /><br />
+            Whether you're a beginner or an experienced trader, our structured
+            learning approach equips you with the knowledge, discipline, and
+            risk management skills needed to succeed in futures trading.
+          </p>
+
+          <div class="hero-cta-wrap">
+            <button class="hero-cta">Start Trading</button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card" data-delay="0.1">
+              <div class="number">24/7</div>
+              <div class="label">Market Opportunities</div>
+            </div>
+            <div class="stat-card" data-delay="0.2">
+              <div class="number">+85%</div>
+              <div class="label">Strategy Accuracy</div>
+            </div>
+            <div class="stat-card" data-delay="0.3">
+              <div class="number">4.9★</div>
+              <div class="label">Trusted</div>
+            </div>
+            <div class="stat-card" data-delay="0.4">
+              <div class="number">1M+</div>
+              <div class="label">Trades</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <img
+            class="hero-gold-image"
+            src="../images/FT-2.png"
+            alt="Futures trading"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        // Intersection Observer for stat cards with staggered delay
+        const statCards = document.querySelectorAll(".stat-card");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const card = entry.target;
+                const delay = parseFloat(card.dataset.delay) || 0;
+                setTimeout(() => {
+                  card.classList.add("visible");
+                }, delay * 1000);
+                observer.unobserve(card);
+              }
+            });
+          },
+          {
+            threshold: 0.25,
+            rootMargin: "0px 0px -30px 0px",
+          },
+        );
+
+        statCards.forEach((card) => {
+          observer.observe(card);
+        });
+
+        // fallback: if observer not supported, show all
+        if (!("IntersectionObserver" in window)) {
+          statCards.forEach((c) => c.classList.add("visible"));
+        }
+      })();
+    </script>
+  </body>
+</html>
+<!-- ----learn---- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Futures Trading · Edu StockX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .body-learn {
+        font-family: "Inter", sans-serif;
+        background: #000000;
+        color: #e8e2db;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2.5rem 1.2rem;
+        line-height: 1.5;
+      }
+
+      .gold-container {
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .gold {
+        color: #d4af37;
+      }
+      .gold-bg {
+        background: linear-gradient(135deg, #f9e5b3, #d4af37 50%, #b8860b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 175, 55, 0.2),
+          transparent
+        );
+        margin: 2.2rem auto;
+        width: 70%;
+      }
+
+      /* ---------- heros ---------- */
+      .heros-section {
+        text-align: center;
+        margin-bottom: 2.8rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(212, 175, 55, 0.06);
+        padding: 0.4rem 1.6rem 0.4rem 1.2rem;
+        border-radius: 60px;
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        color: #d4af37;
+        text-transform: uppercase;
+        margin-bottom: 1.8rem;
+        backdrop-filter: blur(2px);
+      }
+      .badge i {
+        font-size: 0.9rem;
+      }
+
+      .heros-section h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.4rem;
+      }
+
+      .subhead {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #cbc1b6;
+        max-width: 750px;
+        margin: 0 auto 0.3rem;
+      }
+      .subhead strong {
+        color: #d4af37;
+        font-weight: 600;
+      }
+
+      .lead {
+        font-size: 1.12rem;
+        color: #c8bdb2;
+        max-width: 780px;
+        margin: 1.6rem auto 1.8rem;
+        padding: 0.4rem 1.8rem;
+        border-left: 3px solid #d4af37;
+        border-right: 3px solid #d4af37;
+        display: inline-block;
+      }
+
+      .image-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem 3rem;
+        margin: 2.5rem 0 1.8rem;
+      }
+      .img-wrap {
+        background: rgba(20, 18, 17, 0.5);
+        border-radius: 2.5rem;
+        padding: 0.6rem;
+        border: 1px solid rgba(212, 175, 55, 0.08);
+        transition: 0.3s ease;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(2px);
+      }
+      .img-wrap:hover {
+        border-color: rgba(212, 175, 55, 0.3);
+        transform: scale(1.02);
+      }
+      .img-wrap img {
+        display: block;
+        max-width: 160px;
+        height: auto;
+        border-radius: 2rem;
+        filter: brightness(0.95) contrast(1.1);
+        transition: 0.3s;
+      }
+      .img-wrap img:hover {
+        filter: brightness(1.05) contrast(1.15);
+      }
+      .img-wrap-lg {
+        padding: 0.8rem;
+      }
+      .img-wrap-lg img {
+        max-width: 200px;
+      }
+
+      .reasons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem 1.8rem;
+        margin: 2rem auto 1.2rem;
+        padding: 0;
+        list-style: none;
+        max-width: 850px;
+      }
+      .reasons li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #ddd0c4;
+        background: rgba(212, 175, 55, 0.02);
+        padding: 0.25rem 1rem 0.25rem 0.5rem;
+        border-radius: 40px;
+        border: 1px solid rgba(212, 175, 55, 0.04);
+        transition: 0.2s;
+      }
+      .reasons li i {
+        color: #d4af37;
+        font-size: 0.9rem;
+        background: rgba(212, 175, 55, 0.05);
+        padding: 0.3rem 0.5rem;
+        border-radius: 30px;
+      }
+      .reasons li:hover {
+        border-color: rgba(212, 175, 55, 0.15);
+        background: rgba(212, 175, 55, 0.04);
+      }
+
+      /* ---------- LEARN SECTION (image left / points right) ---------- */
+      .learn-section {
+        margin: 3rem 0 2rem;
+      }
+
+      .learn-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 2rem;
+        background: transparent;
+        border-radius: 2.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.06);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      }
+
+      .learn-image {
+        flex: 0 0 46%;
+        min-height: 380px;
+        background: #0d0c0b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-right: 1px solid rgba(212, 175, 55, 0.08);
+      }
+      .learn-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.9) contrast(1.1);
+        transition: 0.4s;
+      }
+      .learn-image img:hover {
+        filter: brightness(1) contrast(1.15);
+        transform: scale(1.01);
+      }
+
+      .learn-content {
+        flex: 1;
+        padding: 2.8rem 2.8rem 2.8rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .learn-content h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #ede5db;
+        letter-spacing: -0.3px;
+        margin-bottom: 0.2rem;
+      }
+      .learn-content h2 i {
+        color: #d4af37;
+        margin-right: 0.6rem;
+      }
+      .learn-content .sub-lead {
+        font-size: 0.95rem;
+        color: #b3a89d;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.05);
+        padding-bottom: 0.6rem;
+      }
+
+      .point-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .point-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.9rem;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.03);
+        padding-bottom: 0.6rem;
+      }
+      .point-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .point-icon {
+        flex: 0 0 2rem;
+        width: 2rem;
+        height: 2rem;
+        background: rgba(212, 175, 55, 0.04);
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4af37;
+        font-size: 0.9rem;
+        border: 1px solid rgba(212, 175, 55, 0.04);
+      }
+      .point-text {
+        flex: 1;
+      }
+      .point-text h4 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #d4af37;
+        margin-bottom: 0.05rem;
+      }
+      .point-text p {
+        font-size: 0.85rem;
+        color: #bcb0a4;
+        margin: 0;
+        line-height: 1.4;
+      }
+
+      /* ---------- ZIG-ZAG GRID (2x2) ---------- */
+      .zigzag-grid {
+        display: flex;
+        gap: 1.8rem;
+        margin: 2.8rem 0 1.5rem;
+      }
+
+      .zig-card {
+        background: rgba(20, 18, 17, 0.5);
+        backdrop-filter: blur(2px);
+        border-radius: 2rem;
+        padding: 1.8rem 1.5rem;
+        border: 1px solid rgba(212, 175, 55, 0.05);
+        transition: 0.25s;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        text-align: center;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease,
+          box-shadow 0.25s,
+          border-color 0.25s;
+      }
+      .zig-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .zig-card:hover {
+        transform: translateY(0) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.25);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+      }
+
+      .zig-card i {
+        font-size: 2.2rem;
+        color: #d4af37;
+        margin-bottom: 0.6rem;
+        background: rgba(212, 175, 55, 0.04);
+        padding: 0.6rem;
+        border-radius: 18px;
+        transition: 0.3s;
+      }
+      .zig-card:hover i {
+        transform: scale(1.08) rotate(2deg);
+      }
+      .zig-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #ede5db;
+      }
+      .zig-card p {
+        color: #b3a89d;
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+      }
+
+      /* ---------- CTA & FOOTER ---------- */
+      .cta-line {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem 2.5rem;
+        margin: 2.8rem 0 0.5rem;
+        padding-top: 1.8rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+      }
+      .cta-line span {
+        font-size: 1rem;
+        font-weight: 300;
+        color: #bfb4a8;
+      }
+      .gold-badge {
+        background: rgba(212, 175, 55, 0.08);
+        padding: 0.6rem 2rem;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        color: #d4af37;
+        letter-spacing: 0.4px;
+        transition: 0.25s;
+        cursor: default;
+      }
+      .gold-badge i {
+        margin-right: 0.5rem;
+      }
+      .gold-badge:hover {
+        background: rgba(212, 175, 55, 0.12);
+        box-shadow: 0 0 24px rgba(212, 175, 55, 0.08);
+        transform: scale(1.02);
+      }
+
+      /* ---------- REVEAL ANIMATIONS (scroll) ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 820px) {
+        .learn-wrapper {
+          flex-direction: column;
+          border-radius: 2rem;
+        }
+        .learn-image {
+          flex: 0 0 auto;
+          min-height: 200px;
+          border-right: 0;
+          border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+        }
+        .learn-image img {
+          max-height: 240px;
+          width: 100%;
+          object-fit: contain;
+          background: black;
+        }
+        .learn-content {
+          padding: 2rem 1.8rem;
+        }
+        .learn-content h2 {
+          font-size: 1.8rem;
+        }
+        .zigzag-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .heros-section h1 {
+          font-size: 2.4rem;
+        }
+        .subhead {
+          font-size: 1.2rem;
+        }
+        .lead {
+          font-size: 1rem;
+          border-left: none;
+          border-right: none;
+          padding: 0.2rem 0.5rem;
+        }
+        .image-row {
+          gap: 1.2rem;
+        }
+        .img-wrap img {
+          max-width: 110px;
+        }
+        .img-wrap-lg img {
+          max-width: 140px;
+        }
+        .learn-content {
+          padding: 1.5rem 1.2rem;
+        }
+        .learn-content h2 {
+          font-size: 1.6rem;
+        }
+        .point-item {
+          gap: 0.6rem;
+        }
+        .point-text h4 {
+          font-size: 0.9rem;
+        }
+        .point-text p {
+          font-size: 0.8rem;
+        }
+
+        .zigzag-grid {
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="body-learn">
+      <div class="gold-container">
+        <!-- ===== HERO ===== -->
+        <section class="heros-section">
+          <div class="badge">
+            <i class="fas fa-chart-line"></i> Edu StockX · Futures
+          </div>
+          <h1 class="gold-bg">Learn Futures Trading</h1>
+          <div class="subhead">
+            Master Futures Markets with <strong>Discipline & Strategy</strong>
+          </div>
+          <div class="lead">
+            Futures trading offers powerful opportunities across indices,
+            commodities, and currencies. At <strong>Edu StockX</strong>, we
+            equip you with the knowledge to navigate leverage, expiry, and
+            market dynamics with confidence.
+          </div>
+
+          <div class="image-row">
+            <div class="img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D"
+                alt="Stock market chart"
+              />
+            </div>
+            <div class="img-wrap img-wrap-lg">
+              <img
+                src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D"
+                alt="Trading screen"
+              />
+            </div>
+            <div class="img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D"
+                alt="Candlestick chart"
+              />
+            </div>
+          </div>
+
+          <ul class="reasons">
+            <li><i class="fas fa-water"></i> High liquidity & tight spreads</li>
+            <li><i class="fas fa-arrow-trend-up"></i> Trade both directions</li>
+            <li>
+              <i class="fas fa-scale-balanced"></i> Leverage & margin efficiency
+            </li>
+            <li><i class="fas fa-clock"></i> Intraday, swing & positional</li>
+            <li><i class="fas fa-wave-square"></i> Diverse global markets</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <!-- ===== LEARN SECTION (image left / points right) ===== -->
+        <section class="learn-section reveal" id="learnSection">
+          <div class="learn-wrapper">
+            <div class="learn-image">
+              <img
+                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D"
+                alt="Futures trading education"
+              />
+            </div>
+            <div class="learn-content">
+              <h2><i class="fas fa-gem"></i> What You'll Learn</h2>
+              <div class="sub-lead">
+                Concise, actionable futures trading skills.
+              </div>
+
+              <div class="point-list">
+                <div class="point-item">
+                  <div class="point-icon">
+                    <i class="fas fa-file-contract"></i>
+                  </div>
+                  <div class="point-text">
+                    <h4>Futures Market Basics</h4>
+                    <p>
+                      Understand contracts, expiry, leverage, and margin
+                      requirements.
+                    </p>
+                  </div>
+                </div>
+                <div class="point-item">
+                  <div class="point-icon">
+                    <i class="fas fa-chart-simple"></i>
+                  </div>
+                  <div class="point-text">
+                    <h4>Technical Analysis</h4>
+                    <p>
+                      Price action, chart patterns, support & resistance,
+                      indicators.
+                    </p>
+                  </div>
+                </div>
+                <div class="point-item">
+                  <div class="point-icon">
+                    <i class="fas fa-arrow-right-to-bracket"></i>
+                  </div>
+                  <div class="point-text">
+                    <h4>Entry & Exit Strategies</h4>
+                    <p>High-probability setups with proper risk-reward.</p>
+                  </div>
+                </div>
+                <div class="point-item">
+                  <div class="point-icon">
+                    <i class="fas fa-helmet-safety"></i>
+                  </div>
+                  <div class="point-text">
+                    <h4>Risk Management</h4>
+                    <p>
+                      Capital protection, position sizing, stop-loss, and
+                      discipline.
+                    </p>
+                  </div>
+                </div>
+                <div class="point-item">
+                  <div class="point-icon"><i class="fas fa-eye"></i></div>
+                  <div class="point-text">
+                    <h4>Live Market Analysis</h4>
+                    <p>
+                      Real-time market scenarios with professional insights.
+                    </p>
+                  </div>
+                </div>
+                <div class="point-item">
+                  <div class="point-icon"><i class="fas fa-brain"></i></div>
+                  <div class="point-text">
+                    <h4>Trading Psychology</h4>
+                    <p>
+                      Build patience, consistency, and emotional control for
+                      long-term success.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr />
+
+        <!-- ===== ZIG-ZAG GRID (2x2) ===== -->
+        <h1
+          class="gold-bg"
+          style="
+            text-align: center;
+            margin-top: 80px;
+            font-size: 3rem;
+            font-weight: 600;
+          "
+          id="whyTradeTitle"
+        >
+          Why Trade Futures?
+        </h1>
+        <div class="zigzag-grid" id="zigzagGrid">
+          <div class="zig-card" id="card1">
+            <i class="fas fa-coins"></i>
+            <h3>High Liquidity</h3>
+            <p>
+              Trade highly liquid contracts with fast execution and competitive
+              spreads.
+            </p>
+          </div>
+          <div class="zig-card" id="card2">
+            <i class="fas fa-arrow-trend-up"></i>
+            <h3>Trade Both Directions</h3>
+            <p>
+              Earn opportunities in both bullish and bearish market conditions.
+            </p>
+          </div>
+          <div class="zig-card" id="card3">
+            <i class="fas fa-scale-balanced"></i>
+            <h3>Leverage Opportunities</h3>
+            <p>
+              Control larger positions with margin while learning proper risk
+              management.
+            </p>
+          </div>
+          <div class="zig-card" id="card4">
+            <i class="fas fa-clock-rotate-left"></i>
+            <h3>Flexible Trading Styles</h3>
+            <p>
+              Suitable for intraday, swing, and positional traders across
+              multiple markets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        // ---- SCROLL REVEAL for .reveal elements ----
+        const revealElements = document.querySelectorAll(".reveal");
+
+        function checkReveal() {
+          const windowHeight = window.innerHeight;
+          const revealPoint = 120;
+
+          revealElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < windowHeight - revealPoint) {
+              el.classList.add("visible");
+            }
+          });
+        }
+
+        // ---- ZIG-ZAG CARDS: sequential reveal ----
+        const cards = document.querySelectorAll(".zig-card");
+        let cardCheckTriggered = false;
+
+        function checkCards() {
+          const windowHeight = window.innerHeight;
+          const revealPoint = 100;
+          if (cards.length === 0) return;
+          const firstCardRect = cards[0].getBoundingClientRect();
+          if (
+            firstCardRect.top < windowHeight - revealPoint &&
+            !cardCheckTriggered
+          ) {
+            cardCheckTriggered = true;
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("visible");
+              }, index * 200);
+            });
+          }
+        }
+
+        function onScroll() {
+          checkReveal();
+          checkCards();
+        }
+
+        window.addEventListener("load", function () {
+          setTimeout(() => {
+            onScroll();
+          }, 100);
+        });
+
+        let ticking = false;
+        window.addEventListener("scroll", function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              onScroll();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          onScroll();
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+<!-- -----signal---- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Wealth · Smart Trading</title>
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .body-signals {
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        padding: 2rem 8.5rem;
+      }
+      .premium-section {
+        max-width: 1400px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.92) 0%,
+          rgb(33 32 32 / 61%) 35%,
+          rgb(37 37 37 / 73%) 70%,
+          #252424e0 100%
+        );
+        padding: 4rem 3.5rem;
+        border-radius: 40px;
+        box-shadow:
+          0 24px 80px rgba(0, 0, 0, 0.85),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        transition: box-shadow 0.5s ease;
+        border: 1px solid rgb(255 255 255 / 22%);
+      }
+      .premium-section:hover {
+        box-shadow:
+          0 32px 100px rgba(0, 0, 0, 0.95),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+      }
+      .gold-text {
+        color: #d4a845;
+        text-shadow: 0 0 20px rgba(212, 168, 69, 0.08);
+      }
+      .gold-border {
+        border-color: rgba(212, 168, 69, 0.2);
+      }
+      .gold-icon {
+        color: #d4a845;
+        filter: drop-shadow(0 0 6px rgba(212, 168, 69, 0.15));
+        transition: all 0.3s ease;
+      }
+
+      .section-hero {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      .section-hero .badge {
+        display: inline-block;
+        background: rgba(212, 168, 69, 0.06);
+        backdrop-filter: blur(4px);
+        padding: 0.45rem 2rem;
+        border-radius: 100px;
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(212, 168, 69, 0.7);
+        border: 0.5px solid rgba(212, 168, 69, 0.15);
+        margin-bottom: 1.8rem;
+        font-weight: 500;
+      }
+      .section-hero h1 {
+        font-size: 3.2rem;
+        font-weight: 300;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      .section-hero h1 span {
+        font-weight: 600;
+        background: linear-gradient(
+          135deg,
+          #f5e6b0 0%,
+          #d4a845 60%,
+          #b8922f 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .section-hero .sub-headline {
+        max-width: 640px;
+        margin: 1.2rem auto 0;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 1.05rem;
+        font-weight: 300;
+        letter-spacing: 0.2px;
+        line-height: 1.7;
+      }
+      .divider-gold {
+        width: 80px;
+        height: 1.5px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 168, 69, 0.3),
+          transparent
+        );
+        margin: 1rem auto 2.5rem;
+      }
+
+      .broker-grid {
+        display: flex;
+        gap: 2.5rem;
+        align-items: stretch;
+      }
+      .broker-table-wrapper {
+        flex: 3;
+        min-width: 0;
+      }
+
+      /* CTA side card — centered content */
+      .cta-side-card {
+        flex: 1.2;
+        min-width: 220px;
+        height: max-content;
+        background: rgba(212, 168, 69, 0.04);
+        border: 0.5px solid rgba(212, 168, 69, 0.12);
+        border-radius: 28px;
+        padding: 2.2rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* center horizontally */
+        text-align: center; /* center text */
+        backdrop-filter: blur(4px);
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+      .cta-side-card:hover {
+        background: rgba(212, 168, 69, 0.07);
+        border-color: rgba(212, 168, 69, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      }
+      .cta-side-card .cta-badge {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(212, 168, 69, 0.5);
+        border-bottom: 0.5px solid rgba(212, 168, 69, 0.08);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.2rem;
+        width: 100%;
+      }
+      .cta-side-card h3 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
+      }
+      .cta-side-card h3 span {
+        font-weight: 600;
+        background: linear-gradient(135deg, #f5e6b0, #d4a845);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .cta-side-card p {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.6;
+        margin-bottom: 1.8rem;
+      }
+      .btn-gold-large {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        padding: 0.8rem 2rem;
+        background: rgba(212, 168, 69, 0.1);
+        border: 0.5px solid rgba(212, 168, 69, 0.25);
+        border-radius: 60px;
+        color: #d4a845;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        width: fit-content;
+        margin: 0 auto; /* center button */
+      }
+      .btn-gold-large i {
+        font-size: 0.7rem;
+        transition: transform 0.25s ease;
+      }
+      .btn-gold-large:hover {
+        background: rgba(212, 168, 69, 0.18);
+        border-color: rgba(212, 168, 69, 0.4);
+        box-shadow: 0 0 30px rgba(212, 168, 69, 0.06);
+        transform: translateY(-2px);
+      }
+      .btn-gold-large:hover i {
+        transform: translateX(4px);
+      }
+
+      .broker-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.8rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .broker-section-title h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+      .broker-section-title h2 i {
+        margin-right: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .broker-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.015);
+        border-radius: 24px;
+        overflow: hidden;
+        border: 0.5px solid rgba(255, 255, 255, 0.04);
+      }
+      .broker-table thead {
+        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+      }
+      .broker-table th {
+        text-align: left;
+        padding: 1.2rem 1.5rem;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgb(255 255 255 / 50%);
+        font-weight: 500;
+      }
+      .broker-table td {
+        padding: 1rem 1.5rem;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
+        font-weight: 300;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.02);
+        vertical-align: middle;
+      }
+      .broker-table tbody tr {
+        transition: background 0.25s ease;
+      }
+      .broker-table tbody tr:hover {
+        background: rgba(212, 168, 69, 0.03);
+      }
+      .broker-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .broker-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+      .broker-info .broker-name {
+        font-weight: 500;
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+      .broker-info .broker-sub {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 300;
+        letter-spacing: 0.1px;
+      }
+
+      .brand-icon {
+        font-size: 29px;
+        width: 2.2rem;
+        text-align: center;
+        color: #d4a845;
+        filter: drop-shadow(0 0 6px rgba(212, 168, 69, 0.12));
+      }
+      .broker-name-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      /* partner code – inline green "copied" feedback */
+      .partner-code {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(212, 168, 69, 0.05);
+        padding: 0.25rem 1rem 0.25rem 1.2rem;
+        border-radius: 40px;
+        border: 0.5px solid rgba(212, 168, 69, 0.08);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        font-family: "Inter", monospace;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+      }
+      .partner-code i {
+        font-size: 0.65rem;
+        color: #d4a845;
+        opacity: 0.6;
+        transition: opacity 0.25s ease;
+      }
+      .partner-code:hover {
+        background: rgba(212, 168, 69, 0.1);
+        border-color: rgba(212, 168, 69, 0.2);
+      }
+      .partner-code:hover i {
+        opacity: 1;
+      }
+      /* copied feedback: green text, only "copied" appears */
+      .partner-code .copy-feedback {
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #2ecc71; /* green */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        margin-left: 0.2rem;
+        font-weight: 500;
+      }
+      .partner-code.copied .copy-feedback {
+        opacity: 1;
+      }
+      .partner-code.copied {
+        border-color: rgba(46, 204, 113, 0.3);
+      }
+
+      .btn-trade-now {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 1.4rem;
+        background: rgba(212, 168, 69, 0.08);
+        border: 0.5px solid rgba(212, 168, 69, 0.15);
+        border-radius: 60px;
+        color: #d4a845;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .btn-trade-now i {
+        font-size: 0.55rem;
+        transition: transform 0.25s ease;
+      }
+      .btn-trade-now:hover {
+        background: rgba(212, 168, 69, 0.15);
+        border-color: rgba(212, 168, 69, 0.3);
+        box-shadow: 0 0 20px rgba(212, 168, 69, 0.04);
+        transform: translateY(-1px);
+      }
+      .btn-trade-now:hover i {
+        transform: translateX(4px);
+      }
+
+      /* responsive */
+      @media (max-width: 1024px) {
+        .premium-section {
+          padding: 3rem 2rem;
+        }
+        .broker-grid {
+          flex-direction: column;
+        }
+        .cta-side-card {
+          flex: 1;
+          padding: 2rem 1.8rem;
+          margin-top: 0.5rem;
+          align-items: center;
+        }
+      }
+      @media (max-width: 768px) {
+        .body-signals {
+          padding: 0rem 2rem;
+        }
+        .premium-section {
+          padding: 2.5rem 1.5rem;
+          border-radius: 28px;
+        }
+        .section-hero h1 {
+          font-size: 2.4rem;
+        }
+        .section-hero .sub-headline {
+          font-size: 0.95rem;
+        }
+        .broker-table thead {
+          display: none;
+        }
+        .broker-table,
+        .broker-table tbody,
+        .broker-table tr,
+        .broker-table td {
+          display: block;
+          width: 100%;
+        }
+        .broker-table tr {
+          padding: 1.2rem 0;
+          border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+        }
+        .broker-table td {
+          padding: 0.4rem 0.6rem;
+          border: none;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          flex-wrap: wrap;
+        }
+        .broker-table td:before {
+          content: attr(data-label);
+          font-size: 0.55rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: rgba(255, 255, 255, 0.2);
+          min-width: 70px;
+        }
+        .broker-info .broker-sub {
+          font-size: 0.7rem;
+          display: none;
+        }
+        .broker-section-title h2 {
+          font-size: 1.3rem;
+        }
+        .cta-side-card h3 {
+          font-size: 1.3rem;
+        }
+        .cta-side-card {
+          padding: 1.8rem 1.4rem;
+        }
+        .btn-trade-now {
+          padding: 0.35rem 1rem;
+          font-size: 0.65rem;
+        }
+        .brand-icon {
+          font-size: 1.3rem;
+          width: 1.8rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .premium-section {
+          padding: 2rem 1rem;
+          border-radius: 20px;
+        }
+        .section-hero h1 {
+          font-size: 1.9rem;
+        }
+        .broker-section-title {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .partner-code {
+          font-size: 0.7rem;
+          padding: 0.2rem 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body-signals">
+      <section class="premium-section">
+        <div class="section-hero">
+          <div class="badge">
+            <i
+              class="fas fa-circle"
+              style="
+                font-size: 0.25rem;
+                vertical-align: middle;
+                margin-right: 8px;
+                color: #d4a845;
+              "
+            ></i>
+            disciplined trading
+          </div>
+          <h1>Elevate Your <span>Trading Potential</span></h1>
+          <p class="sub-headline">
+            Learn proven market strategies, trade with confidence, and grow with
+            a community of disciplined traders.
+          </p>
+        </div>
+        <div class="divider-gold"></div>
+
+        <div class="broker-grid">
+          <div class="broker-table-wrapper">
+            <table class="broker-table">
+              <thead>
+                <tr>
+                  <th>Broker</th>
+                  <th>Description</th>
+                  <th>Partner Code</th>
+                  <th style="text-align: center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- EXNESS -->
+                <tr>
+                  <td data-label="Broker">
+                    <span class="broker-name-wrap">
+                      <i class="fab fa-empire brand-icon"></i>
+                    </span>
+                  </td>
+                  <td data-label="Description">
+                    <div class="broker-info">
+                      <span class="broker-name">Exness</span>
+                      <span class="broker-sub"
+                        >Ultra-low spreads, lightning-fast execution &amp;
+                        instant withdrawals.</span
+                      >
+                    </div>
+                  </td>
+                  <td data-label="Partner Code">
+                    <span
+                      class="partner-code"
+                      data-code="EDUSTOCKX"
+                      onclick="copyCode(this)"
+                    >
+                      <span>EDUSTOCKX</span>
+                      <i class="fas fa-copy"></i>
+                      <span class="copy-feedback">copied</span>
+                    </span>
+                  </td>
+                  <td data-label="Action" style="text-align: center">
+                    <a
+                      href="https://one.exnessonelink.com/a/wx1dpryokr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-trade-now"
+                    >
+                      Trade Now <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <!-- GTC FX -->
+                <tr>
+                  <td data-label="Broker">
+                    <span class="broker-name-wrap">
+                      <i class="fab fa-trade-federation brand-icon"></i>
+                    </span>
+                  </td>
+                  <td data-label="Description">
+                    <div class="broker-info">
+                      <span class="broker-name">GTC FX</span>
+                      <span class="broker-sub"
+                        >Institutional-grade trading conditions with competitive
+                        spreads.</span
+                      >
+                    </div>
+                  </td>
+                  <td data-label="Partner Code">
+                    <span
+                      class="partner-code"
+                      data-code="EDUSTOCKX"
+                      onclick="copyCode(this)"
+                    >
+                      <span>EDUSTOCKX</span>
+                      <i class="fas fa-copy"></i>
+                      <span class="copy-feedback">copied</span>
+                    </span>
+                  </td>
+                  <td data-label="Action" style="text-align: center">
+                    <a
+                      href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-trade-now"
+                    >
+                      Trade Now <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <!-- STARTRADER -->
+                <tr>
+                  <td data-label="Broker">
+                    <span class="broker-name-wrap">
+                      <i class="fab fa-jedi-order brand-icon"></i>
+                    </span>
+                  </td>
+                  <td data-label="Description">
+                    <div class="broker-info">
+                      <span class="broker-name">StarTrader</span>
+                      <span class="broker-sub"
+                        >Tight spreads, fast execution &amp; advanced trading
+                        platform.</span
+                      >
+                    </div>
+                  </td>
+                  <td data-label="Partner Code">
+                    <span
+                      class="partner-code"
+                      data-code="EDUSTOCKX"
+                      onclick="copyCode(this)"
+                    >
+                      <span>EDUSTOCKX</span>
+                      <i class="fas fa-copy"></i>
+                      <span class="copy-feedback">copied</span>
+                    </span>
+                  </td>
+                  <td data-label="Action" style="text-align: center">
+                    <a
+                      href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-trade-now"
+                    >
+                      Trade Now <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              style="
+                margin-top: 1.2rem;
+                text-align: right;
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.1);
+                letter-spacing: 0.3px;
+              "
+            >
+              <i
+                class="fas fa-circle-check gold-icon"
+                style="font-size: 0.45rem; margin-right: 4px"
+              ></i>
+              direct partner links — trade with confidence
+            </div>
+          </div>
+
+          <!-- CTA side card — centered (flex + text-align) -->
+          <div class="cta-side-card">
+            <div class="cta-badge">
+              <i
+                class="fas fa-arrow-trend-up gold-icon"
+                style="font-size: 0.6rem; margin-right: 6px"
+              ></i>
+              get started
+            </div>
+            <h3>Start Your <span>Trading Journey</span> Today</h3>
+            <p>
+              Learn professionally, trade confidently, and grow consistently
+              with Edu Stockx.
+            </p>
+
+            <a
+              href="https://t.me/EduStocksFx"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-gold-large"
+              style="pointer-events: auto; cursor: pointer"
+            >
+              Begin Now <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function copyCode(element) {
+        const code = element.getAttribute("data-code");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(code)
+            .then(() => showCopiedFeedback(element))
+            .catch(() => fallbackCopy(code, element));
+        } else {
+          fallbackCopy(code, element);
+        }
+      }
+      function fallbackCopy(text, element) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand("copy");
+          showCopiedFeedback(element);
+        } catch (e) {}
+        document.body.removeChild(textArea);
+      }
+      function showCopiedFeedback(element) {
+        element.classList.add("copied");
+        setTimeout(() => element.classList.remove("copied"), 2000);
+      }
+    </script>
+  </body>
+</html>
+
+<!-- -----cta----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTA Section · override‑free</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .cta-section {
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+
+        /* background – exactly as before */
+        background:
+          linear-gradient(rgba(8, 12, 18, 0.25), rgba(8, 12, 18, 0.8)),
+          url("https://cfcdn.olymptrade.com/s6/v1.0.53/zeus/assets/bg.L1yfV3aR_kOvRX.avif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* ----- animated glows (pseudo‑elements) ----- */
+      /* .cta-section::before,
+      .cta-section::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .cta-section::before {
+        width: 700px;
+        height: 700px;
+        left: 0;
+        top: 0;
+        background: radial-gradient(circle, #00d4ff35, transparent 70%);
+        animation: glowMove1 8s ease-in-out infinite alternate;
+      }
+
+      .cta-section::after {
+        width: 600px;
+        height: 600px;
+        right: -100px;
+        bottom: -100px;
+        background: radial-gradient(circle, #5b21b655, transparent 70%);
+        animation: glowMove2 10s ease-in-out infinite alternate;
+      } */
+
+      /* ----- content box (z‑index keeps it above glows) ----- */
+      .cta-content {
+        position: relative;
+        z-index: 10;
+        max-width: 850px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+      }
+
+      /* ----- tag / pill ----- */
+      .cta-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 50px;
+        color: #ffffff;
+        margin-bottom: 30px;
+        animation: fadeUp 1s ease both;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        font-size: 15px;
+      }
+
+      .cta-dot {
+        width: 8px;
+        height: 8px;
+        background: #00e1ff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #00e1ff;
+        flex-shrink: 0;
+      }
+
+      /* ----- headings & text ----- */
+      .cta-title {
+        font-size: 38px;
+        color: #ffffff;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        animation: fadeUp 1s 0.2s both;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #ffffff 30%, #ffd004 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .cta-description {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 18px;
+        line-height: 1.9;
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+        animation: fadeUp 1s 0.4s both;
+        font-weight: 400;
+      }
+
+      /* ----- button wrapper ----- */
+      .cta-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        animation: fadeUp 1s 0.6s both;
+      }
+
+      /* ----- buttons (no override, exact look) ----- */
+      .btn-cta {
+        padding: 14px 32px;
+        border: none;
+        border-radius: 60px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+        display: inline-block;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.3px;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+        text-decoration: none;
+        line-height: 1;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #f5c542, #e6b422);
+        color: #000000;
+        box-shadow: 0 15px 40px rgba(255, 242, 0, 0.4);
+        border: none;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(255, 234, 0, 0.5);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+      }
+
+      /* ----- floating particles (exact positions) ----- */
+      .particle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #ffffff;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 2;
+        animation: floatUp 10s linear infinite;
+      }
+
+      /* ----- animations ----- */
+      @keyframes glowMove1 {
+        0% {
+          transform: translate(-80px, -40px);
+        }
+        100% {
+          transform: translate(120px, 80px);
+        }
+      }
+
+      @keyframes glowMove2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(-120px, -80px);
+        }
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) scale(1);
+          opacity: 0.2;
+        }
+        10% {
+          opacity: 0.4;
+        }
+        90% {
+          opacity: 0.4;
+        }
+        100% {
+          transform: translateY(-100px) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+      /* ----- small screens (keep readability) ----- */
+      @media (max-width: 640px) {
+        .cta-title {
+          font-size: 28px;
+        }
+        .cta-description {
+          font-size: 14px;
+          padding: 0 10px;
+        }
+        .cta-actions {
+          gap: 14px;
+        }
+        .btn-cta {
+          padding: 12px 28px;
+          font-size: 13px;
+        }
+        .cta-tag {
+          font-size: 13px;
+          padding: 10px 18px;
+        }
+        .cta-section::before {
+          width: 400px;
+          height: 400px;
+          display: none;
+        }
+        .cta-section::after {
+          width: 350px;
+          height: 350px;
+          right: -50px;
+          bottom: -50px;
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cta-title {
+          font-size: 30px;
+        }
+        .cta-section {
+          padding: 30px 16px;
+          min-height: 40vh;
+        }
+        .cta-tag {
+          font-size: 12px;
+          padding: 8px 16px;
+          gap: 6px;
+        }
+        .cta-dot {
+          width: 6px;
+          height: 6px;
+        }
+        .btn-cta {
+          padding: 10px 22px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="cta-section">
+      <!-- particles (same positions & delays) -->
+      <div class="particle" style="left: 10%; animation-delay: 0s"></div>
+      <div class="particle" style="left: 25%; animation-delay: 2s"></div>
+      <div class="particle" style="left: 40%; animation-delay: 5s"></div>
+      <div class="particle" style="left: 60%; animation-delay: 1s"></div>
+      <div class="particle" style="left: 80%; animation-delay: 4s"></div>
+      <div class="particle" style="left: 90%; animation-delay: 7s"></div>
+
+      <div class="cta-content">
+        <!-- tag -->
+        <div class="cta-tag">
+          <span class="cta-dot"></span>
+          Start Your Trading Journey
+        </div>
+
+        <!-- heading -->
+        <h1 class="cta-title">
+          Build Wealth Through <br />
+          Smarter Investing
+        </h1>
+
+        <!-- description -->
+        <p class="cta-description">
+          Master the stock market with data-driven strategies, live market
+          updates, and a community focused on long-term success.
+        </p>
+
+        <!-- buttons -->
+        <div class="cta-actions">
+          <button class="btn-cta btn-primary">Join Edu Stockx</button>
+          <button class="btn-cta btn-secondary">Get Started</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- ----footer----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDU Stockx · gold & dark green footer</title>
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f4f8fe;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      } */
+
+      /* main content – pushes footer down */
+
+      /* ===== FOOTER ===== */
+      /* required gradient: linear-gradient(0deg, #292929, #000 75%) */
+      /* we keep it, and overlay with gold/dark green accents */
+      .edu-footer {
+        background: black;
+        /* background: #1a1a1a;
+            background: linear-gradient(0deg, #292929, #000 75%); */
+        color: #eef2f7;
+        padding: 2.5rem 1.8rem 1.8rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.08);
+        width: 100%;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.8rem 2.5rem;
+      }
+
+      /* left: logo placeholder + brand */
+      .footer-brand {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      /* ----- LOGO PLACEHOLDER (gold & dark green, no blue) ----- */
+      .logo-placeholder {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 0.2rem;
+      }
+
+      .logo-icon {
+        width: 52px;
+        height: 52px;
+        background: #1e3a2a; /* dark green */
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4af37; /* gold */
+        font-size: 1.9rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        transition: transform 0.2s;
+      }
+
+      .logo-icon i {
+        filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .logo-text .main {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d4af37; /* gold */
+        letter-spacing: -0.3px;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .logo-text .sub {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #b8a07c; /* muted gold */
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      /* if you want to use an actual image, replace .logo-icon with <img> */
+      /* we keep it as a styled placeholder – you can swap with <img> */
+
+      .footer-brand .tagline {
+        font-size: 0.95rem;
+        opacity: 0.7;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+        color: #c7b28b; /* warm gold */
+        margin-top: 4px;
+        border-left: 3px solid #d4af37;
+        padding-left: 12px;
+      }
+
+      /* footer links – gold & dark green accents */
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 3rem;
+      }
+
+      .footer-links .col p {
+        font-weight: 500;
+        color: #d4af37; /* gold */
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        padding-bottom: 0.3rem;
+      }
+
+      .footer-links .col a {
+        display: block;
+        color: #d0dceb;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.25rem 0;
+        transition:
+          color 0.2s,
+          transform 0.1s;
+        opacity: 0.8;
+      }
+
+      .footer-links .col a:hover {
+        color: #d4af37; /* gold on hover */
+        opacity: 1;
+        transform: translateX(4px);
+      }
+
+      .footer-links .col a i {
+        margin-right: 8px;
+        font-size: 0.8rem;
+        color: #d4af37; /* gold */
+        opacity: 0.7;
+      }
+
+      /* bottom row: copyright + credit */
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 1.2rem auto 0;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem 1.5rem;
+      }
+
+      .footer-bottom .copy {
+        font-size: 0.9rem;
+        opacity: 0.6;
+        letter-spacing: 0.2px;
+        color: #b8a07c;
+      }
+
+      .footer-bottom .copy i {
+        margin-right: 6px;
+        color: #d4af37;
+        opacity: 0.6;
+      }
+
+      .footer-bottom .credit {
+        font-size: 14px;
+        font-weight: 450;
+        padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+      }
+
+      .footer-bottom .credit a {
+        color: #d4af37; /* gold */
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+      }
+
+      .footer-bottom .credit a:hover {
+        color: #f5d95e;
+        border-bottom-color: #d4af37;
+      }
+
+      .footer-bottom .credit i {
+        margin-right: 6px;
+        color: #d4af37;
+      }
+
+      /* responsive */
+      @media (max-width: 700px) {
+        .footer-container {
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+        .footer-links {
+          gap: 1.2rem 2rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+        .hero-card h1 {
+          font-size: 2.2rem;
+        }
+        .logo-icon {
+          width: 44px;
+          height: 44px;
+          font-size: 1.5rem;
+        }
+        .logo-text .main {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- main content -->
+    <!-- <div class="main-content">
+      <div class="hero-card">
+        <h1>📚 EDU Stockx</h1>
+        <div class="sub">
+          <i class="fas fa-graduation-cap" style="margin-right: 8px"></i>
+          knowledge · equity · future
+        </div>
+        <p>
+          Educational stock insights &amp; market simulations for the next
+          generation of investors.
+        </p>
+        <div class="stock-ticker">
+          <span><i class="fas fa-chart-line"></i> EDU +2.4%</span>
+          <span><i class="fas fa-building"></i> STX 1.8k</span>
+          <span><i class="fas fa-book-open"></i> 12 courses</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- FOOTER with gradient background + logo placeholder (gold & dark green, no blue) -->
+    <footer class="edu-footer">
+      <div class="footer-container">
+        <!-- brand + logo placeholder -->
+        <div class="footer-brand">
+          <img
+            src="images/logo_111.png"
+            style="width: 187px; border-radius: 10px"
+            alt=""
+          />
+          <div class="logo-placeholder">
+            <!-- logo icon placeholder – gold & dark green, no blue -->
+            <div class="logo-icon" aria-label="EDU Stockx logo">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="logo-text">
+              <span class="main">EDU Stockx</span>
+              <span class="sub">invest in knowledge</span>
+            </div>
+          </div>
+          <div class="tagline">
+            <i
+              class="fas fa-arrow-trend-up"
+              style="margin-right: 6px; color: #d4af37"
+            ></i>
+            learn, invest, grow — gold standard
+          </div>
+          <!-- note: if you want to replace the icon with an actual image, 
+             use <img src="your-logo.png" alt="logo" style="height:52px; width:auto;"> 
+             inside .logo-icon and remove the <i> tag -->
+        </div>
+
+        <!-- quick links -->
+        <div class="footer-links">
+          <div class="col">
+            <p><i class="fas fa-compass"></i> explore</p>
+            <a href="#"><i class="fas fa-chart-pie"></i> Markets</a>
+            <a href="#"><i class="fas fa-book"></i> Courses</a>
+            <a href="#"><i class="fas fa-users"></i> Community</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-tools"></i> resources</p>
+            <a href="#"><i class="fas fa-newspaper"></i> Research</a>
+            <a href="#"><i class="fas fa-calculator"></i> Simulator</a>
+            <a href="#"><i class="fas fa-envelope"></i> Newsletter</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-flag"></i> company</p>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> Ethics</a>
+            <a href="#"><i class="fas fa-handshake"></i> Partners</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: copyright + "Designed & Developed by Skilled VA" with link -->
+      <div class="footer-bottom">
+        <div class="copy">
+          <i class="far fa-copyright"></i> 2026 EDU Stockx — all rights reserved
+        </div>
+        <div class="credit">
+          <i class="fas fa-code"></i> Designed &amp; Developed by
+          <a
+            href="https://skilled-va.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Skilled VA
+            <!-- <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.7rem; margin-left: 4px"
+            ></i> -->
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

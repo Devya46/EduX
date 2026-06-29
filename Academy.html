@@ -1,0 +1,1750 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acedemy | Edu Stockx</title>
+  </head>
+  <body>
+    <!-- ------header------ -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Edu Stockx</title>
+        <!-- Tailwind + Alpine + Font Awesome -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+          defer
+          src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          * {
+            /* font-family:
+              "Inter",
+              system-ui,
+              -apple-system,
+              sans-serif; */
+          }
+          input,
+          select,
+          textarea,
+          button,
+          a,
+          [role="button"] {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+          }
+          body {
+            background: #000000;
+            margin: 0;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+          }
+          .sticky-header {
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+          }
+          .header-scrolled {
+            background-color: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(20px);
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+          }
+          @media (max-width: 768px) {
+            .sticky-header {
+              background-color: #000000 !important;
+              backdrop-filter: none !important;
+              border-bottom-color: rgba(255, 255, 255, 0.1);
+            }
+            .sticky-header.header-scrolled {
+              background-color: #000000 !important;
+              backdrop-filter: none !important;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            }
+            .custom-logo {
+              height: 4rem !important;
+            }
+          }
+          /* #ul-bg {
+            background: rgb(60 60 60 / 71%);
+            border-radius: 31px;
+            padding: 0px 13px;
+          } */
+          .mega-card {
+            box-shadow:
+              0 30px 50px -20px rgba(0, 0, 0, 0.7),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+          }
+          .nav-link {
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-weight: 500;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+          }
+          .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+          }
+          .icon-circle {
+            width: 44px;
+            height: 44px;
+            background: #f3f4f6;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+          }
+          .group:hover .icon-circle {
+            background: #fef3d0;
+            transform: scale(1.02);
+          }
+          .custom-logo {
+            height: 3rem;
+            width: auto;
+            transition: all 0.2s ease;
+            filter: brightness(1.5);
+          }
+          @media (min-width: 1024px) {
+            .custom-logo {
+              height: 6.5rem;
+            }
+          }
+          .mobile-hamburger {
+            font-size: 2rem;
+          }
+          .mobile-close-icon {
+            font-size: 2.5rem !important;
+            line-height: 1;
+            font-weight: 300;
+          }
+          ::-webkit-scrollbar {
+            width: 6px;
+          }
+          ::-webkit-scrollbar-track {
+            background: #111;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: #ecae17;
+            border-radius: 10px;
+          }
+          .mega-menu-center {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            right: auto !important;
+            max-width: 90vw;
+          }
+          @media (min-width: 1280px) {
+            .mega-menu-center {
+              max-width: 780px;
+            }
+          }
+          .accent-gold {
+            color: #ecae17;
+          }
+          .bg-accent-gold {
+            background-color: #ecae17;
+          }
+          .border-accent-gold {
+            border-color: #ecae17;
+          }
+          .hover-bg-accent-gold:hover {
+            background-color: #ecae17;
+          }
+          .mega-image-transition img {
+            transition: opacity 0.25s ease;
+          }
+          /* fix: mobile right spacing & hamburger alignment */
+          @media (max-width: 1023px) {
+            .lg\\:flex-1 {
+              flex: 1 1 0% !important;
+            }
+            .lg\\:justify-center {
+              justify-content: flex-end !important;
+            }
+            .lg\\:ml-0 {
+              margin-left: auto !important;
+            }
+            header .flex.items-center.justify-between {
+              gap: 0.5rem;
+            }
+            .mobile-hamburger {
+              font-size: 1.8rem;
+              padding: 0.25rem;
+              margin-right: -0.25rem;
+            }
+            .custom-logo {
+              height: 3.2rem !important;
+            }
+            /* ensure right side doesn't overflow */
+            header .max-w-\[1320px\] > .flex {
+              flex-wrap: nowrap;
+            }
+          }
+          @media (max-width: 480px) {
+            .custom-logo {
+              height: 4.8rem !important;
+            }
+            .mobile-hamburger {
+              font-size: 1.6rem;
+            }
+          }
+        </style>
+      </head>
+      <body class="bg-black text-white antialiased">
+        <div
+          x-data="headerComponent()"
+          x-init="init()"
+          class="relative"
+          @keydown.escape="closeAll()"
+        >
+          <!-- HEADER -->
+          <header
+            class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 sticky-header"
+            :class="{ 'header-scrolled bg-black/95 backdrop-blur-xl': scrolled, 'bg-transparent border-white/5': !scrolled }"
+          >
+            <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+              <div
+                class="h-[72px] lg:h-[82px] flex items-center justify-between gap-4"
+              >
+                <!-- LOGO (left) -->
+                <div class="flex items-center shrink-0">
+                  <a
+                    href="/"
+                    class="block transition-transform hover:scale-105 duration-200"
+                  >
+                    <img
+                      src="images/Logo-eduStocks-Photoroom.png"
+                      alt="Edu Stockx"
+                      class="custom-logo object-contain"
+                      onerror="
+                        this.src = 'https://placehold.co/100x40?text=FX';
+                        this.onerror = null;
+                      "
+                    />
+                  </a>
+                </div>
+
+                <!-- RIGHT SIDE: flex-1 on desktop for centering, on mobile we keep it compact -->
+                <div
+                  class="flex items-center gap-4 lg:gap-8 ml-auto lg:ml-0 lg:flex-1 lg:justify-center"
+                >
+                  <!-- DESKTOP NAVIGATION - CENTERED -->
+                  <nav
+                    class="hidden lg:block lg:flex-1 lg:flex lg:justify-center"
+                  >
+                    <ul class="flex items-center gap-0" id="ul-bg">
+                      <li>
+                        <a
+                          href="index.html"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Home</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="About.html"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >About Us</a
+                        >
+                      </li>
+
+                      <!-- SERVICES MEGA -->
+                      <li
+                        class="relative"
+                        @click.stop="openMega('challenge')"
+                        @mouseenter="openMega('challenge')"
+                        @mouseleave="closeMegaDelayed('challenge')"
+                      >
+                        <button
+                          type="button"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          :class="{'bg-white/10 text-[#ecae17]': activeMega === 'challenge'}"
+                        >
+                          Services
+                          <i
+                            class="fas fa-chevron-down text-[10px] transition-transform duration-200"
+                            :class="{'rotate-180': activeMega === 'challenge'}"
+                          ></i>
+                        </button>
+
+                        <!-- MEGA DROPDOWN -->
+                        <div
+                          x-show="isMegaOpen && activeMega === 'challenge'"
+                          x-transition:enter="transition ease-out duration-200"
+                          x-transition:enter-start="opacity-0 transform -translate-y-2"
+                          x-transition:enter-end="opacity-100 transform translate-y-0"
+                          x-transition:leave="transition ease-in duration-150"
+                          x-transition:leave-start="opacity-100 transform translate-y-0"
+                          x-transition:leave-end="opacity-0 transform -translate-y-2"
+                          class="absolute top-[60px] w-[780px] bg-white rounded-2xl mega-card shadow-2xl z-50 mega-menu-center"
+                          @mouseenter="cancelClose()"
+                          @mouseleave="isMegaOpen=false; activeMega=null"
+                          style="display: none"
+                        >
+                          <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
+                            <!-- LEFT -->
+                            <div>
+                              <h4
+                                class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
+                              >
+                                <i class="fas fa-chart-line text-xs"></i>
+                                TRADING SERVICES
+                              </h4>
+                              <div class="space-y-5">
+                                <a
+                                  href="Services/Gold.html"
+                                  class="flex gap-4 group items-start hover-card"
+                                  @mouseenter="setMegaImage('signals')"
+                                  @mouseleave="setMegaImage('default')"
+                                >
+                                  <div class="icon-circle">
+                                    <i
+                                      class="fas fa-chart-line text-xl"
+                                      style="color: #ecae17"
+                                    ></i>
+                                  </div>
+                                  <div>
+                                    <h5
+                                      class="text-[16px] font-bold text-gray-900"
+                                    >
+                                      Future Trading
+                                    </h5>
+                                    <p class="text-[12px] text-gray-500">
+                                      Real-time market insights & trade alerts
+                                    </p>
+                                  </div>
+                                </a>
+                                <a
+                                  href="Services/crypto.html"
+                                  class="flex gap-4 group items-start hover-card"
+                                  @mouseenter="setMegaImage('copy')"
+                                  @mouseleave="setMegaImage('default')"
+                                >
+                                  <div class="icon-circle">
+                                    <i
+                                      class="fas fa-copy text-xl"
+                                      style="color: #ecae17"
+                                    ></i>
+                                  </div>
+                                  <div>
+                                    <h5
+                                      class="text-[16px] font-bold text-gray-900"
+                                    >
+                                      Crypto Trading
+                                    </h5>
+                                    <p class="text-[12px] text-gray-500">
+                                      Automatically mirror top traders
+                                    </p>
+                                  </div>
+                                </a>
+                                <a
+                                  href="Services/stocks.html"
+                                  class="flex gap-4 group items-start hover-card"
+                                  @mouseenter="setMegaImage('live')"
+                                  @mouseleave="setMegaImage('default')"
+                                >
+                                  <div class="icon-circle">
+                                    <i
+                                      class="fas fa-video text-xl"
+                                      style="color: #ecae17"
+                                    ></i>
+                                  </div>
+                                  <div>
+                                    <h5
+                                      class="text-[16px] font-bold text-gray-900"
+                                    >
+                                      Stocks
+                                    </h5>
+                                    <p class="text-[12px] text-gray-500">
+                                      Interactive trading sessions with experts
+                                    </p>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+
+                            <!-- RIGHT dynamic image -->
+                            <div
+                              class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
+                            >
+                              <img
+                                :src="currentMegaImage"
+                                class="w-full h-[140px] object-cover rounded-xl mb-4 shadow-md"
+                                alt="Live Trading"
+                              />
+                              <div class="flex items-center gap-2 mb-2">
+                                <span
+                                  class="bg-[#ecae17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                                  >NEW</span
+                                >
+                                <h4
+                                  class="text-[18px] font-bold text-gray-900"
+                                  x-text="currentMegaTitle"
+                                >
+                                  Live Trading Sessions
+                                </h4>
+                              </div>
+                              <p
+                                class="text-[13px] text-gray-600"
+                                x-text="currentMegaDesc"
+                              >
+                                Join daily live trading with professional
+                                analysts.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a
+                          href="Academy.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Academy</a
+                        >
+                      </li>
+                      <!-- <li>
+                        <a
+                          href="/"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Best Brokers</a
+                        >
+                      </li> -->
+                      <li>
+                        <a
+                          href="Pricing.html"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Pricing</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="FAQ.html"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >FAQ</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="Contact.html"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Contact Us</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+
+                  <!-- GET STARTED (desktop) -->
+                  <a
+                    href="Contact.html"
+                    class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
+                    =""
+                  >
+                    Members Login
+                  </a>
+
+                  <!-- MOBILE MENU BUTTON (no extra spacing) -->
+                  <div class="lg:hidden flex items-center shrink-0">
+                    <button
+                      type="button"
+                      @click="mobileMenuOpen = true"
+                      class="text-white leading-none focus:outline-none mobile-hamburger"
+                    >
+                      <i class="fas fa-bars"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- OVERLAY -->
+          <div
+            x-show="isMegaOpen"
+            @click="isMegaOpen=false; activeMega=null"
+            class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+            style="display: none"
+          ></div>
+
+          <!-- MOBILE MENU -->
+          <div
+            x-show="mobileMenuOpen"
+            x-trap.noscroll="mobileMenuOpen"
+            x-transition.opacity.duration.200ms
+            class="fixed inset-0 bg-white z-[100] overflow-y-auto mobile-menu-full"
+            @click.self="mobileMenuOpen=false"
+            style="display: none"
+          >
+            <div
+              class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
+            >
+              <img
+                src="images/Logo-eduStocks-Photoroom.png"
+                alt="FX-Manipulation"
+                class="h-12 w-auto object-contain"
+              />
+              <button
+                type="button"
+                @click="mobileMenuOpen=false"
+                class="text-white mobile-close-icon leading-none focus:outline-none"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="p-5 space-y-4 pb-20">
+              <a
+                href="index.html"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
+              >
+              <a
+                href="About.html"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
+              >
+              <div class="border-b border-gray-200 pb-2">
+                <button
+                  type="button"
+                  @click="mobileSubmenu = mobileSubmenu === 'challenge' ? null : 'challenge'"
+                  class="mobile-dropdown-btn py-3 text-[18px] font-semibold text-gray-900 w-full text-left"
+                >
+                  <span
+                    ><i class="fas fa-flag-checkered text-[#ecae17] mr-3"></i
+                    >Services</span
+                  >
+                  <i
+                    class="fas fa-chevron-down text-gray-400 transition-transform ml-4"
+                    :class="{'rotate-180': mobileSubmenu === 'challenge'}"
+                  ></i>
+                </button>
+                <div
+                  x-show="mobileSubmenu === 'challenge'"
+                  x-collapse
+                  class="pl-6 space-y-3 mt-2"
+                >
+                  <a
+                    href="Services/Gold.html"
+                    class="flex gap-3 py-2 items-center"
+                    ><div
+                      class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                    >
+                      <i class="fas fa-chart-line text-[#ecae17]"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-gray-900">
+                        Future Trading
+                      </div>
+                      <div class="text-[11px] text-gray-500">
+                        Real-time market insights & trade alerts
+                      </div>
+                    </div></a
+                  >
+                  <a
+                    href="Services/crypto.html"
+                    class="flex gap-3 py-2 items-center"
+                    ><div
+                      class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                    >
+                      <i class="fas fa-copy text-[#ecae17]"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-gray-900">
+                        Crypto Trading
+                      </div>
+                      <div class="text-[11px] text-gray-500">
+                        Automatically mirror top traders
+                      </div>
+                    </div></a
+                  >
+                  <a
+                    href="Services/stocks.html"
+                    class="flex gap-3 py-2 items-center"
+                    ><div
+                      class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                    >
+                      <i class="fas fa-video text-[#ecae17]"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-gray-900">Stocks</div>
+                      <div class="text-[11px] text-gray-500">
+                        Interactive trading sessions with experts
+                      </div>
+                    </div></a
+                  >
+                </div>
+              </div>
+              <a
+                href="Academy.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-graduation-cap text-[#ecae17] mr-3 w-6"></i
+                >Academy</a
+              >
+              <!-- <a
+                href="/"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-chart-line text-[#ecae17] mr-3 w-6"></i>Best
+                Brokers</a
+              > -->
+              <a
+                href="Pricing.html"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Pricing</a
+              >
+              <a
+                href="FAQ.html"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
+                >FAQ</a
+              >
+              <a
+                href="Contact.html"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
+                Us</a
+              >
+              <div class="pt-6 space-y-3">
+                <a
+                  href="Contact.html"
+                  class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
+                >
+                  Get Started</a
+                >
+              </div>
+              <div class="pt-8 border-t border-gray-200 mt-4">
+                <p
+                  class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-4 text-center"
+                >
+                  Follow Us
+                </p>
+                <div class="flex items-center justify-center gap-5">
+                  <a
+                    href="#"
+                    class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a
+                    href="#"
+                    class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                    ><i class="fab fa-telegram-plane"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function headerComponent() {
+            return {
+              activeMega: null,
+              isMegaOpen: false,
+              mobileMenuOpen: false,
+              mobileSubmenu: null,
+              scrolled: false,
+              closeTimeout: null,
+              currentMegaImage:
+                "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
+              currentMegaTitle: "Live Trading Sessions",
+              currentMegaDesc:
+                "Join daily live trading with professional analysts.",
+
+              init() {
+                window.addEventListener("scroll", () => {
+                  this.scrolled = window.scrollY > 20;
+                });
+                this.$watch("mobileMenuOpen", (value) => {
+                  if (value) {
+                    document.body.style.overflow = "hidden";
+                    document.body.style.position = "fixed";
+                    document.body.style.width = "100%";
+                  } else {
+                    document.body.style.overflow = "";
+                    document.body.style.position = "";
+                    document.body.style.width = "";
+                  }
+                });
+                this.setMegaImage("default");
+              },
+
+              setMegaImage(type) {
+                const images = {
+                  signals: {
+                    img: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                    title: "Future Trading",
+                    desc: "Real-time market insights & trade alerts.",
+                  },
+                  copy: {
+                    img: "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                    title: "Crypto Trading",
+                    desc: "Automatically mirror top traders.",
+                  },
+                  live: {
+                    img: "https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww",
+                    title: "Stocks",
+                    desc: "Interactive trading sessions with experts.",
+                  },
+                };
+                const data = images[type] || images.signals;
+                this.currentMegaImage = data.img;
+                this.currentMegaTitle = data.title;
+                this.currentMegaDesc = data.desc;
+              },
+
+              openMega(menu) {
+                this.cancelClose();
+                this.activeMega = menu;
+                this.isMegaOpen = true;
+                this.setMegaImage("default");
+              },
+
+              closeMegaDelayed(menu) {
+                this.closeTimeout = setTimeout(() => {
+                  if (this.activeMega === menu) {
+                    this.isMegaOpen = false;
+                    this.activeMega = null;
+                  }
+                }, 100);
+              },
+
+              cancelClose() {
+                if (this.closeTimeout) {
+                  clearTimeout(this.closeTimeout);
+                  this.closeTimeout = null;
+                }
+              },
+
+              closeAll() {
+                this.isMegaOpen = false;
+                this.activeMega = null;
+              },
+            };
+          }
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
+
+<!-- ---all-- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academy · Coming Soon</title>
+    <!-- Font & Icons (no emojis) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .body-acedy {
+        background: #000000;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7rem 1rem 2rem;
+        color: #ffffff;
+      }
+
+      .academy-page {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      /* ---------- HEADER ---------- */
+      .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .academy-icon {
+        font-size: 2rem;
+        color: #f8d951;
+        opacity: 0.9;
+        transition: opacity 0.2s;
+      }
+
+      .academy-icon:hover {
+        opacity: 1;
+      }
+
+      .page-title {
+        font-size: 2.2rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #ffffff 30%, #f8d951 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        line-height: 1;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
+      }
+
+      .header-right i {
+        font-size: 1.1rem;
+        margin-right: 0.3rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .header-right span {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* ---------- COMING SOON SECTION ---------- */
+      .coming-soon-section {
+        margin-bottom: 4rem;
+        padding: 0.2rem 0;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .coming-soon-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .coming-soon-badge i {
+        font-size: 1.6rem;
+        color: #f8d951;
+        opacity: 0.8;
+      }
+
+      .coming-soon-title {
+        font-size: 2.8rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        background: linear-gradient(135deg, #ffffff 30%, #f8d951 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-clip: text;
+        margin: 0;
+        line-height: 1.1;
+      }
+
+      .coming-sub {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 0.3rem;
+        letter-spacing: 0.2px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .coming-sub i {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* ---------- SWIPE CAROUSEL (no cards, pure images) ---------- */
+      .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        height: 380px;
+        overflow: hidden;
+        border-radius: 18px;
+        margin: 2rem 0 1rem;
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+        background: #0b0b0b; /* subtle fallback */
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+      }
+
+      .carousel-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        /* aspect-ratio: 16 / 9; */
+        background: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-slide img {
+        width: 68%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        pointer-events: none; /* swipe only, no interaction */
+        transition: filter 0.2s;
+      }
+
+      /* subtle overlay for text readability (no card) */
+      .carousel-slide::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 35%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+        border-radius: 0 0 18px 18px;
+      }
+
+      .carousel-slide {
+        position: relative;
+        width: 100%;
+      }
+
+      /* slide indicator (dots) – minimal, premium */
+      .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 1.2rem 0 0.2rem;
+        position: relative;
+        z-index: 5;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+      }
+
+      .dot.active {
+        background: #ffffff;
+        width: 28px;
+        opacity: 1;
+      }
+
+      .dot:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* swipe hint (icon only) */
+      .swipe-hint {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.1rem;
+        padding-right: 0.3rem;
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+      }
+
+      .swipe-hint i {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      /* ---------- "videos on topic" inline ---------- */
+      .topic-videos {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2.5rem;
+        padding-top: 1.8rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .topic-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        letter-spacing: 0.2px;
+        transition: color 0.2s;
+      }
+
+      .topic-item i {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.4);
+        width: 1.6rem;
+        text-align: center;
+      }
+
+      .topic-item:hover {
+        color: #ffffff;
+      }
+
+      .topic-item:hover i {
+        color: #ffffff;
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 680px) {
+        .page-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.7rem;
+          padding-bottom: 1rem;
+        }
+
+        .page-title {
+          font-size: 1.9rem;
+        }
+
+        .coming-soon-title {
+          font-size: 2.2rem;
+        }
+
+        .header-right {
+          font-size: 0.8rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .topic-videos {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+        }
+
+        .carousel-wrapper {
+          height: auto;
+        }
+        .carousel-slide img {
+          width: 93%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-title {
+          font-size: 1.6rem;
+        }
+        .coming-soon-title {
+          font-size: 1.8rem;
+        }
+        .academy-icon {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* no timer, no stay updated button — as requested */
+      /* all cards removed – images flush */
+    </style>
+  </head>
+  <body>
+    <section class="body-acedy">
+      <div class="academy-page">
+        <!-- HEADER: Academy + icons -->
+        <header class="page-header">
+          <div class="header-left">
+            <i class="fas fa-graduation-cap academy-icon"></i>
+            <h1 class="page-title">Academy</h1>
+          </div>
+          <div class="header-right">
+            <span><i class="fas fa-video"></i> 4 webinars</span>
+            <span><i class="fas fa-calendar-alt"></i> Q4 2026</span>
+            <span><i class="fas fa-book-open"></i> 6 topics</span>
+          </div>
+        </header>
+
+        <!-- COMING SOON section (no timer, no stay updated) -->
+        <section class="coming-soon-section">
+          <div class="coming-soon-badge">
+            <!-- <i class="fas fa-clock"></i> -->
+            <h2 class="coming-soon-title">Coming Soon</h2>
+          </div>
+          <div class="coming-sub">
+            <i class="fas fa-arrow-right"></i>
+            <span>Exclusive video series · live & on-demand</span>
+          </div>
+        </section>
+
+        <!-- SWIPE CAROUSEL – images only, no cards -->
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- slide 1 -->
+            <div class="carousel-slide">
+              <img
+                src="images/acadedmy1.png"
+                alt="Webinar presentation"
+                loading="lazy"
+              />
+            </div>
+            <!-- slide 2 -->
+            <div class="carousel-slide">
+              <img
+                src="images/acadedmy2.png"
+                alt="Workshop discussion"
+                loading="lazy"
+              />
+            </div>
+            <!-- slide 3 -->
+            <div class="carousel-slide">
+              <img
+                src="images/acadedmy3.png"
+                alt="Content planning"
+                loading="lazy"
+              />
+            </div>
+            <!-- slide 4 -->
+            <div class="carousel-slide">
+              <img
+                src="images/acadedmy4.png"
+                alt="Webinar recording"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- indicators (dots) -->
+        <div class="carousel-indicators" id="carouselIndicators">
+          <button
+            class="dot active"
+            data-index="0"
+            aria-label="Slide 1"
+          ></button>
+          <button class="dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="dot" data-index="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- swipe hint (icon only) -->
+        <div class="swipe-hint">
+          <i class="fas fa-arrows-left-right"></i>
+          <span style="opacity: 0.5; font-size: 0.7rem">swipe</span>
+        </div>
+
+        <!-- Videos on topic (no timer, no button) -->
+        <div class="topic-videos">
+          <div class="topic-item">
+            <i class="fas fa-play-circle"></i> Webinar: UX design
+          </div>
+          <div class="topic-item">
+            <i class="fas fa-play-circle"></i> Content strategy
+          </div>
+          <div class="topic-item">
+            <i class="fas fa-play-circle"></i> Live Q&A sessions
+          </div>
+          <div class="topic-item">
+            <i class="fas fa-play-circle"></i> Case study deep-dive
+          </div>
+          <div class="topic-item">
+            <i class="fas fa-play-circle"></i> Product launch
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      (function () {
+        "use strict";
+
+        const track = document.getElementById("carouselTrack");
+        const slides = Array.from(document.querySelectorAll(".carousel-slide"));
+        const dots = Array.from(document.querySelectorAll(".dot"));
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoSlideInterval = null;
+        let isTransitioning = false;
+
+        // go to specific slide
+        function goToSlide(index) {
+          if (isTransitioning) return;
+          if (index < 0) index = totalSlides - 1;
+          if (index >= totalSlides) index = 0;
+          if (index === currentIndex) return;
+
+          isTransitioning = true;
+          currentIndex = index;
+          const offset = -currentIndex * 100;
+          track.style.transition =
+            "transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+          track.style.transform = `translateX(${offset}%)`;
+
+          // update dots
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentIndex);
+          });
+
+          // reset transition lock after animation
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 720);
+        }
+
+        // next slide (for auto & manual)
+        function nextSlide() {
+          if (isTransitioning) return;
+          goToSlide(currentIndex + 1);
+        }
+
+        // previous slide (for swipe)
+        function prevSlide() {
+          if (isTransitioning) return;
+          goToSlide(currentIndex - 1);
+        }
+
+        // reset auto slide timer
+        function resetAutoSlide() {
+          if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+          }
+          autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // ---------- SWIPE / TOUCH ----------
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isSwiping = false;
+
+        const wrapper = document.getElementById("carouselWrapper");
+
+        wrapper.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isSwiping = true;
+            // pause auto while swiping
+            if (autoSlideInterval) {
+              clearInterval(autoSlideInterval);
+              autoSlideInterval = null;
+            }
+          },
+          { passive: true },
+        );
+
+        wrapper.addEventListener(
+          "touchmove",
+          (e) => {
+            if (!isSwiping) return;
+            // prevent vertical scroll interference
+            e.preventDefault();
+          },
+          { passive: false },
+        );
+
+        wrapper.addEventListener(
+          "touchend",
+          (e) => {
+            if (!isSwiping) return;
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            const threshold = 50;
+
+            if (Math.abs(diff) > threshold) {
+              if (diff > 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            } else {
+              // if swipe too short, just reset auto
+            }
+
+            isSwiping = false;
+            // restart auto after swipe
+            resetAutoSlide();
+          },
+          { passive: true },
+        );
+
+        // mouse drag simulation (desktop)
+        let mouseDown = false;
+        let mouseStartX = 0;
+        let mouseEndX = 0;
+
+        wrapper.addEventListener("mousedown", (e) => {
+          mouseDown = true;
+          mouseStartX = e.screenX;
+          if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+          }
+          e.preventDefault();
+        });
+
+        wrapper.addEventListener("mousemove", (e) => {
+          if (!mouseDown) return;
+          e.preventDefault();
+        });
+
+        window.addEventListener("mouseup", (e) => {
+          if (!mouseDown) return;
+          mouseDown = false;
+          mouseEndX = e.screenX;
+          const diff = mouseStartX - mouseEndX;
+          const threshold = 50;
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+          }
+          resetAutoSlide();
+        });
+
+        // dot click navigation
+        dots.forEach((dot) => {
+          dot.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"), 10);
+            if (!isNaN(index) && index !== currentIndex) {
+              goToSlide(index);
+              resetAutoSlide();
+            }
+          });
+        });
+
+        // keyboard arrows (premium touch)
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            nextSlide();
+            resetAutoSlide();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            prevSlide();
+            resetAutoSlide();
+          }
+        });
+
+        // start autoplay
+        resetAutoSlide();
+
+        // (optional) prevent image drag
+        document.querySelectorAll(".carousel-slide img").forEach((img) => {
+          img.setAttribute("draggable", "false");
+        });
+
+        // expose to window for debugging (optional)
+        window.__carousel = { goToSlide, nextSlide, prevSlide };
+      })();
+    </script>
+  </body>
+</html>
+<!-- ----slides---- -->
+
+<!-- ----footer----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDU Stockx · gold & dark green footer</title>
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f4f8fe;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      } */
+
+      /* main content – pushes footer down */
+
+      /* ===== FOOTER ===== */
+      /* required gradient: linear-gradient(0deg, #292929, #000 75%) */
+      /* we keep it, and overlay with gold/dark green accents */
+      .edu-footer {
+        background: black;
+        /* background: #1a1a1a;
+            background: linear-gradient(0deg, #292929, #000 75%); */
+        color: #eef2f7;
+        padding: 2.5rem 1.8rem 1.8rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.08);
+        width: 100%;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.8rem 2.5rem;
+      }
+
+      /* left: logo placeholder + brand */
+      .footer-brand {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      /* ----- LOGO PLACEHOLDER (gold & dark green, no blue) ----- */
+      .logo-placeholder {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 0.2rem;
+      }
+
+      .logo-icon {
+        width: 52px;
+        height: 52px;
+        background: #1e3a2a; /* dark green */
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4af37; /* gold */
+        font-size: 1.9rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        transition: transform 0.2s;
+      }
+
+      .logo-icon i {
+        filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .logo-text .main {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d4af37; /* gold */
+        letter-spacing: -0.3px;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .logo-text .sub {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #b8a07c; /* muted gold */
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      /* if you want to use an actual image, replace .logo-icon with <img> */
+      /* we keep it as a styled placeholder – you can swap with <img> */
+
+      .footer-brand .tagline {
+        font-size: 0.95rem;
+        opacity: 0.7;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+        color: #c7b28b; /* warm gold */
+        margin-top: 4px;
+        border-left: 3px solid #d4af37;
+        padding-left: 12px;
+      }
+
+      /* footer links – gold & dark green accents */
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 3rem;
+      }
+
+      .footer-links .col p {
+        font-weight: 500;
+        color: #d4af37; /* gold */
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        padding-bottom: 0.3rem;
+      }
+
+      .footer-links .col a {
+        display: block;
+        color: #d0dceb;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.25rem 0;
+        transition:
+          color 0.2s,
+          transform 0.1s;
+        opacity: 0.8;
+      }
+
+      .footer-links .col a:hover {
+        color: #d4af37; /* gold on hover */
+        opacity: 1;
+        transform: translateX(4px);
+      }
+
+      .footer-links .col a i {
+        margin-right: 8px;
+        font-size: 0.8rem;
+        color: #d4af37; /* gold */
+        opacity: 0.7;
+      }
+
+      /* bottom row: copyright + credit */
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 1.2rem auto 0;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem 1.5rem;
+      }
+
+      .footer-bottom .copy {
+        font-size: 0.9rem;
+        opacity: 0.6;
+        letter-spacing: 0.2px;
+        color: #b8a07c;
+      }
+
+      .footer-bottom .copy i {
+        margin-right: 6px;
+        color: #d4af37;
+        opacity: 0.6;
+      }
+
+      .footer-bottom .credit {
+        font-size: 14px;
+        font-weight: 450;
+        padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+      }
+
+      .footer-bottom .credit a {
+        color: #d4af37; /* gold */
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+      }
+
+      .footer-bottom .credit a:hover {
+        color: #f5d95e;
+        border-bottom-color: #d4af37;
+      }
+
+      .footer-bottom .credit i {
+        margin-right: 6px;
+        color: #d4af37;
+      }
+
+      /* responsive */
+      @media (max-width: 700px) {
+        .footer-container {
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+        .footer-links {
+          gap: 1.2rem 2rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+        .hero-card h1 {
+          font-size: 2.2rem;
+        }
+        .logo-icon {
+          width: 44px;
+          height: 44px;
+          font-size: 1.5rem;
+        }
+        .logo-text .main {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- main content -->
+    <!-- <div class="main-content">
+      <div class="hero-card">
+        <h1>📚 EDU Stockx</h1>
+        <div class="sub">
+          <i class="fas fa-graduation-cap" style="margin-right: 8px"></i>
+          knowledge · equity · future
+        </div>
+        <p>
+          Educational stock insights &amp; market simulations for the next
+          generation of investors.
+        </p>
+        <div class="stock-ticker">
+          <span><i class="fas fa-chart-line"></i> EDU +2.4%</span>
+          <span><i class="fas fa-building"></i> STX 1.8k</span>
+          <span><i class="fas fa-book-open"></i> 12 courses</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- FOOTER with gradient background + logo placeholder (gold & dark green, no blue) -->
+    <footer class="edu-footer">
+      <div class="footer-container">
+        <!-- brand + logo placeholder -->
+        <div class="footer-brand">
+          <img
+            src="images/logo_111.png"
+            style="width: 187px; border-radius: 10px"
+            alt=""
+          />
+          <div class="logo-placeholder">
+            <!-- logo icon placeholder – gold & dark green, no blue -->
+            <div class="logo-icon" aria-label="EDU Stockx logo">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="logo-text">
+              <span class="main">EDU Stockx</span>
+              <span class="sub">invest in knowledge</span>
+            </div>
+          </div>
+          <div class="tagline">
+            <i
+              class="fas fa-arrow-trend-up"
+              style="margin-right: 6px; color: #d4af37"
+            ></i>
+            learn, invest, grow — gold standard
+          </div>
+          <!-- note: if you want to replace the icon with an actual image, 
+             use <img src="your-logo.png" alt="logo" style="height:52px; width:auto;"> 
+             inside .logo-icon and remove the <i> tag -->
+        </div>
+
+        <!-- quick links -->
+        <div class="footer-links">
+          <div class="col">
+            <p><i class="fas fa-compass"></i> explore</p>
+            <a href="#"><i class="fas fa-chart-pie"></i> Markets</a>
+            <a href="#"><i class="fas fa-book"></i> Courses</a>
+            <a href="#"><i class="fas fa-users"></i> Community</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-tools"></i> resources</p>
+            <a href="#"><i class="fas fa-newspaper"></i> Research</a>
+            <a href="#"><i class="fas fa-calculator"></i> Simulator</a>
+            <a href="#"><i class="fas fa-envelope"></i> Newsletter</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-flag"></i> company</p>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> Ethics</a>
+            <a href="#"><i class="fas fa-handshake"></i> Partners</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: copyright + "Designed & Developed by Skilled VA" with link -->
+      <div class="footer-bottom">
+        <div class="copy">
+          <i class="far fa-copyright"></i> 2026 EDU Stockx — all rights reserved
+        </div>
+        <div class="credit">
+          <i class="fas fa-code"></i> Designed &amp; Developed by
+          <a
+            href="https://skilled-va.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Skilled VA
+            <!-- <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.7rem; margin-left: 4px"
+            ></i> -->
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

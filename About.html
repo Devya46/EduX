@@ -1,0 +1,3260 @@
+ <!-- ------header------ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Edu Stockx</title>
+    <!-- Tailwind + Alpine + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        /* font-family:
+              "Inter",
+              system-ui,
+              -apple-system,
+              sans-serif; */
+      }
+      input,
+      select,
+      textarea,
+      button,
+      a,
+      [role="button"] {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        background: #000000;
+        margin: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      .sticky-header {
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      }
+      .header-scrolled {
+        background-color: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(20px);
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+      @media (max-width: 768px) {
+        .sticky-header {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .sticky-header.header-scrolled {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .custom-logo {
+          height: 4rem !important;
+        }
+      }
+      /* #ul-bg {
+            background: rgb(60 60 60 / 71%);
+            border-radius: 31px;
+            padding: 0px 13px;
+          } */
+      .mega-card {
+        box-shadow:
+          0 30px 50px -20px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+      }
+      .nav-link {
+        transition: all 0.2s ease;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .icon-circle {
+        width: 44px;
+        height: 44px;
+        background: #f3f4f6;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+      .group:hover .icon-circle {
+        background: #fef3d0;
+        transform: scale(1.02);
+      }
+      .custom-logo {
+        height: 3rem;
+        width: auto;
+        transition: all 0.2s ease;
+        filter: brightness(1.5);
+      }
+      @media (min-width: 1024px) {
+        .custom-logo {
+          height: 6.5rem;
+        }
+      }
+      .mobile-hamburger {
+        font-size: 2rem;
+      }
+      .mobile-close-icon {
+        font-size: 2.5rem !important;
+        line-height: 1;
+        font-weight: 300;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ecae17;
+        border-radius: 10px;
+      }
+      .mega-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        max-width: 90vw;
+      }
+      @media (min-width: 1280px) {
+        .mega-menu-center {
+          max-width: 780px;
+        }
+      }
+      .accent-gold {
+        color: #ecae17;
+      }
+      .bg-accent-gold {
+        background-color: #ecae17;
+      }
+      .border-accent-gold {
+        border-color: #ecae17;
+      }
+      .hover-bg-accent-gold:hover {
+        background-color: #ecae17;
+      }
+      .mega-image-transition img {
+        transition: opacity 0.25s ease;
+      }
+      /* fix: mobile right spacing & hamburger alignment */
+      @media (max-width: 1023px) {
+        .lg\\:flex-1 {
+          flex: 1 1 0% !important;
+        }
+        .lg\\:justify-center {
+          justify-content: flex-end !important;
+        }
+        .lg\\:ml-0 {
+          margin-left: auto !important;
+        }
+        header .flex.items-center.justify-between {
+          gap: 0.5rem;
+        }
+        .mobile-hamburger {
+          font-size: 1.8rem;
+          padding: 0.25rem;
+          margin-right: -0.25rem;
+        }
+        .custom-logo {
+          height: 3.2rem !important;
+        }
+        /* ensure right side doesn't overflow */
+        header .max-w-\[1320px\] > .flex {
+          flex-wrap: nowrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .custom-logo {
+          height: 4.8rem !important;
+        }
+        .mobile-hamburger {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white antialiased">
+    <div
+      x-data="headerComponent()"
+      x-init="init()"
+      class="relative"
+      @keydown.escape="closeAll()"
+    >
+      <!-- HEADER -->
+      <header
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 sticky-header"
+        :class="{ 'header-scrolled bg-black/95 backdrop-blur-xl': scrolled, 'bg-transparent border-white/5': !scrolled }"
+      >
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="h-[72px] lg:h-[82px] flex items-center justify-between gap-4"
+          >
+            <!-- LOGO (left) -->
+            <div class="flex items-center shrink-0">
+              <a
+                href="/"
+                class="block transition-transform hover:scale-105 duration-200"
+              >
+                <img
+                  src="images/Logo-eduStocks-Photoroom.png"
+                  alt="Edu Stockx"
+                  class="custom-logo object-contain"
+                  onerror="
+                    this.src = 'https://placehold.co/100x40?text=FX';
+                    this.onerror = null;
+                  "
+                />
+              </a>
+            </div>
+
+            <!-- RIGHT SIDE: flex-1 on desktop for centering, on mobile we keep it compact -->
+            <div
+              class="flex items-center gap-4 lg:gap-8 ml-auto lg:ml-0 lg:flex-1 lg:justify-center"
+            >
+              <!-- DESKTOP NAVIGATION - CENTERED -->
+              <nav class="hidden lg:block lg:flex-1 lg:flex lg:justify-center">
+                <ul class="flex items-center gap-0" id="ul-bg">
+                  <li>
+                    <a
+                      href="index.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="About.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >About Us</a
+                    >
+                  </li>
+
+                  <!-- SERVICES MEGA -->
+                  <li
+                    class="relative"
+                    @click.stop="openMega('challenge')"
+                    @mouseenter="openMega('challenge')"
+                    @mouseleave="closeMegaDelayed('challenge')"
+                  >
+                    <button
+                      type="button"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      :class="{'bg-white/10 text-[#ecae17]': activeMega === 'challenge'}"
+                    >
+                      Services
+                      <i
+                        class="fas fa-chevron-down text-[10px] transition-transform duration-200"
+                        :class="{'rotate-180': activeMega === 'challenge'}"
+                      ></i>
+                    </button>
+
+                    <!-- MEGA DROPDOWN -->
+                    <div
+                      x-show="isMegaOpen && activeMega === 'challenge'"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-y-2"
+                      x-transition:enter-end="opacity-100 transform translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-y-0"
+                      x-transition:leave-end="opacity-0 transform -translate-y-2"
+                      class="absolute top-[60px] w-[780px] bg-white rounded-2xl mega-card shadow-2xl z-50 mega-menu-center"
+                      @mouseenter="cancelClose()"
+                      @mouseleave="isMegaOpen=false; activeMega=null"
+                      style="display: none"
+                    >
+                      <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
+                        <!-- LEFT -->
+                        <div>
+                          <h4
+                            class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
+                          >
+                            <i class="fas fa-chart-line text-xs"></i>
+                            TRADING SERVICES
+                          </h4>
+                          <div class="space-y-5">
+                            <a
+                              href="Services/Gold.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('signals')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-chart-line text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Future Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Real-time market insights & trade alerts
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="Services/crypto.html"
+                              class="flex gap-4 group items-start hover-card"
+                              
+                              @mouseenter="setMegaImage('copy')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-copy text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Crypto Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Automatically mirror top traders
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="Services/stocks.html"
+                              class="flex gap-4 group items-start hover-card"
+                              
+                              @mouseenter="setMegaImage('live')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-video text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Stocks
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Interactive trading sessions with experts
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- RIGHT dynamic image -->
+                        <div
+                          class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
+                        >
+                          <img
+                            :src="currentMegaImage"
+                            class="w-full h-[140px] object-cover rounded-xl mb-4 shadow-md"
+                            alt="Live Trading"
+                          />
+                          <div class="flex items-center gap-2 mb-2">
+                            <span
+                              class="bg-[#ecae17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                              >NEW</span
+                            >
+                            <h4
+                              class="text-[18px] font-bold text-gray-900"
+                              x-text="currentMegaTitle"
+                            >
+                              Live Trading Sessions
+                            </h4>
+                          </div>
+                          <p
+                            class="text-[13px] text-gray-600"
+                            x-text="currentMegaDesc"
+                          >
+                            Join daily live trading with professional analysts.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="Academy.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Academy</a
+                    >
+                  </li>
+                  <!-- <li>
+                        <a
+                          href="/"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Best Brokers</a
+                        >
+                      </li> -->
+                  <li>
+                    <a
+                      href="Pricing.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Pricing</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="FAQ.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="Contact.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- GET STARTED (desktop) -->
+              <a
+                href="Contact.html"
+                class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
+                =""
+              >
+                Members Login
+              </a>
+
+              <!-- MOBILE MENU BUTTON (no extra spacing) -->
+              <div class="lg:hidden flex items-center shrink-0">
+                <button
+                  type="button"
+                  @click="mobileMenuOpen = true"
+                  class="text-white leading-none focus:outline-none mobile-hamburger"
+                >
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- OVERLAY -->
+      <div
+        x-show="isMegaOpen"
+        @click="isMegaOpen=false; activeMega=null"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+        style="display: none"
+      ></div>
+
+      <!-- MOBILE MENU -->
+      <div
+        x-show="mobileMenuOpen"
+        x-trap.noscroll="mobileMenuOpen"
+        x-transition.opacity.duration.200ms
+        class="fixed inset-0 bg-white z-[100] overflow-y-auto mobile-menu-full"
+        @click.self="mobileMenuOpen=false"
+        style="display: none"
+      >
+        <div
+          class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
+        >
+          <img
+            src="images/Logo-eduStocks-Photoroom.png"
+            alt="FX-Manipulation"
+            class="h-12 w-auto object-contain"
+          />
+          <button
+            type="button"
+            @click="mobileMenuOpen=false"
+            class="text-white mobile-close-icon leading-none focus:outline-none"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-5 space-y-4 pb-20">
+          <a
+            href="index.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
+          >
+          <a
+            href="About.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
+          >
+          <div class="border-b border-gray-200 pb-2">
+            <button
+              type="button"
+              @click="mobileSubmenu = mobileSubmenu === 'challenge' ? null : 'challenge'"
+              class="mobile-dropdown-btn py-3 text-[18px] font-semibold text-gray-900 w-full text-left"
+            >
+              <span
+                ><i class="fas fa-flag-checkered text-[#ecae17] mr-3"></i
+                >Services</span
+              >
+              <i
+                class="fas fa-chevron-down text-gray-400 transition-transform ml-4"
+                :class="{'rotate-180': mobileSubmenu === 'challenge'}"
+              ></i>
+            </button>
+            <div
+              x-show="mobileSubmenu === 'challenge'"
+              x-collapse
+              class="pl-6 space-y-3 mt-2"
+            >
+              <a href="Services/Gold.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-chart-line text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Future Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Real-time market insights & trade alerts
+                  </div>
+                </div></a
+              >
+              <a
+                href="Services/crypto.html"
+                class="flex gap-3 py-2 items-center"
+                
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-copy text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Crypto Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Automatically mirror top traders
+                  </div>
+                </div></a
+              >
+              <a
+                href="Services/stocks.html"
+                class="flex gap-3 py-2 items-center"
+                
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-video text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Stocks</div>
+                  <div class="text-[11px] text-gray-500">
+                    Interactive trading sessions with experts
+                  </div>
+                </div></a
+              >
+            </div>
+          </div>
+          <a
+            href="Academy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-graduation-cap text-[#ecae17] mr-3 w-6"></i
+            >Academy</a
+          >
+          <!-- <a
+                href="/"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-chart-line text-[#ecae17] mr-3 w-6"></i>Best
+                Brokers</a
+              > -->
+          <a
+            href="Pricing.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Pricing</a
+          >
+          <a
+            href="FAQ.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
+            >FAQ</a
+          >
+          <a
+            href="Contact.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
+            Us</a
+          >
+          <div class="pt-6 space-y-3">
+            <a
+              href="Contact.html"
+              class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
+              
+            >
+              Get Started</a
+            >
+          </div>
+          <div class="pt-8 border-t border-gray-200 mt-4">
+            <p
+              class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-4 text-center"
+            >
+              Follow Us
+            </p>
+            <div class="flex items-center justify-center gap-5">
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-telegram-plane"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function headerComponent() {
+        return {
+          activeMega: null,
+          isMegaOpen: false,
+          mobileMenuOpen: false,
+          mobileSubmenu: null,
+          scrolled: false,
+          closeTimeout: null,
+          currentMegaImage:
+            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
+          currentMegaTitle: "Live Trading Sessions",
+          currentMegaDesc:
+            "Join daily live trading with professional analysts.",
+
+          init() {
+            window.addEventListener("scroll", () => {
+              this.scrolled = window.scrollY > 20;
+            });
+            this.$watch("mobileMenuOpen", (value) => {
+              if (value) {
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.width = "100%";
+              } else {
+                document.body.style.overflow = "";
+                document.body.style.position = "";
+                document.body.style.width = "";
+              }
+            });
+            this.setMegaImage("default");
+          },
+
+          setMegaImage(type) {
+            const images = {
+              signals: {
+                img: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Future Trading",
+                desc: "Real-time market insights & trade alerts.",
+              },
+              copy: {
+                img: "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Crypto Trading",
+                desc: "Automatically mirror top traders.",
+              },
+              live: {
+                img: "https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww",
+                title: "Stocks",
+                desc: "Interactive trading sessions with experts.",
+              },
+            };
+            const data = images[type] || images.signals;
+            this.currentMegaImage = data.img;
+            this.currentMegaTitle = data.title;
+            this.currentMegaDesc = data.desc;
+          },
+
+          openMega(menu) {
+            this.cancelClose();
+            this.activeMega = menu;
+            this.isMegaOpen = true;
+            this.setMegaImage("default");
+          },
+
+          closeMegaDelayed(menu) {
+            this.closeTimeout = setTimeout(() => {
+              if (this.activeMega === menu) {
+                this.isMegaOpen = false;
+                this.activeMega = null;
+              }
+            }, 100);
+          },
+
+          cancelClose() {
+            if (this.closeTimeout) {
+              clearTimeout(this.closeTimeout);
+              this.closeTimeout = null;
+            }
+          },
+
+          closeAll() {
+            this.isMegaOpen = false;
+            this.activeMega = null;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- -----Page Header---- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reach us · video header</title>
+    <!-- No external dependencies – pure HTML + CSS -->
+    <style>
+      /* global reset & base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ----- header block : full width, less height, video background ----- */
+      .header-video {
+        position: relative;
+        width: 100vw;
+        max-width: 100%;
+        height: 40vh;
+        min-height: 200px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #1a1e2b;
+        padding-top: 7rem;
+      }
+
+      /* video fills the container, covers, stays behind */
+      .header-video video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover; /* ensures full coverage, no black bars */
+        display: block;
+        pointer-events: none; /* allows text to be easily selected/clicked */
+        z-index: 0;
+      }
+
+      /* overlay – improves text readability */
+      .header-video .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 61%);
+        backdrop-filter: blur(2px); /* very subtle blur for modern feel */
+        z-index: 1;
+        filter: brightness(0.45) contrast(1.1) saturate(0.9) grayscale(0.5);
+      }
+
+      /* heading – perfectly centered, one heading only */
+      .header-video .heading {
+        position: relative;
+        z-index: 2;
+        color: #ffed8d;
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.6),
+          0 2px 8px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        padding: 0 1.5rem;
+        word-break: break-word;
+        line-height: 1.2;
+      }
+
+      /* small screens: video still covers, height slightly adjusted */
+      @media (max-width: 480px) {
+        .header-video {
+          height: 35vh; /* even less height on mobile */
+          min-height: 160px;
+        }
+        .header-video .heading {
+          font-size: clamp(2.6rem, 15vw, 4rem);
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      /* tall screens: keep header from being too dominant */
+      @media (min-height: 900px) {
+        .header-video {
+          height: 32vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- FULL-WIDTH HEADER WITH VIDEO BACKGROUND, LESS HEIGHT -->
+    <header class="header-video">
+      <video
+        src="images/new-bg.mp4"
+        type="video/mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+
+      <!-- soft overlay to keep text legible -->
+      <div class="overlay" aria-hidden="true"></div>
+
+      <!-- only one heading: "Reach us" -->
+      <h1 class="heading">Edu StockX</h1>
+    </header>
+  </body>
+</html>
+
+<!-- -------hero-------  -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Built for Serious Traders</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        font-family: "Inter", sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      .about {
+        padding: 80px 20px 70px;
+        max-width: 1250px;
+        margin: auto;
+      }
+
+      /* ----- text base (hidden until animated) ----- */
+      .sub,
+      .title,
+      .desc {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+        will-change: transform, opacity;
+      }
+
+      .sub {
+        color: #a8b4cc;
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 14px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      .title {
+        font-size: clamp(34px, 6vw, 60px);
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #ffffff 30%, #f8d951 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+      }
+
+      .desc {
+        text-align: center;
+        color: #c4cad4;
+        font-size: 18px;
+        margin-bottom: 60px;
+      }
+
+      /* ----- hero image (hidden until animated) ----- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 80px rgba(255, 255, 255, 0.05);
+        transition:
+          box-shadow 0.4s,
+          transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        opacity: 0;
+        transform: translateY(50px) scale(0.99);
+        will-change: transform, opacity;
+      }
+
+      .hero.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .hero:hover {
+        box-shadow: 0 30px 100px rgba(74, 145, 255, 0.15);
+      }
+
+      .hero img {
+        width: 100%;
+        display: block;
+        height: 630px;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+      }
+
+      /* .hero:hover img {
+        transform: scale(1.02);
+      } */
+
+      .glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(74, 145, 255, 0.18),
+          transparent 45%
+        );
+        pointer-events: none;
+        transition: opacity 0.5s;
+        opacity: 0.4;
+      }
+
+      /* .hero:hover .glow {
+        opacity: 0.8;
+      } */
+
+      /* ----- stats cardsss (hidden until animated) ----- */
+      .stats {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .cardss {
+        height: 170px;
+        background: #0b0b0b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        position: relative;
+        display: flex;
+        padding: 25px;
+        justify-content: space-between;
+        align-items: flex-end;
+        transition:
+          transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1),
+          border-color 0.3s,
+          box-shadow 0.4s;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transform: translateY(40px);
+        will-change: transform, opacity;
+        overflow: hidden;
+      }
+
+      .cardss::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at bottom center,
+          rgb(255 255 255) 0%,
+          rgb(255 255 255) 20%,
+          rgb(255 255 255 / 25%) 40%,
+          #000000 70%
+        );
+        filter: blur(58px);
+        transform: translateY(45%);
+        pointer-events: none;
+      }
+
+      .cardss.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .cardss:hover {
+        /* transform: translateY(-8px) scale(1.01); */
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.8),
+          0 0 0 1px rgba(74, 145, 255, 0.1);
+      }
+
+      .cardss:active {
+        transform: scale(0.98);
+        transition-duration: 0.1s;
+      }
+
+      .top {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 2;
+      }
+
+      .label {
+        font-size: 15px;
+        color: #d2d8e4;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: 0.2px;
+      }
+
+      .label i {
+        font-size: 16px;
+        color: #5f7aff;
+        width: 20px;
+        text-align: center;
+        transition: transform 0.2s;
+      }
+
+      .number {
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #f0f4ff, #b0c8ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .cardss img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        opacity: 0.7;
+        filter: drop-shadow(0 0 12px rgba(74, 145, 255, 0.15));
+        z-index: 1;
+      }
+
+      /* .cardss:hover img {
+        transform: scale(1.04) rotate(-1deg);
+      } */
+
+      /* ----- responsive ----- */
+      @media (max-width: 991px) {
+        .hero img {
+          height: 420px;
+        }
+        .stats {
+          grid-template-columns: 1fr;
+        }
+        .cardss {
+          height: 160px;
+        }
+        .number {
+          font-size: 42px;
+        }
+        .cardss img {
+          height: 90%;
+          right: 4px;
+          bottom: 4px;
+        }
+        .label {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .about {
+          padding: 95px 16px 20px;
+        }
+        .title {
+          font-size: 32px;
+        }
+        .desc {
+          font-size: 16px;
+          margin-bottom: 40px;
+        }
+        .hero img {
+          height: 260px;
+        }
+        .cardss {
+          height: 140px;
+          padding: 18px;
+        }
+        .number {
+          font-size: 34px;
+        }
+        .top {
+          top: 14px;
+          left: 16px;
+        }
+        .label {
+          font-size: 13px;
+          gap: 6px;
+        }
+        .label i {
+          font-size: 14px;
+          width: 18px;
+        }
+        .cardss img {
+          height: 80%;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="about">
+      <div class="sub">
+        <i class="fas fa-flag" style="margin-right: 6px; opacity: 0.7"></i>
+        About Edu Stockx
+      </div>
+      <h1 class="title">Built for Serious Traders</h1>
+      <div class="desc">
+        <i
+          class="fas fa-chart-line"
+          style="margin-right: 8px; opacity: 0.6"
+        ></i>
+        Making trading accessible through a simulated environment
+      </div>
+
+      <div class="hero">
+        <div class="glow"></div>
+        <img
+          src="https://images.unsplash.com/photo-1563461660947-507ef49e9c47?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Trading dashboard"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="stats">
+        <div class="cardss">
+          <div class="top">
+            <div class="label"><i class="fas fa-calendar-alt"></i> Since</div>
+            <div class="number">2021</div>
+          </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085313/people1.png"
+            alt="team icon"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="cardss">
+          <div class="top">
+            <div class="label"><i class="fas fa-users"></i> Team Members</div>
+            <div class="number">100+</div>
+          </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085314/people2.png"
+            alt="team icon"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="cardss">
+          <div class="top">
+            <div class="label">
+              <i class="fas fa-globe-americas"></i> Countries Served
+            </div>
+            <div class="number">13+</div>
+          </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085315/people3.png"
+            alt="world icon"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        // ----- select all animated elements -----
+        const sub = document.querySelector(".sub");
+        const title = document.querySelector(".title");
+        const desc = document.querySelector(".desc");
+        const hero = document.querySelector(".hero");
+        const cardsss = document.querySelectorAll(".cardss");
+
+        // ----- intersection observer: trigger animation every time section appears -----
+        const section = document.querySelector(".about");
+
+        // reset function: remove visible class and reset inline styles for clean re-animation
+        function resetElements() {
+          // text elements: reset to hidden state
+          [sub, title, desc].forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+          });
+          // hero
+          hero.classList.remove("visible");
+          hero.style.opacity = "0";
+          hero.style.transform = "translateY(50px) scale(0.99)";
+          // cardsss
+          cardsss.forEach((cardss) => {
+            cardss.classList.remove("visible");
+            cardss.style.opacity = "0";
+            cardss.style.transform = "translateY(40px)";
+          });
+        }
+
+        // animate all elements with staggered delays
+        function animateAll() {
+          // text: stagger
+          setTimeout(() => {
+            sub.style.opacity = "1";
+            sub.style.transform = "translateY(0)";
+          }, 80);
+          setTimeout(() => {
+            title.style.opacity = "1";
+            title.style.transform = "translateY(0)";
+          }, 180);
+          setTimeout(() => {
+            desc.style.opacity = "1";
+            desc.style.transform = "translateY(0)";
+          }, 280);
+
+          // hero
+          setTimeout(() => {
+            hero.classList.add("visible");
+            hero.style.opacity = "1";
+            hero.style.transform = "translateY(0) scale(1)";
+          }, 380);
+
+          // cardsss with stagger
+          cardsss.forEach((cardss, index) => {
+            setTimeout(
+              () => {
+                cardss.classList.add("visible");
+                cardss.style.opacity = "1";
+                cardss.style.transform = "translateY(0)";
+              },
+              480 + index * 150,
+            );
+          });
+        }
+
+        // observer for section visibility – triggers reset + animate each time
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                resetElements();
+                animateAll();
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: "0px 0px -20px 0px", // slight offset to avoid flicker
+          },
+        );
+
+        observer.observe(section);
+
+        // also observe cardsss & hero individually just in case (but section observer is primary)
+        // plus hover icon pulse (non‑intrusive)
+        document.querySelectorAll(".cardss").forEach((cardss) => {
+          cardss.addEventListener("mouseenter", function (e) {
+            const icon = this.querySelector(".label i");
+            if (icon) icon.style.transform = "scale(1.2)";
+          });
+          cardss.addEventListener("mouseleave", function (e) {
+            const icon = this.querySelector(".label i");
+            if (icon) icon.style.transform = "scale(1)";
+          });
+        });
+
+        // ensure that if any element is stuck hidden (edge case), force visible on first load
+        // but we rely on observer, however we set a tiny fallback:
+        setTimeout(() => {
+          // if section is visible at load, observer will trigger; if not, nothing.
+          // but if observer missed due to threshold, we manually check once.
+          const rect = section.getBoundingClientRect();
+          const winHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top < winHeight - 100 && rect.bottom > 0) {
+            // section is visible, but maybe observer didn't fire? we re-trigger
+            resetElements();
+            animateAll();
+          }
+        }, 400);
+      })();
+    </script>
+  </body>
+</html>
+
+<!-- -----we------ -->
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu Stocks · About</title>
+    <!-- Inter font (clean, modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .about-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 70px 89px 10px;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .left h2 {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #ffffff 30%, #fad844 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        padding: 10px 31px;
+      }
+
+      .right h3 {
+        font-size: 32px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: #f1e18a;
+        margin-bottom: 18px;
+        max-width: 1000px;
+        letter-spacing: -0.01em;
+      }
+
+      .right p {
+        font-size: 19px;
+        line-height: 1.8;
+        color: #c5c5c5;
+        margin-bottom: 16px;
+        max-width: 1100px;
+      }
+
+      .right p:last-of-type {
+        margin-bottom: 0;
+      }
+
+      /* ---------- responsive breakpoints ---------- */
+
+      /* large tablet / small desktop */
+      @media (max-width: 1200px) {
+        .about-section {
+          grid-template-columns: 280px 1fr;
+          gap: 60px;
+          padding: 90px 24px 70px;
+        }
+        .left h2 {
+          font-size: 52px;
+        }
+        .right h3 {
+          font-size: 40px;
+        }
+        .right p {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .about-section {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 80px 24px 60px;
+        }
+        .left h2 {
+          font-size: 48px;
+        }
+        .right h3 {
+          font-size: 34px;
+          max-width: 100%;
+        }
+        .right p {
+          font-size: 20px;
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .about-section {
+        padding: 60px 29px 50px;
+        gap: 28px;
+        text-align: center;
+        }
+        .left h2 {
+          font-size: 40px;
+        }
+        .right h3 {
+          font-size: 28px;
+          margin-bottom: 28px;
+          line-height: 1.3;
+        }
+        .right p {
+          font-size: 18px;
+          line-height: 1.7;
+          margin-bottom: 20px;
+        }
+      }
+
+      /* tiny screens */
+      @media (max-width: 400px) {
+        .left h2 {
+          font-size: 34px;
+        }
+        .right h3 {
+          font-size: 24px;
+        }
+        .right p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- about section -->
+    <section class="about-section">
+      <div class="left">
+        <h2>Who We Are</h2>
+      </div>
+
+      <div class="right">
+        <h3>
+          Edu Stocks started with a simple and powerful mission: to help
+          aspiring traders and investors build lasting financial knowledge.
+        </h3>
+
+        <p>
+          Edu Stocks is an education and technology-driven platform dedicated to
+          making financial markets accessible through practical learning and
+          simulated trading experiences. We empower individuals who are
+          passionate about trading and investing by providing the knowledge,
+          tools, and guidance needed to grow with confidence.
+        </p>
+
+        <p>
+          Through structured courses, market insights, and hands-on simulations,
+          Edu Stocks creates an environment where learners can develop their
+          skills, test strategies, and gain real-world experience before
+          entering live markets. Our goal is to build a community of disciplined
+          traders equipped for long-term success.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- ------why us----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Us · cards‑wu</title>
+    <!-- Google Font + Font Awesome (icons) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .body-wu {
+        background: #000000;
+        font-family: "Inter", sans-serif;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 9rem;
+      }
+
+      .container-wu {
+        max-width: 1550px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      /* ---------- cards‑wu (was hero, now cards‑wu) ---------- */
+      .cards-wu {
+        position: relative;
+        border-radius: 36px;
+        overflow: hidden;
+        height: 480px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: #10131c;
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.85);
+        transition: box-shadow 0.3s;
+      }
+
+      .cards-wu:hover {
+        box-shadow: 0 34px 70px -10px rgba(0, 80, 255, 0.18);
+      }
+
+      .wu-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .wu-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        animation: zoomBg 22s ease-in-out infinite alternate;
+        transform-origin: center center;
+        filter: brightness(0.75) saturate(1.1) contrast(1.05);
+      }
+
+      .cards-wu::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(110deg, rgba(0, 30, 70, 0.55) 0%, transparent 60%),
+          linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 55%);
+        pointer-events: none;
+      }
+
+      /* ---------- left content ---------- */
+      .wu-content {
+        position: absolute;
+        left: 44px;
+        bottom: 48px;
+        z-index: 5;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 0.9, 0.3, 1.2) both;
+        max-width: 480px;
+      }
+
+      .wu-content h1 {
+            font-size: clamp(2.6rem, 7vw, 36px);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ffffff 55%, #7bb3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+      }
+
+      .wu-content p {
+        color: #8db9ff;
+        font-size: clamp(1.2rem, 2.8vw, 28px);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        text-shadow: 0 2px 14px rgba(0, 20, 40, 0.5);
+      }
+
+      /* ---------- account card (right) better chart ---------- */
+      .account-card-wrapper {
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        width: 450px;
+        max-width: calc(100% - 80px);
+        /* animation: float 5.5s ease-in-out infinite; */
+      }
+
+      .account-card {
+        position: relative;
+        overflow: hidden;
+        padding: 28px 30px 24px;
+        border-radius: 30px;
+        background: linear-gradient(
+          145deg,
+          rgba(24, 28, 40, 0.92),
+          rgba(8, 10, 18, 0.94)
+        );
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow:
+          0 24px 64px rgba(0, 0, 0, 0.7),
+          0 0 40px rgba(0, 80, 255, 0.08);
+        transition:
+          border 0.25s,
+          box-shadow 0.3s;
+      }
+
+      .account-card:hover {
+        border-color: rgba(0, 150, 255, 0.2);
+        box-shadow:
+          0 28px 80px rgba(0, 0, 0, 0.75),
+          0 0 60px rgba(0, 80, 255, 0.15);
+      }
+
+      .account-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: #d6def5;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .account-title i {
+        color: #3b9aff;
+        font-size: 1.1rem;
+      }
+
+      .account-title span {
+        background: #1a2842;
+        padding: 2px 14px;
+        border-radius: 40px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: #7aaaff;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .stats-wu {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .stat-wu {
+        flex: 1;
+      }
+
+      .stat-wu span {
+        color: #8e9bb5;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .stat-wu h2 {
+        margin-top: 4px;
+        font-size: clamp(1.6rem, 3.2vw, 28px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+
+      .stat-wu:last-child h2 {
+        color: #8cf0a0;
+      }
+
+      /* ----- BETTER CHART (gradient area + line + dots) ----- */
+      .chart-container {
+        margin-top: 18px;
+        height: 74px;
+        width: 100%;
+        position: relative;
+      }
+
+      .chart-container svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+      }
+
+      .area-fill {
+        fill: url(#chartGrad);
+        opacity: 0.3;
+        transition: opacity 0.4s;
+      }
+
+      .account-card:hover .area-fill {
+        opacity: 0.45;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke: #3ef58a;
+        stroke-width: 3.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: drawLine 4.2s ease-in-out infinite alternate;
+        filter: drop-shadow(0 0 10px rgba(50, 255, 140, 0.25));
+      }
+
+      .glow-line {
+        fill: none;
+        stroke: #3ef58a;
+        stroke-width: 14;
+        opacity: 0.12;
+        filter: blur(10px);
+      }
+
+      .chart-dot {
+        fill: #b0f7c0;
+        r: 4.2;
+        transition:
+          r 0.2s,
+          fill 0.2s;
+        /* animation: pulseDot 3s ease-in-out infinite; */
+      }
+
+      .chart-dot:hover {
+        r: 7;
+        fill: #8effb0;
+      }
+
+      .chart-dot:nth-child(2) {
+        animation-delay: 0.8s;
+      }
+      .chart-dot:nth-child(3) {
+        animation-delay: 1.6s;
+      }
+      .chart-dot:nth-child(4) {
+        animation-delay: 2.4s;
+      }
+
+      /* ---------- CARDS GRID (lots of cards) ---------- */
+      .cards-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .card-item {
+        background: #0f121b;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: 28px;
+        padding: 32px 28px 28px;
+        transition: all 0.3s cubic-bezier(0.15, 0.85, 0.35, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+      }
+
+      .card-item::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -140px;
+        transform: translateX(-50%);
+        width: 140%;
+        height: 200px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(40, 130, 255, 0.1),
+          transparent 75%
+        );
+        filter: blur(60px);
+        pointer-events: none;
+        transition: opacity 0.4s;
+        opacity: 0.3;
+      }
+
+      .card-item:hover::before {
+        opacity: 0.8;
+      }
+
+      .card-item:hover {
+        transform: translateY(-8px) scale(1.01);
+        border-color: rgba(255, 255, 255, 0.1);
+        background: #161b28;
+        box-shadow: 0 20px 48px -12px rgba(0, 80, 255, 0.18);
+      }
+
+      .card-item .icon {
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-bottom: 18px;
+        color: #5f7aff;
+        display: inline-block;
+        filter: drop-shadow(0 4px 12px rgba(0, 80, 255, 0.2));
+        transition: transform 0.2s;
+        width: 44px;
+        text-align: left;
+      }
+
+      .card-item:hover .icon {
+        transform: scale(1.05) translateX(2px);
+      }
+
+      .card-item h3 {
+            font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 7px;
+    color: #f0f4ff;
+      }
+
+      .card-item p {
+        color: #b6c2da;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 400;
+        max-width: 95%;
+      }
+
+      /* ---------- ANIMATIONS ---------- */
+      @keyframes zoomBg {
+        0% {
+          transform: scale(1) translateX(0);
+        }
+        100% {
+          transform: scale(1.07) translateX(-10px);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(-50%) translateX(0);
+        }
+        50% {
+          transform: translateY(calc(-50% - 16px)) translateX(6px);
+        }
+        100% {
+          transform: translateY(-50%) translateX(0);
+        }
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(44px) scale(0.96);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes drawLine {
+        0% {
+          stroke-dashoffset: 900;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes pulseDot {
+        0%,
+        100% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.4);
+        }
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 1200px) {
+        .account-card-wrapper {
+          width: 380px;
+          right: 28px;
+        }
+        .wu-content {
+          left: 32px;
+          bottom: 40px;
+        }
+        .wu-content h1 {
+          font-size: 3.2rem;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .cards-wu {
+          height: 600px;
+        }
+        .account-card-wrapper {
+          width: 90%;
+          max-width: 400px;
+          left: 50%;
+          right: auto;
+          top: auto;
+          bottom: 30px;
+          transform: translateX(-50%);
+          animation: floatMobile 4.8s ease-in-out infinite;
+        }
+        .wu-content {
+          bottom: 280px;
+          left: 28px;
+          max-width: 70%;
+        }
+        .wu-content h1 {
+          font-size: 2.8rem;
+        }
+        .cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @keyframes floatMobile {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-8px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+
+        .body-wu {
+          padding: 1rem 1rem;
+        }
+        .cards-wu {
+          height: 540px;
+          border-radius: 28px;
+        }
+        .wu-content {
+          left: 18px;
+          bottom: 240px;
+          max-width: 80%;
+        }
+        .wu-content h1 {
+          font-size: 2.2rem;
+        }
+        .wu-content p {
+          font-size: 1.1rem;
+        }
+        .account-card-wrapper {
+          width: 92%;
+          max-width: 340px;
+          bottom: 16px;
+        }
+        .account-card {
+          padding: 22px 18px 18px;
+          border-radius: 24px;
+        }
+        .stats-wu {
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .stat-wu h2 {
+          font-size: 1.4rem;
+        }
+        .chart-container {
+          height: 52px;
+          margin-top: 12px;
+        }
+        .cards-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        .card-item {
+          padding: 24px 20px;
+        }
+        .card-item h3 {
+          font-size: 21px;
+        }
+        .card-item p {
+          max-width: 100%;
+          font-size: 14px;
+        }
+        .card-item .icon {
+          font-size: 1.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cards-wu {
+          height: 470px;
+        }
+        .wu-content {
+          bottom: 200px;
+          left: 14px;
+        }
+        .wu-content h1 {
+          font-size: 1.8rem;
+        }
+        .wu-content p {
+          font-size: 0.95rem;
+        }
+        .account-card-wrapper {
+          width: 94%;
+          max-width: 280px;
+          bottom: 12px;
+        }
+        .account-card {
+          padding: 16px 14px 14px;
+          border-radius: 20px;
+        }
+        .account-title {
+          font-size: 0.95rem;
+          margin-bottom: 14px;
+        }
+        .stat-wu h2 {
+          font-size: 1.2rem;
+        }
+        .stat-wu span {
+          font-size: 0.6rem;
+        }
+        .chart-container {
+          height: 44px;
+          margin-top: 8px;
+        }
+        .card-item h3 {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="body-wu">
+    <div class="container-wu">
+      <!-- cards‑wu (formerly hero) -->
+      <div class="cards-wu">
+        <div class="wu-bg">
+          <img
+            src="images/why us.png"
+            alt="FTMO trading"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="wu-content">
+          <h1>Why Us</h1>
+          <p>Up to $200K simulated capital</p>
+        </div>
+
+        <!-- account card with better chart -->
+        <div class="account-card-wrapper">
+          <div class="account-card">
+            <div class="account-title">
+              <i class="fas fa-chart-line"></i> Edu Stockx Account
+              <span>live</span>
+            </div>
+
+            <div class="stats-wu">
+              <div class="stat-wu">
+                <span>Result</span>
+                <h2>Ongoing</h2>
+              </div>
+              <div class="stat">
+                <span>Balance</span>
+                <h2>$219,999</h2>
+              </div>
+            </div>
+
+            <!-- enhanced chart with gradient, dots, glow -->
+            <div class="chart-container">
+              <svg viewBox="0 0 800 100" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient
+                    id="chartGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" stop-color="#3ef58a" stop-opacity="0.7" />
+                    <stop
+                      offset="100%"
+                      stop-color="#3ef58a"
+                      stop-opacity="0.02"
+                    />
+                  </linearGradient>
+                </defs>
+
+                <!-- area fill -->
+                <path
+                  class="area-fill"
+                  d="M10 85 L80 90 L140 62 L200 78 L270 54 L340 60 L410 38 L480 46 L560 22 L650 34 L720 8 L790 14 L790 95 L10 95 Z"
+                />
+
+                <!-- glow line (blur) -->
+                <path
+                  class="glow-line"
+                  d="M10 85 L80 90 L140 62 L200 78 L270 54 L340 60 L410 38 L480 46 L560 22 L650 34 L720 8 L790 14"
+                />
+
+                <!-- main animated line -->
+                <path
+                  class="chart-line"
+                  d="M10 85 L80 90 L140 62 L200 78 L270 54 L340 60 L410 38 L480 46 L560 22 L650 34 L720 8 L790 14"
+                />
+
+                <!-- dots (data points) -->
+                <circle class="chart-dot" cx="80" cy="90" />
+                <circle class="chart-dot" cx="200" cy="78" />
+                <circle class="chart-dot" cx="340" cy="60" />
+                <circle class="chart-dot" cx="480" cy="46" />
+                <circle class="chart-dot" cx="650" cy="34" />
+                <circle
+                  class="chart-dot"
+                  cx="790"
+                  cy="14"
+                  style="fill: #8effb0; r: 5.5"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARDS GRID · lots of cards (cards‑wu) -->
+      <div class="cards-grid">
+        
+        <div class="card-item">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h3>Advanced Support</h3>
+          <p>Dedicated support via Live chat, email, or WhatsApp</p>
+        </div>
+        <div class="card-item">
+          <div class="icon"><i class="fas fa-tools"></i></div>
+          <h3>Tools &amp; Services</h3>
+          <p>Tailored tools &amp; services to support your growth</p>
+        </div>
+        <div class="card-item">
+          <div class="icon"><i class="fas fa-coins"></i></div>
+          <h3>Rewards</h3>
+          <p>Fast and easy rewards withdrawals</p>
+        </div>
+        <div class="card-item">
+          <div class="icon"><i class="fas fa-clock"></i></div>
+          <h3>Free Trial</h3>
+          <p>As many Free Trials as you need</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  </section>
+</html>
+
+<!-- ---vision & founder---- -->
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision & Founders Section</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+     
+
+      /* ----------------------------------------------
+         BODY – isolated with ID scope for safety
+         ------------------------------------------------ */
+      #page-root {
+        background: #000000;
+        font-family: "Inter", sans-serif;
+        color: #fff;
+        display: block;
+        width: 100%;
+      }
+
+      /* ----------------------------------------------
+         SECTION WRAPPER – safe class + descendant
+         ------------------------------------------------ */
+      .vision-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 90px 20px;
+        display: block;
+      }
+
+      /* ---------- TITLE ---------- */
+      .vision-section .title-block {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .vision-section .title-block h2 {
+        font-size: 52px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 30%, #ffd004 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+        letter-spacing: normal;
+      }
+
+      .vision-section .title-block p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: #c5c5c5;
+        line-height: 1.8;
+        font-size: 15px;
+      }
+
+      /* ---------- CARDS GRID ---------- */
+      .vision-section .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 22px;
+        margin-top: 50px;
+      }
+
+      .vision-section .card-item {
+        position: relative;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 30px;
+        overflow: hidden;
+        transition:
+          transform 0.5s ease,
+          border-color 0.3s ease,
+          opacity 0.6s ease;
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      .vision-section .card-item.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .vision-section .card-item:hover {
+        transform: translateY(-8px);
+        border-color: #5f7aff;
+      }
+
+      .vision-section .icon-box {
+        width: 44px;
+        height: 44px;
+        background: #5f7aff;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 0 30px rgba(13, 139, 255, 0.5);
+        color: #fff;
+      }
+
+      .vision-section .card-item h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .vision-section .card-item p {
+        color: #c5c5c5;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      /* ---------- FOUNDERS ---------- */
+      .vision-section .founders-row {
+        margin-top: 140px;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+
+      .vision-section .image-box {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px;
+        transform: translateX(-70px);
+        opacity: 0;
+        transition:
+          transform 1s ease,
+          opacity 1s ease;
+      }
+
+      .vision-section .image-box.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .vision-section .image-box img {
+        width: 100%;
+        display: block;
+        border-radius: 22px;
+      }
+
+      .vision-section .founder-content {
+        flex: 1;
+        transform: translateX(70px);
+        opacity: 0;
+        transition:
+          transform 1s ease,
+          opacity 1s ease;
+      }
+
+      .vision-section .founder-content.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .vision-section .founder-tag {
+        color: #0d8bff;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: inline-block;
+        letter-spacing: 0.3px;
+      }
+
+      .vision-section .founder-content h2 {
+        font-size: 52px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .vision-section .founder-content h4 {
+        color: #d0d0d0;
+        margin-bottom: 25px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .vision-section .founder-content p {
+        color: #b9b9b9;
+        line-height: 1.9;
+        font-size: 15px;
+        margin-bottom: 40px;
+      }
+
+      .vision-section .founder-stats {
+        display: flex;
+        gap: 60px;
+      }
+
+      .vision-section .founder-stats div {
+        display: block;
+      }
+
+      .vision-section .founder-stats h3 {
+        font-size: 28px;
+        color: #0d8bff;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .vision-section .founder-stats span {
+        color: #c8c8c8;
+        font-size: 14px;
+        display: block;
+        text-align: center;
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 900px) {
+        .vision-section .founders-row {
+          flex-direction: column;
+          gap: 50px;
+        }
+
+        .vision-section .founder-content h2 {
+          font-size: 38px;
+        }
+
+        .vision-section .founder-stats {
+          gap: 30px;
+        }
+      }
+
+      /* small extra safety: no global leakage */
+      .vision-section,
+      .vision-section * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body id="page-root">
+    <section class="vision-section">
+      <div class="title-block">
+        <h2>Our Vision</h2>
+        <p>
+          Our goal is to remain the market leader in Modern Prop Trading and the
+          top choice for traders by supporting them with top-tier products,
+          continuous innovation, and a diverse portfolio of symbols.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card-item">
+          <div class="icon-box">↗</div>
+          <h3>Supporting Growth</h3>
+          <p>
+            We create an environment that helps traders grow and follow their
+            trading passion with simulated environments towards a professional
+            level.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <div class="icon-box">⚖</div>
+          <h3>Built on Fairness</h3>
+          <p>
+            Fairness is at the heart of everything we do, from setting the rules
+            of the challenge to how we reward success.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <div class="icon-box">▮</div>
+          <h3>Beyond Simulated Trading</h3>
+          <p>
+            Top performers may progress to Quantlane, a traditional proprietary
+            trading firm operating with its own capital in live markets.
+          </p>
+        </div>
+      </div>
+
+      <div class="founders-row">
+        <div class="image-box">
+          <img
+            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&auto=format&fit=crop&q=60"
+            alt="Founders"
+          />
+        </div>
+
+        <div class="founder-content">
+          <span class="founder-tag">Our Founders</span>
+          <h2>Mr. XYZ</h2>
+          <h4>Founder & CEO</h4>
+          <p>
+            Our founders are driven by a vision to empower traders with
+            cutting-edge technology, transparency, and an ecosystem designed for
+            long-term success. Through continuous innovation and a commitment to
+            excellence, they are building a platform that helps aspiring traders
+            grow professionally and achieve their financial goals.
+          </p>
+
+          <div class="founder-stats">
+            <div>
+              <h3>10+</h3>
+              <span>Years Experience</span>
+            </div>
+            <div>
+              <h3>50K+</h3>
+              <span>Traders Supported</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+
+        document
+          .querySelectorAll(".card-item, .image-box, .founder-content")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+      })();
+    </script>
+  </body>
+</html>
+
+
+
+    <!-- -----cta----- -->
+     <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTA Section · override‑free</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .cta-section {
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+
+        /* background – exactly as before */
+        background:
+          linear-gradient(rgba(8, 12, 18, 0.25), rgba(8, 12, 18, 0.8)),
+          url("https://cfcdn.olymptrade.com/s6/v1.0.53/zeus/assets/bg.L1yfV3aR_kOvRX.avif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* ----- animated glows (pseudo‑elements) ----- */
+      /* .cta-section::before,
+      .cta-section::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .cta-section::before {
+        width: 700px;
+        height: 700px;
+        left: 0;
+        top: 0;
+        background: radial-gradient(circle, #00d4ff35, transparent 70%);
+        animation: glowMove1 8s ease-in-out infinite alternate;
+      }
+
+      .cta-section::after {
+        width: 600px;
+        height: 600px;
+        right: -100px;
+        bottom: -100px;
+        background: radial-gradient(circle, #5b21b655, transparent 70%);
+        animation: glowMove2 10s ease-in-out infinite alternate;
+      } */
+
+      /* ----- content box (z‑index keeps it above glows) ----- */
+      .cta-content {
+        position: relative;
+        z-index: 10;
+        max-width: 850px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+      }
+
+      /* ----- tag / pill ----- */
+      .cta-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 50px;
+        color: #ffffff;
+        margin-bottom: 30px;
+        animation: fadeUp 1s ease both;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        font-size: 15px;
+      }
+
+      .cta-dot {
+        width: 8px;
+        height: 8px;
+        background: #00e1ff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #00e1ff;
+        flex-shrink: 0;
+      }
+
+      /* ----- headings & text ----- */
+      .cta-title {
+        font-size: 38px;
+        color: #ffffff;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        animation: fadeUp 1s 0.2s both;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #ffffff 30%, #ffd004 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+      }
+
+      .cta-description {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 18px;
+        line-height: 1.9;
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+        animation: fadeUp 1s 0.4s both;
+        font-weight: 400;
+      }
+
+      /* ----- button wrapper ----- */
+      .cta-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        animation: fadeUp 1s 0.6s both;
+      }
+
+      /* ----- buttons (no override, exact look) ----- */
+      .btn-cta {
+        padding: 14px 32px;
+        border: none;
+        border-radius: 60px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+        display: inline-block;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.3px;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+        text-decoration: none;
+        line-height: 1;
+      }
+
+      .btn-primary {
+        background: linear-gradient(90deg, #00d4ff, #3b82f6);
+        color: #ffffff;
+        box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        border: none;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(0, 212, 255, 0.5);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+      }
+
+      /* ----- floating particles (exact positions) ----- */
+      .particle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #ffffff;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 2;
+        animation: floatUp 10s linear infinite;
+      }
+
+      /* ----- animations ----- */
+      @keyframes glowMove1 {
+        0% {
+          transform: translate(-80px, -40px);
+        }
+        100% {
+          transform: translate(120px, 80px);
+        }
+      }
+
+      @keyframes glowMove2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(-120px, -80px);
+        }
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) scale(1);
+          opacity: 0.2;
+        }
+        10% {
+          opacity: 0.4;
+        }
+        90% {
+          opacity: 0.4;
+        }
+        100% {
+          transform: translateY(-100px) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+      /* ----- small screens (keep readability) ----- */
+      @media (max-width: 640px) {
+        .cta-title {
+          font-size: 28px;
+        }
+        .cta-description {
+          font-size: 14px;
+          padding: 0 10px;
+        }
+        .cta-actions {
+          gap: 14px;
+        }
+        .btn-cta {
+          padding: 12px 28px;
+          font-size: 13px;
+        }
+        .cta-tag {
+          font-size: 13px;
+          padding: 10px 18px;
+        }
+        .cta-section::before {
+          width: 400px;
+          height: 400px;
+          display: none;
+        }
+        .cta-section::after {
+          width: 350px;
+          height: 350px;
+          right: -50px;
+          bottom: -50px;
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cta-title {
+          font-size: 30px;
+        }
+        .cta-section {
+          padding: 30px 16px;
+          min-height: 40vh;
+        }
+        .cta-tag {
+          font-size: 12px;
+          padding: 8px 16px;
+          gap: 6px;
+        }
+        .cta-dot {
+          width: 6px;
+          height: 6px;
+        }
+        .btn-cta {
+          padding: 10px 22px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="cta-section">
+      <!-- particles (same positions & delays) -->
+      <div class="particle" style="left: 10%; animation-delay: 0s"></div>
+      <div class="particle" style="left: 25%; animation-delay: 2s"></div>
+      <div class="particle" style="left: 40%; animation-delay: 5s"></div>
+      <div class="particle" style="left: 60%; animation-delay: 1s"></div>
+      <div class="particle" style="left: 80%; animation-delay: 4s"></div>
+      <div class="particle" style="left: 90%; animation-delay: 7s"></div>
+
+      <div class="cta-content">
+        <!-- tag -->
+        <div class="cta-tag">
+          <span class="cta-dot"></span>
+          Start Your Trading Journey
+        </div>
+
+        <!-- heading -->
+        <h1 class="cta-title">
+          Build Wealth Through <br />
+          Smarter Investing
+        </h1>
+
+        <!-- description -->
+        <p class="cta-description">
+          Master the stock market with data-driven strategies, live market
+          updates, and a community focused on long-term success.
+        </p>
+
+        <!-- buttons -->
+        <div class="cta-actions">
+          <button class="btn-cta btn-primary">Join Edu Stockx</button>
+          <button class="btn-cta btn-secondary">Get Started</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+
+    <!-- ----footer----- -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EDU Stockx · gold & dark green footer</title>
+        <!-- Font Awesome 6 (free) -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          /* body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f4f8fe;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      } */
+
+          /* main content – pushes footer down */
+
+          /* ===== FOOTER ===== */
+          /* required gradient: linear-gradient(0deg, #292929, #000 75%) */
+          /* we keep it, and overlay with gold/dark green accents */
+          .edu-footer {
+            background: black;
+            /* background: #1a1a1a;
+            background: linear-gradient(0deg, #292929, #000 75%); */
+            color: #eef2f7;
+            padding: 2.5rem 1.8rem 1.8rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.08);
+            width: 100%;
+          }
+
+          .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.8rem 2.5rem;
+          }
+
+          /* left: logo placeholder + brand */
+          .footer-brand {
+            flex: 1 1 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+          }
+
+          /* ----- LOGO PLACEHOLDER (gold & dark green, no blue) ----- */
+          .logo-placeholder {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.2rem;
+          }
+
+          .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: #1e3a2a; /* dark green */
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37; /* gold */
+            font-size: 1.9rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s;
+          }
+
+          .logo-icon i {
+            filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+          }
+
+          .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+          }
+
+          .logo-text .main {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37; /* gold */
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+          }
+
+          .logo-text .sub {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #b8a07c; /* muted gold */
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+          }
+
+          /* if you want to use an actual image, replace .logo-icon with <img> */
+          /* we keep it as a styled placeholder – you can swap with <img> */
+
+          .footer-brand .tagline {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            color: #c7b28b; /* warm gold */
+            margin-top: 4px;
+            border-left: 3px solid #d4af37;
+            padding-left: 12px;
+          }
+
+          /* footer links – gold & dark green accents */
+          .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 3rem;
+          }
+
+          .footer-links .col p {
+            font-weight: 500;
+            color: #d4af37; /* gold */
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding-bottom: 0.3rem;
+          }
+
+          .footer-links .col a {
+            display: block;
+            color: #d0dceb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.25rem 0;
+            transition:
+              color 0.2s,
+              transform 0.1s;
+            opacity: 0.8;
+          }
+
+          .footer-links .col a:hover {
+            color: #d4af37; /* gold on hover */
+            opacity: 1;
+            transform: translateX(4px);
+          }
+
+          .footer-links .col a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+            color: #d4af37; /* gold */
+            opacity: 0.7;
+          }
+
+          /* bottom row: copyright + credit */
+          .footer-bottom {
+            max-width: 1200px;
+            margin: 1.2rem auto 0;
+            padding-top: 1.4rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem 1.5rem;
+          }
+
+          .footer-bottom .copy {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 0.2px;
+            color: #b8a07c;
+          }
+
+          .footer-bottom .copy i {
+            margin-right: 6px;
+            color: #d4af37;
+            opacity: 0.6;
+          }
+
+          .footer-bottom .credit {
+            font-size: 14px;
+            font-weight: 450;
+            padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+          }
+
+          .footer-bottom .credit a {
+            color: #d4af37; /* gold */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+          }
+
+          .footer-bottom .credit a:hover {
+            color: #f5d95e;
+            border-bottom-color: #d4af37;
+          }
+
+          .footer-bottom .credit i {
+            margin-right: 6px;
+            color: #d4af37;
+          }
+
+          /* responsive */
+          @media (max-width: 700px) {
+            .footer-container {
+              flex-direction: column;
+              gap: 1.2rem;
+            }
+            .footer-links {
+              gap: 1.2rem 2rem;
+            }
+            .footer-bottom {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0.5rem;
+            }
+            .hero-card h1 {
+              font-size: 2.2rem;
+            }
+            .logo-icon {
+              width: 44px;
+              height: 44px;
+              font-size: 1.5rem;
+            }
+            .logo-text .main {
+              font-size: 1.5rem;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <!-- main content -->
+        <!-- <div class="main-content">
+      <div class="hero-card">
+        <h1>📚 EDU Stockx</h1>
+        <div class="sub">
+          <i class="fas fa-graduation-cap" style="margin-right: 8px"></i>
+          knowledge · equity · future
+        </div>
+        <p>
+          Educational stock insights &amp; market simulations for the next
+          generation of investors.
+        </p>
+        <div class="stock-ticker">
+          <span><i class="fas fa-chart-line"></i> EDU +2.4%</span>
+          <span><i class="fas fa-building"></i> STX 1.8k</span>
+          <span><i class="fas fa-book-open"></i> 12 courses</span>
+        </div>
+      </div>
+    </div> -->
+
+        <!-- FOOTER with gradient background + logo placeholder (gold & dark green, no blue) -->
+        <footer class="edu-footer">
+          <div class="footer-container">
+            <!-- brand + logo placeholder -->
+            <div class="footer-brand">
+              <img
+                src="images/logo_111.png"
+                style="width: 187px; border-radius: 10px"
+                alt=""
+              />
+              <div class="logo-placeholder">
+                <!-- logo icon placeholder – gold & dark green, no blue -->
+                <div class="logo-icon" aria-label="EDU Stockx logo">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                  <span class="main">EDU Stockx</span>
+                  <span class="sub">invest in knowledge</span>
+                </div>
+              </div>
+              <div class="tagline">
+                <i
+                  class="fas fa-arrow-trend-up"
+                  style="margin-right: 6px; color: #d4af37"
+                ></i>
+                learn, invest, grow — gold standard
+              </div>
+              <!-- note: if you want to replace the icon with an actual image, 
+             use <img src="your-logo.png" alt="logo" style="height:52px; width:auto;"> 
+             inside .logo-icon and remove the <i> tag -->
+            </div>
+
+            <!-- quick links -->
+            <div class="footer-links">
+              <div class="col">
+                <p><i class="fas fa-compass"></i> explore</p>
+                <a href="#"><i class="fas fa-chart-pie"></i> Markets</a>
+                <a href="#"><i class="fas fa-book"></i> Courses</a>
+                <a href="#"><i class="fas fa-users"></i> Community</a>
+              </div>
+              <div class="col">
+                <p><i class="fas fa-tools"></i> resources</p>
+                <a href="#"><i class="fas fa-newspaper"></i> Research</a>
+                <a href="#"><i class="fas fa-calculator"></i> Simulator</a>
+                <a href="#"><i class="fas fa-envelope"></i> Newsletter</a>
+              </div>
+              <div class="col">
+                <p><i class="fas fa-flag"></i> company</p>
+                <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Ethics</a>
+                <a href="#"><i class="fas fa-handshake"></i> Partners</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTTOM: copyright + "Designed & Developed by Skilled VA" with link -->
+          <div class="footer-bottom">
+            <div class="copy">
+              <i class="far fa-copyright"></i> 2026 EDU Stockx — all rights
+              reserved
+            </div>
+            <div class="credit">
+              <i class="fas fa-code"></i> Designed &amp; Developed by
+              <a
+                href="https://skilled-va.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Skilled VA
+                <!-- <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.7rem; margin-left: 4px"
+            ></i> -->
+              </a>
+            </div>
+          </div>
+        </footer>
+      </body>
+    </html>

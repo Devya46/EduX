@@ -1,0 +1,2123 @@
+<!-- ------header------ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Edu Stockx</title>
+    <!-- Tailwind + Alpine + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        /* font-family:
+              "Inter",
+              system-ui,
+              -apple-system,
+              sans-serif; */
+      }
+      input,
+      select,
+      textarea,
+      button,
+      a,
+      [role="button"] {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        background: #000000;
+        margin: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      .sticky-header {
+        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      }
+      .header-scrolled {
+        background-color: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(20px);
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+      @media (max-width: 768px) {
+        .sticky-header {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .sticky-header.header-scrolled {
+          background-color: #000000 !important;
+          backdrop-filter: none !important;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .custom-logo {
+          height: 4rem !important;
+        }
+      }
+      /* #ul-bg {
+            background: rgb(60 60 60 / 71%);
+            border-radius: 31px;
+            padding: 0px 13px;
+          } */
+      .mega-card {
+        box-shadow:
+          0 30px 50px -20px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+      }
+      .nav-link {
+        transition: all 0.2s ease;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .icon-circle {
+        width: 44px;
+        height: 44px;
+        background: #f3f4f6;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+      }
+      .group:hover .icon-circle {
+        background: #fef3d0;
+        transform: scale(1.02);
+      }
+      .custom-logo {
+        height: 3rem;
+        width: auto;
+        transition: all 0.2s ease;
+        filter: brightness(1.5);
+      }
+      @media (min-width: 1024px) {
+        .custom-logo {
+          height: 6.5rem;
+        }
+      }
+      .mobile-hamburger {
+        font-size: 2rem;
+      }
+      .mobile-close-icon {
+        font-size: 2.5rem !important;
+        line-height: 1;
+        font-weight: 300;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ecae17;
+        border-radius: 10px;
+      }
+      .mega-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        max-width: 90vw;
+      }
+      @media (min-width: 1280px) {
+        .mega-menu-center {
+          max-width: 780px;
+        }
+      }
+      .accent-gold {
+        color: #ecae17;
+      }
+      .bg-accent-gold {
+        background-color: #ecae17;
+      }
+      .border-accent-gold {
+        border-color: #ecae17;
+      }
+      .hover-bg-accent-gold:hover {
+        background-color: #ecae17;
+      }
+      .mega-image-transition img {
+        transition: opacity 0.25s ease;
+      }
+      /* fix: mobile right spacing & hamburger alignment */
+      @media (max-width: 1023px) {
+        .lg\\:flex-1 {
+          flex: 1 1 0% !important;
+        }
+        .lg\\:justify-center {
+          justify-content: flex-end !important;
+        }
+        .lg\\:ml-0 {
+          margin-left: auto !important;
+        }
+        header .flex.items-center.justify-between {
+          gap: 0.5rem;
+        }
+        .mobile-hamburger {
+          font-size: 1.8rem;
+          padding: 0.25rem;
+          margin-right: -0.25rem;
+        }
+        .custom-logo {
+          height: 3.2rem !important;
+        }
+        /* ensure right side doesn't overflow */
+        header .max-w-\[1320px\] > .flex {
+          flex-wrap: nowrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .custom-logo {
+          height: 4.8rem !important;
+        }
+        .mobile-hamburger {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white antialiased">
+    <div
+      x-data="headerComponent()"
+      x-init="init()"
+      class="relative"
+      @keydown.escape="closeAll()"
+    >
+      <!-- HEADER -->
+      <header
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 sticky-header"
+        :class="{ 'header-scrolled bg-black/95 backdrop-blur-xl': scrolled, 'bg-transparent border-white/5': !scrolled }"
+      >
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="h-[72px] lg:h-[82px] flex items-center justify-between gap-4"
+          >
+            <!-- LOGO (left) -->
+            <div class="flex items-center shrink-0">
+              <a
+                href="/"
+                class="block transition-transform hover:scale-105 duration-200"
+              >
+                <img
+                  src="images/Logo-eduStocks-Photoroom.png"
+                  alt="Edu Stockx"
+                  class="custom-logo object-contain"
+                  onerror="
+                    this.src = 'https://placehold.co/100x40?text=FX';
+                    this.onerror = null;
+                  "
+                />
+              </a>
+            </div>
+
+            <!-- RIGHT SIDE: flex-1 on desktop for centering, on mobile we keep it compact -->
+            <div
+              class="flex items-center gap-4 lg:gap-8 ml-auto lg:ml-0 lg:flex-1 lg:justify-center"
+            >
+              <!-- DESKTOP NAVIGATION - CENTERED -->
+              <nav class="hidden lg:block lg:flex-1 lg:flex lg:justify-center">
+                <ul class="flex items-center gap-0" id="ul-bg">
+                  <li>
+                    <a
+                      href="index.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="About.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >About Us</a
+                    >
+                  </li>
+
+                  <!-- SERVICES MEGA -->
+                  <li
+                    class="relative"
+                    @click.stop="openMega('challenge')"
+                    @mouseenter="openMega('challenge')"
+                    @mouseleave="closeMegaDelayed('challenge')"
+                  >
+                    <button
+                      type="button"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      :class="{'bg-white/10 text-[#ecae17]': activeMega === 'challenge'}"
+                    >
+                      Services
+                      <i
+                        class="fas fa-chevron-down text-[10px] transition-transform duration-200"
+                        :class="{'rotate-180': activeMega === 'challenge'}"
+                      ></i>
+                    </button>
+
+                    <!-- MEGA DROPDOWN -->
+                    <div
+                      x-show="isMegaOpen && activeMega === 'challenge'"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 transform -translate-y-2"
+                      x-transition:enter-end="opacity-100 transform translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 transform translate-y-0"
+                      x-transition:leave-end="opacity-0 transform -translate-y-2"
+                      class="absolute top-[60px] w-[780px] bg-white rounded-2xl mega-card shadow-2xl z-50 mega-menu-center"
+                      @mouseenter="cancelClose()"
+                      @mouseleave="isMegaOpen=false; activeMega=null"
+                      style="display: none"
+                    >
+                      <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
+                        <!-- LEFT -->
+                        <div>
+                          <h4
+                            class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
+                          >
+                            <i class="fas fa-chart-line text-xs"></i>
+                            TRADING SERVICES
+                          </h4>
+                          <div class="space-y-5">
+                            <a
+                              href="Services/Gold.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('signals')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-chart-line text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Future Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Real-time market insights & trade alerts
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="Services/crypto.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('copy')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-copy text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Crypto Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Automatically mirror top traders
+                                </p>
+                              </div>
+                            </a>
+                            <a
+                              href="Services/stocks.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('live')"
+                              @mouseleave="setMegaImage('default')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-video text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Stocks
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Interactive trading sessions with experts
+                                </p>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- RIGHT dynamic image -->
+                        <div
+                          class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
+                        >
+                          <img
+                            :src="currentMegaImage"
+                            class="w-full h-[140px] object-cover rounded-xl mb-4 shadow-md"
+                            alt="Live Trading"
+                          />
+                          <div class="flex items-center gap-2 mb-2">
+                            <span
+                              class="bg-[#ecae17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                              >NEW</span
+                            >
+                            <h4
+                              class="text-[18px] font-bold text-gray-900"
+                              x-text="currentMegaTitle"
+                            >
+                              Live Trading Sessions
+                            </h4>
+                          </div>
+                          <p
+                            class="text-[13px] text-gray-600"
+                            x-text="currentMegaDesc"
+                          >
+                            Join daily live trading with professional analysts.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="Academy.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Academy</a
+                    >
+                  </li>
+                  <!-- <li>
+                        <a
+                          href="/"
+                          class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                          >Best Brokers</a
+                        >
+                      </li> -->
+                  <li>
+                    <a
+                      href="Pricing.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Pricing</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="FAQ.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="Contact.html"
+                      class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- GET STARTED (desktop) -->
+              <a
+                href="Contact.html"
+                class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
+                =""
+              >
+                Members Login
+              </a>
+
+              <!-- MOBILE MENU BUTTON (no extra spacing) -->
+              <div class="lg:hidden flex items-center shrink-0">
+                <button
+                  type="button"
+                  @click="mobileMenuOpen = true"
+                  class="text-white leading-none focus:outline-none mobile-hamburger"
+                >
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- OVERLAY -->
+      <div
+        x-show="isMegaOpen"
+        @click="isMegaOpen=false; activeMega=null"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+        style="display: none"
+      ></div>
+
+      <!-- MOBILE MENU -->
+      <div
+        x-show="mobileMenuOpen"
+        x-trap.noscroll="mobileMenuOpen"
+        x-transition.opacity.duration.200ms
+        class="fixed inset-0 bg-white z-[100] overflow-y-auto mobile-menu-full"
+        @click.self="mobileMenuOpen=false"
+        style="display: none"
+      >
+        <div
+          class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
+        >
+          <img
+            src="images/Logo-eduStocks-Photoroom.png"
+            alt="FX-Manipulation"
+            class="h-12 w-auto object-contain"
+          />
+          <button
+            type="button"
+            @click="mobileMenuOpen=false"
+            class="text-white mobile-close-icon leading-none focus:outline-none"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-5 space-y-4 pb-20">
+          <a
+            href="index.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
+          >
+          <a
+            href="About.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
+          >
+          <div class="border-b border-gray-200 pb-2">
+            <button
+              type="button"
+              @click="mobileSubmenu = mobileSubmenu === 'challenge' ? null : 'challenge'"
+              class="mobile-dropdown-btn py-3 text-[18px] font-semibold text-gray-900 w-full text-left"
+            >
+              <span
+                ><i class="fas fa-flag-checkered text-[#ecae17] mr-3"></i
+                >Services</span
+              >
+              <i
+                class="fas fa-chevron-down text-gray-400 transition-transform ml-4"
+                :class="{'rotate-180': mobileSubmenu === 'challenge'}"
+              ></i>
+            </button>
+            <div
+              x-show="mobileSubmenu === 'challenge'"
+              x-collapse
+              class="pl-6 space-y-3 mt-2"
+            >
+              <a href="Services/Gold.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-chart-line text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Future Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Real-time market insights & trade alerts
+                  </div>
+                </div></a
+              >
+              <a
+                href="Services/crypto.html"
+                class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-copy text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Crypto Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Automatically mirror top traders
+                  </div>
+                </div></a
+              >
+              <a
+                href="Services/stocks.html"
+                class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-video text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Stocks</div>
+                  <div class="text-[11px] text-gray-500">
+                    Interactive trading sessions with experts
+                  </div>
+                </div></a
+              >
+            </div>
+          </div>
+          <a
+            href="Academy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-graduation-cap text-[#ecae17] mr-3 w-6"></i
+            >Academy</a
+          >
+          <!-- <a
+                href="/"
+                class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+                ><i class="fas fa-chart-line text-[#ecae17] mr-3 w-6"></i>Best
+                Brokers</a
+              > -->
+          <a
+            href="Pricing.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Pricing</a
+          >
+          <a
+            href="FAQ.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
+            >FAQ</a
+          >
+          <a
+            href="Contact.html"
+            class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
+            ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
+            Us</a
+          >
+          <div class="pt-6 space-y-3">
+            <a
+              href="Contact.html"
+              class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
+            >
+              Get Started</a
+            >
+          </div>
+          <div class="pt-8 border-t border-gray-200 mt-4">
+            <p
+              class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-4 text-center"
+            >
+              Follow Us
+            </p>
+            <div class="flex items-center justify-center gap-5">
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
+                ><i class="fab fa-telegram-plane"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function headerComponent() {
+        return {
+          activeMega: null,
+          isMegaOpen: false,
+          mobileMenuOpen: false,
+          mobileSubmenu: null,
+          scrolled: false,
+          closeTimeout: null,
+          currentMegaImage:
+            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
+          currentMegaTitle: "Live Trading Sessions",
+          currentMegaDesc:
+            "Join daily live trading with professional analysts.",
+
+          init() {
+            window.addEventListener("scroll", () => {
+              this.scrolled = window.scrollY > 20;
+            });
+            this.$watch("mobileMenuOpen", (value) => {
+              if (value) {
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.width = "100%";
+              } else {
+                document.body.style.overflow = "";
+                document.body.style.position = "";
+                document.body.style.width = "";
+              }
+            });
+            this.setMegaImage("default");
+          },
+
+          setMegaImage(type) {
+            const images = {
+              signals: {
+                img: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29sZCUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Future Trading",
+                desc: "Real-time market insights & trade alerts.",
+              },
+              copy: {
+                img: "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNyeXB0byUyMHRyYWRpbmd8ZW58MHx8MHx8fDA%3D",
+                title: "Crypto Trading",
+                desc: "Automatically mirror top traders.",
+              },
+              live: {
+                img: "https://images.unsplash.com/photo-1624438277311-0573bdad0a5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXh0cmFkaW5nfGVufDB8fDB8fHww",
+                title: "Stocks",
+                desc: "Interactive trading sessions with experts.",
+              },
+            };
+            const data = images[type] || images.signals;
+            this.currentMegaImage = data.img;
+            this.currentMegaTitle = data.title;
+            this.currentMegaDesc = data.desc;
+          },
+
+          openMega(menu) {
+            this.cancelClose();
+            this.activeMega = menu;
+            this.isMegaOpen = true;
+            this.setMegaImage("default");
+          },
+
+          closeMegaDelayed(menu) {
+            this.closeTimeout = setTimeout(() => {
+              if (this.activeMega === menu) {
+                this.isMegaOpen = false;
+                this.activeMega = null;
+              }
+            }, 100);
+          },
+
+          cancelClose() {
+            if (this.closeTimeout) {
+              clearTimeout(this.closeTimeout);
+              this.closeTimeout = null;
+            }
+          },
+
+          closeAll() {
+            this.isMegaOpen = false;
+            this.activeMega = null;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reach us · video header</title>
+    <!-- No external dependencies – pure HTML + CSS -->
+    <style>
+      /* global reset & base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ----- header block : full width, less height, video background ----- */
+      .header-video {
+        position: relative;
+        width: 100vw;
+        max-width: 100%;
+        height: 40vh;
+        min-height: 200px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #1a1e2b;
+        padding-top: 7rem;
+      }
+
+      /* video fills the container, covers, stays behind */
+      .header-video video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover; /* ensures full coverage, no black bars */
+        display: block;
+        pointer-events: none; /* allows text to be easily selected/clicked */
+        z-index: 0;
+      }
+
+      /* overlay – improves text readability */
+      .header-video .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 61%);
+        backdrop-filter: blur(2px); /* very subtle blur for modern feel */
+        z-index: 1;
+        filter: brightness(0.45) contrast(1.1) saturate(0.9) grayscale(0.5);
+      }
+
+      /* heading – perfectly centered, one heading only */
+      .header-video .heading {
+        position: relative;
+        z-index: 2;
+        color: #ffed8d;
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.6),
+          0 2px 8px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        padding: 0 1.5rem;
+        word-break: break-word;
+        line-height: 1.2;
+      }
+
+      /* small screens: video still covers, height slightly adjusted */
+      @media (max-width: 480px) {
+        .header-video {
+          height: 35vh; /* even less height on mobile */
+          min-height: 160px;
+        }
+        .header-video .heading {
+          font-size: clamp(2.6rem, 15vw, 4rem);
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      /* tall screens: keep header from being too dominant */
+      @media (min-height: 900px) {
+        .header-video {
+          height: 32vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- FULL-WIDTH HEADER WITH VIDEO BACKGROUND, LESS HEIGHT -->
+    <header class="header-video">
+      <video
+        src="images/new-bg.mp4"
+        type="video/mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+
+      <!-- soft overlay to keep text legible -->
+      <div class="overlay" aria-hidden="true"></div>
+
+      <!-- only one heading: "Reach us" -->
+      <h1 class="heading">Reach us</h1>
+    </header>
+  </body>
+</html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu StockX · Contact</title>
+    <!-- Font & icon libraries -->
+    <link href="https://fonts.cdnfonts.com/css/nacelle" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #030407;
+        color: #fff;
+        font-family: "Nacelle", sans-serif;
+        overflow-x: hidden;
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 72px 20px 100px;
+      }
+
+      /* ---- heading ---- */
+      .heading {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .heading h1 {
+        font-size: 65px;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, #ffffff 30%, #fdd733 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .heading p {
+        color: #9d9d9d;
+        font-size: 16px;
+        line-height: 1.8;
+        max-width: 540px;
+        margin: 0 auto;
+      }
+
+      /* ---- support grid ---- */
+      .support-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        margin-bottom: 60px;
+        padding: 0rem 5rem;
+      }
+
+      .support-card {
+        background: #0d0f15;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 28px;
+        padding: 15px 30px 15px;
+        transition: all 0.3s ease;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .support-card::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle at 30% 40%,
+          rgba(55, 114, 255, 0.08),
+          transparent 70%
+        );
+        top: -80px;
+        right: -100px;
+        border-radius: 50%;
+        transition: 0.5s;
+        pointer-events: none;
+      }
+
+      .support-card:hover {
+        border-color: #3772ff;
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px -12px rgba(55, 114, 255, 0.18);
+      }
+
+      .support-card:hover::after {
+        right: -60px;
+      }
+
+      .icon-wrap {
+        font-size: 26px;
+        margin-bottom: 22px;
+        color: #c0d0ff;
+      }
+
+      .support-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        letter-spacing: -0.01em;
+        color: #f6e89d;
+      }
+
+      .status-badge {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 500;
+        /* color: #1ee96b; */
+        color: #b9b9b9;
+        background: rgb(0 0 0 / 42%);
+        padding: 2px 14px 2px 10px;
+        border-radius: 40px;
+        margin-bottom: 28px;
+        letter-spacing: 0.2px;
+        margin-right: 2rem;
+      }
+
+      .status-badge i {
+        font-size: 10px;
+        margin-right: 6px;
+        color: #1db308;
+      }
+
+      .small-meta {
+        display: block;
+        font-size: 14px;
+        color: #8f8f8f;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .support-card a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 4px;
+        transition: 0.2s;
+      }
+
+      .support-card a i {
+        font-size: 14px;
+        transition: 0.2s;
+      }
+
+      .support-card a:hover {
+        color: #7a9eff;
+        border-color: #7a9eff;
+      }
+
+      .support-card a:hover i {
+        transform: translateX(4px);
+      }
+
+      /* ---- languages ---- */
+      .languages {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .languages p {
+        color: #7f7f7f;
+        margin-bottom: 22px;
+        font-size: 15px;
+        letter-spacing: 0.3px;
+      }
+
+      .lang-list {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .lang-list span {
+        padding: 10px 24px;
+        background: #0d0f15;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 60px;
+        font-size: 14px;
+        transition: 0.25s;
+        cursor: default;
+        color: #d4d4d4;
+      }
+
+      .lang-list span:hover {
+        border-color: #3772ff;
+        transform: translateY(-4px);
+        background: #131823;
+        color: #fff;
+      }
+
+      /* ---- bottom: two independent cards ---- */
+      .bottom-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      /* HQ card with background */
+      .hq-card {
+        background:
+          linear-gradient(180deg, rgb(15 15 20 / 43%), rgb(8 8 10 / 53%)),
+          url(images/contacts-1.png);
+        background-size: cover;
+        background-position: center;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 30px;
+        padding: 36px 32px 32px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.25s;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* .hq-card:hover {
+        border-color: #3772ff;
+        box-shadow: 0 12px 32px -12px rgba(55, 114, 255, 0.15);
+      } */
+
+      /* subtle background pattern inside HQ */
+      .hq-card::before {
+        content: "";
+        position: relative;
+        inset: 0;
+        background: radial-gradient(
+          circle at 80% 10%,
+          rgba(55, 114, 255, 0.08),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .hq-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .hq-content h2 {
+        font-size: 38px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+
+      .hq-content address {
+        font-style: normal;
+        color: #b5b5b5;
+        line-height: 22px;
+        margin-bottom: 28px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .hq-content address b {
+        color: #eaeaea;
+        font-weight: 500;
+      }
+
+      .hq-content .map-btn {
+        align-self: flex-end;
+        margin-top: auto;
+        padding: 14px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border-radius: 60px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: rgb(0 0 0 / 79%);
+      }
+
+      .hq-content .map-btn i {
+        font-size: 15px;
+      }
+
+      .hq-content .map-btn:hover {
+        border-color: #3772ff;
+        background: rgba(55, 114, 255, 0.06);
+        transform: translateY(-2px);
+      }
+
+      /* ---- form card ---- */
+      .form-card {
+        background: #0d0f15;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 30px;
+        padding: 36px 30px 32px;
+        transition: 0.25s;
+      }
+
+      .form-card:hover {
+        border-color: #3772ff;
+        box-shadow: 0 12px 32px -12px rgba(55, 114, 255, 0.12);
+      }
+
+      .form-card h3 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .input-group {
+        margin-bottom: 16px;
+      }
+
+      .input-group input,
+      .input-group textarea {
+        width: 100%;
+        background: #0b0d12;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 16px 18px;
+        color: #f0f0f0;
+        border-radius: 18px;
+        outline: none;
+        font-family: "Nacelle", sans-serif;
+        font-size: 15px;
+        transition: 0.25s;
+      }
+
+      .input-group textarea {
+        height: 120px;
+        resize: vertical;
+      }
+
+      .input-group input:focus,
+      .input-group textarea:focus {
+        border-color: #3772ff;
+        background: #0e111a;
+        box-shadow: 0 0 0 3px rgba(55, 114, 255, 0.1);
+      }
+
+      .form-card button {
+        width: 100%;
+        padding: 18px 20px;
+        border: none;
+        background: linear-gradient(135deg, #2e6cff, #5c86ff);
+        border-radius: 60px;
+        font-size: 17px;
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 8px;
+        letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .form-card button i {
+        font-size: 18px;
+      }
+
+      .form-card button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px -8px rgba(55, 114, 255, 0.35);
+      }
+
+      /* ---- reveal animation ---- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.9s cubic-bezier(0.15, 0.85, 0.35, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ---- responsive ---- */
+      @media (max-width: 1024px) {
+        .support-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .bottom-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .heading h1 {
+          font-size: 44px;
+        }
+        .support-grid {
+          grid-template-columns: 1fr;
+          padding: 0;
+        }
+        .hq-content h2 {
+          font-size: 42px;
+        }
+        .container {
+          padding: 60px 16px 80px;
+        }
+        .form-card {
+          padding: 28px 20px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .heading h1 {
+          font-size: 36px;
+        }
+        .support-card {
+          padding: 28px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <!-- heading -->
+      <div class="heading reveal">
+        <h1>How can we help?</h1>
+        <p>
+          Choose from Live Chat, WhatsApp and Email.<br />Our in-house support
+          team is available 24/7.
+        </p>
+      </div>
+
+      <!-- support cards -->
+      <div class="support-grid">
+        <div class="support-card reveal">
+          <div class="icon-wrap"><i class="fas fa-comment-dots"></i></div>
+          <h3>Live Chat</h3>
+          <span class="status-badge"><i class="fas fa-circle"></i> Online</span>
+          <a href="#">Chat with us <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <div class="support-card reveal">
+          <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
+          <h3>WhatsApp</h3>
+          <span class="status-badge"><i class="fas fa-circle"></i> Online</span>
+          <a href="#">Start the chat <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <div class="support-card reveal">
+          <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+          <h3>E-mail</h3>
+          <span class="small-meta">Available 24/7</span>
+          <a href="mailto:support@edustockx.com"
+            >support@edustockx.com <i class="fa-solid fa-angle-right"></i
+          ></a>
+        </div>
+
+        <div class="support-card reveal">
+          <div class="icon-wrap"><i class="fas fa-phone-alt"></i></div>
+          <h3>Phone</h3>
+          <span class="small-meta">09:00 – 17:00 IST<br />Mon – Fri</span>
+          <a href="tel:+919876543210"
+            >+91 98765 43210 <i class="fa-solid fa-angle-right"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- languages -->
+      <div class="languages reveal">
+        <p>
+          <i class="fas fa-globe" style="margin-right: 10px; opacity: 0.6"></i>
+          Support available in multiple languages
+        </p>
+        <div class="lang-list">
+          <span>English</span>
+          <span>Hindi</span>
+          <span>Bengali</span>
+          <span>French</span>
+          <span>German</span>
+          <span>Japanese</span>
+          <span>Russian</span>
+          <span>Portuguese</span>
+        </div>
+      </div>
+
+      <!-- bottom: HQ + form (two separate cards) -->
+      <div class="bottom-grid reveal">
+        <!-- HQ card with background -->
+        <div class="hq-card">
+          <div class="hq-content">
+            <h2>
+              <i
+                class="fas fa-building"
+                style="font-size: 36px; margin-right: 12px; opacity: 0.5"
+              ></i
+              >HQ
+            </h2>
+            <address>
+              <b>Edu StockX Office</b><br />
+              Salt Lake Sector V<br />
+              Kolkata, West Bengal<br />
+              India
+            </address>
+            <button class="map-btn">
+              <i class="fas fa-map-pin"></i> Open Map
+            </button>
+          </div>
+        </div>
+
+        <!-- form card -->
+        <div class="form-card">
+          <h3>
+            <i
+              class="fas fa-pen-fancy"
+              style="margin-right: 12px; opacity: 0.5"
+            ></i
+            >Send Message
+          </h3>
+          <form id="contactForm">
+            <div class="input-group">
+              <input type="text" placeholder="Full Name" name="name" required />
+            </div>
+            <div class="input-group">
+              <input
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <input type="tel" placeholder="Phone Number" name="phone" />
+            </div>
+            <div class="input-group">
+              <textarea placeholder="Your Message" name="message"></textarea>
+            </div>
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const reveals = document.querySelectorAll(".reveal");
+
+        function animateReveal() {
+          const windowHeight = window.innerHeight;
+          reveals.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < windowHeight - 80) {
+              el.classList.add("active");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", animateReveal);
+        window.addEventListener("resize", animateReveal);
+        animateReveal();
+
+        const scriptURL =
+          "https://script.google.com/macros/s/AKfycbw3E3B2G9dyCrKH8quzjLzOdtApHR8x5O-VQdUcbmhfZBqZ0yUFoFL-bSXb1_by8IWl/exec";
+
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.innerHTML;
+
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          btn.disabled = true;
+
+          fetch(scriptURL, {
+            method: "POST",
+            body: new FormData(form),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              btn.innerHTML = '<i class="fas fa-check-circle"></i> Sent!';
+              btn.style.background = "linear-gradient(135deg,#1f8b4c,#2ecc71)";
+
+              form.reset();
+
+              setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background =
+                  "linear-gradient(135deg,#2e6cff,#5c86ff)";
+                btn.disabled = false;
+              }, 2500);
+            })
+            .catch((error) => {
+              btn.innerHTML = '<i class="fas fa-times-circle"></i> Failed';
+              btn.disabled = false;
+              console.error(error);
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>
+<!-- --------social media----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social · Follow</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.cdnfonts.com/css/nacelle" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .body-SS {
+        background: #000;
+        font-family: "Nacelle", sans-serif;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      /* ----- CARD (compact, less height) ----- */
+      .social-section {
+        width: 100%;
+        max-width: 1100px;
+      }
+
+      .social-card {
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(75, 100, 255, 0.07),
+            transparent 40%
+          ),
+          linear-gradient(145deg, #101116 0%, #08090c 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 32px;
+        padding: 30px 35px; /* reduced vertical padding */
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.02),
+          0 20px 60px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(2px);
+        transition: all 0.2s;
+        overflow: hidden;
+      }
+
+      /* ----- LEFT (image) ----- */
+      .social-image {
+        flex: 0.4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background: url("https://ftmo.com/app/themes/ftmo-com/public/images/new-ftmo/social-discord.png")
+          no-repeat center; */
+      }
+
+      .social-image img {
+        width: 100%;
+        max-width: 210px; /* slightly smaller */
+        display: block;
+        filter: drop-shadow(0 12px 30px rgba(70, 100, 255, 0.12));
+        animation: float 4s ease-in-out infinite;
+        transition: transform 0.2s;
+        will-change: transform;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* ----- RIGHT (content) ----- */
+      .social-content {
+        flex: 1;
+      }
+
+      .social-content h2 {
+        font-size: 35px;
+        line-height: 1.2;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+        background: linear-gradient(to right, #fff, #b0c0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .social-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #b6b6b6;
+        margin-bottom: 23px;
+        max-width: 90%;
+      }
+
+      /* ----- ICONS (smaller & tighter) ----- */
+      .social-icons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .social-icons a {
+        width: 54px; /* reduced from 62px */
+        height: 54px;
+        background: #121317;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px; /* slightly softer */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #b0b0b0;
+        text-decoration: none;
+        font-size: 22px; /* reduced */
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .social-icons a:hover {
+        transform: translateY(-6px);
+        border-color: #4c68ff;
+        color: #fff;
+        background: #181c2a;
+        box-shadow: 0 8px 28px rgba(76, 104, 255, 0.25);
+      }
+
+      /* ----- REVEAL (animation) ----- */
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+
+      .reveal-left.active,
+      .reveal-right.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* ----- RESPONSIVE (more compact) ----- */
+      @media (max-width: 991px) {
+        .social-card {
+          flex-direction: column;
+          gap: 30px;
+          padding: 28px 24px;
+        }
+
+        .social-content h2 {
+          font-size: 36px;
+        }
+
+        .social-content p {
+          font-size: 17px;
+          max-width: 100%;
+          margin-bottom: 28px;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+
+        .social-image img {
+          max-width: 320px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .social-card {
+          padding: 24px 18px;
+          border-radius: 24px;
+          gap: 20px;
+        }
+
+        .social-content h2 {
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+
+        .social-content p {
+          font-size: 15px;
+          margin-bottom: 24px;
+        }
+
+        .social-icons a {
+          width: 48px;
+          height: 48px;
+          font-size: 18px;
+          border-radius: 14px;
+        }
+
+        .social-icons {
+          gap: 12px;
+        }
+
+        .social-image img {
+          max-width: 220px;
+        }
+      }
+
+      /* small extra: reduce height on very tall screens */
+      @media (min-height: 900px) {
+        .social-card {
+          padding: 28px 35px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body-SS">
+      <section class="social-section">
+        <div class="social-card">
+          <!-- LEFT IMAGE -->
+          <div class="social-image reveal-left">
+            <img
+              src="https://ftmo.com/app/themes/ftmo-com/public/images/new-ftmo/discord-animation.gif"
+              alt="Social community animation"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- RIGHT CONTENT -->
+          <div class="social-content reveal-right">
+            <h2>Follow Us on Social Media</h2>
+            <p>
+              Discover authentic trading stories, share your own journey, and
+              tap into insights to stay sharp and inspired. Be where trading
+              insights meet ambition.
+            </p>
+
+            <div class="social-icons">
+              <a href="#" aria-label="Discord"
+                ><i class="fa-brands fa-discord"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="X / Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -20px 0px" },
+        ); // subtle offset
+
+        document
+          .querySelectorAll(".reveal-left, .reveal-right")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+      })();
+    </script>
+  </body>
+</html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDU Stockx · gold & dark green footer</title>
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f4f8fe;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      } */
+
+      /* main content – pushes footer down */
+
+      /* ===== FOOTER ===== */
+      /* required gradient: linear-gradient(0deg, #292929, #000 75%) */
+      /* we keep it, and overlay with gold/dark green accents */
+      .edu-footer {
+        background: black;
+        /* background: #1a1a1a;
+            background: linear-gradient(0deg, #292929, #000 75%); */
+        color: #eef2f7;
+        padding: 2.5rem 1.8rem 1.8rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.08);
+        width: 100%;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.8rem 2.5rem;
+      }
+
+      /* left: logo placeholder + brand */
+      .footer-brand {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      /* ----- LOGO PLACEHOLDER (gold & dark green, no blue) ----- */
+      .logo-placeholder {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 0.2rem;
+      }
+
+      .logo-icon {
+        width: 52px;
+        height: 52px;
+        background: #1e3a2a; /* dark green */
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4af37; /* gold */
+        font-size: 1.9rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        transition: transform 0.2s;
+      }
+
+      .logo-icon i {
+        filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .logo-text .main {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d4af37; /* gold */
+        letter-spacing: -0.3px;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .logo-text .sub {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #b8a07c; /* muted gold */
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      /* if you want to use an actual image, replace .logo-icon with <img> */
+      /* we keep it as a styled placeholder – you can swap with <img> */
+
+      .footer-brand .tagline {
+        font-size: 0.95rem;
+        opacity: 0.7;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+        color: #c7b28b; /* warm gold */
+        margin-top: 4px;
+        border-left: 3px solid #d4af37;
+        padding-left: 12px;
+      }
+
+      /* footer links – gold & dark green accents */
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 3rem;
+      }
+
+      .footer-links .col p {
+        font-weight: 500;
+        color: #d4af37; /* gold */
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        padding-bottom: 0.3rem;
+      }
+
+      .footer-links .col a {
+        display: block;
+        color: #d0dceb;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0.25rem 0;
+        transition:
+          color 0.2s,
+          transform 0.1s;
+        opacity: 0.8;
+      }
+
+      .footer-links .col a:hover {
+        color: #d4af37; /* gold on hover */
+        opacity: 1;
+        transform: translateX(4px);
+      }
+
+      .footer-links .col a i {
+        margin-right: 8px;
+        font-size: 0.8rem;
+        color: #d4af37; /* gold */
+        opacity: 0.7;
+      }
+
+      /* bottom row: copyright + credit */
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 1.2rem auto 0;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem 1.5rem;
+      }
+
+      .footer-bottom .copy {
+        font-size: 0.9rem;
+        opacity: 0.6;
+        letter-spacing: 0.2px;
+        color: #b8a07c;
+      }
+
+      .footer-bottom .copy i {
+        margin-right: 6px;
+        color: #d4af37;
+        opacity: 0.6;
+      }
+
+      .footer-bottom .credit {
+        font-size: 14px;
+        font-weight: 450;
+        padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+      }
+
+      .footer-bottom .credit a {
+        color: #d4af37; /* gold */
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+      }
+
+      .footer-bottom .credit a:hover {
+        color: #f5d95e;
+        border-bottom-color: #d4af37;
+      }
+
+      .footer-bottom .credit i {
+        margin-right: 6px;
+        color: #d4af37;
+      }
+
+      /* responsive */
+      @media (max-width: 700px) {
+        .footer-container {
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+        .footer-links {
+          gap: 1.2rem 2rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+        .hero-card h1 {
+          font-size: 2.2rem;
+        }
+        .logo-icon {
+          width: 44px;
+          height: 44px;
+          font-size: 1.5rem;
+        }
+        .logo-text .main {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- main content -->
+    <!-- <div class="main-content">
+      <div class="hero-card">
+        <h1>📚 EDU Stockx</h1>
+        <div class="sub">
+          <i class="fas fa-graduation-cap" style="margin-right: 8px"></i>
+          knowledge · equity · future
+        </div>
+        <p>
+          Educational stock insights &amp; market simulations for the next
+          generation of investors.
+        </p>
+        <div class="stock-ticker">
+          <span><i class="fas fa-chart-line"></i> EDU +2.4%</span>
+          <span><i class="fas fa-building"></i> STX 1.8k</span>
+          <span><i class="fas fa-book-open"></i> 12 courses</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- FOOTER with gradient background + logo placeholder (gold & dark green, no blue) -->
+    <footer class="edu-footer">
+      <div class="footer-container">
+        <!-- brand + logo placeholder -->
+        <div class="footer-brand">
+          <img
+            src="images/logo_111.png"
+            style="width: 187px; border-radius: 10px"
+            alt=""
+          />
+          <div class="logo-placeholder">
+            <!-- logo icon placeholder – gold & dark green, no blue -->
+            <div class="logo-icon" aria-label="EDU Stockx logo">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="logo-text">
+              <span class="main">EDU Stockx</span>
+              <span class="sub">invest in knowledge</span>
+            </div>
+          </div>
+          <div class="tagline">
+            <i
+              class="fas fa-arrow-trend-up"
+              style="margin-right: 6px; color: #d4af37"
+            ></i>
+            learn, invest, grow — gold standard
+          </div>
+          <!-- note: if you want to replace the icon with an actual image, 
+             use <img src="your-logo.png" alt="logo" style="height:52px; width:auto;"> 
+             inside .logo-icon and remove the <i> tag -->
+        </div>
+
+        <!-- quick links -->
+        <div class="footer-links">
+          <div class="col">
+            <p><i class="fas fa-compass"></i> explore</p>
+            <a href="#"><i class="fas fa-chart-pie"></i> Markets</a>
+            <a href="#"><i class="fas fa-book"></i> Courses</a>
+            <a href="#"><i class="fas fa-users"></i> Community</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-tools"></i> resources</p>
+            <a href="#"><i class="fas fa-newspaper"></i> Research</a>
+            <a href="#"><i class="fas fa-calculator"></i> Simulator</a>
+            <a href="#"><i class="fas fa-envelope"></i> Newsletter</a>
+          </div>
+          <div class="col">
+            <p><i class="fas fa-flag"></i> company</p>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> Ethics</a>
+            <a href="#"><i class="fas fa-handshake"></i> Partners</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: copyright + "Designed & Developed by Skilled VA" with link -->
+      <div class="footer-bottom">
+        <div class="copy">
+          <i class="far fa-copyright"></i> 2026 EDU Stockx — all rights reserved
+        </div>
+        <div class="credit">
+          <i class="fas fa-code"></i> Designed &amp; Developed by
+          <a
+            href="https://skilled-va.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Skilled VA
+            <!-- <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.7rem; margin-left: 4px"
+            ></i> -->
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
