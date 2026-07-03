@@ -182,6 +182,21 @@
           font-size: 1.6rem;
         }
       }
+      /* mobile broker logos */
+      .mobile-broker-logo {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #f3f4f6;
+        padding: 4px;
+      }
+      .mobile-broker-item {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        padding: 0.5rem 0;
+      }
     </style>
   </head>
   <body class="bg-black text-white antialiased">
@@ -207,7 +222,7 @@
                 class="block transition-transform hover:scale-105 duration-200"
               >
                 <img
-                  src="images/Logo-eduStocks-Photoroom.png"
+                  src="../images/Logo-eduStocks-Photoroom.png"
                   alt="Edu Stockx"
                   class="custom-logo object-contain"
                   onerror="
@@ -227,20 +242,20 @@
                 <ul class="flex items-center gap-0" id="ul-bg">
                   <li>
                     <a
-                      href="index.html"
+                      href="../index.html"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
                       >Home</a
                     >
                   </li>
                   <li>
                     <a
-                      href="About.html"
+                      href="../About.html"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
                       >About Us</a
                     >
                   </li>
 
-                  <!-- SERVICES MEGA (unchanged) -->
+                  <!-- SERVICES MEGA (with Forex added) -->
                   <li
                     class="relative"
                     @click.stop="openMega('challenge')"
@@ -283,11 +298,12 @@
                             TRADING SERVICES
                           </h4>
                           <div class="space-y-5">
+                            <!-- Gold (Future) -->
                             <a
-                              href="Services/Gold.html"
+                              href="Gold.html"
                               class="flex gap-4 group items-start hover-card"
                               @mouseenter="setMegaImage('signals')"
-                              @mouseleave="setMegaImage('default')"
+                              @mouseleave="setMegaImage('signals')"
                             >
                               <div class="icon-circle">
                                 <i
@@ -304,11 +320,12 @@
                                 </p>
                               </div>
                             </a>
+                            <!-- Crypto -->
                             <a
-                              href="Services/crypto.html"
+                              href="crypto.html"
                               class="flex gap-4 group items-start hover-card"
                               @mouseenter="setMegaImage('copy')"
-                              @mouseleave="setMegaImage('default')"
+                              @mouseleave="setMegaImage('copy')"
                             >
                               <div class="icon-circle">
                                 <i
@@ -325,11 +342,12 @@
                                 </p>
                               </div>
                             </a>
+                            <!-- Stocks -->
                             <a
-                              href="Services/stocks.html"
+                              href="stocks.html"
                               class="flex gap-4 group items-start hover-card"
                               @mouseenter="setMegaImage('live')"
-                              @mouseleave="setMegaImage('default')"
+                              @mouseleave="setMegaImage('live')"
                             >
                               <div class="icon-circle">
                                 <i
@@ -346,10 +364,32 @@
                                 </p>
                               </div>
                             </a>
+                            <!-- NEW: Forex Trading -->
+                            <a
+                              href="forex.html"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setMegaImage('forex')"
+                              @mouseleave="setMegaImage('forex')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-globe text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Forex Trading
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Trade major pairs with expert analysis
+                                </p>
+                              </div>
+                            </a>
                           </div>
                         </div>
 
-                        <!-- RIGHT dynamic image -->
+                        <!-- RIGHT dynamic image (no default, stays on last hover) -->
                         <div
                           class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
                         >
@@ -383,7 +423,7 @@
 
                   <li>
                     <a
-                      href="Academy.html"
+                      href="../Academy.html"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
@@ -391,7 +431,7 @@
                     >
                   </li>
 
-                  <!-- NEW BROKER MEGA (identical structure, different content) -->
+                  <!-- BROKER MEGA: Star Trader first -->
                   <li
                     class="relative"
                     @click.stop="openMega('broker')"
@@ -425,7 +465,7 @@
                       style="display: none"
                     >
                       <div class="grid grid-cols-[1fr_280px] gap-8 p-8">
-                        <!-- LEFT: Broker links -->
+                        <!-- LEFT: Broker links (Star Trader first) -->
                         <div>
                           <h4
                             class="text-[#6b7280] text-[11px] font-bold uppercase tracking-wider mb-5 flex items-center gap-2"
@@ -434,13 +474,38 @@
                             TOP BROKERS
                           </h4>
                           <div class="space-y-5">
+                            <!-- Star Trader (first) -->
+                            <a
+                              href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="flex gap-4 group items-start hover-card"
+                              @mouseenter="setBrokerImage('star')"
+                              @mouseleave="setBrokerImage('star')"
+                            >
+                              <div class="icon-circle">
+                                <i
+                                  class="fas fa-star text-xl"
+                                  style="color: #ecae17"
+                                ></i>
+                              </div>
+                              <div>
+                                <h5 class="text-[16px] font-bold text-gray-900">
+                                  Star Trader
+                                </h5>
+                                <p class="text-[12px] text-gray-500">
+                                  Award-winning platform, deep liquidity
+                                </p>
+                              </div>
+                            </a>
+                            <!-- Exness -->
                             <a
                               href="https://one.exnessonelink.com/a/wx1dpryokr"
                               target="_blank"
                               rel="noopener noreferrer"
                               class="flex gap-4 group items-start hover-card"
                               @mouseenter="setBrokerImage('exness')"
-                              @mouseleave="setBrokerImage('defaultBroker')"
+                              @mouseleave="setBrokerImage('exness')"
                             >
                               <div class="icon-circle">
                                 <i
@@ -458,13 +523,14 @@
                                 </p>
                               </div>
                             </a>
+                            <!-- GTC -->
                             <a
                               href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww"
                               target="_blank"
                               rel="noopener noreferrer"
                               class="flex gap-4 group items-start hover-card"
                               @mouseenter="setBrokerImage('gtc')"
-                              @mouseleave="setBrokerImage('defaultBroker')"
+                              @mouseleave="setBrokerImage('gtc')"
                             >
                               <div class="icon-circle">
                                 <i
@@ -481,33 +547,10 @@
                                 </p>
                               </div>
                             </a>
-                            <a
-                              href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              class="flex gap-4 group items-start hover-card"
-                              @mouseenter="setBrokerImage('star')"
-                              @mouseleave="setBrokerImage('defaultBroker')"
-                            >
-                              <div class="icon-circle">
-                                <i
-                                  class="fas fa-star text-xl"
-                                  style="color: #ecae17"
-                                ></i>
-                              </div>
-                              <div>
-                                <h5 class="text-[16px] font-bold text-gray-900">
-                                  Star Trader
-                                </h5>
-                                <p class="text-[12px] text-gray-500">
-                                  Award-winning platform, deep liquidity
-                                </p>
-                              </div>
-                            </a>
                           </div>
                         </div>
 
-                        <!-- RIGHT dynamic image for BROKER -->
+                        <!-- RIGHT dynamic image for BROKER (stays on last hover) -->
                         <div
                           class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-5 border border-amber-200 mega-image-transition"
                         >
@@ -525,14 +568,14 @@
                               class="text-[18px] font-bold text-gray-900"
                               x-text="currentBrokerTitle"
                             >
-                              Exness
+                              Star Trader
                             </h4>
                           </div>
                           <p
                             class="text-[13px] text-gray-600"
                             x-text="currentBrokerDesc"
                           >
-                            Global leader, tight spreads & instant withdrawals
+                            Award-winning platform, deep liquidity
                           </p>
                         </div>
                       </div>
@@ -541,21 +584,21 @@
 
                   <li>
                     <a
-                      href="Pricing.html"
+                      href="../Pricing.html"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
                       >Pricing</a
                     >
                   </li>
                   <li>
                     <a
-                      href="FAQ.html"
+                      href="../FAQ.html"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
                       >FAQ</a
                     >
                   </li>
                   <li>
                     <a
-                      href="Contact.html"
+                      href="../Contact.html"
                       class="nav-link py-2.5 rounded-xl text-white font-semibold text-[15px] flex items-center gap-2 hover:bg-white/10"
                       >Contact Us</a
                     >
@@ -565,7 +608,7 @@
 
               <!-- GET STARTED (desktop) -->
               <a
-                href="Contact.html"
+                href="https://edustockx.com/"
                 class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
               >
                 Members Login
@@ -594,7 +637,7 @@
         style="display: none"
       ></div>
 
-      <!-- MOBILE MENU (with Brokers added) -->
+      <!-- MOBILE MENU (with Forex & Star Trader first, logos for brokers) -->
       <div
         x-show="mobileMenuOpen"
         x-trap.noscroll="mobileMenuOpen"
@@ -607,7 +650,7 @@
           class="sticky top-0 bg-black border-b border-white/20 px-5 py-4 flex items-center justify-between z-10 shadow-sm"
         >
           <img
-            src="images/Logo-eduStocks-Photoroom.png"
+            src="../images/Logo-eduStocks-Photoroom.png"
             alt="FX-Manipulation"
             class="h-12 w-auto object-contain"
           />
@@ -621,12 +664,12 @@
         </div>
         <div class="p-5 space-y-4 pb-20">
           <a
-            href="index.html"
+            href="../index.html"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
             ><i class="fas fa-home text-[#ecae17] mr-3 w-6"></i>Home</a
           >
           <a
-            href="About.html"
+            href="../About.html"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
             ><i class="fas fa-users text-[#ecae17] mr-3 w-6"></i>About Us</a
           >
@@ -650,7 +693,7 @@
               x-collapse
               class="pl-6 space-y-3 mt-2"
             >
-              <a href="Services/Gold.html" class="flex gap-3 py-2 items-center"
+              <a href="Gold.html" class="flex gap-3 py-2 items-center"
                 ><div
                   class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
                 >
@@ -663,9 +706,7 @@
                   </div>
                 </div></a
               >
-              <a
-                href="Services/crypto.html"
-                class="flex gap-3 py-2 items-center"
+              <a href="crypto.html" class="flex gap-3 py-2 items-center"
                 ><div
                   class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
                 >
@@ -678,9 +719,7 @@
                   </div>
                 </div></a
               >
-              <a
-                href="Services/stocks.html"
-                class="flex gap-3 py-2 items-center"
+              <a href="stocks.html" class="flex gap-3 py-2 items-center"
                 ><div
                   class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
                 >
@@ -693,12 +732,26 @@
                   </div>
                 </div></a
               >
+              <!-- Forex mobile -->
+              <a href="forex.html" class="flex gap-3 py-2 items-center"
+                ><div
+                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
+                >
+                  <i class="fas fa-globe text-[#ecae17]"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">Forex Trading</div>
+                  <div class="text-[11px] text-gray-500">
+                    Trade major pairs with expert analysis
+                  </div>
+                </div></a
+              >
             </div>
           </div>
 
           <!-- Mobile Academy -->
           <a
-            href="Academy.html"
+            href="../Academy.html"
             target="_blank"
             rel="noopener noreferrer"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
@@ -706,7 +759,7 @@
             >Academy</a
           >
 
-          <!-- Mobile Brokers (new) -->
+          <!-- Mobile Brokers (Star Trader first, with logos) -->
           <div class="border-b border-gray-200 pb-2">
             <button
               type="button"
@@ -727,80 +780,98 @@
               x-collapse
               class="pl-6 space-y-3 mt-2"
             >
-              <a
-                href="https://one.exnessonelink.com/a/wx1dpryokr"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex gap-3 py-2 items-center"
-                ><div
-                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
-                >
-                  <i class="fas fa-building text-[#ecae17]"></i>
-                </div>
-                <div>
-                  <div class="font-semibold text-gray-900">Exness</div>
-                  <div class="text-[11px] text-gray-500">
-                    Global leader, tight spreads
-                  </div>
-                </div></a
-              >
-              <a
-                href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex gap-3 py-2 items-center"
-                ><div
-                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
-                >
-                  <i class="fas fa-chart-pie text-[#ecae17]"></i>
-                </div>
-                <div>
-                  <div class="font-semibold text-gray-900">GTC</div>
-                  <div class="text-[11px] text-gray-500">
-                    Advanced tools, competitive
-                  </div>
-                </div></a
-              >
+              <!-- Star Trader with logo -->
               <a
                 href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex gap-3 py-2 items-center"
-                ><div
-                  class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center"
-                >
-                  <i class="fas fa-star text-[#ecae17]"></i>
-                </div>
+                class="mobile-broker-item"
+              >
+                <img
+                  src="../images/star.png"
+                  alt="Star Trader"
+                  class="mobile-broker-logo"
+                  onerror="
+                    this.src = 'https://placehold.co/36x36?text=ST';
+                    this.onerror = null;
+                  "
+                />
                 <div>
                   <div class="font-semibold text-gray-900">Star Trader</div>
                   <div class="text-[11px] text-gray-500">
                     Award-winning platform
                   </div>
-                </div></a
+                </div>
+              </a>
+              <!-- Exness with logo -->
+              <a
+                href="https://one.exnessonelink.com/a/wx1dpryokr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-broker-item"
               >
+                <img
+                  src="../images/ecnessss.jpg"
+                  alt="Exness"
+                  class="mobile-broker-logo"
+                  onerror="
+                    this.src = 'https://placehold.co/36x36?text=EX';
+                    this.onerror = null;
+                  "
+                />
+                <div>
+                  <div class="font-semibold text-gray-900">Exness</div>
+                  <div class="text-[11px] text-gray-500">
+                    Global leader, tight spreads
+                  </div>
+                </div>
+              </a>
+              <!-- GTC with logo -->
+              <a
+                href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-broker-item"
+              >
+                <img
+                  src="../images/GTC-Fx.png"
+                  alt="GTC"
+                  class="mobile-broker-logo"
+                  onerror="
+                    this.src = 'https://placehold.co/36x36?text=GTC';
+                    this.onerror = null;
+                  "
+                />
+                <div>
+                  <div class="font-semibold text-gray-900">GTC</div>
+                  <div class="text-[11px] text-gray-500">
+                    Advanced tools, competitive
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
 
           <a
-            href="Pricing.html"
+            href="../Pricing.html"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
             ><i class="fas fa-trophy text-[#ecae17] mr-3 w-6"></i>Pricing</a
           >
           <a
-            href="FAQ.html"
+            href="../FAQ.html"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
             ><i class="fas fa-question-circle text-[#ecae17] mr-3 w-6"></i
             >FAQ</a
           >
           <a
-            href="Contact.html"
+            href="../Contact.html"
             class="block py-3 text-[18px] font-semibold text-gray-900 border-b border-gray-200"
             ><i class="fas fa-envelope text-[#ecae17] mr-3 w-6"></i>Contact
             Us</a
           >
           <div class="pt-6 space-y-3">
             <a
-              href="Contact.html"
+              href="https://edustockx.com/"
               class="block w-full py-3.5 bg-[#ecae17] text-black text-center rounded-md font-bold"
             >
               Get Started</a
@@ -848,18 +919,17 @@
           mobileSubmenu: null,
           scrolled: false,
           closeTimeout: null,
-          // Service mega image state
+
+          // Service images (no default, stays on last hover)
           currentMegaImage:
-            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&auto=format",
-          currentMegaTitle: "Live Trading Sessions",
-          currentMegaDesc:
-            "Join daily live trading with professional analysts.",
-          // Broker mega image state
-          currentBrokerImage:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format",
-          currentBrokerTitle: "Exness",
-          currentBrokerDesc:
-            "Global leader, tight spreads & instant withdrawals",
+            "https://images.unsplash.com/photo-1643962579736-5efc730cbfe4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA4fHxmb3JleHxlbnwwfHwwfHx8MA%3D%3D",
+          currentMegaTitle: "Forex Trading",
+          currentMegaDesc: "Trade major pairs with expert analysis",
+
+          // Broker images (no default, stays on last hover)
+          currentBrokerImage: "images/star.png",
+          currentBrokerTitle: "Star Trader",
+          currentBrokerDesc: "Award-winning platform, deep liquidity",
 
           init() {
             window.addEventListener("scroll", () => {
@@ -876,11 +946,12 @@
                 document.body.style.width = "";
               }
             });
-            this.setMegaImage("default");
-            this.setBrokerImage("defaultBroker");
+            // initial set (no default, but we set Forex as initial)
+            this.setMegaImage("forex");
+            this.setBrokerImage("star");
           },
 
-          // Service image methods
+          // Service image methods (no default fallback, stays on selected)
           setMegaImage(type) {
             const images = {
               signals: {
@@ -898,33 +969,38 @@
                 title: "Stocks",
                 desc: "Interactive trading sessions with experts.",
               },
+              forex: {
+                img: "https://images.unsplash.com/photo-1643962579736-5efc730cbfe4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA4fHxmb3JleHxlbnwwfHwwfHx8MA%3D%3D",
+                title: "Forex Trading",
+                desc: "Trade major pairs with expert analysis.",
+              },
             };
-            const data = images[type] || images.signals;
+            const data = images[type] || images.forex;
             this.currentMegaImage = data.img;
             this.currentMegaTitle = data.title;
             this.currentMegaDesc = data.desc;
           },
 
-          // Broker image methods
+          // Broker image methods (no default, stays on selected)
           setBrokerImage(type) {
             const images = {
+              star: {
+                img: "../images/star.png",
+                title: "Star Trader",
+                desc: "Award-winning platform, deep liquidity",
+              },
               exness: {
-                img: "images/Exness.png",
+                img: "../images/ecnessss.jpg",
                 title: "Exness",
                 desc: "Global leader, tight spreads & instant withdrawals",
               },
               gtc: {
-                img: "images/GTC-Fx.png",
+                img: "../images/GTC-Fx.png",
                 title: "GTC",
                 desc: "Advanced tools, competitive pricing, trusted",
               },
-              star: {
-                img: "images/StarT.jfif",
-                title: "Star Trader",
-                desc: "Award-winning platform, deep liquidity",
-              },
             };
-            const data = images[type] || images.exness;
+            const data = images[type] || images.star;
             this.currentBrokerImage = data.img;
             this.currentBrokerTitle = data.title;
             this.currentBrokerDesc = data.desc;
@@ -934,11 +1010,12 @@
             this.cancelClose();
             this.activeMega = menu;
             this.isMegaOpen = true;
-            // Set default images based on menu
+            // set default images based on menu, but we keep last hover anyway
             if (menu === "challenge") {
-              this.setMegaImage("default");
+              // if no hover yet, show forex
+              if (!this.currentMegaImage) this.setMegaImage("forex");
             } else if (menu === "broker") {
-              this.setBrokerImage("defaultBroker");
+              if (!this.currentBrokerImage) this.setBrokerImage("star");
             }
           },
 
