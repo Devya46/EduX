@@ -2536,7 +2536,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
     <title>Build Wealth · Smart Trading</title>
     <!-- Font Awesome 6 (free) -->
     <link
@@ -2555,17 +2558,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* min-height: 100vh; */
-        padding: 2rem 8.5rem;
-        /* font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; */
+        padding: 1.5rem 10rem;
+        min-height: 100vh;
       }
 
-      /* main card – black & gold, rich and vibrant */
+      /* main card – black & gold */
       .premium-section {
         max-width: 1400px;
         width: 100%;
         background: radial-gradient(circle at 50% 20%, #5a3c00, #000000 90%);
-        padding: 4rem 3.5rem;
+        padding: 2.5rem 1.8rem;
         border-radius: 48px;
         box-shadow:
           0 30px 80px rgba(0, 0, 0, 0.95),
@@ -2585,13 +2587,6 @@
         border-color: rgba(212, 168, 69, 0.4);
       }
 
-      /* gold palette – rich, bright gold */
-      .gold-text {
-        color: #e0b85c;
-      }
-      .gold-border {
-        border-color: rgba(212, 168, 69, 0.3);
-      }
       .gold-icon {
         color: #eac16a;
         filter: drop-shadow(0 0 12px rgba(212, 168, 69, 0.4));
@@ -2601,23 +2596,22 @@
       /* ---- hero ---- */
       .section-hero {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1.8rem;
         position: relative;
       }
       .section-hero .badge {
         display: inline-block;
         background: rgba(212, 168, 69, 0.08);
         backdrop-filter: blur(4px);
-        padding: 0.4rem 2.2rem;
+        padding: 0.3rem 1.8rem;
         border-radius: 100px;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         letter-spacing: 3px;
         text-transform: uppercase;
         color: #ecd08a;
         border: 0.5px solid rgba(212, 168, 69, 0.2);
-        margin-bottom: 1.8rem;
+        margin-bottom: 1.2rem;
         font-weight: 500;
-        box-shadow: 0 0 30px rgba(212, 168, 69, 0.04);
       }
       .section-hero .badge i {
         color: #f5d98e;
@@ -2627,7 +2621,7 @@
       }
 
       .section-hero h1 {
-        font-size: 3.6rem;
+        font-size: clamp(2rem, 8vw, 3.6rem);
         font-weight: 300;
         color: #fcf8f0;
         letter-spacing: -0.02em;
@@ -2649,9 +2643,9 @@
       }
       .section-hero .sub-headline {
         max-width: 640px;
-        margin: 1.2rem auto 0;
+        margin: 1rem auto 0;
         color: rgba(255, 255, 255, 0.5);
-        font-size: 1.1rem;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
         font-weight: 300;
         letter-spacing: 0.2px;
         line-height: 1.7;
@@ -2669,14 +2663,14 @@
           #d4a845,
           transparent
         );
-        margin: 1.2rem auto 2.8rem;
+        margin: 1.2rem auto 2.2rem;
         box-shadow: 0 0 30px rgba(212, 168, 69, 0.2);
       }
 
       /* ---- grid ---- */
       .broker-grid {
         display: flex;
-        gap: 2.5rem;
+        gap: 2rem;
         align-items: stretch;
       }
       .broker-table-wrapper {
@@ -2684,15 +2678,14 @@
         min-width: 0;
       }
 
-      /* cta card – black & gold shimmer */
+      /* cta card */
       .cta-side-card {
         flex: 1.2;
-        min-width: 220px;
-        height: max-content;
+        min-width: 200px;
         background: radial-gradient(circle at 70% 20%, #1f1808, #0a0700 90%);
         border: 0.5px solid rgba(212, 168, 69, 0.2);
         border-radius: 32px;
-        padding: 2.4rem 1.8rem;
+        padding: 2rem 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -2713,21 +2706,21 @@
           0 0 50px rgba(212, 168, 69, 0.08);
       }
       .cta-side-card .cta-badge {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         letter-spacing: 2.5px;
         text-transform: uppercase;
         color: rgba(212, 168, 69, 0.6);
         border-bottom: 0.5px solid rgba(212, 168, 69, 0.15);
         padding-bottom: 0.8rem;
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.2rem;
         width: 100%;
       }
       .cta-side-card h3 {
-        font-size: 1.6rem;
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
         font-weight: 400;
         color: #f5efe2;
         line-height: 1.25;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.6rem;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
       }
       .cta-side-card h3 span {
@@ -2740,10 +2733,10 @@
       }
       .cta-side-card p {
         color: rgba(255, 255, 255, 0.4);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 300;
         line-height: 1.6;
-        margin-bottom: 2rem;
+        margin-bottom: 1.8rem;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
       }
 
@@ -2752,12 +2745,12 @@
         align-items: center;
         justify-content: center;
         gap: 0.8rem;
-        padding: 0.9rem 2.4rem;
+        padding: 0.8rem 2rem;
         background: rgba(212, 168, 69, 0.08);
         border: 0.5px solid rgba(212, 168, 69, 0.3);
         border-radius: 60px;
         color: #ecd08a;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.7px;
         text-transform: uppercase;
@@ -2782,29 +2775,7 @@
         transform: translateX(4px);
       }
 
-      /* ---- table ---- */
-      .broker-section-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1.8rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .broker-section-title h2 {
-        font-size: 1.5rem;
-        font-weight: 400;
-        color: #f2ece0;
-        letter-spacing: -0.01em;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-      }
-      .broker-section-title h2 i {
-        margin-right: 0.8rem;
-        font-size: 1.2rem;
-        color: #eac16a;
-        filter: drop-shadow(0 0 14px rgba(212, 168, 69, 0.25));
-      }
-
+      /* ---- table (desktop) ---- */
       .broker-table {
         width: 100%;
         border-collapse: collapse;
@@ -2820,17 +2791,17 @@
       }
       .broker-table th {
         text-align: left;
-        padding: 1.2rem 1.5rem;
-        font-size: 0.6rem;
+        padding: 1rem 1.2rem;
+        font-size: 0.55rem;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: rgba(212, 168, 69, 0.6);
         font-weight: 600;
       }
       .broker-table td {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.2rem;
         color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 300;
         border-bottom: 0.5px solid rgba(255, 255, 255, 0.03);
         vertical-align: middle;
@@ -2849,33 +2820,38 @@
       .broker-info {
         display: flex;
         flex-direction: column;
-        gap: 0.2rem;
+        gap: 0.15rem;
       }
       .broker-info .broker-name {
-        font-weight: 600;
+        font-weight: 500;
         color: #f5efe2;
-        font-size: 1rem;
+        font-size: 17px;
         letter-spacing: 0.2px;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       }
       .broker-info .broker-sub {
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.3);
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
         font-weight: 300;
         letter-spacing: 0.1px;
       }
 
-      .brand-icon {
-        font-size: 30px;
-        width: 2.4rem;
-        text-align: center;
-        color: #eac16a;
+      .brand-logo {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
         filter: drop-shadow(0 0 16px rgba(212, 168, 69, 0.3));
-        transition: transform 0.2s;
+        transition: transform 0.2s ease;
+        vertical-align: middle;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 6px;
+        padding: 2px;
       }
-      .brand-icon:hover {
-        transform: scale(1.05);
+      .brand-logo:hover {
+        transform: scale(1.06);
       }
+
       .broker-name-wrap {
         display: flex;
         align-items: center;
@@ -2885,13 +2861,13 @@
       .btn-trade-now {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 1.4rem;
+        gap: 0.4rem;
+        padding: 0.35rem 1.2rem;
         background: rgba(212, 168, 69, 0.06);
         border: 0.5px solid rgba(212, 168, 69, 0.12);
         border-radius: 60px;
         color: #e0b85c;
-        font-size: 0.7rem;
+        font-size: 12px;
         font-weight: 600;
         letter-spacing: 0.5px;
         text-transform: uppercase;
@@ -2901,7 +2877,7 @@
         box-shadow: 0 0 24px rgba(212, 168, 69, 0.02);
       }
       .btn-trade-now i {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         transition: transform 0.25s ease;
       }
       .btn-trade-now:hover {
@@ -2915,41 +2891,58 @@
         transform: translateX(4px);
       }
 
-      /* responsive */
+      .table-footnote {
+        margin-top: 1rem;
+        text-align: right;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.08);
+        letter-spacing: 0.3px;
+      }
+      .table-footnote i {
+        font-size: 0.4rem;
+        margin-right: 4px;
+      }
+
+      /* ===== RESPONSIVE: card style, center aligned, no ::before ===== */
       @media (max-width: 1024px) {
         .body-signal {
-          padding: 2rem 3rem;
+          padding: 1.5rem;
         }
         .premium-section {
-          padding: 3rem 2rem;
+          padding: 2rem 1.5rem;
         }
         .broker-grid {
           flex-direction: column;
+          gap: 1.8rem;
         }
         .cta-side-card {
           flex: 1;
-          padding: 2rem 1.8rem;
-          margin-top: 0.5rem;
-          align-items: center;
+          padding: 1.8rem 1.5rem;
+          margin-top: 0;
         }
       }
+
       @media (max-width: 768px) {
         .body-signal {
-          padding: 1rem 1.2rem;
+          padding: 0.8rem;
         }
         .premium-section {
-          padding: 2rem 1.2rem;
+          padding: 1.5rem 0.8rem;
           border-radius: 32px;
         }
         .section-hero h1 {
-          font-size: 2.2rem;
+          font-size: clamp(1.6rem, 6vw, 2.2rem);
         }
         .section-hero .sub-headline {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
         }
+
+        /* hide table headers */
         .broker-table thead {
           display: none;
         }
+
+        /* each row becomes a card */
         .broker-table,
         .broker-table tbody,
         .broker-table tr,
@@ -2957,57 +2950,163 @@
           display: block;
           width: 100%;
         }
+
         .broker-table tr {
-          padding: 1.2rem 0;
-          border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+          background: rgba(0, 0, 0, 0.6);
+          border: 0.5px solid rgba(212, 168, 69, 0.12);
+          border-radius: 24px;
+          padding: 1.2rem 0.8rem;
+          margin-bottom: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 0.5rem;
+          transition: background 0.2s;
         }
+        .broker-table tr:hover {
+          background: rgba(212, 168, 69, 0.06);
+        }
+
         .broker-table td {
-          padding: 0.4rem 0.6rem;
+          padding: 0.2rem 0.4rem;
           border: none;
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 0.6rem;
-          flex-wrap: wrap;
+          text-align: center;
+          width: 100%;
+          justify-content: center;
         }
-        .broker-table td:before {
-          content: attr(data-label);
-          font-size: 0.5rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          color: rgba(255, 255, 255, 0.2);
-          min-width: 70px;
+
+        /* hide data-label completely — we don't use ::before */
+        .broker-table td::before {
+          display: none !important;
+          content: none !important;
+        }
+
+        /* broker row: logo + name + sub */
+        .broker-name-wrap {
+          flex-direction: column;
+          gap: 0.3rem;
+          justify-content: center;
+        }
+        .brand-logo {
+          width: 56px;
+          height: 56px;
+          margin-bottom: 0.2rem;
+        }
+        .broker-info .broker-name {
+          font-size: 1.1rem;
+          text-align: center;
         }
         .broker-info .broker-sub {
-          display: none;
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.4);
+          text-align: center;
+          max-width: 280px;
+          margin: 0 auto;
         }
-        .broker-section-title h2 {
+
+        /* action button - center */
+        .broker-table td[data-label="Action"] {
+          padding-top: 0.4rem;
+        }
+        .btn-trade-now {
+          font-size: 0.7rem;
+          padding: 0.4rem 1.6rem;
+          white-space: nowrap;
+        }
+
+        .cta-side-card h3 {
           font-size: 1.2rem;
         }
-        .cta-side-card h3 {
-          font-size: 1.3rem;
+        .cta-side-card p {
+          font-size: 0.8rem;
         }
         .cta-side-card {
-          padding: 1.8rem 1.2rem;
+          padding: 1.5rem 1rem;
         }
-        .brand-icon {
-          font-size: 1.5rem;
-          width: 2rem;
+        .divider-gold {
+          margin: 1rem auto 1.5rem;
+        }
+
+        .table-footnote {
+          text-align: center;
+          font-size: 0.55rem;
+          margin-top: 0.5rem;
         }
       }
+
       @media (max-width: 480px) {
         .body-signal {
-          padding: 0.8rem;
+          padding: 0.4rem;
         }
         .premium-section {
-          padding: 1.5rem 0.8rem;
+          padding: 1rem 0.5rem;
           border-radius: 24px;
         }
         .section-hero h1 {
-          font-size: 1.7rem;
+          font-size: 33px;
         }
-        .broker-section-title {
-          flex-direction: column;
-          align-items: flex-start;
+        .section-hero .badge {
+          font-size: 0.5rem;
+          padding: 0.2rem 1rem;
+          letter-spacing: 2px;
+        }
+
+        .broker-table tr {
+          padding: 1rem 0.5rem;
+          border-radius: 20px;
+        }
+        .brand-logo {
+          width: 78px;
+          height: 56px;
+        }
+        .broker-info .broker-name {
+          font-size: 1.5rem;
+        }
+        .broker-info .broker-sub {
+          font-size: 14px;
+          max-width: 300px;
+        }
+        .btn-trade-now {
+          font-size: 14px;
+          padding: 0.3rem 1.2rem;
+        }
+        .btn-trade-now i {
+          font-size: 0.4rem;
+        }
+        .cta-side-card h3 {
+          font-size: 23px;
+        }
+        .cta-side-card p {
+          font-size: 0.7rem;
+          margin-bottom: 1.2rem;
+        }
+        .btn-gold-large {
+          font-size: 12px;
+          padding: 8px 20px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .brand-logo {
+          width: 42px;
+          height: 42px;
+        }
+        .broker-info .broker-name {
+          font-size: 0.9rem;
+        }
+        .broker-info .broker-sub {
+          font-size: 0.6rem;
+        }
+        .btn-trade-now {
+          font-size: 0.55rem;
+          padding: 0.25rem 0.9rem;
+        }
+        .broker-table tr {
+          padding: 0.8rem 0.4rem;
         }
       }
     </style>
@@ -3038,14 +3137,51 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- EXNESS -->
+                <!-- STARTRADER -->
                 <tr>
-                  <td data-label="Broker">
+                  <td>
                     <span class="broker-name-wrap">
-                      <i class="fab fa-empire brand-icon"></i>
+                      <img
+                        class="brand-logo"
+                        src="../images/StarTrader.png"
+                        alt="StarTrader"
+                        loading="lazy"
+                      />
                     </span>
                   </td>
-                  <td data-label="Description">
+                  <td>
+                    <div class="broker-info">
+                      <span class="broker-name">StarTrader</span>
+                      <span class="broker-sub"
+                        >Tight spreads, fast execution &amp; advanced trading
+                        platform.</span
+                      >
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <a
+                      href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-trade-now"
+                    >
+                      Trade Now <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <!-- EXNESS -->
+                <tr>
+                  <td>
+                    <span class="broker-name-wrap">
+                      <img
+                        class="brand-logo"
+                        src="../images/Exness.png"
+                        alt="Exness"
+                        loading="lazy"
+                      />
+                    </span>
+                  </td>
+                  <td>
                     <div class="broker-info">
                       <span class="broker-name">Exness</span>
                       <span class="broker-sub"
@@ -3054,7 +3190,7 @@
                       >
                     </div>
                   </td>
-                  <td data-label="Action" style="text-align: center">
+                  <td style="text-align: center">
                     <a
                       href="https://one.exnessonelink.com/a/wx1dpryokr"
                       target="_blank"
@@ -3067,12 +3203,17 @@
                 </tr>
                 <!-- GTC FX -->
                 <tr>
-                  <td data-label="Broker">
+                  <td>
                     <span class="broker-name-wrap">
-                      <i class="fab fa-trade-federation brand-icon"></i>
+                      <img
+                        class="brand-logo"
+                        src="../images/GTC-Fx.png"
+                        alt="GTC FX"
+                        loading="lazy"
+                      />
                     </span>
                   </td>
-                  <td data-label="Description">
+                  <td>
                     <div class="broker-info">
                       <span class="broker-name">GTC FX</span>
                       <span class="broker-sub"
@@ -3081,36 +3222,9 @@
                       >
                     </div>
                   </td>
-                  <td data-label="Action" style="text-align: center">
+                  <td style="text-align: center">
                     <a
-                      href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-trade-now"
-                    >
-                      Trade Now <i class="fas fa-external-link-alt"></i>
-                    </a>
-                  </td>
-                </tr>
-                <!-- STARTRADER -->
-                <tr>
-                  <td data-label="Broker">
-                    <span class="broker-name-wrap">
-                      <i class="fab fa-jedi-order brand-icon"></i>
-                    </span>
-                  </td>
-                  <td data-label="Description">
-                    <div class="broker-info">
-                      <span class="broker-name">StarTrader</span>
-                      <span class="broker-sub"
-                        >Tight spreads, fast execution &amp; advanced trading
-                        platform.</span
-                      >
-                    </div>
-                  </td>
-                  <td data-label="Action" style="text-align: center">
-                    <a
-                      href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw"
+                      href="https://web.mygtc.app/login/register?ref=34124"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="btn-trade-now"
@@ -3121,19 +3235,8 @@
                 </tr>
               </tbody>
             </table>
-            <div
-              style="
-                margin-top: 1.2rem;
-                text-align: right;
-                font-size: 0.65rem;
-                color: rgba(255, 255, 255, 0.1);
-                letter-spacing: 0.3px;
-              "
-            >
-              <i
-                class="fas fa-circle-check gold-icon"
-                style="font-size: 0.45rem; margin-right: 4px"
-              ></i>
+            <div class="table-footnote">
+              <i class="fas fa-circle-check gold-icon"></i>
               direct partner links — trade with confidence
             </div>
           </div>

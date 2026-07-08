@@ -1857,10 +1857,10 @@
   </head>
   <body>
     <section class="hero">
-      <!-- <video autoplay muted loop playsinline class="bg-video">
-        <source src="images/ES-2.mp4" type="video/mp4" />
-      </video> -->
-      <img src="images/bgg-img.png" class="bg-video" alt="">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="images/ES-2.webm" type="video/webm" />
+      </video>
+      <!-- <img src="images/bgg-img.png" class="bg-video" alt=""> -->
       <div class="hero-overlay"></div>
       <div class="hero-grid"></div>
       <div class="blur blur1"></div>
@@ -2761,6 +2761,691 @@
         }, 100);
       })();
     </script>
+
+    <!-- -----why secret candle---- -->
+
+     <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Secret Candle AI · Auto‑move Swipeable Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .body-ai {
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        min-height: 85vh;
+      }
+      .section-wrapper {
+        max-width: 1200px;
+        width: 100%;
+        background: #000;
+        padding: 2rem 0.5rem 2.8rem 0.5rem;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .section-wrapper::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 250px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(212, 168, 69, 0.05) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .section-wrapper * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(212, 168, 69, 0.06);
+        text-align: center;
+      }
+      .section-header h2 {
+        font-size: clamp(1.8rem, 4.5vw, 3rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        margin: 0;
+       text-align: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 228, 1, 0.856) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 30px rgba(212, 168, 69, 0.06));
+      }
+      .section-header .subhead {
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 0.4rem;
+        letter-spacing: 0.2px;
+      }
+      .section-header .subhead i {
+        color: #d4a845;
+        opacity: 0.4;
+        margin: 0 0.3rem;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 0.5rem 0 1.2rem 0;
+        touch-action: pan-y;
+        cursor: grab;
+        user-select: none;
+      }
+      .carousel-wrapper:active {
+        cursor: grabbing;
+      }
+      .carousel-track {
+        display: flex;
+        gap: 1.5rem;
+        width: max-content;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+        pointer-events: none;
+        padding-left: 0;
+        margin-left: 0;
+      }
+      .carousel-track .feature-card {
+        pointer-events: auto;
+      }
+
+      .feature-card {
+        flex: 0 0 auto;
+        width: 350px;
+        max-width: 85vw;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(212, 168, 69, 0.12),
+            transparent 35%
+          ),
+          linear-gradient(160deg, #141414 0%, #0b0b0b 55%, #050505 100%);
+        border: 1px solid rgba(212, 168, 69, 0.28);
+        border-radius: 24px;
+        padding: 2rem 1.4rem 1.8rem;
+        text-align: center;
+        backdrop-filter: blur(2px);
+        box-shadow:
+          0 10px 35px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        transition: all 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: default;
+      }
+      .feature-card:hover {
+        background: linear-gradient(
+          160deg,
+          #1b1b1b 0%,
+          #101010 60%,
+          #070707 100%
+        );
+        border-color: #d4a845;
+        box-shadow:
+          0 20px 50px rgba(212, 168, 69, 0.18),
+          0 0 30px rgba(212, 168, 69, 0.1);
+        transform: scale(1.02);
+      }
+
+      .card-icon {
+        font-size: 2.6rem;
+        color: #e8c86a;
+        margin-bottom: 0.8rem;
+        filter: drop-shadow(0 0 25px rgba(212, 168, 69, 0.06));
+        transition: all 0.3s ease;
+        background: rgba(212, 168, 69, 0.02);
+        width: 76px;
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 60px;
+        border: 0.5px solid rgba(212, 168, 69, 0.04);
+      }
+      .feature-card:hover .card-icon {
+        filter: drop-shadow(0 0 50px rgba(212, 168, 69, 0.12));
+        transform: scale(1.05);
+        border-color: rgba(212, 168, 69, 0.08);
+      }
+      .card-name {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.4rem;
+        line-height: 1.3;
+      }
+      .card-desc {
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+        min-height: 3rem;
+      }
+      .card-benefit {
+        font-weight: 600;
+        font-size: 0.78rem;
+        color: #f5d77b;
+        background: rgba(212, 168, 69, 0.06);
+        padding: 0.35rem 1.4rem;
+        border-radius: 60px;
+        border: 0.5px solid rgba(212, 168, 69, 0.06);
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        backdrop-filter: blur(2px);
+      }
+
+      .cta-section {
+        margin-top: 1rem;
+        padding-top: 1.8rem;
+        border-top: 1px solid rgba(212, 168, 69, 0.05);
+        display: flex;
+        justify-content: center;
+      }
+      .cta-button {
+        background: #c08a00;
+        border: 0.5px solid rgba(212, 168, 69, 0.08);
+        border-radius: 60px;
+        color: black;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.75rem 2.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+      }
+      .cta-button i {
+        font-size: 0.75rem;
+        color: #e8c86a;
+        transition: transform 0.3s ease;
+      }
+      .cta-button:hover {
+        background: rgba(212, 168, 69, 0.06);
+        border-color: rgba(212, 168, 69, 0.15);
+        color: #fae39f;
+        transform: scale(1.02);
+      }
+      .cta-button:hover i {
+        transform: translateX(6px);
+      }
+
+      .swipe-hint {
+        display: none;
+        color: rgba(212, 168, 69, 0.2);
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+        margin-top: 0.2rem;
+      }
+
+      @media (max-width: 768px) {
+        .section-wrapper {
+          padding: 1.5rem 1.5rem 2.2rem 1.5rem;
+        }
+        .carousel-wrapper {
+          padding: 0.2rem 0 0.8rem 0;
+        }
+        .carousel-track {
+          gap: 1rem;
+        }
+        .feature-card {
+          width: 260px;
+          max-width: 80vw;
+          padding: 1.6rem 1.2rem 1.4rem;
+          border-radius: 20px;
+        }
+        .card-icon {
+          width: 64px;
+          height: 64px;
+          font-size: 2rem;
+        }
+        .card-name {
+          font-size: 1rem;
+        }
+        .card-desc {
+          font-size: 0.8rem;
+          min-height: 2.6rem;
+        }
+        .card-benefit {
+          font-size: 0.7rem;
+          padding: 0.25rem 1.2rem;
+        }
+        .section-header h2 {
+          font-size: 1.6rem;
+        }
+        .cta-button {
+          padding: 0.65rem 1.8rem;
+          font-size: 0.75rem;
+        }
+        .swipe-hint {
+          display: block;
+        }
+      }
+      @media (max-width: 480px) {
+        .feature-card {
+          width: 300px;
+          max-width: 78vw;
+          padding: 1.3rem 0.9rem 1.2rem;
+          border-radius: 18px;
+        }
+        .card-icon {
+          width: 54px;
+          height: 54px;
+          font-size: 1.6rem;
+        }
+        .card-name {
+          font-size: 18px;
+        }
+        .card-desc {
+          font-size: 15px;
+          min-height: 2.2rem;
+        }
+        .card-benefit {
+          font-size: 12px;
+          padding: 0.2rem 1rem;
+        }
+        .section-header h2 {
+          font-size: 32px;
+        }
+        .carousel-track {
+          gap: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="body-ai">
+      <div class="section-wrapper">
+        <div class="section-header">
+          <h2>Why Secret Candle AI?</h2>
+          <div class="subhead">
+            <i class="fas fa-gem"></i> Institutional‑grade intelligence,
+            distilled into clear signals.
+          </div>
+        </div>
+
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <div class="swipe-hint">
+          <i class="fas fa-arrows-left-right"></i> swipe to explore
+        </div>
+
+        <div class="cta-section">
+          <a
+            href="https://t.me/EduStocksFx"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fas fa-arrow-right"></i> Explore Secret Candle AI
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const features = [
+          {
+            icon: "fa-fire",
+            name: "Secret Candle Detection",
+            desc: "Detects high‑impact market candles",
+            benefit: "Better Market Understanding",
+          },
+          {
+            icon: "fa-brain",
+            name: "AI Market Bias",
+            desc: "Identifies bullish & bearish conditions",
+            benefit: "Improved Decision Making",
+          },
+          {
+            icon: "fa-cubes",
+            name: "Order Block Detection",
+            desc: "Finds institutional zones",
+            benefit: "Higher Probability Setups",
+          },
+          {
+            icon: "fa-arrow-trend-up",
+            name: "Smart Buy & Sell Signals",
+            desc: "Structured entry indications",
+            benefit: "More Disciplined Trading",
+          },
+          {
+            icon: "fa-chart-line",
+            name: "Auto Trendline Mapping",
+            desc: "Automatically maps trend structure",
+            benefit: "Better Trend Visualization",
+          },
+          {
+            icon: "fa-bolt",
+            name: "Dynamic Support & Resistance",
+            desc: "Marks important price levels",
+            benefit: "Better Trade Planning",
+          },
+          {
+            icon: "fa-layer-group",
+            name: "Multi‑Timeframe Intelligence",
+            desc: "Combines higher & lower timeframe analysis",
+            benefit: "Better Trade Filtering",
+          },
+        ];
+
+        const track = document.getElementById("carouselTrack");
+        const wrapper = document.getElementById("carouselWrapper");
+        if (!track || !wrapper) return;
+
+        function buildCard(f) {
+          return `<div class="feature-card">
+            <div class="card-icon"><i class="fas ${f.icon}"></i></div>
+            <div class="card-name">${f.name}</div>
+            <div class="card-desc">${f.desc}</div>
+            <div class="card-benefit">${f.benefit}</div>
+          </div>`;
+        }
+
+        let html = "";
+        features.forEach((f) => (html += buildCard(f)));
+        // clone first card for seamless loop
+        html += buildCard(features[0]);
+        html += buildCard(features[1]);
+        track.innerHTML = html;
+
+        let currentIndex = 0;
+        const totalCards = features.length;
+        let isTransitioning = false;
+        let autoPlayTimer = null;
+        const AUTO_INTERVAL = 3200;
+
+        function getMaxIndex() {
+          return totalCards + 1; // 0 … totalCards (clone)
+        }
+
+        function getTranslateForIndex(index) {
+          const firstCard = document.querySelector(".feature-card");
+          if (!firstCard) return 0;
+          const cardRect = firstCard.getBoundingClientRect();
+          const gapPx = parseFloat(getComputedStyle(track).gap) || 24;
+          const cardFullWidth = cardRect.width + gapPx;
+          // No left padding - start from 0
+          return -(index * cardFullWidth);
+        }
+
+        function slideTo(index, animate = true) {
+          if (isTransitioning) return;
+          const max = getMaxIndex();
+          if (index < 0) index = 0;
+          if (index > max) index = max;
+
+          isTransitioning = true;
+          currentIndex = index;
+          const tx = getTranslateForIndex(index);
+          track.style.transition = animate
+            ? "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+            : "none";
+          track.style.transform = `translateX(${tx}px)`;
+
+          setTimeout(
+            () => {
+              isTransitioning = false;
+              if (index >= totalCards) {
+                track.style.transition = "none";
+                const newTx = getTranslateForIndex(0);
+                track.style.transform = `translateX(${newTx}px)`;
+                currentIndex = 0;
+                void track.offsetHeight;
+              }
+            },
+            animate ? 550 : 50,
+          );
+        }
+
+        function nextSlide() {
+          let next = currentIndex + 1;
+          if (next > totalCards) next = 0;
+          slideTo(next, true);
+        }
+
+        function startAutoPlay() {
+          if (autoPlayTimer) clearInterval(autoPlayTimer);
+          autoPlayTimer = setInterval(nextSlide, AUTO_INTERVAL);
+        }
+
+        function stopAutoPlay() {
+          if (autoPlayTimer) {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = null;
+          }
+        }
+
+        function resumeAutoPlay() {
+          stopAutoPlay();
+          setTimeout(startAutoPlay, 3000);
+        }
+
+        // Initial centering: show first card at left edge
+        setTimeout(() => {
+          slideTo(0, false);
+          startAutoPlay();
+        }, 100);
+
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            slideTo(currentIndex, false);
+          }, 150);
+        });
+
+        // ----- TOUCH SWIPE -----
+        let startX = 0,
+          startY = 0,
+          isDragging = false,
+          startTranslate = 0,
+          isSwiping = false;
+
+        wrapper.addEventListener(
+          "touchstart",
+          (e) => {
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            isDragging = true;
+            isSwiping = false;
+            stopAutoPlay();
+            const style = window.getComputedStyle(track);
+            const matrix = style.transform;
+            if (matrix !== "none") {
+              const values = matrix.match(/matrix.*\((.+)\)/);
+              if (values) {
+                const nums = values[1].split(", ");
+                if (nums.length === 6) {
+                  startTranslate = parseFloat(nums[4]) || 0;
+                }
+              }
+            }
+            track.style.transition = "none";
+          },
+          { passive: true },
+        );
+
+        wrapper.addEventListener(
+          "touchmove",
+          (e) => {
+            if (!isDragging) return;
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - startX;
+            const deltaY = touch.clientY - startY;
+            if (
+              Math.abs(deltaX) > 10 &&
+              Math.abs(deltaX) > Math.abs(deltaY) * 0.7
+            ) {
+              isSwiping = true;
+              e.preventDefault();
+              const newTranslate = startTranslate + deltaX;
+              track.style.transform = `translateX(${newTranslate}px)`;
+            }
+          },
+          { passive: false },
+        );
+
+        wrapper.addEventListener(
+          "touchend",
+          (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            if (!isSwiping) {
+              resumeAutoPlay();
+              track.style.transition = "";
+              slideTo(currentIndex, true);
+              return;
+            }
+            const touch = e.changedTouches[0];
+            const deltaX = touch.clientX - startX;
+            let step = 0;
+            if (deltaX < -40) step = 1;
+            else if (deltaX > 40) step = -1;
+
+            let newIndex = currentIndex + step;
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex > totalCards) newIndex = totalCards;
+
+            slideTo(newIndex, true);
+            isSwiping = false;
+            resumeAutoPlay();
+          },
+          { passive: true },
+        );
+
+        wrapper.addEventListener(
+          "touchcancel",
+          () => {
+            isDragging = false;
+            isSwiping = false;
+            slideTo(currentIndex, true);
+            resumeAutoPlay();
+          },
+          { passive: true },
+        );
+
+        // ----- MOUSE DRAG -----
+        let mouseDown = false,
+          mouseStartX = 0,
+          mouseStartTranslate = 0;
+        wrapper.addEventListener("mousedown", (e) => {
+          if (e.button !== 0) return;
+          mouseDown = true;
+          mouseStartX = e.clientX;
+          stopAutoPlay();
+          const style = window.getComputedStyle(track);
+          const matrix = style.transform;
+          if (matrix !== "none") {
+            const values = matrix.match(/matrix.*\((.+)\)/);
+            if (values) {
+              const nums = values[1].split(", ");
+              if (nums.length === 6) {
+                mouseStartTranslate = parseFloat(nums[4]) || 0;
+              }
+            }
+          }
+          track.style.transition = "none";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          if (!mouseDown) return;
+          const deltaX = e.clientX - mouseStartX;
+          if (Math.abs(deltaX) > 8) {
+            const newTranslate = mouseStartTranslate + deltaX;
+            track.style.transform = `translateX(${newTranslate}px)`;
+          }
+        });
+
+        document.addEventListener("mouseup", (e) => {
+          if (!mouseDown) return;
+          mouseDown = false;
+          const deltaX = e.clientX - mouseStartX;
+          let step = 0;
+          if (deltaX < -40) step = 1;
+          else if (deltaX > 40) step = -1;
+          let newIndex = currentIndex + step;
+          if (newIndex < 0) newIndex = 0;
+          if (newIndex > totalCards) newIndex = totalCards;
+          slideTo(newIndex, true);
+          resumeAutoPlay();
+        });
+
+        // Keyboard arrows
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            stopAutoPlay();
+            let newIndex = Math.min(currentIndex + 1, totalCards);
+            slideTo(newIndex, true);
+            resumeAutoPlay();
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft") {
+            stopAutoPlay();
+            let newIndex = Math.max(currentIndex - 1, 0);
+            slideTo(newIndex, true);
+            resumeAutoPlay();
+            e.preventDefault();
+          }
+        });
+
+        // Hover pause
+        wrapper.addEventListener("mouseenter", stopAutoPlay);
+        wrapper.addEventListener("mouseleave", resumeAutoPlay);
+      })();
+    </script>
+  </body>
+</html>
 
 
  <!-- -----Market Analysis------ -->
@@ -4460,6 +5145,25 @@
               </tr>
             </thead>
             <tbody>
+              <!-- STARTRADER -->
+              <tr>
+                <td>
+                  <span class="broker-name-wrap">
+                    <img class="brand-logo" src="images/StarTrader.png" alt="StarTrader" loading="lazy" />
+                  </span>
+                </td>
+                <td>
+                  <div class="broker-info">
+                    <span class="broker-name">StarTrader</span>
+                    <span class="broker-sub">Tight spreads, fast execution &amp; advanced trading platform.</span>
+                  </div>
+                </td>
+                <td style="text-align: center">
+                  <a href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw" target="_blank" rel="noopener noreferrer" class="btn-trade-now">
+                    Trade Now <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </td>
+              </tr>
               <!-- EXNESS -->
               <tr>
                 <td>
@@ -4493,30 +5197,12 @@
                   </div>
                 </td>
                 <td style="text-align: center">
-                  <a href="https://mygtcportal.com/getview?view=register&token=gc8owwww7owwwwww" target="_blank" rel="noopener noreferrer" class="btn-trade-now">
+                  <a href="https://web.mygtc.app/login/register?ref=34124" target="_blank" rel="noopener noreferrer" class="btn-trade-now">
                     Trade Now <i class="fas fa-external-link-alt"></i>
                   </a>
                 </td>
               </tr>
-              <!-- STARTRADER -->
-              <tr>
-                <td>
-                  <span class="broker-name-wrap">
-                    <img class="brand-logo" src="images/StarTrader.png" alt="StarTrader" loading="lazy" />
-                  </span>
-                </td>
-                <td>
-                  <div class="broker-info">
-                    <span class="broker-name">StarTrader</span>
-                    <span class="broker-sub">Tight spreads, fast execution &amp; advanced trading platform.</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <a href="https://www.startrader.com/live-account/?affid=MjQzODY5MjE=&ibpRebateCode=MjQzODY5MjFTVDEwMDYw" target="_blank" rel="noopener noreferrer" class="btn-trade-now">
-                    Trade Now <i class="fas fa-external-link-alt"></i>
-                  </a>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
           <div class="table-footnote">
@@ -4546,690 +5232,7 @@
 </body>
 </html>
 
-<!-- -----why secret candle---- -->
 
-     <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Secret Candle AI · Auto‑move Swipeable Cards</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .body-ai {
-        background: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        min-height: 85vh;
-      }
-      .section-wrapper {
-        max-width: 1200px;
-        width: 100%;
-        background: #000;
-        padding: 2rem 0.5rem 2.8rem 0.5rem;
-        color: #fff;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .section-wrapper::before {
-        content: "";
-        position: absolute;
-        top: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px;
-        height: 250px;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(212, 168, 69, 0.05) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
-        pointer-events: none;
-        z-index: 0;
-      }
-      .section-wrapper * {
-        position: relative;
-        z-index: 1;
-      }
-
-      .section-header {
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid rgba(212, 168, 69, 0.06);
-        text-align: center;
-      }
-      .section-header h2 {
-        font-size: clamp(1.8rem, 4.5vw, 3rem);
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
-        margin: 0;
-       text-align: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 228, 1, 0.856) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 0 30px rgba(212, 168, 69, 0.06));
-      }
-      .section-header .subhead {
-        font-size: 0.95rem;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.35);
-        margin-top: 0.4rem;
-        letter-spacing: 0.2px;
-      }
-      .section-header .subhead i {
-        color: #d4a845;
-        opacity: 0.4;
-        margin: 0 0.3rem;
-      }
-
-      .carousel-wrapper {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding: 0.5rem 0 1.2rem 0;
-        touch-action: pan-y;
-        cursor: grab;
-        user-select: none;
-      }
-      .carousel-wrapper:active {
-        cursor: grabbing;
-      }
-      .carousel-track {
-        display: flex;
-        gap: 1.5rem;
-        width: max-content;
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        will-change: transform;
-        pointer-events: none;
-        padding-left: 0;
-        margin-left: 0;
-      }
-      .carousel-track .feature-card {
-        pointer-events: auto;
-      }
-
-      .feature-card {
-        flex: 0 0 auto;
-        width: 350px;
-        max-width: 85vw;
-        background:
-          radial-gradient(
-            circle at top right,
-            rgba(212, 168, 69, 0.12),
-            transparent 35%
-          ),
-          linear-gradient(160deg, #141414 0%, #0b0b0b 55%, #050505 100%);
-        border: 1px solid rgba(212, 168, 69, 0.28);
-        border-radius: 24px;
-        padding: 2rem 1.4rem 1.8rem;
-        text-align: center;
-        backdrop-filter: blur(2px);
-        box-shadow:
-          0 10px 35px rgba(0, 0, 0, 0.55),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03);
-        transition: all 0.25s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: default;
-      }
-      .feature-card:hover {
-        background: linear-gradient(
-          160deg,
-          #1b1b1b 0%,
-          #101010 60%,
-          #070707 100%
-        );
-        border-color: #d4a845;
-        box-shadow:
-          0 20px 50px rgba(212, 168, 69, 0.18),
-          0 0 30px rgba(212, 168, 69, 0.1);
-        transform: scale(1.02);
-      }
-
-      .card-icon {
-        font-size: 2.6rem;
-        color: #e8c86a;
-        margin-bottom: 0.8rem;
-        filter: drop-shadow(0 0 25px rgba(212, 168, 69, 0.06));
-        transition: all 0.3s ease;
-        background: rgba(212, 168, 69, 0.02);
-        width: 76px;
-        height: 76px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 60px;
-        border: 0.5px solid rgba(212, 168, 69, 0.04);
-      }
-      .feature-card:hover .card-icon {
-        filter: drop-shadow(0 0 50px rgba(212, 168, 69, 0.12));
-        transform: scale(1.05);
-        border-color: rgba(212, 168, 69, 0.08);
-      }
-      .card-name {
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: #ffffff;
-        letter-spacing: -0.01em;
-        margin-bottom: 0.4rem;
-        line-height: 1.3;
-      }
-      .card-desc {
-        font-weight: 400;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.5);
-        line-height: 1.5;
-        margin-bottom: 0.8rem;
-        min-height: 3rem;
-      }
-      .card-benefit {
-        font-weight: 600;
-        font-size: 0.78rem;
-        color: #f5d77b;
-        background: rgba(212, 168, 69, 0.06);
-        padding: 0.35rem 1.4rem;
-        border-radius: 60px;
-        border: 0.5px solid rgba(212, 168, 69, 0.06);
-        letter-spacing: 0.3px;
-        text-transform: uppercase;
-        backdrop-filter: blur(2px);
-      }
-
-      .cta-section {
-        margin-top: 1rem;
-        padding-top: 1.8rem;
-        border-top: 1px solid rgba(212, 168, 69, 0.05);
-        display: flex;
-        justify-content: center;
-      }
-      .cta-button {
-        background: #c08a00;
-        border: 0.5px solid rgba(212, 168, 69, 0.08);
-        border-radius: 60px;
-        color: black;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 0.75rem 2.4rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(4px);
-      }
-      .cta-button i {
-        font-size: 0.75rem;
-        color: #e8c86a;
-        transition: transform 0.3s ease;
-      }
-      .cta-button:hover {
-        background: rgba(212, 168, 69, 0.06);
-        border-color: rgba(212, 168, 69, 0.15);
-        color: #fae39f;
-        transform: scale(1.02);
-      }
-      .cta-button:hover i {
-        transform: translateX(6px);
-      }
-
-      .swipe-hint {
-        display: none;
-        color: rgba(212, 168, 69, 0.2);
-        font-size: 0.7rem;
-        letter-spacing: 0.5px;
-        margin-top: 0.2rem;
-      }
-
-      @media (max-width: 768px) {
-        .section-wrapper {
-          padding: 1.5rem 1.5rem 2.2rem 1.5rem;
-        }
-        .carousel-wrapper {
-          padding: 0.2rem 0 0.8rem 0;
-        }
-        .carousel-track {
-          gap: 1rem;
-        }
-        .feature-card {
-          width: 260px;
-          max-width: 80vw;
-          padding: 1.6rem 1.2rem 1.4rem;
-          border-radius: 20px;
-        }
-        .card-icon {
-          width: 64px;
-          height: 64px;
-          font-size: 2rem;
-        }
-        .card-name {
-          font-size: 1rem;
-        }
-        .card-desc {
-          font-size: 0.8rem;
-          min-height: 2.6rem;
-        }
-        .card-benefit {
-          font-size: 0.7rem;
-          padding: 0.25rem 1.2rem;
-        }
-        .section-header h2 {
-          font-size: 1.6rem;
-        }
-        .cta-button {
-          padding: 0.65rem 1.8rem;
-          font-size: 0.75rem;
-        }
-        .swipe-hint {
-          display: block;
-        }
-      }
-      @media (max-width: 480px) {
-        .feature-card {
-          width: 300px;
-          max-width: 78vw;
-          padding: 1.3rem 0.9rem 1.2rem;
-          border-radius: 18px;
-        }
-        .card-icon {
-          width: 54px;
-          height: 54px;
-          font-size: 1.6rem;
-        }
-        .card-name {
-          font-size: 18px;
-        }
-        .card-desc {
-          font-size: 15px;
-          min-height: 2.2rem;
-        }
-        .card-benefit {
-          font-size: 12px;
-          padding: 0.2rem 1rem;
-        }
-        .section-header h2 {
-          font-size: 32px;
-        }
-        .carousel-track {
-          gap: 0.8rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <section class="body-ai">
-      <div class="section-wrapper">
-        <div class="section-header">
-          <h2>Why Secret Candle AI?</h2>
-          <div class="subhead">
-            <i class="fas fa-gem"></i> Institutional‑grade intelligence,
-            distilled into clear signals.
-          </div>
-        </div>
-
-        <div class="carousel-wrapper" id="carouselWrapper">
-          <div class="carousel-track" id="carouselTrack"></div>
-        </div>
-        <div class="swipe-hint">
-          <i class="fas fa-arrows-left-right"></i> swipe to explore
-        </div>
-
-        <div class="cta-section">
-          <a
-            href="https://t.me/EduStocksFx"
-            class="cta-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fas fa-arrow-right"></i> Explore Secret Candle AI
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      (function () {
-        const features = [
-          {
-            icon: "fa-fire",
-            name: "Secret Candle Detection",
-            desc: "Detects high‑impact market candles",
-            benefit: "Better Market Understanding",
-          },
-          {
-            icon: "fa-brain",
-            name: "AI Market Bias",
-            desc: "Identifies bullish & bearish conditions",
-            benefit: "Improved Decision Making",
-          },
-          {
-            icon: "fa-cubes",
-            name: "Order Block Detection",
-            desc: "Finds institutional zones",
-            benefit: "Higher Probability Setups",
-          },
-          {
-            icon: "fa-arrow-trend-up",
-            name: "Smart Buy & Sell Signals",
-            desc: "Structured entry indications",
-            benefit: "More Disciplined Trading",
-          },
-          {
-            icon: "fa-chart-line",
-            name: "Auto Trendline Mapping",
-            desc: "Automatically maps trend structure",
-            benefit: "Better Trend Visualization",
-          },
-          {
-            icon: "fa-bolt",
-            name: "Dynamic Support & Resistance",
-            desc: "Marks important price levels",
-            benefit: "Better Trade Planning",
-          },
-          {
-            icon: "fa-layer-group",
-            name: "Multi‑Timeframe Intelligence",
-            desc: "Combines higher & lower timeframe analysis",
-            benefit: "Better Trade Filtering",
-          },
-        ];
-
-        const track = document.getElementById("carouselTrack");
-        const wrapper = document.getElementById("carouselWrapper");
-        if (!track || !wrapper) return;
-
-        function buildCard(f) {
-          return `<div class="feature-card">
-            <div class="card-icon"><i class="fas ${f.icon}"></i></div>
-            <div class="card-name">${f.name}</div>
-            <div class="card-desc">${f.desc}</div>
-            <div class="card-benefit">${f.benefit}</div>
-          </div>`;
-        }
-
-        let html = "";
-        features.forEach((f) => (html += buildCard(f)));
-        // clone first card for seamless loop
-        html += buildCard(features[0]);
-        html += buildCard(features[1]);
-        track.innerHTML = html;
-
-        let currentIndex = 0;
-        const totalCards = features.length;
-        let isTransitioning = false;
-        let autoPlayTimer = null;
-        const AUTO_INTERVAL = 3200;
-
-        function getMaxIndex() {
-          return totalCards + 1; // 0 … totalCards (clone)
-        }
-
-        function getTranslateForIndex(index) {
-          const firstCard = document.querySelector(".feature-card");
-          if (!firstCard) return 0;
-          const cardRect = firstCard.getBoundingClientRect();
-          const gapPx = parseFloat(getComputedStyle(track).gap) || 24;
-          const cardFullWidth = cardRect.width + gapPx;
-          // No left padding - start from 0
-          return -(index * cardFullWidth);
-        }
-
-        function slideTo(index, animate = true) {
-          if (isTransitioning) return;
-          const max = getMaxIndex();
-          if (index < 0) index = 0;
-          if (index > max) index = max;
-
-          isTransitioning = true;
-          currentIndex = index;
-          const tx = getTranslateForIndex(index);
-          track.style.transition = animate
-            ? "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-            : "none";
-          track.style.transform = `translateX(${tx}px)`;
-
-          setTimeout(
-            () => {
-              isTransitioning = false;
-              if (index >= totalCards) {
-                track.style.transition = "none";
-                const newTx = getTranslateForIndex(0);
-                track.style.transform = `translateX(${newTx}px)`;
-                currentIndex = 0;
-                void track.offsetHeight;
-              }
-            },
-            animate ? 550 : 50,
-          );
-        }
-
-        function nextSlide() {
-          let next = currentIndex + 1;
-          if (next > totalCards) next = 0;
-          slideTo(next, true);
-        }
-
-        function startAutoPlay() {
-          if (autoPlayTimer) clearInterval(autoPlayTimer);
-          autoPlayTimer = setInterval(nextSlide, AUTO_INTERVAL);
-        }
-
-        function stopAutoPlay() {
-          if (autoPlayTimer) {
-            clearInterval(autoPlayTimer);
-            autoPlayTimer = null;
-          }
-        }
-
-        function resumeAutoPlay() {
-          stopAutoPlay();
-          setTimeout(startAutoPlay, 3000);
-        }
-
-        // Initial centering: show first card at left edge
-        setTimeout(() => {
-          slideTo(0, false);
-          startAutoPlay();
-        }, 100);
-
-        let resizeTimeout;
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            slideTo(currentIndex, false);
-          }, 150);
-        });
-
-        // ----- TOUCH SWIPE -----
-        let startX = 0,
-          startY = 0,
-          isDragging = false,
-          startTranslate = 0,
-          isSwiping = false;
-
-        wrapper.addEventListener(
-          "touchstart",
-          (e) => {
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-            isDragging = true;
-            isSwiping = false;
-            stopAutoPlay();
-            const style = window.getComputedStyle(track);
-            const matrix = style.transform;
-            if (matrix !== "none") {
-              const values = matrix.match(/matrix.*\((.+)\)/);
-              if (values) {
-                const nums = values[1].split(", ");
-                if (nums.length === 6) {
-                  startTranslate = parseFloat(nums[4]) || 0;
-                }
-              }
-            }
-            track.style.transition = "none";
-          },
-          { passive: true },
-        );
-
-        wrapper.addEventListener(
-          "touchmove",
-          (e) => {
-            if (!isDragging) return;
-            const touch = e.touches[0];
-            const deltaX = touch.clientX - startX;
-            const deltaY = touch.clientY - startY;
-            if (
-              Math.abs(deltaX) > 10 &&
-              Math.abs(deltaX) > Math.abs(deltaY) * 0.7
-            ) {
-              isSwiping = true;
-              e.preventDefault();
-              const newTranslate = startTranslate + deltaX;
-              track.style.transform = `translateX(${newTranslate}px)`;
-            }
-          },
-          { passive: false },
-        );
-
-        wrapper.addEventListener(
-          "touchend",
-          (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            if (!isSwiping) {
-              resumeAutoPlay();
-              track.style.transition = "";
-              slideTo(currentIndex, true);
-              return;
-            }
-            const touch = e.changedTouches[0];
-            const deltaX = touch.clientX - startX;
-            let step = 0;
-            if (deltaX < -40) step = 1;
-            else if (deltaX > 40) step = -1;
-
-            let newIndex = currentIndex + step;
-            if (newIndex < 0) newIndex = 0;
-            if (newIndex > totalCards) newIndex = totalCards;
-
-            slideTo(newIndex, true);
-            isSwiping = false;
-            resumeAutoPlay();
-          },
-          { passive: true },
-        );
-
-        wrapper.addEventListener(
-          "touchcancel",
-          () => {
-            isDragging = false;
-            isSwiping = false;
-            slideTo(currentIndex, true);
-            resumeAutoPlay();
-          },
-          { passive: true },
-        );
-
-        // ----- MOUSE DRAG -----
-        let mouseDown = false,
-          mouseStartX = 0,
-          mouseStartTranslate = 0;
-        wrapper.addEventListener("mousedown", (e) => {
-          if (e.button !== 0) return;
-          mouseDown = true;
-          mouseStartX = e.clientX;
-          stopAutoPlay();
-          const style = window.getComputedStyle(track);
-          const matrix = style.transform;
-          if (matrix !== "none") {
-            const values = matrix.match(/matrix.*\((.+)\)/);
-            if (values) {
-              const nums = values[1].split(", ");
-              if (nums.length === 6) {
-                mouseStartTranslate = parseFloat(nums[4]) || 0;
-              }
-            }
-          }
-          track.style.transition = "none";
-        });
-
-        document.addEventListener("mousemove", (e) => {
-          if (!mouseDown) return;
-          const deltaX = e.clientX - mouseStartX;
-          if (Math.abs(deltaX) > 8) {
-            const newTranslate = mouseStartTranslate + deltaX;
-            track.style.transform = `translateX(${newTranslate}px)`;
-          }
-        });
-
-        document.addEventListener("mouseup", (e) => {
-          if (!mouseDown) return;
-          mouseDown = false;
-          const deltaX = e.clientX - mouseStartX;
-          let step = 0;
-          if (deltaX < -40) step = 1;
-          else if (deltaX > 40) step = -1;
-          let newIndex = currentIndex + step;
-          if (newIndex < 0) newIndex = 0;
-          if (newIndex > totalCards) newIndex = totalCards;
-          slideTo(newIndex, true);
-          resumeAutoPlay();
-        });
-
-        // Keyboard arrows
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") {
-            stopAutoPlay();
-            let newIndex = Math.min(currentIndex + 1, totalCards);
-            slideTo(newIndex, true);
-            resumeAutoPlay();
-            e.preventDefault();
-          } else if (e.key === "ArrowLeft") {
-            stopAutoPlay();
-            let newIndex = Math.max(currentIndex - 1, 0);
-            slideTo(newIndex, true);
-            resumeAutoPlay();
-            e.preventDefault();
-          }
-        });
-
-        // Hover pause
-        wrapper.addEventListener("mouseenter", stopAutoPlay);
-        wrapper.addEventListener("mouseleave", resumeAutoPlay);
-      })();
-    </script>
-  </body>
-</html>
 
     <!-- ---risk free insruments----- -->
     <!doctype html>
@@ -5710,7 +5713,7 @@
               <!-- CARD 2 – small (risk-free) -->
               <div class="card small" style="height: 401px">
                 <img
-                  src="https://cfcdn.olymptrade.com/s6/v1.0.50/zeus/assets/image.D6JQG9Io_Z9yb1p.avif"
+                  src="images/risk12.png"
                   alt="risk-free"
                 />
                 <div class="overlay"></div>
@@ -5760,7 +5763,7 @@
               <div class="card small" style="height: 395px; top: -8rem">
                 <img
                   style="width: 100%; height: 67%"
-                  src="images/3.png"
+                  src="images/risk11.png"
                   alt="negative balance"
                 />
                 <div class="overlay"></div>
