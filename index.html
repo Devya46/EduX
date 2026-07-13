@@ -627,7 +627,7 @@
                 href="https://t.me/EduStocksFx"
                 class="hidden lg:flex h-[42px] px-6 rounded-md bg-[#ecae17] text-black font-bold items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-200 text-[14px] shrink-0"
               >
-                Members Login
+                Join Us
               </a>
 
               <!-- MOBILE MENU BUTTON -->
@@ -905,7 +905,7 @@
             </p>
             <div class="flex items-center justify-center gap-5">
               <a
-                href="#"
+                href="https://www.facebook.com/share/1CzT2inMuJ/"
                 class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
                 ><i class="fab fa-facebook-f"></i
               ></a>
@@ -915,12 +915,12 @@
                 ><i class="fab fa-youtube"></i
               ></a>
               <a
-                href="#"
+                href="https://www.instagram.com/edustocksfx?igsh=bGlhZzd2MW5nZGFz"
                 class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
                 ><i class="fab fa-instagram"></i
               ></a>
               <a
-                href="#"
+                href="https://t.me/edustockx"
                 class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-[#ecae17] text-xl hover:bg-[#ecae17] hover:text-white transition-all duration-200 shadow-sm"
                 ><i class="fab fa-telegram-plane"></i
               ></a>
@@ -2282,7 +2282,7 @@
               </div>
               <img
                 class="hiw-image"
-                src="images/HIW-1.png"
+                src="images/HIW-3.png"
                 alt=""
               />
             </div>
@@ -7201,7 +7201,7 @@
 
 
 <!-- ----testimonial------- -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7289,11 +7289,27 @@
       display: flex;
       flex-direction: column;
       transition: background 0.2s ease, border-color 0.2s ease;
+      position: relative;
     }
 
     .testimonial-card:hover {
       background: #1a1a1a;
       border-color: #3a3a3a;
+    }
+
+    /* --- brand icon top-right --- */
+    .card-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .testimonial-card:hover .card-icon {
+      opacity: 1;
     }
 
     .monthly-amount {
@@ -7303,6 +7319,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 0.5rem;
       line-height: 1.2;
+      padding-right: 2.5rem; /* space for icon */
     }
 
     .monthly-amount small {
@@ -7390,6 +7407,12 @@
       .monthly-amount {
         font-size: 1.7rem;
       }
+      .card-icon {
+        width: 28px;
+        height: 28px;
+        top: 0.8rem;
+        right: 0.8rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -7399,6 +7422,12 @@
       }
       .quote-text {
         font-size: 0.95rem;
+      }
+      .card-icon {
+        width: 24px;
+        height: 24px;
+        top: 0.6rem;
+        right: 0.6rem;
       }
     }
 
@@ -7423,159 +7452,171 @@
 
     <div class="marquee-wrapper">
       <div class="marquee-track">
-        <!-- CARD 1 -->
+        <!-- CARD 1 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹1.5L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Edu StockX completely transformed my trading. Within 5 months I became consistently profitable in Gold and Bitcoin.</div>
           <div class="author">
-            <div class="author-name">Rohit Mehta</div>
+            <div class="author-name">Zayn Ahmed</div>
             <div class="author-title">Professional Trader</div>
           </div>
         </div>
 
-        <!-- CARD 2 -->
+        <!-- CARD 2 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹1.2L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Smart Money strategy helped me gain confidence and earn consistently from the markets.</div>
           <div class="author">
-            <div class="author-name">Neha Shah</div>
+            <div class="author-name">Fatima Noor</div>
             <div class="author-title">Part-Time Trader</div>
           </div>
         </div>
 
-        <!-- CARD 3 -->
+        <!-- CARD 3 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹12L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Gold strategy has nearly 80% accuracy. Edu StockX is truly professional.</div>
           <div class="author">
-            <div class="author-name">Arjun Patel</div>
+            <div class="author-name">Usman Malik</div>
             <div class="author-title">Business Owner</div>
           </div>
         </div>
 
-        <!-- CARD 4 (duplicate Rohit) -->
+        <!-- CARD 4 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹2.5L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Edu StockX completely transformed my trading. Within 5 months I became consistently profitable in Gold and Bitcoin.</div>
           <div class="author">
-            <div class="author-name">Rohit Mehta</div>
+            <div class="author-name">Zayn Ahmed</div>
             <div class="author-title">Professional Trader</div>
           </div>
         </div>
 
-        <!-- CARD 5 (duplicate Neha) -->
+        <!-- CARD 5 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹4.2L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Smart Money strategy helped me gain confidence and earn consistently from the markets.</div>
           <div class="author">
-            <div class="author-name">Neha Shah</div>
+            <div class="author-name">Fatima Noor</div>
             <div class="author-title">Part-Time Trader</div>
           </div>
         </div>
 
-        <!-- CARD 6 (duplicate Arjun) -->
+        <!-- CARD 6 (Muslim name) -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹2.7L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Gold strategy has nearly 80% accuracy. Edu StockX is truly professional.</div>
           <div class="author">
-            <div class="author-name">Arjun Patel</div>
+            <div class="author-name">Usman Malik</div>
             <div class="author-title">Business Owner</div>
           </div>
         </div>
 
-        <!-- ===== DUPLICATE SET for seamless loop (total 12 cards) ===== -->
+        <!-- ===== DUPLICATE SET for seamless loop ===== -->
         <!-- CARD 1 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹2.5L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Edu StockX completely transformed my trading. Within 5 months I became consistently profitable in Gold and Bitcoin.</div>
           <div class="author">
-            <div class="author-name">Rohit Mehta</div>
+            <div class="author-name">Zayn Ahmed</div>
             <div class="author-title">Professional Trader</div>
           </div>
         </div>
 
         <!-- CARD 2 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹2.2L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Smart Money strategy helped me gain confidence and earn consistently from the markets.</div>
           <div class="author">
-            <div class="author-name">Neha Shah</div>
+            <div class="author-name">Fatima Noor</div>
             <div class="author-title">Part-Time Trader</div>
           </div>
         </div>
 
         <!-- CARD 3 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹1.29L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Gold strategy has nearly 80% accuracy. Edu StockX is truly professional.</div>
           <div class="author">
-            <div class="author-name">Arjun Patel</div>
+            <div class="author-name">Usman Malik</div>
             <div class="author-title">Business Owner</div>
           </div>
         </div>
 
         <!-- CARD 4 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹4.5L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Edu StockX completely transformed my trading. Within 5 months I became consistently profitable in Gold and Bitcoin.</div>
           <div class="author">
-            <div class="author-name">Rohit Mehta</div>
+            <div class="author-name">Zayn Ahmed</div>
             <div class="author-title">Professional Trader</div>
           </div>
         </div>
 
         <!-- CARD 5 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹3.2L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Smart Money strategy helped me gain confidence and earn consistently from the markets.</div>
           <div class="author">
-            <div class="author-name">Neha Shah</div>
+            <div class="author-name">Fatima Noor</div>
             <div class="author-title">Part-Time Trader</div>
           </div>
         </div>
 
         <!-- CARD 6 dup -->
         <div class="testimonial-card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png" alt="icon" loading="lazy" />
           <div class="monthly-amount">₹3.2L <small>Monthly</small></div>
           <div class="stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <div class="quote-text">Their Gold strategy has nearly 80% accuracy. Edu StockX is truly professional.</div>
           <div class="author">
-            <div class="author-name">Arjun Patel</div>
+            <div class="author-name">Usman Malik</div>
             <div class="author-title">Business Owner</div>
           </div>
         </div>
@@ -8354,16 +8395,16 @@
               <a href="#" class="foot-yt" aria-label="YouTube"
                 ><i class="fab fa-youtube"></i
               ></a>
-              <a href="#" class="foot-tg" aria-label="Telegram"
+              <a href="https://t.me/edustockx" class="foot-tg" aria-label="Telegram"
                 ><i class="fab fa-telegram-plane"></i
               ></a>
               <a href="#" class="foot-dc" aria-label="Discord"
                 ><i class="fab fa-discord"></i
               ></a>
-              <a href="#" class="foot-ig" aria-label="Instagram"
+              <a href="https://www.instagram.com/edustocksfx?igsh=bGlhZzd2MW5nZGFz" class="foot-ig" aria-label="Instagram"
                 ><i class="fab fa-instagram"></i
               ></a>
-              <a href="#" class="foot-fb" aria-label="Facebook"
+              <a href="https://www.facebook.com/share/1CzT2inMuJ/" class="foot-fb" aria-label="Facebook"
                 ><i class="fab fa-facebook-f"></i
               ></a>
             </div>
