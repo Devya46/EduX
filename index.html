@@ -1318,6 +1318,17 @@
         line-height: 1.8;
         margin-bottom: 38px;
       }
+      .hero-text strong{
+        /* background: linear-gradient(
+          135deg,
+          #f5f1ea 10%,
+          var(--gold-light) 40%,
+          var(--gold-glow) 90%
+        );
+        background-clip: text;
+        -webkit-background-clip: text; */
+        color: var(--gold-glow);
+      }
 
       .hero-buttons {
         display: flex;
@@ -1834,7 +1845,7 @@
           height: 112px;
         }
         .stockx-center-logo {
-          width: 60px;
+          width: 83px;
           height: 60px;
         }
         .stockx-ring-1 {
@@ -1883,9 +1894,7 @@
           </div>
 
           <p class="hero-text">
-            AI-powered market bias, secret candle detection, order blocks, smart
-            signals, auto trendlines, support/resistance, multi-timeframe
-            analysis & market structure — all in one place.
+            Experience the power of <strong>Secret Candle AI Indicator</strong> - an intelligent trading system that combines <strong>AI Market Bias, Multi-Timeframe Analysis, Institutional Order Blocks, Support & Resistance, and a Trade Quality Filter</strong> to help you identify high-probability trading opportunities with confidence.
           </p>
 
           <div class="hero-buttons">
@@ -1992,12 +2001,12 @@
         const cursorSpan = document.getElementById("static-cursor");
 
         if (typedLine) {
-          const messages = [
-            "Master the Stock Market with Edu Stockx",
-            "From Zero to Trader — Live Sessions",
-            "Smart Investing, Smarter Future",
-            "Trade with Confidence & Clarity",
-          ];
+         const messages = [
+        "Trade Smarter with Secret Candle AI",
+        "Decode Markets with AI Precision",
+        "High-Probability Trades - Powered by AI",
+        "Where AI Meets Trading Excellence",
+        ];
 
           let messageIndex = 0;
           let charPos = 0;
@@ -2229,7 +2238,7 @@
      ================================================================ -->
     <section class="hiw-section" id="hiw-section">
       <div class="hiw-container">
-        <h2 class="hiw-title">How Successful Traders Trade</h2>
+        <h2 class="hiw-title">How Secret Candle AI Helps You Trade Smarter</h2>
 
         <div class="hiw-grid" id="hiw-grid">
           <!-- Card 1 – Blue -->
@@ -2247,14 +2256,14 @@
                   />
                 </svg>
                 <span class="hiw-tag">Analyze</span>
-                <h3>Understand <br/> the Market</h3>
+                <h3>Read the Market<br> with AI</h3>
                 <p>
-                  AI scans market structure, key zones, and multi-timeframe data.
+                  AI combines Multi-Timeframe Analysis, Support & Resistance, and Institutional Order Blocks to reveal the true market structure.
                 </p>
               </div>
               <img
                 class="hiw-image"
-                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100907/img-evaluation-process.webp"
+                src="images/pic-2.webp"
                 alt=""
               />
             </div>
@@ -2275,14 +2284,14 @@
                   />
                 </svg>
                 <span class="hiw-tag">Detect</span>
-                <h3>Find Key Opportunities</h3>
+                <h3>Spot High <br>Probability Setups</h3>
                 <p>
-                  Detects Secret Candles, order blocks, and trend direction.
+                  Secret Candle AI identifies powerful candle formations and filters only the highest-quality trading opportunities.
                 </p>
               </div>
               <img
                 class="hiw-image"
-                src="images/HIW-3.png"
+                src="images/pic-4.webp"
                 alt=""
               />
             </div>
@@ -2303,14 +2312,14 @@
                   />
                 </svg>
                 <span class="hiw-tag">Signal</span>
-                <h3>Receive Smart Signals</h3>
+                <h3>Trade with AI Confidence</h3>
                 <p>
-                 Get AI market bias with structured Buy & Sell signals.
+                 Get AI Market Bias with smart Buy & Sell signals backed by multiple market confirmations.
                 </p>
               </div>
               <img
                 class="hiw-image"
-                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2026/03/18100922/img-premium-programe-4x.webp"
+                src="images/pic-3.webp"
                 alt=""
               />
             </div>
@@ -2352,14 +2361,14 @@
                   />
                 </svg>
                 <span class="hiw-tag">Execute</span>
-                <h3>Trade with Discipline</h3>
+                <h3>Execute Like a Professional</h3>
                 <p>
-                  Execute with confidence using proper planning and risk management.
+                  Trade confidently using the Trade Quality Filter, disciplined risk management, and AI-powered confirmations.
                 </p>
               </div>
               <img
                 class="hiw-image"
-                src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/12142852/pre-footer-screen-global.webp"
+                src="images/pic-11.webp"
                 alt=""
               />
             </div>
@@ -2546,16 +2555,16 @@
       }
 
       .hiw-image {
-        width: 100%;
-        max-width: 90%;
-        height: auto;
-        margin-top: auto;
-        align-self: center;
-        position: relative;
-        z-index: 2;
-        display: block;
-        pointer-events: none;
-        object-fit: contain;
+            width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin-top: auto;
+    align-self: center;
+    position: relative;
+    z-index: 2;
+    display: block;
+    pointer-events: none;
+    object-fit: cover;
       }
 
       /* ================================================================
@@ -2676,7 +2685,7 @@
           margin-bottom: 24px !important;
         }
         .hiw-card {
-          min-height: 200px !important;
+          min-height: 210px !important;
           height: 200px !important;
         }
         .hiw-card-inner {
@@ -2932,7 +2941,7 @@
         transform: scale(1.02);
       }
 
-      .card-icon {
+      .cards-iconn {
         font-size: 2.6rem;
         color: #e8c86a;
         margin-bottom: 0.8rem;
@@ -2947,7 +2956,7 @@
         border-radius: 60px;
         border: 0.5px solid rgba(212, 168, 69, 0.04);
       }
-      .feature-card:hover .card-icon {
+      .feature-card:hover .cards-iconn {
         filter: drop-shadow(0 0 50px rgba(212, 168, 69, 0.12));
         transform: scale(1.05);
         border-color: rgba(212, 168, 69, 0.08);
@@ -3045,7 +3054,7 @@
           padding: 1.6rem 1.2rem 1.4rem;
           border-radius: 20px;
         }
-        .card-icon {
+        .cards-iconn {
           width: 64px;
           height: 64px;
           font-size: 2rem;
@@ -3079,7 +3088,7 @@
           padding: 1.3rem 0.9rem 1.2rem;
           border-radius: 18px;
         }
-        .card-icon {
+        .cards-iconn {
           width: 54px;
           height: 54px;
           font-size: 1.6rem;
@@ -3096,7 +3105,7 @@
           padding: 0.2rem 1rem;
         }
         .section-header h2 {
-          font-size: 32px;
+          font-size: 24px;
         }
         .carousel-track {
           gap: 0.8rem;
@@ -3138,49 +3147,49 @@
     <script>
       (function () {
         const features = [
-          {
-            icon: "fa-fire",
-            name: "Secret Candle Detection",
-            desc: "Detects high‑impact market candles",
-            benefit: "Better Market Understanding",
-          },
-          {
-            icon: "fa-brain",
-            name: "AI Market Bias",
-            desc: "Identifies bullish & bearish conditions",
-            benefit: "Improved Decision Making",
-          },
-          {
-            icon: "fa-cubes",
-            name: "Order Block Detection",
-            desc: "Finds institutional zones",
-            benefit: "Higher Probability Setups",
-          },
-          {
-            icon: "fa-arrow-trend-up",
-            name: "Smart Buy & Sell Signals",
-            desc: "Structured entry indications",
-            benefit: "More Disciplined Trading",
-          },
-          {
-            icon: "fa-chart-line",
-            name: "Auto Trendline Mapping",
-            desc: "Automatically maps trend structure",
-            benefit: "Better Trend Visualization",
-          },
-          {
-            icon: "fa-bolt",
-            name: "Dynamic Support & Resistance",
-            desc: "Marks important price levels",
-            benefit: "Better Trade Planning",
-          },
-          {
-            icon: "fa-layer-group",
-            name: "Multi‑Timeframe Intelligence",
-            desc: "Combines higher & lower timeframe analysis",
-            benefit: "Better Trade Filtering",
-          },
-        ];
+  {
+    icon: "fa-fire",
+    name: "Secret Candle Detection",
+    desc: "Instantly identifies high-impact candles that reveal potential market direction before major moves.",
+    benefit: "Predict Market Moves",
+  },
+  {
+    icon: "fa-brain",
+    name: "AI Market Bias",
+    desc: "Advanced AI evaluates market sentiment to deliver clear bullish or bearish directional bias.",
+    benefit: "Trade with Confidence",
+  },
+  {
+    icon: "fa-cubes",
+    name: "Institutional Order Blocks",
+    desc: "Automatically detects institutional accumulation and distribution zones where price reacts most.",
+    benefit: "Find Smart Money Levels",
+  },
+  {
+    icon: "fa-arrow-trend-up",
+    name: "Smart Buy & Sell Signals",
+    desc: "Receive high-probability trade signals based on multiple market confirmations—not guesswork.",
+    benefit: "Higher Quality Entries",
+  },
+  {
+    icon: "fa-chart-line",
+    name: "Auto Trendline Mapping",
+    desc: "Automatically maps trend structure to help identify breakouts, reversals, and trend continuation.",
+    benefit: "Read Trends Faster",
+  },
+  {
+    icon: "fa-bolt",
+    name: "Dynamic Support & Resistance",
+    desc: "Highlights key price zones where buying and selling pressure is most likely to emerge.",
+    benefit: "Plan Better Trades",
+  },
+  {
+    icon: "fa-layer-group",
+    name: "Multi-Timeframe Intelligence",
+    desc: "Combines higher and lower timeframe analysis to filter noise and improve trade accuracy.",
+    benefit: "Better Trade Precision",
+  },
+];
 
         const track = document.getElementById("carouselTrack");
         const wrapper = document.getElementById("carouselWrapper");
@@ -3188,7 +3197,7 @@
 
         function buildCard(f) {
           return `<div class="feature-card">
-            <div class="card-icon"><i class="fas ${f.icon}"></i></div>
+            <div class="cards-iconn"><i class="fas ${f.icon}"></i></div>
             <div class="card-name">${f.name}</div>
             <div class="card-desc">${f.desc}</div>
             <div class="card-benefit">${f.benefit}</div>
@@ -4249,7 +4258,7 @@
         border: 1px solid rgba(230, 172, 26, 0.04);
         transition: 0.2s;
       }
-      .rmi-card:hover .card-icon {
+      .rmi-card:hover .cards-iconn {
         background: rgba(230, 172, 26, 0.1);
         border-color: rgba(230, 172, 26, 0.15);
       }
@@ -4414,7 +4423,7 @@
           font-size: 0.6rem;
           padding: 0.2rem 1rem;
         }
-        .card-icon {
+        .cards-iconn {
           width: 44px;
           height: 44px;
           font-size: 1.3rem;
@@ -4483,76 +4492,68 @@
 
           <!-- Heading -->
           <h2 class="solution-heading hidden-init" id="heading">
-            <span class="highlight">Edu Stockx</span> — Where Knowledge Meets<br />
-            <span class="highlight">Market Precision</span>
+            <span class="highlight">Secret Candle AI</span> — Where AI Meets<br />
+            <span class="highlight">Trading Precision</span>
           </h2>
 
           <p class="solution-description hidden-init" id="desc">
-            At Edu Stockx, we believe profitable trading isn't built on
-            luck—it's built on education, discipline, and a repeatable process.
-            We help traders understand why the market moves, so every decision
-            is backed by logic instead of emotion.
+            Harness the power of Secret Candle AI to analyze market structure, identify institutional activity, and uncover high-probability trading opportunities. Our AI-driven system helps traders make confident, data-backed decisions instead of relying on emotions or guesswork.
           </p>
 
           <!-- Cards – wider, more spacious -->
           <div class="rmi-gridd stagger-children" id="cardGrid">
             <div class="rmi-card hidden-init" id="card1">
-              <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-              <h3>Learn the Market</h3>
+              <div class="cards-iconn"><i class="fas fa-graduation-cap"></i></div>
+              <h3>Understand the Market</h3>
               <p>
-                Develop a professional understanding of price action, market
-                structure, and institutional behaviour before risking capital.
+                Gain a deeper view of price action with AI-powered market intelligence.
               </p>
               <ul class="feature-list">
                 <li>
-                  <i class="fas fa-circle-check"></i> Real market education
+                  <i class="fas fa-circle-check"></i> AI Market Bias
                 </li>
                 <li>
-                  <i class="fas fa-chart-simple"></i> Practical chart
-                  understanding
+                  <i class="fas fa-chart-simple"></i> Multi-Timeframe Analysis
                 </li>
                 <li>
-                  <i class="fas fa-brain"></i> Confidence through knowledge
+                  <i class="fas fa-brain"></i> Dynamic Support & Resistance
                 </li>
               </ul>
             </div>
 
             <div class="rmi-card hidden-init" id="card2">
-              <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
-              <h3>Think Like a Trader</h3>
+              <div class="cards-iconn"><i class="fas fa-user-astronaut"></i></div>
+              <h3>Discover Smart Opportunities</h3>
               <p>
-                Successful trading starts with the right mindset. Build
-                patience, discipline, and consistency that last beyond a single
-                trade.
+                Identify high-quality setups before the crowd.
               </p>
               <ul class="feature-list">
-                <li><i class="fas fa-heart-pulse"></i> Emotional control</li>
+                <li><i class="fas fa-heart-pulse"></i> Secret Candle AI Detection</li>
                 <li>
-                  <i class="fas fa-shield-halved"></i> Risk-first approach
+                  <i class="fas fa-shield-halved"></i> Institutional Order Blocks
                 </li>
                 <li>
-                  <i class="fas fa-arrows-spin"></i> Process over predictions
+                  <i class="fas fa-arrows-spin"></i> Trade Quality Filter
                 </li>
               </ul>
             </div>
 
             <div class="rmi-card hidden-init" id="card3">
-              <div class="card-icon"><i class="fas fa-arrow-trend-up"></i></div>
-              <h3>Build Long-Term Consistency</h3>
+              <div class="cards-iconn"><i class="fas fa-arrow-trend-up"></i></div>
+              <h3>Trade with Confidence</h3>
               <p>
                 Markets change every day, but strong trading principles never
-                do. Learn a framework that adapts across different market
-                conditions.
+                do. Execute every trade with discipline and AI confirmation.
               </p>
               <ul class="feature-list">
                 <li>
-                  <i class="fas fa-layer-group"></i> Structured learning path
+                  <i class="fas fa-layer-group"></i> High-Probability Setups
                 </li>
                 <li>
-                  <i class="fas fa-repeat"></i> Consistent decision-making
+                  <i class="fas fa-repeat"></i> Smarter Buy & Sell Decisions
                 </li>
                 <li>
-                  <i class="fas fa-seedling"></i> Sustainable trading growth
+                  <i class="fas fa-seedling"></i> Consistent Trading Performance
                 </li>
               </ul>
             </div>
@@ -4563,22 +4564,22 @@
             <div class="metric-item hidden-init" id="m1">
               <div class="metric-icon"><i class="fas fa-book-open"></i></div>
               <div class="metric-text">
-                <span class="metric-number">Learn</span>
-                <span class="metric-label">Master the skills</span>
+                <span class="metric-number">Analyze</span>
+                <span class="metric-label">The Market with AI</span>
               </div>
             </div>
             <div class="metric-item hidden-init" id="m2">
               <div class="metric-icon"><i class="fas fa-lightbulb"></i></div>
               <div class="metric-text">
-                <span class="metric-number">Think</span>
-                <span class="metric-label">Analyze with confidence</span>
+                <span class="metric-number">Detect</span>
+                <span class="metric-label">Find High Quality Setups</span>
               </div>
             </div>
             <div class="metric-item hidden-init" id="m3">
               <div class="metric-icon"><i class="fas fa-handshake"></i></div>
               <div class="metric-text">
                 <span class="metric-number">Execute</span>
-                <span class="metric-label">Trade with discipline</span>
+                <span class="metric-label">Trade with Confidence</span>
               </div>
             </div>
             <div class="metric-item hidden-init" id="m4">
@@ -4587,7 +4588,7 @@
               </div>
               <div class="metric-text">
                 <span class="metric-number">Grow</span>
-                <span class="metric-label">Become a smarter trader</span>
+                <span class="metric-label">Master Consistency</span>
               </div>
             </div>
           </div>
@@ -5292,6 +5293,7 @@
     -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
             margin-bottom: 5rem;
+            padding-bottom: 6px;
           }
 
           .tradeX-platinum .section-title span {
@@ -5688,7 +5690,7 @@
             <div class="section-title">
               <h2>
                 Explore trading
-                <span>with Risk-free Instruments</span>
+                <span>with Intelligent AI Tools</span>
               </h2>
             </div>
 
@@ -5697,8 +5699,8 @@
               <div class="card large">
                 <div class="overlay"></div>
                 <div class="contentt First">
-                  <div class="card-title">Trade Smarter </div>
-                  <div class="card-subtitle">with Edu Stockx</div>
+                  <div class="card-title">Secret Candle AI Detect </div>
+                  <div class="card-subtitle">High-Probability Setups</div>
                   <a href="https://t.me/EduStocksFx" class="btn-cards"  target="_blank"
    rel="noopener noreferrer">Try now </a>
                   <br />
@@ -5722,12 +5724,12 @@
                 />
                 <div class="overlay"></div>
                 <div class="contentt">
-                  <div class="card-title">Risk-free trades</div>
+                  <div class="card-title">AI Market Bias </div>
                   <div class="card-subtitle">
-                    allow you to trade confidently
+                    Know the Market Direction
                   </div>
                   <a href="https://t.me/EduStocksFx" target="_blank" class="learn-more">
-                    Learn more
+                    Explore AI
                     <i class="fa-solid fa-chevron-right"></i>
                   </a>
                 </div>
@@ -5744,9 +5746,9 @@
                 />
                 <div class="overlay"></div>
                 <div class="contentt">
-                  <div class="card-title">Smart Trade Planning</div>
+                  <div class="card-title">Multi-Timeframe Analysis</div>
                   <a href="https://t.me/EduStocksFx" target="_blank" class="learn-more">
-                    Learn more
+                    Explore AI
                     <i class="fa-solid fa-chevron-right"></i>
                   </a>
                 </div>
@@ -5756,10 +5758,10 @@
               <div class="card small">
                 <div class="overlay"></div>
                 <div class="contentt" style="top: 100px">
-                  <div class="card-title">Multi-Timeframe Analysis</div>
-                  <div class="card-subtitle">See the Bigger Picture</div>
+                  <div class="card-title">Institutional Order Blocks </div>
+                  <div class="card-subtitle">Follow Smart Money</div>
                   <a href="https://t.me/EduStocksFx" target="_blank" class="learn-more">
-                    Learn more
+                    Explore AI
                     <i class="fa-solid fa-chevron-right"></i>
                   </a>
                 </div>
@@ -6403,7 +6405,7 @@
       }
 
       .wu-content p {
-        color: #8db9ff;
+        color: goldenrod;
         font-size: clamp(1.2rem, 2.8vw, 28px);
         font-weight: 600;
         letter-spacing: -0.01em;
@@ -6462,19 +6464,19 @@
       }
 
       .account-title i {
-        color: #3b9aff;
+        color: goldenrod;
         font-size: 1.1rem;
       }
 
       .account-title span {
-        background: #1a2842;
-        padding: 2px 14px;
-        border-radius: 40px;
-        font-size: 0.65rem;
-        font-weight: 600;
-        color: #7aaaff;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+            background: #159900;
+    padding: 2px 14px;
+    border-radius: 40px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
       }
 
       .stats-wu {
@@ -6629,9 +6631,9 @@
         font-size: 2.2rem;
         line-height: 1;
         margin-bottom: 18px;
-        color: #5f7aff;
+        color: goldenrod;
         display: inline-block;
-        filter: drop-shadow(0 4px 12px rgba(0, 80, 255, 0.2));
+        filter: drop-shadow(0 4px 12px rgba(255, 187, 0, 0.2));
         transition: transform 0.2s;
         width: 44px;
         text-align: left;
@@ -6888,7 +6890,7 @@
 
         <div class="wu-content">
           <h1>Why Us</h1>
-          <p>Learn Professional Trading with Real Market Insights</p>
+          <p>Trade Smarter with AI-Powered Market Intelligence</p>
         </div>
 
         <!-- account card with better chart -->
@@ -6906,7 +6908,7 @@
               </div>
               <div class="stat">
                 <span>Module: </span>
-                <h2>Live Market Analysis</h2>
+                <h2>AI Market Analysis</h2>
               </div>
             </div>
 
@@ -6972,22 +6974,22 @@
         <div class="card-item">
           <div class="icon"><i class="fas fa-headset"></i></div>
           <h3>AI-Powered Analysis</h3>
-          <p>Advanced market structure, AI market bias, and intelligent chart analysis.</p>
+          <p>Leverage AI Market Bias and Multi-Timeframe Analysis to understand market direction with greater clarity</p>
         </div>
         <div class="card-item">
           <div class="icon"><i class="fas fa-tools"></i></div>
-          <h3>Smart Trading Tools</h3>
-          <p>Secret Candle AI, Order Blocks, Trendlines & Smart Signals—all in one platform.</p>
+          <h3>Secret Candle AI</h3>
+          <p>Identify high-probability setups using Secret Candle AI, Institutional Order Blocks, and dynamic Support & Resistance levels</p>
         </div>
         <div class="card-item">
           <div class="icon"><i class="fas fa-coins"></i></div>
           <h3>Disciplined Trading</h3>
-          <p>Learn structured trading with risk management and multi-timeframe confirmation.</p>
+          <p>Filter low-quality trades with our Trade Quality Filter and execute only the strongest opportunities</p>
         </div>
         <div class="card-item">
           <div class="icon"><i class="fas fa-clock"></i></div>
-          <h3>Learn & Grow</h3>
-          <p>Master trading through live mentorship, practical strategies, and continuous learning.</p>
+          <h3>Consistent <br>Trading Growth</h3>
+          <p>Improve decision-making, and achieve long-term consistency with AI-powered market insights</p>
         </div>
       </div>
     </div>
